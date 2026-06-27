@@ -94,8 +94,9 @@ function applyLang(lang, save = true) {
     if (!pill || !active) return;
     const swRect    = active.closest('.lang-switcher').getBoundingClientRect();
     const btnRect   = active.getBoundingClientRect();
-    pill.style.left  = (btnRect.left - swRect.left) + 'px';
-    pill.style.width = btnRect.width + 'px';
+    const PAD = 2;
+    pill.style.left  = (btnRect.left - swRect.left + PAD) + 'px';
+    pill.style.width = (btnRect.width - PAD * 2) + 'px';
   });
 }
 
@@ -199,8 +200,9 @@ function initLangPill() {
     const switcher   = active.closest('.lang-switcher');
     const swRect     = switcher.getBoundingClientRect();
     const btnRect    = active.getBoundingClientRect();
-    pill.style.left  = (btnRect.left - swRect.left) + 'px';
-    pill.style.width = btnRect.width + 'px';
+    const PAD = 2;
+    pill.style.left  = (btnRect.left - swRect.left + PAD) + 'px';
+    pill.style.width = (btnRect.width - PAD * 2) + 'px';
   }
 
   // Move on every lang change
@@ -440,9 +442,9 @@ function initProcess() {
    ================================================================ */
 /* Same concepts from the original ticker, translated per language */
 const TICKER_ITEMS = {
-  ar: ['الهوية البصرية', 'مكتبة التصميم', 'تجربة المستخدم', 'النمذجة التفاعلية', 'اختبار المستخدم', 'تصميم المنتج', 'الاستراتيجية الرقمية', 'نظام التصميم', 'nawat.studio', 'MENA · Global'],
-  en: ['Visual Identity', 'Design Library', 'UX Design', 'Interactive Prototyping', 'User Testing', 'Product Design', 'Digital Strategy', 'Design System', 'nawat.studio', 'MENA · Global'],
-  fr: ['Identité Visuelle', 'Bibliothèque Design', 'Expérience Utilisateur', 'Prototypage Interactif', 'Tests Utilisateurs', 'Design Produit', 'Stratégie Numérique', 'Design System', 'nawat.studio', 'MENA · Global'],
+  ar: ['الهوية البصرية', 'نظام التصميم', 'تجربة المستخدم', 'النمذجة التفاعلية', 'اختبار المستخدم', 'تصميم المنتج', 'الاستراتيجية الرقمية', 'نظام التصميم', 'nawat.studio', 'MENA · Global'],
+  en: ['Visual Identity', 'Design System', 'UX Design', 'Interactive Prototyping', 'User Testing', 'Product Design', 'Digital Strategy', 'Design System', 'nawat.studio', 'MENA · Global'],
+  fr: ['Identité Visuelle', 'Design System', 'Expérience Utilisateur', 'Prototypage Interactif', 'Tests Utilisateurs', 'Design Produit', 'Stratégie Numérique', 'Design System', 'nawat.studio', 'MENA · Global'],
 };
 
 function buildTicker(lang) {
