@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light" data-lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="REACH eLearning Platform — منصة REACH للتعليم الإلكتروني | نواة ستوديو">
+  <meta name="theme-color" content="#F5F5F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E0E11" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="REACH eLearning Platform — Nawat Studio">
+  <meta property="og:description" content="How we designed the teacher-side of REACH — a drag-and-drop eLearning platform that reduced course creation time by 60%, built from 15+ teacher interviews.">
+  <meta property="og:image" content="https://nawat.studio/assets/og-reach.jpg">
+  <meta property="og:url" content="https://nawat.studio/case-study-reach.html">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://nawat.studio/case-study-reach.html">
+  <title>REACH eLearning Platform — نواة ستوديو | Nawat Studio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nawat-theme') || 'light';
+      var savedLang = localStorage.getItem('nawat-lang');
+      var deviceLang = (navigator.language || navigator.userLanguage || 'ar').toLowerCase().slice(0, 2);
+      var lang = savedLang || (['ar', 'en', 'fr'].indexOf(deviceLang) !== -1 ? deviceLang : 'ar');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.classList.add('no-transitions');
+      document.addEventListener('DOMContentLoaded', function() {
+        document.documentElement.classList.remove('no-transitions');
+      });
+    })();
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230E0E11'/><circle cx='50' cy='50' r='18' fill='none' stroke='%23F5F5F5' stroke-width='4'/><circle cx='50' cy='50' r='6' fill='%230D9488'/></svg>">
+
+  <style>
+    /* ── Page accent: teal ──────────────────────────────────────────── */
+    :root {
+      --cs-accent: #0D9488;
+      --cs-accent-08: rgba(13, 148, 136, 0.08);
+      --cs-accent-hover: #0a7a70;
+    }
+
+    html[dir="rtl"] .cs-back-arrow { transform: scaleX(-1); }
+
+    .cs-breadcrumb { padding-top: calc(var(--nav-h) + 40px); }
+    .cs-breadcrumb-inner { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--c-text-60); }
+    .cs-breadcrumb-link { display: inline-flex; align-items: center; gap: 6px; color: var(--c-text-60); transition: color var(--t-fast); }
+    .cs-breadcrumb-link:hover { color: var(--c-text); }
+    .cs-breadcrumb-sep { color: var(--c-text-30); }
+
+    .cs-hero { padding-top: clamp(28px, 4vw, 56px); padding-bottom: 0; }
+    .cs-hero-inner { max-width: 900px; }
+
+    .cs-hero-meta { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 20px; font-family: var(--font-latin); }
+    .cs-hero-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--cs-accent); opacity: 0.5; }
+
+    .cs-hero-title { font-size: clamp(36px, 7vw, 80px); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; color: var(--c-text); margin-bottom: 28px; }
+    html[lang="en"] .cs-hero-title, html[lang="fr"] .cs-hero-title { letter-spacing: -0.03em; }
+
+    .cs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .cs-tag { padding: 5px 14px; border: 1px solid var(--c-border); border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--c-text-60); background: transparent; }
+
+    .cs-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 32px; margin-bottom: clamp(48px, 8vw, 80px); }
+    .cs-stat { display: flex; flex-direction: column; gap: 5px; }
+    .cs-stat-num { font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; line-height: 1; color: var(--c-text); font-family: var(--font-latin); }
+    .cs-stat-num em { color: var(--cs-accent); font-style: normal; }
+    .cs-stat-label { font-size: 11px; font-weight: 600; color: var(--c-text-60); text-transform: uppercase; letter-spacing: 0.08em; }
+    .cs-stat-divider { width: 1px; height: 36px; background: var(--c-border); flex-shrink: 0; }
+
+    .cs-cover { position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; background: var(--c-surface); border: 1px solid var(--c-border); aspect-ratio: 16 / 7; display: flex; align-items: center; justify-content: center; }
+    .cs-cover-dots { position: absolute; inset: 0; background-image: radial-gradient(var(--c-border) 1px, transparent 1px); background-size: 28px 28px; }
+    .cs-cover-placeholder { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .cs-cover-icon-wrap { width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--c-surface-md); display: flex; align-items: center; justify-content: center; color: var(--c-text-30); }
+    .cs-cover-hint { font-size: 11px; color: var(--c-text-30); font-family: var(--font-latin); letter-spacing: 0.06em; }
+
+    .cs-section { padding-top: var(--section-py); padding-bottom: var(--section-py); }
+    .cs-section + .cs-section { border-top: 1px solid var(--c-border); }
+    .cs-section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 14px; }
+    .cs-section-title { font-size: clamp(28px, 4.5vw, 52px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; color: var(--c-text); margin-bottom: 20px; }
+    html[lang="en"] .cs-section-title, html[lang="fr"] .cs-section-title { letter-spacing: -0.03em; }
+    .cs-section-body { font-size: clamp(15px, 1.8vw, 18px); line-height: 1.8; color: var(--c-text-60); max-width: 620px; }
+
+    .cs-problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: start; }
+    @media (max-width: 768px) { .cs-problem-layout { grid-template-columns: 1fr; } }
+
+    .cs-problem-cards { display: flex; flex-direction: column; gap: 10px; }
+    .cs-problem-card { padding: 20px 24px; border-radius: var(--radius-md); border: 1px solid var(--c-border); background: var(--c-surface); transition: border-color var(--t-fast), background var(--t-fast); }
+    .cs-problem-card:hover { border-color: var(--c-border-lg); background: var(--c-surface-md); }
+    .cs-problem-num { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: var(--c-text-30); margin-bottom: 6px; font-family: var(--font-latin); }
+    .cs-problem-title { font-size: 15px; font-weight: 600; color: var(--c-text); margin-bottom: 5px; line-height: 1.35; }
+    .cs-problem-desc { font-size: 13px; line-height: 1.65; color: var(--c-text-60); }
+
+    .cs-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: clamp(48px, 6vw, 72px); }
+    @media (max-width: 580px) { .cs-features { grid-template-columns: 1fr; } }
+    .cs-feature-card { padding: clamp(24px, 3vw, 36px); border-radius: var(--radius-lg); border: 1px solid var(--c-border); background: var(--c-surface); transition: border-color var(--t-fast), transform var(--t-base); }
+    .cs-feature-card:hover { border-color: var(--c-border-lg); transform: translateY(-3px); }
+    .cs-feature-icon { width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--cs-accent-08); display: flex; align-items: center; justify-content: center; color: var(--cs-accent); margin-bottom: 16px; flex-shrink: 0; }
+    .cs-feature-title { font-size: 15px; font-weight: 600; color: var(--c-text); margin-bottom: 8px; line-height: 1.3; }
+    .cs-feature-body { font-size: 13px; line-height: 1.7; color: var(--c-text-60); }
+    .cs-feature-badge { display: inline-flex; margin-top: 14px; padding: 4px 11px; border-radius: 100px; background: var(--cs-accent-08); color: var(--cs-accent); font-size: 11px; font-weight: 600; font-family: var(--font-latin); letter-spacing: 0.04em; }
+
+    .cs-cta { position: relative; background: var(--black); overflow: hidden; padding: clamp(100px, 16vw, 180px) 0; color: var(--white); }
+    [data-theme="light"] .cs-cta { background: var(--c-bg-alt); color: var(--black); }
+    .cs-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, var(--cs-accent) 40%, var(--cs-accent) 60%, transparent 100%); opacity: 0.4; }
+    .cs-cta-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: clamp(400px, 70vw, 800px); height: clamp(400px, 70vw, 800px); pointer-events: none; opacity: 0.055; }
+    [data-theme="light"] .cs-cta-watermark { opacity: 0.07; }
+    .cs-cta-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(245,245,245,0.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    [data-theme="light"] .cs-cta-dots { background-image: radial-gradient(var(--black-10) 1px, transparent 1px); }
+    .cs-cta-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .cs-cta-pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; border: 1px solid rgba(245,245,245,0.12); border-radius: 100px; font-family: var(--font-latin); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,245,245,0.45); margin-bottom: 36px; }
+    [data-theme="light"] .cs-cta-pill { border-color: var(--c-border-lg); color: var(--c-text-60); }
+    .cs-cta-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cs-accent); flex-shrink: 0; box-shadow: 0 0 8px rgba(13,148,136,0.8); }
+    .cs-cta-title { font-size: clamp(36px, 6.5vw, 76px); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; color: var(--white); max-width: 820px; margin-bottom: 24px; }
+    [data-theme="light"] .cs-cta-title { color: var(--c-text); }
+    html[lang="ar"] .cs-cta-title { letter-spacing: -0.01em; }
+    .cs-cta-title em { font-style: normal; color: var(--cs-accent); }
+    .cs-cta-body { font-size: clamp(14px, 1.6vw, 17px); line-height: 1.8; color: rgba(245,245,245,0.45); max-width: 500px; margin-bottom: 48px; }
+    [data-theme="light"] .cs-cta-body { color: var(--c-text-60); }
+    .cs-cta-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .cs-cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform var(--t-fast), background var(--t-fast), border-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast); white-space: nowrap; }
+    .cs-cta-btn.primary { background: var(--cs-accent); color: var(--white); border: 1px solid var(--cs-accent); }
+    .cs-cta-btn.primary:hover { background: var(--cs-accent-hover); border-color: var(--cs-accent-hover); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(13,148,136,0.35); }
+    .cs-cta-btn.ghost { background: transparent; color: rgba(245,245,245,0.65); border: 1px solid rgba(245,245,245,0.18); }
+    .cs-cta-btn.ghost:hover { color: var(--white); border-color: rgba(245,245,245,0.45); transform: translateY(-2px); }
+    [data-theme="light"] .cs-cta-btn.ghost { color: var(--c-text-60); border-color: var(--c-border-lg); }
+    [data-theme="light"] .cs-cta-btn.ghost:hover { color: var(--c-text); border-color: var(--c-text-85); }
+    html[dir="rtl"] .cs-cta-arrow { transform: scaleX(-1); }
+
+    .cs-img-slot { position: relative; width: 100%; border-radius: var(--radius-md); overflow: hidden; background: var(--c-surface); border: 1px solid var(--c-border); aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; }
+    .cs-img-slot-bg { position: absolute; inset: 0; background-image: radial-gradient(var(--c-border) 1px, transparent 1px); background-size: 24px 24px; }
+    .cs-img-slot-label { position: relative; z-index: 1; font-size: 11px; color: var(--c-text-30); font-family: var(--font-latin); letter-spacing: 0.06em; }
+    .cs-solution-images { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: clamp(40px, 5vw, 64px); }
+    .cs-solution-images .cs-img-slot:first-child { grid-column: 1 / -1; }
+    @media (max-width: 580px) { .cs-solution-images { grid-template-columns: 1fr; } .cs-solution-images .cs-img-slot:first-child { grid-column: auto; } }
+
+    .cs-process-steps { margin-top: clamp(48px, 6vw, 72px); }
+    .cs-process-step { display: grid; grid-template-columns: 72px 1fr; gap: 24px; padding: 32px 0; border-top: 1px solid var(--c-border); }
+    .cs-process-step:last-child { border-bottom: 1px solid var(--c-border); }
+    @media (max-width: 580px) { .cs-process-step { grid-template-columns: 48px 1fr; gap: 16px; } }
+    .cs-process-num { font-size: clamp(24px, 2.5vw, 36px); font-weight: 700; color: var(--c-text-30); font-family: var(--font-latin); line-height: 1; padding-top: 4px; transition: color var(--t-fast); }
+    .cs-process-step:hover .cs-process-num { color: var(--cs-accent); }
+    .cs-process-title { font-size: clamp(17px, 2vw, 22px); font-weight: 600; color: var(--c-text); margin-bottom: 10px; line-height: 1.3; }
+    .cs-process-desc { font-size: 14px; line-height: 1.75; color: var(--c-text-60); max-width: 580px; }
+
+    /* ── Related Case Studies ───────────────────────────────────────── */
+    .cs-related { padding: clamp(64px, 8vw, 96px) 0; }
+    .cs-related-header { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
+    .cs-related-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cs-accent); background: var(--cs-accent-08); border: 1px solid var(--cs-accent); border-radius: 999px; padding: 4px 14px; margin-bottom: 14px; }
+    .cs-related-heading { font-size: clamp(22px, 3vw, 30px); font-weight: 700; color: var(--c-text); margin: 0; }
+    .cs-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .cs-related-card { display: flex; flex-direction: column; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background: var(--c-surface); overflow: hidden; text-decoration: none; color: var(--c-text); transition: border-color var(--t-fast), transform var(--t-base), box-shadow var(--t-base); }
+    .cs-related-card:hover { border-color: var(--card-accent); transform: translateY(-5px); box-shadow: 0 24px 52px rgba(0,0,0,0.08); }
+    .cs-related-card-bar { height: 3px; background: var(--card-accent); flex-shrink: 0; }
+    .cs-related-card-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+    .cs-related-card-client { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--card-accent); }
+    .cs-related-card-title { font-size: clamp(16px, 2vw, 19px); font-weight: 700; line-height: 1.3; margin: 0; color: var(--c-text); }
+    .cs-related-card-metric { font-size: clamp(36px, 5vw, 48px); font-weight: 700; line-height: 1; color: var(--card-accent); }
+    .cs-related-card-metric-label { font-size: 13px; color: var(--c-text-60); margin-top: 4px; line-height: 1.4; }
+    .cs-related-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .cs-related-card-tags span { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 999px; background: var(--c-bg-alt); color: var(--c-text-60); border: 1px solid var(--c-border); }
+    .cs-related-card-cta { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--card-accent); padding-top: 4px; }
+    .cs-related-card-arrow { transition: transform var(--t-fast); }
+    html[dir="ltr"] .cs-related-card:hover .cs-related-card-arrow { transform: translateX(4px); }
+    html[dir="rtl"] .cs-related-card-arrow { transform: scaleX(-1); }
+    html[dir="rtl"] .cs-related-card:hover .cs-related-card-arrow { transform: scaleX(-1) translateX(-4px); }
+  </style>
+</head>
+
+<body>
+
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <div class="nav-inner container">
+    <a href="index.html" class="nav-logo" aria-label="نواة ستوديو">
+      <div class="nav-logo-mark">
+        <img class="logo-light-mode" src="assets/Nawat_Logo_ForLight.svg" alt="Nawat Studio" aria-hidden="true">
+        <img class="logo-dark-mode"  src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio" aria-hidden="true">
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#services" class="nav-link"><span class="t-ar">خدماتنا</span><span class="t-en">Services</span><span class="t-fr">Services</span></a>
+      <a href="index.html#work" class="nav-link"><span class="t-ar">أعمالنا</span><span class="t-en">Work</span><span class="t-fr">Travaux</span></a>
+      <a href="index.html#process" class="nav-link"><span class="t-ar">المسار</span><span class="t-en">Process</span><span class="t-fr">Processus</span></a>
+    </div>
+    <div class="nav-controls">
+      <div class="lang-switcher" role="group" aria-label="Language selector">
+        <button class="lang-btn active" data-lang-btn="ar" aria-label="العربية">AR</button>
+        <button class="lang-btn"        data-lang-btn="en" aria-label="English">EN</button>
+        <button class="lang-btn"        data-lang-btn="fr" aria-label="Français">FR</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="index.html#contact" class="nav-cta btn"><span class="t-ar">ابدأ مشروعك</span><span class="t-en">Start Your Project</span><span class="t-fr">Démarrer votre projet</span></a>
+    </div>
+    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Main navigation">
+  <a href="index.html#services" class="nav-link"><span class="t-ar">خدماتنا</span><span class="t-en">Services</span><span class="t-fr">Services</span></a>
+  <a href="index.html#work" class="nav-link"><span class="t-ar">أعمالنا</span><span class="t-en">Work</span><span class="t-fr">Travaux</span></a>
+  <a href="index.html#process" class="nav-link"><span class="t-ar">المسار</span><span class="t-en">Process</span><span class="t-fr">Processus</span></a>
+  <div class="mobile-menu-footer">
+    <a href="index.html#contact" class="btn btn-primary" style="justify-content:center;"><span class="t-ar">ابدأ مشروعك</span><span class="t-en">Start Your Project</span><span class="t-fr">Démarrer votre projet</span></a>
+  </div>
+</div>
+
+
+<main id="main-content">
+
+<div class="cs-breadcrumb container">
+  <div class="cs-breadcrumb-inner">
+    <a href="index.html#work" class="cs-breadcrumb-link">
+      <svg class="cs-back-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span class="t-ar">أعمالنا</span><span class="t-en">Work</span><span class="t-fr">Travaux</span>
+    </a>
+    <span class="cs-breadcrumb-sep">/</span>
+    <span>REACH</span>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="cs-hero container">
+  <div class="cs-hero-inner reveal">
+
+    <div class="cs-hero-meta">
+      <span>REACH</span>
+      <span class="cs-hero-meta-dot"></span>
+      <span>Nawat Studio</span>
+    </div>
+
+    <h1 class="cs-hero-title">
+      <span class="t-ar">منصة التعليم الإلكتروني — واجهة المعلم</span>
+      <span class="t-en">eLearning Platform — Teacher Side</span>
+      <span class="t-fr">Plateforme eLearning — Interface Enseignant</span>
+    </h1>
+
+    <div class="cs-tags">
+      <span class="cs-tag">EdTech</span>
+      <span class="cs-tag">SaaS</span>
+      <span class="cs-tag"><span class="t-ar">أدوات التدريس</span><span class="t-en">Teacher Tools</span><span class="t-fr">Outils Enseignant</span></span>
+      <span class="cs-tag"><span class="t-ar">إدارة المحتوى</span><span class="t-en">Course Management</span><span class="t-fr">Gestion des Cours</span></span>
+    </div>
+
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <div class="cs-stat-num">60<em>%</em></div>
+        <div class="cs-stat-label">
+          <span class="t-ar">تقليل وقت إنشاء المحتوى</span>
+          <span class="t-en">Reduction in Course Creation Time</span>
+          <span class="t-fr">Réduction du Temps de Création</span>
+        </div>
+      </div>
+      <div class="cs-stat-divider"></div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">15<em>+</em></div>
+        <div class="cs-stat-label">
+          <span class="t-ar">معلماً في بحث المستخدم</span>
+          <span class="t-en">Teachers in User Research</span>
+          <span class="t-fr">Enseignants en Recherche</span>
+        </div>
+      </div>
+      <div class="cs-stat-divider"></div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">Q1–Q4</div>
+        <div class="cs-stat-label"><span class="t-ar">2024</span><span class="t-en">2024</span><span class="t-fr">2024</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cover placeholder -->
+  <div class="cs-cover reveal">
+    <div class="cs-cover-dots"></div>
+    <!-- Abstract eLearning platform visualization -->
+    <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1;" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main app frame -->
+      <rect x="48" y="36" width="700" height="358" rx="12" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
+      <!-- Top nav -->
+      <rect x="48" y="36" width="700" height="48" rx="12" fill="currentColor" opacity="0.07"/>
+      <rect x="66" y="52" width="100" height="16" rx="4" fill="currentColor" opacity="0.28"/>
+      <rect x="190" y="54" width="60" height="12" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="262" y="54" width="60" height="12" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="334" y="54" width="60" height="12" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="608" y="50" width="120" height="20" rx="6" fill="#0D9488" opacity="0.3"/>
+      <!-- Sidebar -->
+      <rect x="48" y="84" width="160" height="310" fill="currentColor" opacity="0.04"/>
+      <rect x="66" y="104" width="124" height="12" rx="3" fill="#0D9488" opacity="0.35"/>
+      <rect x="66" y="124" width="108" height="10" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="66" y="142" width="116" height="10" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="66" y="160" width="100" height="10" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="66" y="178" width="112" height="10" rx="3" fill="currentColor" opacity="0.18"/>
+      <!-- Course cards grid -->
+      <rect x="228" y="100" width="200" height="140" rx="10" fill="currentColor" opacity="0.06"/>
+      <rect x="228" y="100" width="200" height="80" rx="10" fill="#0D9488" opacity="0.1"/>
+      <rect x="244" y="196" width="140" height="10" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="244" y="210" width="100" height="8" rx="3" fill="currentColor" opacity="0.16"/>
+      <rect x="244" y="222" width="60" height="8" rx="3" fill="#0D9488" opacity="0.35"/>
+      <rect x="444" y="100" width="200" height="140" rx="10" fill="currentColor" opacity="0.06"/>
+      <rect x="444" y="100" width="200" height="80" rx="10" fill="currentColor" opacity="0.08"/>
+      <rect x="460" y="196" width="130" height="10" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="460" y="210" width="90" height="8" rx="3" fill="currentColor" opacity="0.16"/>
+      <rect x="460" y="222" width="55" height="8" rx="3" fill="currentColor" opacity="0.18"/>
+      <!-- Lesson builder -->
+      <rect x="228" y="260" width="416" height="130" rx="10" fill="currentColor" opacity="0.05"/>
+      <rect x="244" y="274" width="180" height="12" rx="3" fill="currentColor" opacity="0.22"/>
+      <!-- Drag blocks -->
+      <rect x="244" y="298" width="120" height="36" rx="6" fill="#0D9488" opacity="0.15"/>
+      <rect x="374" y="298" width="120" height="36" rx="6" fill="currentColor" opacity="0.08"/>
+      <rect x="504" y="298" width="120" height="36" rx="6" fill="currentColor" opacity="0.08"/>
+      <rect x="244" y="344" width="90" height="28" rx="6" fill="#0D9488" opacity="0.2"/>
+      <rect x="344" y="344" width="90" height="28" rx="6" fill="currentColor" opacity="0.07"/>
+      <rect x="444" y="344" width="90" height="28" rx="6" fill="currentColor" opacity="0.07"/>
+      <!-- Right panel — analytics -->
+      <rect x="800" y="36" width="360" height="358" rx="12" stroke="currentColor" stroke-width="1.5" opacity="0.22"/>
+      <rect x="800" y="36" width="360" height="48" rx="12" fill="currentColor" opacity="0.06"/>
+      <rect x="818" y="52" width="130" height="14" rx="4" fill="currentColor" opacity="0.25"/>
+      <!-- Student progress bars -->
+      <rect x="818" y="104" width="328" height="12" rx="3" fill="currentColor" opacity="0.08"/>
+      <rect x="818" y="104" width="230" height="12" rx="3" fill="#0D9488" opacity="0.3"/>
+      <rect x="818" y="90" width="90" height="8" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="818" y="128" width="328" height="12" rx="3" fill="currentColor" opacity="0.08"/>
+      <rect x="818" y="128" width="180" height="12" rx="3" fill="#0D9488" opacity="0.22"/>
+      <rect x="818" y="114" width="85" height="8" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="818" y="152" width="328" height="12" rx="3" fill="currentColor" opacity="0.08"/>
+      <rect x="818" y="152" width="280" height="12" rx="3" fill="#0D9488" opacity="0.28"/>
+      <rect x="818" y="138" width="95" height="8" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="818" y="176" width="328" height="12" rx="3" fill="currentColor" opacity="0.08"/>
+      <rect x="818" y="176" width="140" height="12" rx="3" fill="#0D9488" opacity="0.18"/>
+      <rect x="818" y="162" width="80" height="8" rx="3" fill="currentColor" opacity="0.2"/>
+      <!-- Completion donut -->
+      <circle cx="980" cy="260" r="60" stroke="currentColor" stroke-width="12" opacity="0.08"/>
+      <circle cx="980" cy="260" r="60" stroke="#0D9488" stroke-width="12" stroke-dasharray="226 377" stroke-dashoffset="56" opacity="0.4"/>
+      <rect x="955" y="252" width="50" height="16" rx="4" fill="currentColor" opacity="0.25"/>
+      <rect x="960" y="272" width="40" height="10" rx="3" fill="currentColor" opacity="0.16"/>
+      <!-- Recent activity list -->
+      <rect x="818" y="336" width="328" height="1" fill="currentColor" opacity="0.1"/>
+      <circle cx="830" cy="358" r="8" fill="currentColor" opacity="0.1"/>
+      <rect x="848" y="352" width="110" height="8" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="848" y="364" width="75" height="7" rx="3" fill="currentColor" opacity="0.12"/>
+    </svg>
+    <div class="cs-cover-placeholder">
+      <div class="cs-cover-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+        </svg>
+      </div>
+      <p class="cs-cover-hint">project screenshots · add to assets/</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CHALLENGE
+     ================================================================ -->
+<section class="cs-section container">
+  <div class="cs-problem-layout">
+
+    <div class="reveal">
+      <p class="cs-section-label">
+        <span class="t-ar">التحدي</span><span class="t-en">The Challenge</span><span class="t-fr">Le Défi</span>
+      </p>
+      <h2 class="cs-section-title">
+        <span class="t-ar">المعلم يريد أن يُعلِّم، لا أن يُدار</span>
+        <span class="t-en">Teachers Want to Teach, Not to Be Managed</span>
+        <span class="t-fr">Les Enseignants Veulent Enseigner, Pas Être Gérés</span>
+      </h2>
+      <p class="cs-section-body">
+        <span class="t-ar">كان المعلمون يعانون من منصات LMS ضخمة ومعقدة تتطلب ساعات من التدريب قبل إنشاء أول درس. الأدوات كانت مصممة للمؤسسة لا للمعلم — مليئة بخيارات إدارية تُشتت التركيز عن ما يهم فعلاً: التدريس.<br><br>هدفنا كان بناء منصة تجعل إنشاء المحتوى وإدارة الطلاب وتتبع التقدم بسيطاً وبديهياً — بحيث يتفرغ المعلم لما يُجيده.</span>
+        <span class="t-en">Teachers were struggling with bloated, complex LMS platforms that required hours of training before creating a first lesson. Tools were designed for the institution, not the teacher — packed with administrative options that distracted from what truly matters: teaching.<br><br>Our goal was to build a platform that makes content creation, student management, and progress tracking simple and intuitive — so teachers can focus on what they do best.</span>
+        <span class="t-fr">Les enseignants luttaient avec des plateformes LMS volumineuses et complexes nécessitant des heures de formation avant de créer un premier cours. Les outils étaient conçus pour l'institution, pas pour l'enseignant — remplis d'options administratives qui distraient de ce qui compte vraiment : l'enseignement.<br><br>Notre objectif était de construire une plateforme qui rend la création de contenu, la gestion des élèves et le suivi des progrès simples et intuitifs — pour que les enseignants se concentrent sur ce qu'ils font le mieux.</span>
+      </p>
+    </div>
+
+    <div class="cs-problem-cards reveal">
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">01</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">سهولة الاستخدام</span>
+          <span class="t-en">Ease of Use</span>
+          <span class="t-fr">Facilité d'Utilisation</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">المعلمون ليسوا خبراء تقنيين — المنصة يجب أن تكون واضحة تماماً من اليوم الأول، دون تدريب مكثف.</span>
+          <span class="t-en">Teachers are not tech experts — the platform must be completely clear from day one, without intensive training.</span>
+          <span class="t-fr">Les enseignants ne sont pas des experts tech — la plateforme doit être entièrement claire dès le premier jour, sans formation intensive.</span>
+        </div>
+      </div>
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">02</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">مرونة المحتوى</span>
+          <span class="t-en">Content Flexibility</span>
+          <span class="t-fr">Flexibilité du Contenu</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">كل معلم يُدرِّس بطريقته الخاصة — المنصة يجب أن تدعم أساليب تربوية متنوعة دون فرض هيكل واحد.</span>
+          <span class="t-en">Every teacher teaches in their own way — the platform must support diverse pedagogical approaches without imposing a single rigid structure.</span>
+          <span class="t-fr">Chaque enseignant enseigne à sa façon — la plateforme doit soutenir des approches pédagogiques diverses sans imposer une structure rigide unique.</span>
+        </div>
+      </div>
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">03</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">رؤى قابلة للتنفيذ</span>
+          <span class="t-en">Actionable Insights</span>
+          <span class="t-fr">Insights Actionnables</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">المعلم يحتاج أن يعرف أين يتعثر الطلاب — ليس فقط أرقاماً، بل رؤى مباشرة تساعده على تحسين دروسه.</span>
+          <span class="t-en">Teachers need to know where students are struggling — not just numbers, but direct insights that help them improve their lessons.</span>
+          <span class="t-fr">Les enseignants doivent savoir où les élèves ont des difficultés — pas seulement des chiffres, mais des insights directs qui les aident à améliorer leurs cours.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SOLUTION
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">الحل</span><span class="t-en">The Solution</span><span class="t-fr">La Solution</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">أدوات تشعر كغرفة الصف</span>
+      <span class="t-en">Tools That Feel Like a Classroom</span>
+      <span class="t-fr">Des Outils Qui Ressemblent à une Salle de Classe</span>
+    </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">صممنا منصة REACH من منظور المعلم أولاً — محرر محتوى بالسحب والإفلات، لوحة إدارة الطلاب، معاينة المحتوى في الوقت الفعلي، ورؤى واضحة عن أداء الطلاب. الهدف لم يكن فقط تقليل التعقيد — بل جعل التجربة طبيعية كأنها امتداد لقاعة الدرس.</span>
+      <span class="t-en">We designed REACH from the teacher's perspective first — a drag-and-drop course builder, student management dashboard, real-time content preview, and clear student performance insights. The goal wasn't just to reduce complexity — it was to make the experience feel as natural as an extension of the classroom.</span>
+      <span class="t-fr">Nous avons conçu REACH depuis la perspective de l'enseignant en premier — un constructeur de cours par glisser-déposer, un tableau de gestion des élèves, une prévisualisation du contenu en temps réel et des insights clairs sur les performances. L'objectif n'était pas seulement de réduire la complexité — mais de rendre l'expérience aussi naturelle qu'une extension de la salle de classe.</span>
+    </p>
+  </div>
+
+  <div class="cs-features">
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 9 2 12 5 15"/><polyline points="19 9 22 12 19 15"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">منشئ المحتوى بالسحب والإفلات</span>
+        <span class="t-en">Drag-and-Drop Course Builder</span>
+        <span class="t-fr">Constructeur de Cours par Glisser-Déposer</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">يرتّب المعلم وحدات الدرس بسحب بسيط — فيديو، نص، اختبارات، مهام — دون كتابة أي كود أو التعامل مع واجهات تقنية معقدة.</span>
+        <span class="t-en">Teachers arrange lesson modules with a simple drag — video, text, quizzes, assignments — without writing any code or dealing with complex technical interfaces.</span>
+        <span class="t-fr">Les enseignants organisent les modules de cours par simple glisser — vidéo, texte, quiz, devoirs — sans écrire de code ni gérer des interfaces techniques complexes.</span>
+      </p>
+      <span class="cs-feature-badge">60% faster</span>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">لوحة إدارة الطلاب</span>
+        <span class="t-en">Student Management Dashboard</span>
+        <span class="t-fr">Tableau de Gestion des Élèves</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">رؤية موحدة لكل طالب — تقدمه في المقرر، درجاته، مشاركته، وتنبيهات ذكية عند انخفاض الأداء.</span>
+        <span class="t-en">A unified view of every student — course progress, grades, participation, and smart alerts when performance drops.</span>
+        <span class="t-fr">Une vue unifiée de chaque élève — progression dans le cours, notes, participation et alertes intelligentes en cas de baisse de performance.</span>
+      </p>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">معاينة المحتوى في الوقت الفعلي</span>
+        <span class="t-en">Real-Time Content Preview</span>
+        <span class="t-fr">Prévisualisation en Temps Réel</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">المعلم يرى درسه كما سيراه الطالب — في نفس اللحظة أثناء البناء — دون الحاجة إلى نشر ومعاينة منفصلين.</span>
+        <span class="t-en">Teachers see their lesson exactly as the student will — in real time while building — without a separate publish-and-preview cycle.</span>
+        <span class="t-fr">Les enseignants voient leur cours exactement comme l'élève le verra — en temps réel pendant la construction — sans cycle publication-prévisualisation séparé.</span>
+      </p>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">رؤى أداء الطلاب</span>
+        <span class="t-en">Student Performance Insights</span>
+        <span class="t-fr">Insights de Performance des Élèves</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">بيانات واضحة وقابلة للتنفيذ — أين يتوقف الطلاب؟ أي وحدة تحتاج مراجعة؟ كل هذا في لوحة بسيطة وغير مزدحمة.</span>
+        <span class="t-en">Clear, actionable data — where do students stop? Which module needs revision? All of this in a simple, uncluttered dashboard.</span>
+        <span class="t-fr">Des données claires et actionnables — où les élèves s'arrêtent-ils ? Quel module nécessite une révision ? Tout cela dans un tableau simple et non encombré.</span>
+      </p>
+    </div>
+
+  </div>
+
+  <div class="cs-solution-images">
+    <div class="cs-img-slot reveal" style="aspect-ratio:16/7;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">platform overview — course builder + dashboard — 1600 × 700</span>
+    </div>
+    <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">drag-and-drop course builder — 800 × 600</span>
+    </div>
+    <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">student progress & analytics — 800 × 600</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ================================================================
+     PROCESS
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">كيف عملنا</span><span class="t-en">How We Worked</span><span class="t-fr">Comment Nous Avons Travaillé</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">مسار التصميم والتكرار</span>
+      <span class="t-en">Design &amp; Iteration Process</span>
+      <span class="t-fr">Processus de Design &amp; Itération</span>
+    </h2>
+  </div>
+
+  <div class="cs-process-steps">
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">01</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">مقابلات المعلمين والبحث الميداني</span>
+          <span class="t-en">Teacher Interviews &amp; Research</span>
+          <span class="t-fr">Entretiens Enseignants &amp; Recherche</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">أجرينا أكثر من 15 مقابلة مع معلمين من K-12 والتعليم العالي — لفهم كيف يُخططون دروسهم، ما يُعيقهم، وما يتمنون أن تفعله الأدوات لكنها لا تفعله.</span>
+          <span class="t-en">We conducted 15+ interviews with K-12 and higher education teachers — to understand how they plan their lessons, what blocks them, and what they wish tools could do but can't.</span>
+          <span class="t-fr">Nous avons conduit 15+ entretiens avec des enseignants K-12 et de l'enseignement supérieur — pour comprendre comment ils planifient leurs cours, ce qui les bloque et ce qu'ils souhaitent que les outils fassent mais ne peuvent pas.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">02</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">هندسة المعلومات</span>
+          <span class="t-en">Information Architecture</span>
+          <span class="t-fr">Architecture de l'Information</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">هيكلنا المنصة على أربعة محاور رئيسية: بناء المقرر، إدارة الطلاب، تقديم المحتوى، التقييم — مع تدفق واضح يربطها جميعاً دون تعقيد تنقّل.</span>
+          <span class="t-en">We structured the platform around four core areas: course building, student management, content delivery, and assessment — with a clear flow connecting them all without complex navigation.</span>
+          <span class="t-fr">Nous avons structuré la plateforme autour de quatre axes principaux : construction de cours, gestion des élèves, livraison de contenu et évaluation — avec un flux clair les reliant tous sans navigation complexe.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">03</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">تصميم الواجهة</span>
+          <span class="t-en">Interface Design</span>
+          <span class="t-fr">Design de l'Interface</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">صممنا محرر المحتوى بالسحب والإفلات، معاينة الوقت الفعلي، لوحة الطلاب الموحدة، ولوحة التحليلات — مع اهتمام خاص بجعل كل ميزة مكتفية بذاتها وسهلة الاكتشاف.</span>
+          <span class="t-en">We designed the drag-and-drop content editor, real-time preview, unified student dashboard, and analytics panel — with special care to make every feature self-evident and easy to discover.</span>
+          <span class="t-fr">Nous avons conçu l'éditeur de contenu par glisser-déposer, la prévisualisation en temps réel, le tableau des élèves unifié et le panneau d'analytique — avec un soin particulier pour rendre chaque fonction évidente et facile à découvrir.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">04</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">الاختبار والتكرار</span>
+          <span class="t-en">Testing &amp; Iteration</span>
+          <span class="t-fr">Tests &amp; Itération</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">أجرينا 6 جولات اختبار مع أكثر من 20 معلماً، واختبرنا تصميمات A/B للتخطيطات الرئيسية — كل جولة أعادت ضبط أولوياتنا وكشفت عن احتياجات لم نر أنها كانت مخفية في البداية.</span>
+          <span class="t-en">We ran 6 testing rounds with 20+ teachers, and A/B tested key layouts — each round recalibrated our priorities and revealed needs we hadn't initially seen.</span>
+          <span class="t-fr">Nous avons effectué 6 tours de tests avec 20+ enseignants et testé en A/B les mises en page clés — chaque tour recalibrait nos priorités et révélait des besoins que nous n'avions pas initialement vus.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CTA — Close the chapter
+     ================================================================ -->
+<section class="cs-cta">
+  <div class="cs-cta-dots" aria-hidden="true"></div>
+  <svg class="cs-cta-watermark" aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="98" stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="100" cy="100" r="62" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="100" cy="100" r="44" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="100" cy="100" r="28" stroke="currentColor" stroke-width="1"/>
+    <circle cx="100" cy="100" r="14" stroke="currentColor" stroke-width="1"/>
+    <circle cx="100" cy="100" r="5" fill="#0D9488"/>
+    <line x1="100" y1="2" x2="100" y2="20" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="100" y1="180" x2="100" y2="198" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="2" y1="100" x2="20" y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="180" y1="100" x2="198" y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+  </svg>
+
+  <div class="container">
+    <div class="cs-cta-inner reveal">
+
+      <div class="cs-cta-pill">
+        <span class="cs-cta-pill-dot"></span>
+        <span>REACH</span>
+        <span style="opacity:0.3;">·</span>
+        <span>
+          <span class="t-ar">مُسلَّم · Q4 2024</span>
+          <span class="t-en">Delivered · Q4 2024</span>
+          <span class="t-fr">Livré · Q4 2024</span>
+        </span>
+      </div>
+
+      <h2 class="cs-cta-title">
+        <span class="t-ar">
+          هل منتجكم يضع<br>
+          <em>المستخدم الحقيقي</em> في المركز؟
+        </span>
+        <span class="t-en">
+          Does your product put<br>
+          <em>the real user</em> at the center?
+        </span>
+        <span class="t-fr">
+          Votre produit place-t-il<br>
+          <em>l'utilisateur réel</em> au centre ?
+        </span>
+      </h2>
+
+      <p class="cs-cta-body">
+        <span class="t-ar">التجارب الرائعة لا تُبنى بالافتراضات — بل بفهم عميق لمن يستخدم المنتج وماذا يحتاج فعلاً. هذا ما نبدأ به في كل مشروع.</span>
+        <span class="t-en">Great experiences aren't built on assumptions — they're built on a deep understanding of who uses the product and what they actually need. This is where we start with every project.</span>
+        <span class="t-fr">Les grandes expériences ne se construisent pas sur des hypothèses — elles se construisent sur une compréhension profonde de qui utilise le produit et ce dont ils ont vraiment besoin. C'est là que nous commençons avec chaque projet.</span>
+      </p>
+
+      <div class="cs-cta-actions">
+        <a href="index.html#contact" class="cs-cta-btn primary">
+          <span class="t-ar">ابدأ مشروعك</span>
+          <span class="t-en">Start Your Project</span>
+          <span class="t-fr">Démarrer votre projet</span>
+          <svg class="cs-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="index.html#work" class="cs-cta-btn ghost">
+          <span class="t-ar">أعمالنا</span><span class="t-en">More Work</span><span class="t-fr">Plus de Travaux</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     RELATED CASE STUDIES
+     ================================================================ -->
+<section class="cs-related container" aria-labelledby="related-heading">
+  <div class="cs-related-header reveal">
+    <div class="cs-related-label">
+      <span class="t-ar">مشاريع أخرى</span>
+      <span class="t-en">More Work</span>
+      <span class="t-fr">Autres Projets</span>
+    </div>
+    <h2 class="cs-related-heading" id="related-heading">
+      <span class="t-ar">اكتشف المزيد من مشاريعنا</span>
+      <span class="t-en">Explore More Case Studies</span>
+      <span class="t-fr">Découvrez d'Autres Projets</span>
+    </h2>
+  </div>
+
+  <div class="cs-related-grid">
+
+    <!-- Iksir Design System -->
+    <a href="case-study-iksir.html" class="cs-related-card reveal" style="--card-accent: #2563EB;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">DataMaster</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">نظام تصميم إكسير</span>
+          <span class="t-en">Iksir Design System</span>
+          <span class="t-fr">Système de Design Iksir</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">1014<span style="font-size:0.55em;">+</span></div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">متغيرات فيغما</span>
+            <span class="t-en">Figma Variables</span>
+            <span class="t-fr">Variables Figma</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span><span class="t-ar">نظام تصميم</span><span class="t-en">Design System</span><span class="t-fr">Design System</span></span>
+          <span><span class="t-ar">فيغما</span><span class="t-en">Figma</span><span class="t-fr">Figma</span></span>
+          <span>RTL / LTR</span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- Tasks App -->
+    <a href="case-study-tasks.html" class="cs-related-card reveal" style="--card-accent: #2563EB;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">DataMaster</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">تطبيق إدارة المهام</span>
+          <span class="t-en">Task Management App</span>
+          <span class="t-fr">Application de Gestion des Tâches</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">50%</div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">تقليل وقت إنجاز المهام</span>
+            <span class="t-en">Reduction in Task Completion Time</span>
+            <span class="t-fr">Réduction du Temps d'Exécution</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span>ERP</span>
+          <span><span class="t-ar">موبايل أولاً</span><span class="t-en">Mobile First</span><span class="t-fr">Mobile First</span></span>
+          <span><span class="t-ar">نظام تصميم</span><span class="t-en">Design System</span><span class="t-fr">Design System</span></span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- B2B Sales -->
+    <a href="case-study-b2bsales.html" class="cs-related-card reveal" style="--card-accent: #EA580C;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">B2B Sales</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">منصة المبيعات B2B</span>
+          <span class="t-en">B2B Sales Platform</span>
+          <span class="t-fr">Plateforme de Vente B2B</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">40%</div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">تسريع في إنشاء العروض</span>
+            <span class="t-en">Faster Quote Creation</span>
+            <span class="t-fr">Création de Devis Plus Rapide</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span>SaaS</span>
+          <span><span class="t-ar">تجربة المستخدم</span><span class="t-en">UX Research</span><span class="t-fr">Recherche UX</span></span>
+          <span><span class="t-ar">لوحة تحكم</span><span class="t-en">Dashboard</span><span class="t-fr">Tableau de Bord</span></span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+</main>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="Nawat Studio">
+          <div class="footer-logo-mark"><img src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio"></div>
+          <span class="footer-wordmark">Nawat Studio</span>
+        </a>
+        <p class="footer-tagline">
+          <span class="t-ar">نواة كلّ منتج رقمي استثنائي — نصمم من الهوية البصرية إلى اختبار المستخدم.</span>
+          <span class="t-en">The seed of every exceptional digital product — designing from visual identity to user testing.</span>
+          <span class="t-fr">La graine de chaque produit numérique exceptionnel — de l'identité visuelle aux tests utilisateurs.</span>
+        </p>
+      </div>
+      <div>
+        <p class="footer-col-title"><span class="t-ar">خدماتنا</span><span class="t-en">Services</span><span class="t-fr">Services</span></p>
+        <ul class="footer-links">
+          <li><a href="index.html#services" class="footer-link"><span class="t-ar">الهوية البصرية</span><span class="t-en">Visual Identity</span><span class="t-fr">Identité Visuelle</span></a></li>
+          <li><a href="index.html#services" class="footer-link"><span class="t-ar">مكتبة التصميم</span><span class="t-en">Design Library</span><span class="t-fr">Bibliothèque de Design</span></a></li>
+          <li><a href="index.html#services" class="footer-link"><span class="t-ar">تصميم UX</span><span class="t-en">UX Design</span><span class="t-fr">Design UX</span></a></li>
+          <li><a href="index.html#services" class="footer-link"><span class="t-ar">اختبار المستخدم</span><span class="t-en">User Testing</span><span class="t-fr">Tests Utilisateurs</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title"><span class="t-ar">الاستوديو</span><span class="t-en">Studio</span><span class="t-fr">Studio</span></p>
+        <ul class="footer-links">
+          <li><a href="index.html#work" class="footer-link"><span class="t-ar">أعمالنا</span><span class="t-en">Our Work</span><span class="t-fr">Notre Travail</span></a></li>
+          <li><a href="index.html#process" class="footer-link"><span class="t-ar">مسار العمل</span><span class="t-en">Process</span><span class="t-fr">Processus</span></a></li>
+          <li><a href="index.html#contact" class="footer-link"><span class="t-ar">تواصل معنا</span><span class="t-en">Contact</span><span class="t-fr">Contact</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy-ar t-ar">© 2026 نواة ستوديو. جميع الحقوق محفوظة.</p>
+      <p class="footer-copy t-en">© 2026 Nawat Studio. All rights reserved.</p>
+      <p class="footer-copy t-fr">© 2026 Nawat Studio. Tous droits réservés.</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-link" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="footer-social-link" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="footer-social-link" aria-label="Behance"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.718-3.967c-.088-1.443-1.019-2.017-2.029-2.017-1.138 0-1.967.641-2.171 2.017h4.2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

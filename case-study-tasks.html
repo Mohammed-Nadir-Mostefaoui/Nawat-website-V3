@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light" data-lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Task Management App — تطبيق إدارة المهام | نواة ستوديو × داتاماستر">
+  <meta name="theme-color" content="#F5F5F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E0E11" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Task Management App — Nawat Studio">
+  <meta property="og:description" content="How we designed a mobile-first task management app built on the Iksir design system — reducing task completion time by 50% for DataMaster retail teams.">
+  <meta property="og:image" content="https://nawat.studio/assets/og-tasks.jpg">
+  <meta property="og:url" content="https://nawat.studio/case-study-tasks.html">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://nawat.studio/case-study-tasks.html">
+  <title>Task Management App — نواة ستوديو | Nawat Studio</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Prevent transition flash on load -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nawat-theme') || 'light';
+      var savedLang = localStorage.getItem('nawat-lang');
+      var deviceLang = (navigator.language || navigator.userLanguage || 'ar').toLowerCase().slice(0, 2);
+      var lang = savedLang || (['ar', 'en', 'fr'].indexOf(deviceLang) !== -1 ? deviceLang : 'ar');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.classList.add('no-transitions');
+      document.addEventListener('DOMContentLoaded', function() {
+        document.documentElement.classList.remove('no-transitions');
+      });
+    })();
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230E0E11'/><circle cx='50' cy='50' r='18' fill='none' stroke='%23F5F5F5' stroke-width='4'/><circle cx='50' cy='50' r='6' fill='%232563EB'/></svg>">
+
+  <style>
+    /* ================================================================
+       CASE STUDY — Page-scoped styles
+       Uses only tokens defined in styles.css :root
+       ================================================================ */
+
+    /* ── Page accent: blue ───────────────────────────────────────── */
+    :root {
+      --cs-accent:       #2563EB;
+      --cs-accent-08:    rgba(37, 99, 235, 0.08);
+      --cs-accent-hover: #1d4ed8;
+    }
+
+    /* ── RTL-aware back arrow ──────────────────────────────────────── */
+    html[dir="rtl"] .cs-back-arrow { transform: scaleX(-1); }
+
+    /* ── Breadcrumb ───────────────────────────────────────────────── */
+    .cs-breadcrumb {
+      padding-top: calc(var(--nav-h) + 40px);
+    }
+    .cs-breadcrumb-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--c-text-60);
+    }
+    .cs-breadcrumb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--c-text-60);
+      transition: color var(--t-fast);
+    }
+    .cs-breadcrumb-link:hover { color: var(--c-text); }
+    .cs-breadcrumb-sep { color: var(--c-text-30); }
+
+    /* ── Hero ─────────────────────────────────────────────────────── */
+    .cs-hero {
+      padding-top: clamp(28px, 4vw, 56px);
+      padding-bottom: 0;
+    }
+    .cs-hero-inner { max-width: 900px; }
+
+    .cs-hero-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cs-accent);
+      margin-bottom: 20px;
+      font-family: var(--font-latin);
+    }
+    .cs-hero-meta-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--cs-accent);
+      opacity: 0.5;
+    }
+
+    .cs-hero-title {
+      font-size: clamp(36px, 7vw, 80px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+      margin-bottom: 28px;
+    }
+    html[lang="en"] .cs-hero-title,
+    html[lang="fr"] .cs-hero-title { letter-spacing: -0.03em; }
+
+    /* Tags */
+    .cs-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .cs-tag {
+      padding: 5px 14px;
+      border: 1px solid var(--c-border);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--c-text-60);
+      background: transparent;
+    }
+
+    /* Stats row */
+    .cs-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: clamp(48px, 8vw, 80px);
+    }
+    .cs-stat { display: flex; flex-direction: column; gap: 5px; }
+    .cs-stat-num {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--c-text);
+      font-family: var(--font-latin);
+    }
+    .cs-stat-num em { color: var(--cs-accent); font-style: normal; }
+    .cs-stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--c-text-60);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .cs-stat-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--c-border);
+      flex-shrink: 0;
+    }
+
+    /* ── Cover image area ─────────────────────────────────────────── */
+    .cs-cover {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      aspect-ratio: 16 / 7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cs-cover-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--c-border) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .cs-cover-placeholder {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .cs-cover-icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--c-surface-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c-text-30);
+    }
+    .cs-cover-hint {
+      font-size: 11px;
+      color: var(--c-text-30);
+      font-family: var(--font-latin);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Generic section ──────────────────────────────────────────── */
+    .cs-section {
+      padding-top: var(--section-py);
+      padding-bottom: var(--section-py);
+    }
+    .cs-section + .cs-section {
+      border-top: 1px solid var(--c-border);
+    }
+    .cs-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cs-accent);
+      margin-bottom: 14px;
+    }
+    .cs-section-title {
+      font-size: clamp(28px, 4.5vw, 52px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+      margin-bottom: 20px;
+    }
+    html[lang="en"] .cs-section-title,
+    html[lang="fr"] .cs-section-title { letter-spacing: -0.03em; }
+    .cs-section-body {
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.8;
+      color: var(--c-text-60);
+      max-width: 620px;
+    }
+
+    /* ── Challenge layout ─────────────────────────────────────────── */
+    .cs-problem-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 88px);
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .cs-problem-layout { grid-template-columns: 1fr; }
+    }
+
+    .cs-problem-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cs-problem-card {
+      padding: 20px 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+      transition: border-color var(--t-fast), background var(--t-fast);
+    }
+    .cs-problem-card:hover {
+      border-color: var(--c-border-lg);
+      background: var(--c-surface-md);
+    }
+    .cs-problem-num {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--c-text-30);
+      margin-bottom: 6px;
+      font-family: var(--font-latin);
+    }
+    .cs-problem-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 5px;
+      line-height: 1.35;
+    }
+    .cs-problem-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--c-text-60);
+    }
+
+    /* ── Solution features grid ───────────────────────────────────── */
+    .cs-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: clamp(48px, 6vw, 72px);
+    }
+    @media (max-width: 580px) {
+      .cs-features { grid-template-columns: 1fr; }
+    }
+    .cs-feature-card {
+      padding: clamp(24px, 3vw, 36px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+      transition: border-color var(--t-fast), transform var(--t-base);
+    }
+    .cs-feature-card:hover {
+      border-color: var(--c-border-lg);
+      transform: translateY(-3px);
+    }
+    .cs-feature-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--cs-accent-08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cs-accent);
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+    .cs-feature-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cs-feature-body {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--c-text-60);
+    }
+    .cs-feature-badge {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 4px 11px;
+      border-radius: 100px;
+      background: var(--cs-accent-08);
+      color: var(--cs-accent);
+      font-size: 11px;
+      font-weight: 600;
+      font-family: var(--font-latin);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CTA closing section ──────────────────────────────────────── */
+    .cs-cta {
+      position: relative;
+      background: var(--black);
+      overflow: hidden;
+      padding: clamp(100px, 16vw, 180px) 0;
+      color: var(--white);
+    }
+    [data-theme="light"] .cs-cta {
+      background: var(--c-bg-alt);
+      color: var(--black);
+    }
+
+    .cs-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--cs-accent) 40%, var(--cs-accent) 60%, transparent 100%);
+      opacity: 0.4;
+    }
+
+    .cs-cta-watermark {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(400px, 70vw, 800px);
+      height: clamp(400px, 70vw, 800px);
+      pointer-events: none;
+      opacity: 0.055;
+    }
+    [data-theme="light"] .cs-cta-watermark { opacity: 0.07; }
+
+    .cs-cta-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(245,245,245,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    [data-theme="light"] .cs-cta-dots {
+      background-image: radial-gradient(var(--black-10) 1px, transparent 1px);
+    }
+
+    .cs-cta-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cs-cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border: 1px solid rgba(245,245,245,0.12);
+      border-radius: 100px;
+      font-family: var(--font-latin);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,245,245,0.45);
+      margin-bottom: 36px;
+    }
+    [data-theme="light"] .cs-cta-pill {
+      border-color: var(--c-border-lg);
+      color: var(--c-text-60);
+    }
+
+    .cs-cta-pill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cs-accent);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(37,99,235,0.8);
+    }
+
+    .cs-cta-title {
+      font-size: clamp(36px, 6.5vw, 76px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      max-width: 820px;
+      margin-bottom: 24px;
+    }
+    [data-theme="light"] .cs-cta-title { color: var(--c-text); }
+    html[lang="ar"] .cs-cta-title { letter-spacing: -0.01em; }
+    .cs-cta-title em {
+      font-style: normal;
+      color: var(--cs-accent);
+    }
+
+    .cs-cta-body {
+      font-size: clamp(14px, 1.6vw, 17px);
+      line-height: 1.8;
+      color: rgba(245,245,245,0.45);
+      max-width: 500px;
+      margin-bottom: 48px;
+    }
+    [data-theme="light"] .cs-cta-body { color: var(--c-text-60); }
+
+    .cs-cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cs-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform var(--t-fast), background var(--t-fast), border-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
+      white-space: nowrap;
+    }
+    .cs-cta-btn.primary {
+      background: var(--cs-accent);
+      color: var(--white);
+      border: 1px solid var(--cs-accent);
+    }
+    .cs-cta-btn.primary:hover {
+      background: var(--cs-accent-hover);
+      border-color: var(--cs-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37,99,235,0.35);
+    }
+    .cs-cta-btn.ghost {
+      background: transparent;
+      color: rgba(245,245,245,0.65);
+      border: 1px solid rgba(245,245,245,0.18);
+    }
+    .cs-cta-btn.ghost:hover {
+      color: var(--white);
+      border-color: rgba(245,245,245,0.45);
+      transform: translateY(-2px);
+    }
+    [data-theme="light"] .cs-cta-btn.ghost {
+      color: var(--c-text-60);
+      border-color: var(--c-border-lg);
+    }
+    [data-theme="light"] .cs-cta-btn.ghost:hover {
+      color: var(--c-text);
+      border-color: var(--c-text-85);
+    }
+
+    html[dir="rtl"] .cs-cta-arrow { transform: scaleX(-1); }
+
+    /* ── Image slots ──────────────────────────────────────────────── */
+    .cs-img-slot {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cs-img-slot-bg {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--c-border) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .cs-img-slot-label {
+      position: relative;
+      z-index: 1;
+      font-size: 11px;
+      color: var(--c-text-30);
+      font-family: var(--font-latin);
+      letter-spacing: 0.06em;
+    }
+
+    .cs-solution-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: clamp(40px, 5vw, 64px);
+    }
+    .cs-solution-images .cs-img-slot:first-child {
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 580px) {
+      .cs-solution-images { grid-template-columns: 1fr; }
+      .cs-solution-images .cs-img-slot:first-child { grid-column: auto; }
+    }
+
+    /* ── Process steps ────────────────────────────────────────────── */
+    .cs-process-steps {
+      margin-top: clamp(48px, 6vw, 72px);
+    }
+    .cs-process-step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      border-top: 1px solid var(--c-border);
+    }
+    .cs-process-step:last-child { border-bottom: 1px solid var(--c-border); }
+    @media (max-width: 580px) {
+      .cs-process-step { grid-template-columns: 48px 1fr; gap: 16px; }
+    }
+    .cs-process-num {
+      font-size: clamp(24px, 2.5vw, 36px);
+      font-weight: 700;
+      color: var(--c-text-30);
+      font-family: var(--font-latin);
+      line-height: 1;
+      padding-top: 4px;
+      transition: color var(--t-fast);
+    }
+    .cs-process-step:hover .cs-process-num { color: var(--cs-accent); }
+    .cs-process-title {
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .cs-process-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--c-text-60);
+      max-width: 580px;
+    }
+
+    /* ── Related Case Studies ─────────────────────────────────────── */
+    .cs-related { padding: var(--section-py) 0; border-top: 1px solid var(--c-border); }
+    .cs-related-header { margin-bottom: clamp(40px, 5vw, 56px); }
+    .cs-related-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 12px; }
+    .cs-related-heading { font-size: clamp(24px, 3.5vw, 40px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--c-text); }
+    html[lang="en"] .cs-related-heading, html[lang="fr"] .cs-related-heading { letter-spacing: -0.03em; }
+    .cs-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .cs-related-card { display: flex; flex-direction: column; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background: var(--c-surface); overflow: hidden; text-decoration: none; color: var(--c-text); transition: border-color var(--t-fast), transform var(--t-base), box-shadow var(--t-base); }
+    .cs-related-card:hover { border-color: var(--card-accent); transform: translateY(-5px); box-shadow: 0 24px 52px rgba(0,0,0,0.08); }
+    [data-theme="dark"] .cs-related-card:hover { box-shadow: 0 24px 52px rgba(0,0,0,0.35); }
+    .cs-related-card-bar { height: 3px; background: var(--card-accent); flex-shrink: 0; }
+    .cs-related-card-body { padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; flex: 1; gap: 10px; }
+    .cs-related-card-client { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-accent); font-family: var(--font-latin); }
+    .cs-related-card-title { font-size: clamp(17px, 1.8vw, 21px); font-weight: 700; line-height: 1.25; color: var(--c-text); letter-spacing: -0.01em; }
+    .cs-related-card-metric { font-size: clamp(28px, 3.2vw, 40px); font-weight: 700; line-height: 1; color: var(--card-accent); font-family: var(--font-latin); }
+    .cs-related-card-metric-label { font-size: 11px; font-weight: 600; color: var(--c-text-60); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+    .cs-related-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+    .cs-related-card-tags span { padding: 4px 12px; border-radius: 100px; border: 1px solid var(--c-border); font-size: 11px; font-weight: 500; color: var(--c-text-60); }
+    .cs-related-card-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--c-border); font-size: 13px; font-weight: 600; color: var(--card-accent); transition: gap var(--t-fast); }
+    .cs-related-card:hover .cs-related-card-cta { gap: 10px; }
+    html[dir="rtl"] .cs-related-card-arrow { transform: scaleX(-1); }
+  </style>
+</head>
+
+<body>
+
+<!-- ================================================================
+     NAVIGATION
+     ================================================================ -->
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <div class="nav-inner container">
+
+    <a href="index.html" class="nav-logo" aria-label="نواة ستوديو">
+      <div class="nav-logo-mark">
+        <img class="logo-light-mode" src="assets/Nawat_Logo_ForLight.svg" alt="Nawat Studio" aria-hidden="true">
+        <img class="logo-dark-mode"  src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio" aria-hidden="true">
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html#services" class="nav-link">
+        <span class="t-ar">خدماتنا</span>
+        <span class="t-en">Services</span>
+        <span class="t-fr">Services</span>
+      </a>
+      <a href="index.html#work" class="nav-link">
+        <span class="t-ar">أعمالنا</span>
+        <span class="t-en">Work</span>
+        <span class="t-fr">Travaux</span>
+      </a>
+      <a href="index.html#process" class="nav-link">
+        <span class="t-ar">المسار</span>
+        <span class="t-en">Process</span>
+        <span class="t-fr">Processus</span>
+      </a>
+    </div>
+
+    <div class="nav-controls">
+      <div class="lang-switcher" role="group" aria-label="Language selector">
+        <button class="lang-btn active" data-lang-btn="ar" aria-label="العربية">AR</button>
+        <button class="lang-btn"        data-lang-btn="en" aria-label="English">EN</button>
+        <button class="lang-btn"        data-lang-btn="fr" aria-label="Français">FR</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <a href="index.html#contact" class="nav-cta btn">
+        <span class="t-ar">ابدأ مشروعك</span>
+        <span class="t-en">Start Your Project</span>
+        <span class="t-fr">Démarrer votre projet</span>
+      </a>
+    </div>
+
+    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Main navigation">
+  <a href="index.html#services" class="nav-link">
+    <span class="t-ar">خدماتنا</span>
+    <span class="t-en">Services</span>
+    <span class="t-fr">Services</span>
+  </a>
+  <a href="index.html#work" class="nav-link">
+    <span class="t-ar">أعمالنا</span>
+    <span class="t-en">Work</span>
+    <span class="t-fr">Travaux</span>
+  </a>
+  <a href="index.html#process" class="nav-link">
+    <span class="t-ar">المسار</span>
+    <span class="t-en">Process</span>
+    <span class="t-fr">Processus</span>
+  </a>
+  <div class="mobile-menu-footer">
+    <a href="index.html#contact" class="btn btn-primary" style="justify-content:center;">
+      <span class="t-ar">ابدأ مشروعك</span>
+      <span class="t-en">Start Your Project</span>
+      <span class="t-fr">Démarrer votre projet</span>
+    </a>
+  </div>
+</div>
+
+
+<main id="main-content">
+
+<!-- ── Breadcrumb ────────────────────────────────────────────────── -->
+<div class="cs-breadcrumb container">
+  <div class="cs-breadcrumb-inner">
+    <a href="index.html#work" class="cs-breadcrumb-link">
+      <svg class="cs-back-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      <span class="t-ar">أعمالنا</span>
+      <span class="t-en">Work</span>
+      <span class="t-fr">Travaux</span>
+    </a>
+    <span class="cs-breadcrumb-sep">/</span>
+    <span>Tasks</span>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="cs-hero container">
+  <div class="cs-hero-inner reveal">
+
+    <!-- Client label -->
+    <div class="cs-hero-meta">
+      <span>DataMaster</span>
+      <span class="cs-hero-meta-dot"></span>
+      <span>Nawat Studio</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="cs-hero-title">
+      <span class="t-ar">تطبيق إدارة المهام</span>
+      <span class="t-en">Task Management App</span>
+      <span class="t-fr">Application de Gestion des Tâches</span>
+    </h1>
+
+    <!-- Tags -->
+    <div class="cs-tags">
+      <span class="cs-tag">
+        <span class="t-ar">تصميم المنتج</span>
+        <span class="t-en">Product Design</span>
+        <span class="t-fr">Design Produit</span>
+      </span>
+      <span class="cs-tag">ERP</span>
+      <span class="cs-tag">
+        <span class="t-ar">موبايل أولاً</span>
+        <span class="t-en">Mobile First</span>
+        <span class="t-fr">Mobile First</span>
+      </span>
+      <span class="cs-tag">
+        <span class="t-ar">نظام تصميم</span>
+        <span class="t-en">Design System</span>
+        <span class="t-fr">Design System</span>
+      </span>
+    </div>
+
+    <!-- Stats -->
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <div class="cs-stat-num">01</div>
+        <div class="cs-stat-label">
+          <span class="t-ar">مصمم</span>
+          <span class="t-en">Designer</span>
+          <span class="t-fr">Designer</span>
+        </div>
+      </div>
+      <div class="cs-stat-divider"></div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">50<em>%</em></div>
+        <div class="cs-stat-label">
+          <span class="t-ar">تقليل وقت إنجاز المهام</span>
+          <span class="t-en">Reduction in Task Completion Time</span>
+          <span class="t-fr">Réduction du Temps d'Exécution</span>
+        </div>
+      </div>
+      <div class="cs-stat-divider"></div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">Q2–Q4</div>
+        <div class="cs-stat-label">
+          <span class="t-ar">2024</span>
+          <span class="t-en">2024</span>
+          <span class="t-fr">2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cover placeholder (full-width) -->
+  <div class="cs-cover reveal">
+    <div class="cs-cover-dots"></div>
+    <!-- Abstract mobile+desktop ERP visualization -->
+    <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1;" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Desktop app frame -->
+      <rect x="60" y="50" width="580" height="330" rx="12" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+      <!-- Top bar -->
+      <rect x="60" y="50" width="580" height="44" rx="12" fill="currentColor" opacity="0.08"/>
+      <rect x="76" y="64" width="80" height="16" rx="4" fill="currentColor" opacity="0.3"/>
+      <rect x="180" y="64" width="60" height="16" rx="4" fill="currentColor" opacity="0.2"/>
+      <rect x="254" y="64" width="60" height="16" rx="4" fill="currentColor" opacity="0.2"/>
+      <!-- Sidebar -->
+      <rect x="60" y="94" width="140" height="286" fill="currentColor" opacity="0.05"/>
+      <rect x="76" y="114" width="108" height="12" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="76" y="136" width="92" height="12" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="76" y="158" width="100" height="12" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="76" y="180" width="88" height="12" rx="3" fill="currentColor" opacity="0.18"/>
+      <!-- Task list area -->
+      <rect x="216" y="110" width="408" height="52" rx="8" fill="currentColor" opacity="0.07"/>
+      <rect x="232" y="124" width="24" height="24" rx="4" fill="#2563EB" opacity="0.3"/>
+      <rect x="266" y="128" width="160" height="10" rx="3" fill="currentColor" opacity="0.3"/>
+      <rect x="266" y="142" width="100" height="8" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="216" y="170" width="408" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="232" y="184" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.25"/>
+      <rect x="266" y="188" width="140" height="10" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="266" y="202" width="90" height="8" rx="3" fill="currentColor" opacity="0.15"/>
+      <rect x="216" y="230" width="408" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="232" y="244" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.25"/>
+      <rect x="266" y="248" width="180" height="10" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="266" y="262" width="110" height="8" rx="3" fill="currentColor" opacity="0.15"/>
+      <rect x="216" y="290" width="408" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="232" y="304" width="24" height="24" rx="4" fill="#2563EB" opacity="0.3"/>
+      <rect x="266" y="308" width="120" height="10" rx="3" fill="currentColor" opacity="0.3"/>
+      <rect x="266" y="322" width="80" height="8" rx="3" fill="currentColor" opacity="0.18"/>
+      <!-- Mobile frame -->
+      <rect x="700" y="40" width="180" height="350" rx="20" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
+      <rect x="700" y="40" width="180" height="56" rx="20" fill="currentColor" opacity="0.07"/>
+      <circle cx="790" cy="68" r="16" fill="currentColor" opacity="0.08"/>
+      <rect x="724" y="112" width="132" height="10" rx="3" fill="currentColor" opacity="0.28"/>
+      <rect x="724" y="132" width="132" height="52" rx="8" fill="currentColor" opacity="0.07"/>
+      <rect x="736" y="144" width="20" height="20" rx="4" fill="#2563EB" opacity="0.35"/>
+      <rect x="764" y="147" width="80" height="8" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="764" y="159" width="60" height="7" rx="3" fill="currentColor" opacity="0.15"/>
+      <rect x="724" y="192" width="132" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="736" y="204" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.22"/>
+      <rect x="764" y="207" width="70" height="8" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="764" y="219" width="50" height="7" rx="3" fill="currentColor" opacity="0.13"/>
+      <rect x="724" y="252" width="132" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="736" y="264" width="20" height="20" rx="4" fill="#2563EB" opacity="0.35"/>
+      <rect x="764" y="267" width="90" height="8" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="764" y="279" width="65" height="7" rx="3" fill="currentColor" opacity="0.15"/>
+      <!-- Bottom nav bar mobile -->
+      <rect x="700" y="330" width="180" height="60" rx="0" fill="currentColor" opacity="0.05"/>
+      <circle cx="735" cy="360" r="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="765" cy="360" r="8" fill="#2563EB" opacity="0.4"/>
+      <circle cx="795" cy="360" r="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="825" cy="360" r="8" fill="currentColor" opacity="0.2"/>
+      <!-- Second mobile frame -->
+      <rect x="920" y="60" width="160" height="310" rx="18" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+      <rect x="920" y="60" width="160" height="50" rx="18" fill="currentColor" opacity="0.06"/>
+      <rect x="936" y="130" width="128" height="80" rx="8" fill="currentColor" opacity="0.06"/>
+      <rect x="948" y="142" width="104" height="9" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="948" y="156" width="80" height="8" rx="3" fill="currentColor" opacity="0.14"/>
+      <rect x="948" y="170" width="60" height="26" rx="6" fill="#2563EB" opacity="0.3"/>
+      <rect x="936" y="224" width="60" height="60" rx="8" fill="currentColor" opacity="0.06"/>
+      <rect x="1004" y="224" width="60" height="60" rx="8" fill="currentColor" opacity="0.06"/>
+      <rect x="936" y="292" width="60" height="60" rx="8" fill="#2563EB" opacity="0.08"/>
+      <rect x="1004" y="292" width="60" height="60" rx="8" fill="currentColor" opacity="0.06"/>
+    </svg>
+    <div class="cs-cover-placeholder">
+      <div class="cs-cover-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 11 12 14 22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <p class="cs-cover-hint">project screenshots · add to assets/</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CHALLENGE
+     ================================================================ -->
+<section class="cs-section container">
+  <div class="cs-problem-layout">
+
+    <!-- Left: label + title + body -->
+    <div class="reveal">
+      <p class="cs-section-label">
+        <span class="t-ar">التحدي</span>
+        <span class="t-en">The Challenge</span>
+        <span class="t-fr">Le Défi</span>
+      </p>
+      <h2 class="cs-section-title">
+        <span class="t-ar">عمليات معقدة، واجهة بسيطة</span>
+        <span class="t-en">Operational Chaos, Unified</span>
+        <span class="t-fr">Chaos Opérationnel, Unifié</span>
+      </h2>
+      <p class="cs-section-body">
+        <span class="t-ar">كانت فرق متاجر التجزئة في داتاماستر تدير عمليات يومية معقدة عبر جداول بيانات متفرقة وأدوات غير مترابطة. لا رؤية موحدة، لا تعاون فعلي، ولا وضوح في تتبع المهام. وفوق ذلك، كان هذا المشروع أول تطبيق حقيقي لنظام تصميم داتاماستر الجديد — مما جعله فرصة لإثبات أن المكتبة قادرة على حمل منتجات معقدة.<br><br>هدفنا كان تحويل هذه الفوضى التشغيلية إلى واجهة بسيطة وبديهية، تعمل على الموبايل والسطح المكتبي معاً، وتقلص وقت إنجاز المهام لدى المستخدم بنسبة ملموسة.</span>
+        <span class="t-en">DataMaster's retail store teams were managing complex daily operations through scattered spreadsheets and disconnected tools — no unified view, no real collaboration, and no clear task tracking. On top of that, this was the first real implementation of the new DataMaster Design System, making it an opportunity to prove that the library could carry complex, production-grade products.<br><br>Our goal was to transform this operational complexity into a simple, intuitive interface — one that works seamlessly on both mobile and desktop, and measurably reduces the time it takes users to complete their work.</span>
+        <span class="t-fr">Les équipes des magasins de détail de DataMaster géraient des opérations quotidiennes complexes via des feuilles de calcul éparpillées et des outils déconnectés — pas de vue unifiée, pas de vraie collaboration, et pas de suivi clair des tâches. En plus, ce projet était la première implémentation réelle du nouveau Design System DataMaster — une opportunité de prouver que la bibliothèque pouvait porter des produits complexes.<br><br>Notre objectif était de transformer cette complexité opérationnelle en une interface simple et intuitive, fonctionnant sur mobile et bureau, réduisant sensiblement le temps d'exécution des tâches.</span>
+      </p>
+    </div>
+
+    <!-- Right: problem cards -->
+    <div class="cs-problem-cards reveal">
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">01</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">سير عمل معقد</span>
+          <span class="t-en">Complex Workflows</span>
+          <span class="t-fr">Flux de Travail Complexes</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">عمليات التجزئة تضم طبقات متشعبة من المهام والتبعيات — من التخزين إلى المبيعات إلى خدمة العملاء — دون ترتيب واضح.</span>
+          <span class="t-en">Retail operations include layered tasks and dependencies — from inventory to sales to customer service — with no clear structure or priority.</span>
+          <span class="t-fr">Les opérations retail incluent des tâches en couches et des dépendances — de l'inventaire aux ventes au service client — sans structure ni priorité claire.</span>
+        </div>
+      </div>
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">02</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">أول تطبيق لنظام التصميم</span>
+          <span class="t-en">Design System Integration</span>
+          <span class="t-fr">Intégration du Design System</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">كان هذا المشروع الاختبار الأول الحقيقي لمكتبة إكسير — كل قرار تصميمي كان يُختبر على أرض الواقع للمرة الأولى.</span>
+          <span class="t-en">This project was the first real test of the Iksir library — every design decision was being validated in production for the first time.</span>
+          <span class="t-fr">Ce projet était le premier vrai test de la bibliothèque Iksir — chaque décision design était validée en production pour la toute première fois.</span>
+        </div>
+      </div>
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">03</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">توافق الموبايل والسطح المكتبي</span>
+          <span class="t-en">Cross-Platform Consistency</span>
+          <span class="t-fr">Cohérence Multi-Plateforme</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">المستخدمون يعملون على هاتفهم في الميدان وعلى الحاسوب في المكتب — الواجهة يجب أن تكون متسقة وفعّالة على كليهما.</span>
+          <span class="t-en">Users work on their phones in the field and on desktop in the office — the interface needs to be consistent and efficient on both.</span>
+          <span class="t-fr">Les utilisateurs travaillent sur mobile sur le terrain et sur bureau au bureau — l'interface doit être cohérente et efficace sur les deux.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SOLUTION
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">الحل</span>
+      <span class="t-en">The Solution</span>
+      <span class="t-fr">La Solution</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">تجربة موحدة وقابلة للتوسع</span>
+      <span class="t-en">A Unified, Scalable Experience</span>
+      <span class="t-fr">Une Expérience Unifiée et Évolutive</span>
+    </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">صممنا تطبيق إدارة مهام مبني على ثلاث طبقات واضحة: عرض القائمة، تفاصيل المهمة، وعرض التنفيذ — بنية بسيطة تناسب أكثر العمليات تعقيداً. اعتمدنا على نظام تباعد 8px وشبكة تكيّفية ورموز تصميمية من مكتبة إكسير لضمان الاتساق عبر المنصتين.</span>
+      <span class="t-en">We designed a task management app built on three clear layers: List View, Task Details, and Execution View — a simple architecture that handles even the most complex operations. We applied an 8px spacing system, responsive grid, and design tokens from the Iksir library to ensure consistency across both platforms.</span>
+      <span class="t-fr">Nous avons conçu une application de gestion des tâches construite sur trois couches claires : Vue Liste, Détails de la Tâche, et Vue d'Exécution — une architecture simple qui gère même les opérations les plus complexes. Nous avons appliqué un système d'espacement 8px, une grille responsive et des tokens du système Iksir pour assurer la cohérence sur les deux plateformes.</span>
+    </p>
+  </div>
+
+  <!-- Feature cards 2×2 -->
+  <div class="cs-features">
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">نموذج مهام ثلاثي الطبقات</span>
+        <span class="t-en">Three-Layer Task Model</span>
+        <span class="t-fr">Modèle de Tâches en Trois Couches</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">القائمة العامة → تفاصيل المهمة → عرض التنفيذ. بنية واضحة تُقلّص عدد الخطوات وتُعطي المستخدم رؤية فورية على ما يهمه.</span>
+        <span class="t-en">List View → Task Details → Execution View. A clear structure that reduces steps and gives the user immediate visibility into what matters.</span>
+        <span class="t-fr">Vue Liste → Détails Tâche → Vue Exécution. Une structure claire qui réduit les étapes et donne à l'utilisateur une visibilité immédiate sur ce qui compte.</span>
+      </p>
+      <span class="cs-feature-badge">3 layers</span>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">أساس نظام التصميم</span>
+        <span class="t-en">Design System Foundation</span>
+        <span class="t-fr">Base du Design System</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">اعتمدنا على مكتبة إكسير بشكل كامل — تباعد 8px، شبكة متكيّفة، ورموز تصميمية — وأثبتنا أن النظام جاهز للإنتاج الفعلي.</span>
+        <span class="t-en">We relied fully on the Iksir library — 8px spacing, responsive grid, design tokens — proving the system ready for real production use.</span>
+        <span class="t-fr">Nous nous sommes appuyés pleinement sur la bibliothèque Iksir — espacement 8px, grille responsive, tokens — prouvant que le système est prêt pour la production réelle.</span>
+      </p>
+      <span class="cs-feature-badge">Iksir DS</span>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">تصميم موبايل أولاً</span>
+        <span class="t-en">Mobile-First Design</span>
+        <span class="t-fr">Conception Mobile-First</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">بدأنا التصميم من الموبايل وتوسعنا للسطح المكتبي — ضمن ذلك أن الواجهة تعمل بكفاءة أولاً حيث يكون المستخدم في الميدان.</span>
+        <span class="t-en">We designed mobile-first, then expanded to desktop — ensuring the interface works efficiently first where users are in the field.</span>
+        <span class="t-fr">Nous avons conçu en mobile-first, puis élargi au bureau — s'assurant que l'interface fonctionne efficacement d'abord là où les utilisateurs sont sur le terrain.</span>
+      </p>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 11 12 14 22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">تبسيط سير العمل</span>
+        <span class="t-en">Workflow Simplification</span>
+        <span class="t-fr">Simplification des Flux</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">حوّلنا العمليات التشغيلية المعقدة إلى تسلسلات واضحة وخطوات مُرتَّبة — المستخدم يعرف دائماً ما الخطوة التالية وما الذي ينتظر التنفيذ.</span>
+        <span class="t-en">We transformed complex operational workflows into clear sequences and ordered steps — users always know what comes next and what is waiting for action.</span>
+        <span class="t-fr">Nous avons transformé les flux opérationnels complexes en séquences claires et étapes ordonnées — les utilisateurs savent toujours quelle est la prochaine étape et ce qui attend une action.</span>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Solution image slots -->
+  <div class="cs-solution-images">
+    <div class="cs-img-slot reveal" style="aspect-ratio:16/7;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">app overview — desktop + mobile — 1600 × 700</span>
+    </div>
+    <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">task list view — 800 × 600</span>
+    </div>
+    <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">task detail & execution view — 800 × 600</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ================================================================
+     PROCESS
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">كيف عملنا</span>
+      <span class="t-en">How We Worked</span>
+      <span class="t-fr">Comment Nous Avons Travaillé</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">مسار التصميم والتعاون</span>
+      <span class="t-en">Design &amp; Collaboration Process</span>
+      <span class="t-fr">Processus de Design &amp; Collaboration</span>
+    </h2>
+  </div>
+
+  <div class="cs-process-steps">
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">01</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">جمع المتطلبات</span>
+          <span class="t-en">Requirements Gathering</span>
+          <span class="t-fr">Collecte des Exigences</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">عقدنا جلسات محاذاة مع محللي الأعمال، القيادة التقنية، وفريق التطوير — لضمان أن ما نصممه ينبع من الواقع التشغيلي الفعلي وليس من افتراضات.</span>
+          <span class="t-en">We ran alignment sessions with business analysts, the tech lead, and the development team — ensuring everything we designed emerged from actual operational reality, not assumptions.</span>
+          <span class="t-fr">Nous avons organisé des sessions d'alignement avec les analystes métier, le lead technique et l'équipe dev — s'assurant que tout ce que nous avons conçu émerge de la réalité opérationnelle réelle, pas d'hypothèses.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">02</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">أساس نظام التصميم</span>
+          <span class="t-en">Design System Foundation</span>
+          <span class="t-fr">Fondation du Design System</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">طبّقنا مكتبة داتاماستر (إكسير) بشكل كامل — نظام التباعد 8px، الشبكة المتكيّفة، والرموز التصميمية. كان هذا أول تطبيق حقيقي للمكتبة، مما جعله اختباراً شاملاً لصمودها في الإنتاج.</span>
+          <span class="t-en">We fully applied the DataMaster (Iksir) library — the 8px spacing system, responsive grid, and design tokens. This was the library's first real production test, making it a comprehensive stress-test of its robustness.</span>
+          <span class="t-fr">Nous avons entièrement appliqué la bibliothèque DataMaster (Iksir) — le système d'espacement 8px, la grille responsive et les tokens. C'était le premier vrai test de production de la bibliothèque, en faisant un test complet de sa robustesse.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">03</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">تبسيط سير العمل</span>
+          <span class="t-en">Workflow Simplification</span>
+          <span class="t-fr">Simplification des Flux</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">هيكلنا تجربة المستخدم على ثلاث طبقات — عرض القائمة، تفاصيل المهمة، وعرض التنفيذ. هذه البنية الثلاثية أبقت الواجهة بسيطة رغم تعقيد العمليات الكامنة.</span>
+          <span class="t-en">We structured the user experience into three layers — List View, Task Details, and Execution View. This three-layer architecture kept the interface simple despite the complexity of the underlying operations.</span>
+          <span class="t-fr">Nous avons structuré l'expérience utilisateur en trois couches — Vue Liste, Détails Tâche et Vue Exécution. Cette architecture trois couches a maintenu l'interface simple malgré la complexité des opérations sous-jacentes.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">04</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">التكرار والتسليم</span>
+          <span class="t-en">Iteration &amp; Delivery</span>
+          <span class="t-fr">Itération &amp; Livraison</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">عملنا في حلقات تكرارية متواصلة مع المطورين — التواصل عبر Teams، وإدارة الإصدارات عبر Figma. كل مرحلة تسليم كانت مصحوبة بجلسة مراجعة لضمان أمانة التنفيذ.</span>
+          <span class="t-en">We worked in continuous iterative loops with developers — communicating via Teams and managing versions through Figma. Every delivery phase was paired with a review session to ensure implementation fidelity.</span>
+          <span class="t-fr">Nous avons travaillé en boucles itératives continues avec les développeurs — en communiquant via Teams et en gérant les versions via Figma. Chaque phase de livraison était accompagnée d'une session de révision pour assurer la fidélité d'implémentation.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CTA — Close the chapter
+     ================================================================ -->
+<section class="cs-cta">
+
+  <!-- Dot grid -->
+  <div class="cs-cta-dots" aria-hidden="true"></div>
+
+  <!-- Large concentric-circle watermark (Nawat seed motif) -->
+  <svg class="cs-cta-watermark" aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="98"  stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="100" cy="100" r="80"  stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="100" cy="100" r="62"  stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="100" cy="100" r="44"  stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="100" cy="100" r="28"  stroke="currentColor" stroke-width="1"/>
+    <circle cx="100" cy="100" r="14"  stroke="currentColor" stroke-width="1"/>
+    <circle cx="100" cy="100" r="5"   fill="#2563EB"/>
+    <line x1="100" y1="2"   x2="100" y2="20"  stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="100" y1="180" x2="100" y2="198" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="2"   y1="100" x2="20"  y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="180" y1="100" x2="198" y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+  </svg>
+
+  <div class="container">
+    <div class="cs-cta-inner reveal">
+
+      <!-- Phase pill -->
+      <div class="cs-cta-pill">
+        <span class="cs-cta-pill-dot"></span>
+        <span>Tasks</span>
+        <span style="opacity:0.3;">·</span>
+        <span>
+          <span class="t-ar">مُسلَّم · Q4 2024</span>
+          <span class="t-en">Delivered · Q4 2024</span>
+          <span class="t-fr">Livré · Q4 2024</span>
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <h2 class="cs-cta-title">
+        <span class="t-ar">
+          هل أنتم مستعدون لتحويل<br>
+          <em>عمليات فريقكم</em> إلى تجربة بسيطة؟
+        </span>
+        <span class="t-en">
+          Ready to turn<br>
+          <em>your team's operations</em> into a simple experience?
+        </span>
+        <span class="t-fr">
+          Prêts à transformer<br>
+          <em>les opérations de votre équipe</em> en expérience simple ?
+        </span>
+      </h2>
+
+      <!-- Body -->
+      <p class="cs-cta-body">
+        <span class="t-ar">التعقيد التشغيلي لا يجب أن ينعكس على واجهة المستخدم. نصمم تجارب تُخفي التعقيد وتُظهر الوضوح — أياً كان حجم العمليات.</span>
+        <span class="t-en">Operational complexity doesn't have to show on the user interface. We design experiences that hide complexity and surface clarity — regardless of the scale of your operations.</span>
+        <span class="t-fr">La complexité opérationnelle n'a pas à se refléter sur l'interface utilisateur. Nous concevons des expériences qui cachent la complexité et font émerger la clarté — quelle que soit l'échelle de vos opérations.</span>
+      </p>
+
+      <!-- Actions -->
+      <div class="cs-cta-actions">
+        <a href="index.html#contact" class="cs-cta-btn primary">
+          <span class="t-ar">ابدأ مشروعك</span>
+          <span class="t-en">Start Your Project</span>
+          <span class="t-fr">Démarrer votre projet</span>
+          <svg class="cs-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <a href="index.html#work" class="cs-cta-btn ghost">
+          <span class="t-ar">أعمالنا</span>
+          <span class="t-en">More Work</span>
+          <span class="t-fr">Plus de Travaux</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     RELATED CASE STUDIES
+     ================================================================ -->
+<section class="cs-related container">
+
+  <div class="cs-related-header reveal">
+    <p class="cs-related-label">
+      <span class="t-ar">أعمال أخرى</span>
+      <span class="t-en">More Work</span>
+      <span class="t-fr">Plus de Travaux</span>
+    </p>
+    <h2 class="cs-related-heading">
+      <span class="t-ar">مشاريع قد تهمك</span>
+      <span class="t-en">More Projects</span>
+      <span class="t-fr">Autres Projets</span>
+    </h2>
+  </div>
+
+  <div class="cs-related-grid">
+
+    <!-- Iksir Design Library -->
+    <a href="case-study-iksir.html" class="cs-related-card reveal" style="--card-accent: #2563EB;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">DataMaster</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">مكتبة تصميم إكسير</span>
+          <span class="t-en">Iksir Design Library</span>
+          <span class="t-fr">Bibliothèque de Design Iksir</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">1014<span style="font-size:0.55em;">+</span></div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">متغير في فيغما</span>
+            <span class="t-en">Figma Variables</span>
+            <span class="t-fr">Variables Figma</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span><span class="t-ar">نظام تصميم</span><span class="t-en">Design System</span><span class="t-fr">Design System</span></span>
+          <span>RTL / LTR</span>
+          <span><span class="t-ar">توثيق</span><span class="t-en">Documentation</span><span class="t-fr">Documentation</span></span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- B2B Sales ERP Module -->
+    <a href="case-study-b2bsales.html" class="cs-related-card reveal" style="--card-accent: #EA580C;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">DataMaster</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">وحدة المبيعات B2B في ERP</span>
+          <span class="t-en">B2B Sales ERP Module</span>
+          <span class="t-fr">Module ERP Ventes B2B</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">40%</div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">تسريع إنشاء عروض الأسعار</span>
+            <span class="t-en">Faster Quote Creation</span>
+            <span class="t-fr">Création de Devis Plus Rapide</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span>ERP</span>
+          <span><span class="t-ar">مبيعات B2B</span><span class="t-en">B2B Sales</span><span class="t-fr">Ventes B2B</span></span>
+          <span><span class="t-ar">UX المؤسسي</span><span class="t-en">Enterprise UX</span><span class="t-fr">UX Entreprise</span></span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- REACH eLearning Platform -->
+    <a href="case-study-reach.html" class="cs-related-card reveal" style="--card-accent: #0D9488;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">REACH</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">منصة التعليم الإلكتروني</span>
+          <span class="t-en">eLearning Platform</span>
+          <span class="t-fr">Plateforme eLearning</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">60%</div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">تقليل وقت إنشاء المحتوى</span>
+            <span class="t-en">Reduction in Course Creation Time</span>
+            <span class="t-fr">Réduction du Temps de Création</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span>EdTech</span>
+          <span>SaaS</span>
+          <span><span class="t-ar">أدوات التدريس</span><span class="t-en">Teacher Tools</span><span class="t-fr">Outils Enseignant</span></span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+</main>
+
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="Nawat Studio">
+          <div class="footer-logo-mark">
+            <img src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio">
+          </div>
+          <span class="footer-wordmark">Nawat Studio</span>
+        </a>
+        <p class="footer-tagline">
+          <span class="t-ar">نواة كلّ منتج رقمي استثنائي — نصمم من الهوية البصرية إلى اختبار المستخدم.</span>
+          <span class="t-en">The seed of every exceptional digital product — designing from visual identity to user testing.</span>
+          <span class="t-fr">La graine de chaque produit numérique exceptionnel — de l'identité visuelle aux tests utilisateurs.</span>
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <p class="footer-col-title">
+          <span class="t-ar">خدماتنا</span>
+          <span class="t-en">Services</span>
+          <span class="t-fr">Services</span>
+        </p>
+        <ul class="footer-links">
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">الهوية البصرية</span>
+            <span class="t-en">Visual Identity</span>
+            <span class="t-fr">Identité Visuelle</span>
+          </a></li>
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">مكتبة التصميم</span>
+            <span class="t-en">Design Library</span>
+            <span class="t-fr">Bibliothèque de Design</span>
+          </a></li>
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">تصميم UX</span>
+            <span class="t-en">UX Design</span>
+            <span class="t-fr">Design UX</span>
+          </a></li>
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">اختبار المستخدم</span>
+            <span class="t-en">User Testing</span>
+            <span class="t-fr">Tests Utilisateurs</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <!-- Studio -->
+      <div>
+        <p class="footer-col-title">
+          <span class="t-ar">الاستوديو</span>
+          <span class="t-en">Studio</span>
+          <span class="t-fr">Studio</span>
+        </p>
+        <ul class="footer-links">
+          <li><a href="index.html#work" class="footer-link">
+            <span class="t-ar">أعمالنا</span>
+            <span class="t-en">Our Work</span>
+            <span class="t-fr">Notre Travail</span>
+          </a></li>
+          <li><a href="index.html#process" class="footer-link">
+            <span class="t-ar">مسار العمل</span>
+            <span class="t-en">Process</span>
+            <span class="t-fr">Processus</span>
+          </a></li>
+          <li><a href="index.html#contact" class="footer-link">
+            <span class="t-ar">تواصل معنا</span>
+            <span class="t-en">Contact</span>
+            <span class="t-fr">Contact</span>
+          </a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy-ar t-ar">© 2026 نواة ستوديو. جميع الحقوق محفوظة.</p>
+      <p class="footer-copy t-en">© 2026 Nawat Studio. All rights reserved.</p>
+      <p class="footer-copy t-fr">© 2026 Nawat Studio. Tous droits réservés.</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-link" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Behance">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.718-3.967c-.088-1.443-1.019-2.017-2.029-2.017-1.138 0-1.967.641-2.171 2.017h4.2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

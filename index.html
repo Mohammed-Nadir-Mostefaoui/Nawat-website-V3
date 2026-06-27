@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light" data-lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="نواة ستوديو — استوديو تصميم منتجات رقمية من الهوية البصرية إلى اختبار المستخدم | Nawat Studio — Digital Product Design from Visual Identity to User Testing">
+  <meta name="theme-color" content="#F5F5F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E0E11" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="نواة ستوديو | Nawat Studio">
+  <meta property="og:description" content="نواة كل منتج رقمي استثنائي — The Seed of Every Exceptional Digital Product">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nawat.studio">
+  <meta property="og:image" content="https://nawat.studio/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="نواة ستوديو | Nawat Studio">
+  <meta name="twitter:description" content="نواة كل منتج رقمي استثنائي — The Seed of Every Exceptional Digital Product">
+  <meta name="twitter:image" content="https://nawat.studio/assets/og-image.png">
+  <link rel="icon" href="assets/Nawat_Logo_ForLight.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://nawat.studio">
+  <title>نواة ستوديو | Nawat Studio</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Prevent transition flash on load -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nawat-theme') || 'light';
+      var savedLang = localStorage.getItem('nawat-lang');
+      var deviceLang = (navigator.language || navigator.userLanguage || 'ar').toLowerCase().slice(0, 2);
+      var lang = savedLang || (['ar', 'en', 'fr'].indexOf(deviceLang) !== -1 ? deviceLang : 'ar');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.classList.add('no-transitions');
+      document.addEventListener('DOMContentLoaded', function() {
+        document.documentElement.classList.remove('no-transitions');
+      });
+    })();
+  </script>
+
+  <!-- Favicon inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230E0E11'/><circle cx='50' cy='50' r='18' fill='none' stroke='%23F5F5F5' stroke-width='4'/><circle cx='50' cy='50' r='6' fill='%232563EB'/></svg>">
+</head>
+
+<body>
+
+<!-- ================================================================
+     NAVIGATION
+     ================================================================ -->
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <div class="nav-inner container">
+
+    <!-- Logo mark only -->
+    <a href="#" class="nav-logo" aria-label="نواة ستوديو">
+      <div class="nav-logo-mark">
+        <img class="logo-light-mode" src="assets/Nawat_Logo_ForLight.svg" alt="Nawat Studio" aria-hidden="true">
+        <img class="logo-dark-mode"  src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio" aria-hidden="true">
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="nav-links">
+      <a href="#services" class="nav-link">
+        <span class="t-ar">خدماتنا</span>
+        <span class="t-en">Services</span>
+        <span class="t-fr">Services</span>
+      </a>
+      <!-- Work nav with hover dropdown -->
+      <div class="nav-work" id="navWork">
+        <a href="#work" class="nav-link nav-work-trigger" id="navWorkTrigger">
+          <span class="t-ar">أعمالنا</span>
+          <span class="t-en">Work</span>
+          <span class="t-fr">Travaux</span>
+          <svg class="nav-work-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+
+        <div class="nav-work-panel" id="navWorkPanel" role="menu">
+          <p class="nwp-label">
+            <span class="t-ar">مشاريع مختارة</span>
+            <span class="t-en">Selected Projects</span>
+            <span class="t-fr">Projets Sélectionnés</span>
+          </p>
+
+          <div class="nwp-cards">
+            <a href="case-study-iksir.html" class="nwp-card" style="--nwp-accent:#2563EB;" role="menuitem">
+              <span class="nwp-accent-bar"></span>
+              <div class="nwp-info">
+                <span class="nwp-num">01</span>
+                <div class="nwp-text">
+                  <p class="nwp-title">
+                    <span class="t-ar">إكسير — مكتبة التصميم</span>
+                    <span class="t-en">Iksir — Design Library</span>
+                    <span class="t-fr">Iksir — Bibliothèque Design</span>
+                  </p>
+                  <p class="nwp-tags">Design System · Figma · RTL</p>
+                </div>
+              </div>
+              <span class="nwp-dot"></span>
+              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="case-study-tasks.html" class="nwp-card" style="--nwp-accent:#2563EB;" role="menuitem">
+              <span class="nwp-accent-bar"></span>
+              <div class="nwp-info">
+                <span class="nwp-num">02</span>
+                <div class="nwp-text">
+                  <p class="nwp-title">
+                    <span class="t-ar">تطبيق إدارة المهام</span>
+                    <span class="t-en">Tasks — Mobile App</span>
+                    <span class="t-fr">Tasks — App Mobile</span>
+                  </p>
+                  <p class="nwp-tags">UX/UI · Mobile · ERP</p>
+                </div>
+              </div>
+              <span class="nwp-dot"></span>
+              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="case-study-b2bsales.html" class="nwp-card" style="--nwp-accent:#EA580C;" role="menuitem">
+              <span class="nwp-accent-bar"></span>
+              <div class="nwp-info">
+                <span class="nwp-num">03</span>
+                <div class="nwp-text">
+                  <p class="nwp-title">
+                    <span class="t-ar">وحدة مبيعات B2B</span>
+                    <span class="t-en">B2B Sales Module</span>
+                    <span class="t-fr">Module Ventes B2B</span>
+                  </p>
+                  <p class="nwp-tags">ERP · B2B · Data Design</p>
+                </div>
+              </div>
+              <span class="nwp-dot"></span>
+              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="case-study-reach.html" class="nwp-card" style="--nwp-accent:#0D9488;" role="menuitem">
+              <span class="nwp-accent-bar"></span>
+              <div class="nwp-info">
+                <span class="nwp-num">04</span>
+                <div class="nwp-text">
+                  <p class="nwp-title">
+                    <span class="t-ar">REACH — أبحاث المستخدم</span>
+                    <span class="t-en">REACH — UX Research</span>
+                    <span class="t-fr">REACH — Recherche UX</span>
+                  </p>
+                  <p class="nwp-tags">Research · Strategy · Product</p>
+                </div>
+              </div>
+              <span class="nwp-dot"></span>
+              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="nwp-footer">
+            <a href="#work" class="nwp-view-all">
+              <span class="t-ar">عرض جميع الأعمال</span>
+              <span class="t-en">View All Work</span>
+              <span class="t-fr">Voir tous les projets</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="#process" class="nav-link">
+        <span class="t-ar">المسار</span>
+        <span class="t-en">Process</span>
+        <span class="t-fr">Processus</span>
+      </a>
+      <a href="#manifesto" class="nav-link">
+        <span class="t-ar">فلسفتنا</span>
+        <span class="t-en">Philosophy</span>
+        <span class="t-fr">Philosophie</span>
+      </a>
+    </div>
+
+    <!-- Controls -->
+    <div class="nav-controls">
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="group" aria-label="Language selector">
+        <div class="lang-pill" id="langPill" aria-hidden="true"></div>
+        <button class="lang-btn active" data-lang-btn="ar" aria-label="العربية">AR</button>
+        <button class="lang-btn"        data-lang-btn="en" aria-label="English">EN</button>
+        <button class="lang-btn"        data-lang-btn="fr" aria-label="Français">FR</button>
+      </div>
+
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <!-- Moon (shown in light mode) -->
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <!-- Sun (shown in dark mode) -->
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+
+      <!-- CTA -->
+      <a href="#contact" class="nav-cta btn">
+        <span class="t-ar">ابدأ مشروعك</span>
+        <span class="t-en">Start Your Project</span>
+        <span class="t-fr">Votre Projet</span>
+      </a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+</nav>
+
+<!-- Mobile Menu — kept outside <nav> so backdrop-filter on .nav.scrolled doesn't clip it -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Main navigation">
+  <a href="#services" class="nav-link">
+    <span class="t-ar">خدماتنا</span>
+    <span class="t-en">Services</span>
+    <span class="t-fr">Services</span>
+  </a>
+  <a href="#work" class="nav-link">
+    <span class="t-ar">أعمالنا</span>
+    <span class="t-en">Work</span>
+    <span class="t-fr">Travaux</span>
+  </a>
+  <a href="#process" class="nav-link">
+    <span class="t-ar">المسار</span>
+    <span class="t-en">Process</span>
+    <span class="t-fr">Processus</span>
+  </a>
+  <a href="#manifesto" class="nav-link">
+    <span class="t-ar">فلسفتنا</span>
+    <span class="t-en">Philosophy</span>
+    <span class="t-fr">Philosophie</span>
+  </a>
+  <div class="mobile-menu-footer">
+    <a href="#contact" class="btn btn-primary" style="justify-content:center;">
+      <span class="t-ar">ابدأ مشروعك</span>
+      <span class="t-en">Start Your Project</span>
+      <span class="t-fr">Démarrer votre projet</span>
+    </a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ================================================================
+     HERO — Calligraphy-centred
+     ================================================================ -->
+<section id="hero" class="hero">
+
+  <!-- Dot-grid background -->
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <!-- Floating particles keep the depth -->
+  <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+
+  <!-- Main content — centred column -->
+  <div class="hero-inner">
+
+    <!-- ① Arabic calligraphy + Latin tracked wordmark -->
+    <div class="hero-brand-display">
+      <img
+        class="hero-calligraphy-main"
+        src="assets/Nawat Studio.svg"
+        alt="نواة ستوديو"
+      >
+      <!-- Latin wordmark: letter-spaced, lightweight -->
+      <div class="hero-latin-track" aria-hidden="true">
+        <span>N</span><span>A</span><span>W</span><span>A</span><span>T</span>
+        <span class="hero-latin-dot">·</span>
+        <span>S</span><span>T</span><span>U</span><span>D</span><span>I</span><span>O</span>
+      </div>
+    </div>
+
+    <!-- ② Divider with centred logo mark -->
+    <div class="hero-divider" aria-hidden="true">
+      <span class="hero-divider-line"></span>
+      <div class="hero-divider-mark">
+        <img class="logo-light-mode" src="assets/Nawat_Logo_ForLight.svg" alt="">
+        <img class="logo-dark-mode"  src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="">
+      </div>
+      <span class="hero-divider-line"></span>
+    </div>
+
+    <!-- ③ Tagline + sub-text -->
+    <div class="hero-text">
+      <h1 class="hero-headline">
+        <span class="t-ar">لتصميم المنتجات الرقمية</span>
+        <span class="t-en">Digital Product Design Studio</span>
+        <span class="t-fr">Studio de Design de Produits Numériques</span>
+      </h1>
+      <p class="hero-sub-new">
+        <span class="t-ar">نبني الواجهات وأنظمة التصميم خطوة بخطوة. من الهوية البصرية وحتى اختبار قابلية الاستخدام، نقدم للمؤسسين وصناع القرار مخرجات منظمة وجاهزة للتطوير.</span>
+        <span class="t-en">We build interfaces and design systems step by step — from visual identity to usability testing. Structured, dev-ready deliverables for founders and decision-makers.</span>
+        <span class="t-fr">Nous construisons interfaces et systèmes de design étape par étape — de l'identité visuelle aux tests d'utilisabilité. Des livrables structurés et prêts au développement pour les fondateurs et décideurs.</span>
+      </p>
+    </div>
+
+    <!-- ④ CTAs -->
+    <div class="hero-actions-new">
+      <a href="#contact" class="btn btn-primary">
+        <span class="t-ar">ابدأ مشروعك</span>
+        <span class="t-en">Start Your Project</span>
+        <span class="t-fr">Démarrer votre projet</span>
+      </a>
+      <a href="#work" class="btn btn-secondary">
+        <span class="t-ar">اكتشف أعمالنا</span>
+        <span class="t-en">Explore Our Work</span>
+        <span class="t-fr">Explorer nos travaux</span>
+      </a>
+    </div>
+
+    <!-- ⑤ Meta strip -->
+    <div class="hero-meta">
+      <span class="hero-meta-item">
+        <span class="hero-meta-dot live"></span>
+        <span class="t-ar">متاح لمشاريع جديدة</span>
+        <span class="t-en">Open for new projects</span>
+        <span class="t-fr">Disponible pour nouveaux projets</span>
+      </span>
+      <span class="hero-meta-item">
+        <span class="hero-meta-dot"></span>
+        <span class="t-ar">عربي · English · Français</span>
+        <span class="t-en">Arabic · English · Français</span>
+        <span class="t-fr">Arabe · English · Français</span>
+      </span>
+      <span class="hero-meta-item">
+        <span class="hero-meta-dot"></span>
+        MENA · Global
+      </span>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="scroll-label"><span class="t-ar">إنزل</span><span class="t-en">scroll</span><span class="t-fr">scroll</span></span>
+    <div class="scroll-line-wrap">
+      <div class="scroll-line-inner"></div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ================================================================
+     TICKER / MARQUEE
+     ================================================================ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <!-- Populated by JS based on active language -->
+  </div>
+</div>
+
+
+<!-- ================================================================
+     SERVICES
+     ================================================================ -->
+<section id="services" class="services">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="section-header reveal">
+      <p class="section-label">
+        <span class="t-ar">ما نقدمه</span>
+        <span class="t-en">What We Offer</span>
+        <span class="t-fr">Ce Que Nous Offrons</span>
+      </p>
+      <h2 class="section-title">
+        <span class="t-ar">خدماتنا</span>
+        <span class="t-en">Our Services</span>
+        <span class="t-fr">Nos Services</span>
+      </h2>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+
+      <!-- 01 — Visual Identity -->
+      <div class="service-card" data-service="identity" role="button" tabindex="0" aria-label="Visual Identity — click to start a project">
+        <div class="service-num">01</div>
+        <div class="service-icon-wrap">
+          <!-- Icon: Pen tool -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3 class="service-card-title">
+          <span class="t-ar">الهوية البصرية</span>
+          <span class="t-en">Visual Identity</span>
+          <span class="t-fr">Identité Visuelle</span>
+        </h3>
+        <p class="service-card-desc">
+          <span class="t-ar">من الشعار إلى هوية العلامة التجارية الكاملة — بصمة فريدة تعكس جوهر منتجك وتحمل قيمه لكل لمسة بصرية.</span>
+          <span class="t-en">From logo to complete brand identity — a unique mark reflecting your product's essence in every visual touch.</span>
+          <span class="t-fr">Du logo à l'identité de marque complète — une empreinte unique reflétant l'essence de votre produit.</span>
+        </p>
+        <span class="service-card-link" aria-hidden="true">
+          <span class="service-card-link-text">
+            <span class="t-ar">ابدأ مشروعك</span>
+            <span class="t-en">Start a Project</span>
+            <span class="t-fr">Démarrer un Projet</span>
+          </span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+
+      <!-- 02 — Design Library -->
+      <div class="service-card" data-service="library" role="button" tabindex="0" aria-label="Design Library — click to start a project">
+        <div class="service-num">02</div>
+        <div class="service-icon-wrap">
+          <!-- Icon: Layers -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h3 class="service-card-title">
+          <span class="t-ar">مكتبة التصميم</span>
+          <span class="t-en">Design Library</span>
+          <span class="t-fr">Bibliothèque de Design</span>
+        </h3>
+        <p class="service-card-desc">
+          <span class="t-ar">أنظمة تصميم متكاملة وقابلة للتوسع تسرّع تطوير منتجك وتضمن التناسق البصري عبر جميع المنصات.</span>
+          <span class="t-en">Integrated, scalable design systems that accelerate product development and ensure visual consistency across all platforms.</span>
+          <span class="t-fr">Systèmes de design intégrés et évolutifs qui accélèrent le développement produit et assurent la cohérence visuelle.</span>
+        </p>
+        <span class="service-card-link" aria-hidden="true">
+          <span class="service-card-link-text">
+            <span class="t-ar">ابدأ مشروعك</span>
+            <span class="t-en">Start a Project</span>
+            <span class="t-fr">Démarrer un Projet</span>
+          </span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+
+      <!-- 03 — UX Design -->
+      <div class="service-card" data-service="ux" role="button" tabindex="0" aria-label="UX Design — click to start a project">
+        <div class="service-num">03</div>
+        <div class="service-icon-wrap">
+          <!-- Icon: Monitor -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3 class="service-card-title">
+          <span class="t-ar">تصميم تجربة المستخدم</span>
+          <span class="t-en">UX Design</span>
+          <span class="t-fr">Design UX</span>
+        </h3>
+        <p class="service-card-desc">
+          <span class="t-ar">تجارب مستخدم مدروسة ومتقنة تحوّل الزوار إلى عملاء وتجعل منتجك بديهياً وممتعاً في كل تفاعل.</span>
+          <span class="t-en">Crafted user experiences that convert visitors into loyal customers and make your product intuitive and delightful at every interaction.</span>
+          <span class="t-fr">Expériences utilisateur soignées qui convertissent les visiteurs en clients fidèles à chaque interaction.</span>
+        </p>
+        <span class="service-card-link" aria-hidden="true">
+          <span class="service-card-link-text">
+            <span class="t-ar">ابدأ مشروعك</span>
+            <span class="t-en">Start a Project</span>
+            <span class="t-fr">Démarrer un Projet</span>
+          </span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+
+      <!-- 04 — Prototyping -->
+      <div class="service-card" data-service="prototype" role="button" tabindex="0" aria-label="Interactive Prototyping — click to start a project">
+        <div class="service-num">04</div>
+        <div class="service-icon-wrap">
+          <!-- Icon: Zap -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="service-card-title">
+          <span class="t-ar">النمذجة التفاعلية</span>
+          <span class="t-en">Interactive Prototyping</span>
+          <span class="t-fr">Prototypage Interactif</span>
+        </h3>
+        <p class="service-card-desc">
+          <span class="t-ar">نماذج حية وتفاعلية قبل التطوير تحمي ميزانيتك وتتحقق من الفكرة مع مستخدمين حقيقيين قبل أي سطر كود.</span>
+          <span class="t-en">Live, interactive prototypes before development to validate ideas with real users before a single line of code.</span>
+          <span class="t-fr">Prototypes interactifs vivants pour valider vos idées avec de vrais utilisateurs avant tout développement.</span>
+        </p>
+        <span class="service-card-link" aria-hidden="true">
+          <span class="service-card-link-text">
+            <span class="t-ar">ابدأ مشروعك</span>
+            <span class="t-en">Start a Project</span>
+            <span class="t-fr">Démarrer un Projet</span>
+          </span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+
+      <!-- 05 — User Testing -->
+      <div class="service-card" data-service="testing" role="button" tabindex="0" aria-label="User Testing — click to start a project">
+        <div class="service-num">05</div>
+        <div class="service-icon-wrap">
+          <!-- Icon: Users -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="service-card-title">
+          <span class="t-ar">اختبار المستخدم</span>
+          <span class="t-en">User Testing</span>
+          <span class="t-fr">Tests Utilisateurs</span>
+        </h3>
+        <p class="service-card-desc">
+          <span class="t-ar">تحقق من فرضياتك مع مستخدمين حقيقيين وصحّح المسار قبل الإطلاق — البيانات الحقيقية تصنع القرارات الصحيحة.</span>
+          <span class="t-en">Validate your assumptions with real users and correct course before launch — real data drives right decisions.</span>
+          <span class="t-fr">Validez vos hypothèses avec de vrais utilisateurs avant le lancement — les données réelles guident les bonnes décisions.</span>
+        </p>
+        <span class="service-card-link" aria-hidden="true">
+          <span class="service-card-link-text">
+            <span class="t-ar">ابدأ مشروعك</span>
+            <span class="t-en">Start a Project</span>
+            <span class="t-fr">Démarrer un Projet</span>
+          </span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+
+      <!-- 06 — Digital Product Strategy -->
+      <div class="service-card" data-service="strategy" role="button" tabindex="0" aria-label="Digital Product Strategy — click to start a project">
+        <div class="service-num">06</div>
+        <div class="service-icon-wrap">
+          <!-- Icon: Compass -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        </div>
+        <h3 class="service-card-title">
+          <span class="t-ar">استراتيجية المنتج الرقمي</span>
+          <span class="t-en">Digital Product Strategy</span>
+          <span class="t-fr">Stratégie Produit Numérique</span>
+        </h3>
+        <p class="service-card-desc">
+          <span class="t-ar">خارطة طريق واضحة لمنتجك الرقمي من الفكرة إلى السوق — نساعدك على اتخاذ القرارات الصحيحة في الوقت الصحيح.</span>
+          <span class="t-en">A clear digital product roadmap from idea to market — helping you make the right decisions at the right time.</span>
+          <span class="t-fr">Une feuille de route produit claire de l'idée au marché — prendre les bonnes décisions au bon moment.</span>
+        </p>
+        <span class="service-card-link" aria-hidden="true">
+          <span class="service-card-link-text">
+            <span class="t-ar">ابدأ مشروعك</span>
+            <span class="t-en">Start a Project</span>
+            <span class="t-fr">Démarrer un Projet</span>
+          </span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </div>
+
+    </div>
+
+    <!-- Full-Spectrum Band -->
+    <div class="spectrum-band reveal">
+      <div class="spectrum-header">
+        <div class="spectrum-header-meta">
+          <span class="service-num">07</span>
+          <div class="service-icon-wrap">
+            <!-- Icon: Grid / Full spectrum -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+        </div>
+        <h3 class="spectrum-header-title">
+          <span class="t-ar">المشروع المتكامل</span>
+          <span class="t-en">Full Project</span>
+          <span class="t-fr">Projet Complet</span>
+        </h3>
+        <p class="spectrum-header-desc">
+          <span class="t-ar">نغطي الطيف الكامل — من الهوية البصرية إلى الاستلام النهائي، خدمة واحدة تشمل كل شيء.</span>
+          <span class="t-en">We cover the full spectrum — from visual identity to final handoff, one engagement that does it all.</span>
+          <span class="t-fr">Nous couvrons tout le spectre — de l'identité visuelle à la livraison finale, en une seule mission.</span>
+        </p>
+      </div>
+      <div class="spectrum-top">
+        <div class="spectrum-cell">
+          <span class="spectrum-cell-num">01</span>
+          <span class="spectrum-cell-name t-ar">هوية بصرية</span>
+          <span class="spectrum-cell-name t-en">Visual Identity</span>
+          <span class="spectrum-cell-name t-fr">Identité Visuelle</span>
+        </div>
+        <div class="spectrum-cell">
+          <span class="spectrum-cell-num">02</span>
+          <span class="spectrum-cell-name t-ar">نظام تصميم</span>
+          <span class="spectrum-cell-name t-en">Design System</span>
+          <span class="spectrum-cell-name t-fr">Système Design</span>
+        </div>
+        <div class="spectrum-cell">
+          <span class="spectrum-cell-num">03</span>
+          <span class="spectrum-cell-name t-ar">تجربة المستخدم</span>
+          <span class="spectrum-cell-name t-en">UX Research</span>
+          <span class="spectrum-cell-name t-fr">Recherche UX</span>
+        </div>
+        <div class="spectrum-cell">
+          <span class="spectrum-cell-num">04</span>
+          <span class="spectrum-cell-name t-ar">نماذج تفاعلية</span>
+          <span class="spectrum-cell-name t-en">Prototyping</span>
+          <span class="spectrum-cell-name t-fr">Prototypage</span>
+        </div>
+        <div class="spectrum-cell">
+          <span class="spectrum-cell-num">05</span>
+          <span class="spectrum-cell-name t-ar">اختبار واستلام</span>
+          <span class="spectrum-cell-name t-en">QA &amp; Handoff</span>
+          <span class="spectrum-cell-name t-fr">QA &amp; Livraison</span>
+        </div>
+      </div>
+      <div class="spectrum-bottom">
+        <span class="spectrum-tagline t-ar">نغطي الطيف الكامل لتصميم المنتجات الرقمية — من الفكرة إلى الاستلام</span>
+        <span class="spectrum-tagline t-en">We cover the full spectrum of digital product design — from idea to handoff</span>
+        <span class="spectrum-tagline t-fr">Nous couvrons tout le spectre du design produit — de l'idée à la livraison</span>
+        <a href="#contact" class="spectrum-cta">
+          <span class="t-ar">ابدأ مشروعك</span>
+          <span class="t-en">Start Your Project</span>
+          <span class="t-fr">Démarrez Votre Projet</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row reveal">
+      <div class="stat-item">
+        <div class="stat-num" data-count="100" data-suffix="%">0%</div>
+        <p class="stat-label">
+          <span class="t-ar">من الهوية إلى الاختبار</span>
+          <span class="t-en">From Identity to Testing</span>
+          <span class="t-fr">De l'Identité aux Tests</span>
+        </p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="5" data-suffix="+">0+</div>
+        <p class="stat-label">
+          <span class="t-ar">سنوات من الخبرة</span>
+          <span class="t-en">Years of Expertise</span>
+          <span class="t-fr">Années d'Expertise</span>
+        </p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="3" data-suffix="">0</div>
+        <p class="stat-label">
+          <span class="t-ar">لغات — عربي · إنجليزي · فرنسي</span>
+          <span class="t-en">Languages — AR · EN · FR</span>
+          <span class="t-fr">Langues — AR · EN · FR</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Seed Divider -->
+<div class="seed-divider" aria-hidden="true">
+  <div class="seed-divider-inner">
+    <span class="seed-divider-line"></span>
+    <div class="seed-divider-mark-large">
+      <img src="assets/Nawat_Logo_ForLight.svg" class="logo-light-mode" alt="" loading="lazy">
+      <img src="assets/Nawat_Logo_ForDark_Transparent.svg" class="logo-dark-mode" alt="" loading="lazy">
+    </div>
+    <span class="seed-divider-line"></span>
+  </div>
+</div>
+
+<!-- ================================================================
+     CASE STUDIES / WORK
+     ================================================================ -->
+<section id="work" class="work">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="section-header reveal">
+      <p class="section-label">
+        <span class="t-ar">مشاريعنا</span>
+        <span class="t-en">Our Projects</span>
+        <span class="t-fr">Nos Projets</span>
+      </p>
+      <h2 class="section-title">
+        <span class="t-ar">أعمالنا</span>
+        <span class="t-en">Our Work</span>
+        <span class="t-fr">Notre Travail</span>
+      </h2>
+    </div>
+
+    <!-- Work Grid
+         Row 1 : Iksir featured(8) + Tasks secondary(4)          = 12
+         Row 2 : B2B Sales wide(6) + REACH wide(6)               = 12
+         Row 3 : Iksir IA secondary(4) + Redesign secondary(4) + New Products secondary(4) = 12
+    -->
+    <div class="work-grid">
+
+      <!-- ── Card 1 — Iksir Design Library (live case study) ─────── -->
+      <article class="work-card featured">
+        <!-- Stretched overlay link — makes the entire card clickable -->
+        <a href="case-study-iksir.html" class="work-card-overlay" aria-label="Iksir Design Library — View Case Study"></a>
+
+        <div class="work-card-image">
+          <div class="ui-mockup brand-mockup">
+            <div class="ui-mockup-bar">
+              <div class="ui-mockup-dot"></div>
+              <div class="ui-mockup-dot"></div>
+              <div class="ui-mockup-dot"></div>
+              <div class="ui-mockup-url"></div>
+            </div>
+            <div class="ui-mockup-body">
+              <!-- Token swatches row -->
+              <div style="display:flex;gap:6px;padding:0 0 10px;">
+                <div style="width:20px;height:20px;border-radius:4px;background:#2563EB;opacity:0.9;flex-shrink:0;"></div>
+                <div style="width:20px;height:20px;border-radius:4px;background:var(--c-text);opacity:0.7;flex-shrink:0;"></div>
+                <div style="width:20px;height:20px;border-radius:4px;background:var(--c-text);opacity:0.4;flex-shrink:0;"></div>
+                <div style="width:20px;height:20px;border-radius:4px;background:var(--c-text);opacity:0.2;flex-shrink:0;"></div>
+                <div style="width:20px;height:20px;border-radius:4px;background:var(--c-text);opacity:0.1;flex-shrink:0;"></div>
+              </div>
+              <div class="ui-mockup-nav-row">
+                <div class="ui-mockup-nav-logo"></div>
+                <div class="ui-mock-spacer"></div>
+                <div class="ui-mock-btn"></div>
+                <div class="ui-mock-btn" style="width:40px;"></div>
+              </div>
+              <div class="ui-mockup-hero-row" style="flex:1.5;">
+                <div class="ui-mock-hero-text">
+                  <div class="ui-mock-line lg"></div>
+                  <div class="ui-mock-line md"></div>
+                  <div class="ui-mock-line sm"></div>
+                </div>
+                <div class="ui-mock-cta" style="background:rgba(37,99,235,0.7);"></div>
+              </div>
+              <div class="ui-mockup-cards">
+                <div class="ui-mock-card"></div>
+                <div class="ui-mock-card" style="background:var(--c-surface-md);"></div>
+                <div class="ui-mock-card"></div>
+              </div>
+            </div>
+            <div class="work-placeholder-tag" style="position:absolute;top:12px;inset-inline-start:12px;z-index:2;">Design System · Figma</div>
+          </div>
+        </div>
+
+        <div class="work-card-body">
+          <div class="work-tags">
+            <span class="work-tag">Design System</span>
+            <span class="work-tag">Figma Library</span>
+            <span class="work-tag">Documentation</span>
+            <span class="work-tag">RTL / LTR</span>
+          </div>
+          <h3 class="work-card-title">
+            <span class="t-ar">إكسير — مكتبة تصميم المنتجات الرقمية</span>
+            <span class="t-en">Iksir — Digital Products Design Library</span>
+            <span class="t-fr">Iksir — Bibliothèque de Design des Produits Numériques</span>
+          </h3>
+          <p class="work-card-desc">
+            <span class="t-ar">بنينا مكتبة تصميم فيغما شاملة لعلامة داتاماستر الرقمية — أكثر من ١٠١٤ متغيراً، كل المكونات والحالات الممكنة، توثيق كامل ودعم RTL/LTR. الأساس الذي ستُبنى عليه كل منتجاتهم القادمة.</span>
+            <span class="t-en">We built a comprehensive Figma design library for Datamaster's digital brand — 1,014+ variables, every possible component and state, full documentation, and RTL/LTR support. The foundation all their future products will be built on.</span>
+            <span class="t-fr">Nous avons construit une bibliothèque de design Figma complète pour la marque numérique de Datamaster — 1 014+ variables, tous les composants possibles, documentation complète, support RTL/LTR. La fondation sur laquelle seront construits tous leurs futurs produits.</span>
+          </p>
+          <span class="work-card-link" aria-hidden="true">
+            <span class="t-ar">عرض المشروع</span>
+            <span class="t-en">View Project</span>
+            <span class="t-fr">Voir le projet</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </article>
+
+
+      <!-- ── Card 2 — Tasks App (live case study) ─────────────────── -->
+      <article class="work-card secondary">
+        <a href="case-study-tasks.html" class="work-card-overlay" aria-label="Task Management App — View Case Study"></a>
+        <div class="work-card-image">
+          <div class="ui-mockup" style="background:var(--c-surface);">
+            <div style="position:absolute;inset:16px;display:flex;align-items:center;gap:12px;">
+              <div style="flex:1;height:100%;background:var(--c-bg-alt);border-radius:8px;border:1px solid var(--c-border);overflow:hidden;display:flex;flex-direction:column;">
+                <div style="height:32px;background:var(--c-surface-md);border-bottom:1px solid var(--c-border);display:flex;align-items:center;padding:0 10px;gap:6px;">
+                  <div style="width:60px;height:8px;border-radius:3px;background:var(--c-border-lg);opacity:0.6;"></div>
+                </div>
+                <div style="padding:8px;display:flex;flex-direction:column;gap:6px;flex:1;">
+                  <div style="background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.2);border-radius:6px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
+                    <div style="width:14px;height:14px;border-radius:3px;background:#2563EB;opacity:0.5;flex-shrink:0;"></div>
+                    <div style="width:80%;height:7px;border-radius:3px;background:var(--c-text-60);opacity:0.4;"></div>
+                  </div>
+                  <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:6px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
+                    <div style="width:14px;height:14px;border-radius:3px;border:1px solid var(--c-border-lg);flex-shrink:0;"></div>
+                    <div style="width:65%;height:7px;border-radius:3px;background:var(--c-text-60);opacity:0.3;"></div>
+                  </div>
+                  <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:6px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
+                    <div style="width:14px;height:14px;border-radius:3px;border:1px solid var(--c-border-lg);flex-shrink:0;"></div>
+                    <div style="width:72%;height:7px;border-radius:3px;background:var(--c-text-60);opacity:0.3;"></div>
+                  </div>
+                  <div style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.15);border-radius:6px;padding:8px 10px;display:flex;align-items:center;gap:8px;">
+                    <div style="width:14px;height:14px;border-radius:3px;background:#2563EB;opacity:0.4;flex-shrink:0;"></div>
+                    <div style="width:55%;height:7px;border-radius:3px;background:var(--c-text-60);opacity:0.35;"></div>
+                  </div>
+                </div>
+              </div>
+              <div style="width:72px;height:100%;background:var(--c-bg-alt);border-radius:10px;border:1px solid var(--c-border);overflow:hidden;display:flex;flex-direction:column;">
+                <div style="height:20px;background:var(--c-surface-md);border-bottom:1px solid var(--c-border);"></div>
+                <div style="padding:6px;display:flex;flex-direction:column;gap:4px;flex:1;">
+                  <div style="height:8px;border-radius:3px;background:rgba(37,99,235,0.3);"></div>
+                  <div style="height:8px;border-radius:3px;background:var(--c-border-lg);opacity:0.4;"></div>
+                  <div style="height:8px;border-radius:3px;background:var(--c-border-lg);opacity:0.4;"></div>
+                  <div style="height:8px;border-radius:3px;background:rgba(37,99,235,0.25);"></div>
+                  <div style="height:8px;border-radius:3px;background:var(--c-border-lg);opacity:0.3;"></div>
+                </div>
+                <div style="height:18px;background:var(--c-surface-md);border-top:1px solid var(--c-border);display:flex;align-items:center;justify-content:space-around;padding:0 4px;">
+                  <div style="width:8px;height:8px;border-radius:50%;background:#2563EB;opacity:0.5;"></div>
+                  <div style="width:8px;height:8px;border-radius:50%;background:var(--c-border-lg);opacity:0.5;"></div>
+                  <div style="width:8px;height:8px;border-radius:50%;background:var(--c-border-lg);opacity:0.5;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-tags">
+            <span class="work-tag">Product Design</span>
+            <span class="work-tag">ERP</span>
+            <span class="work-tag">Mobile First</span>
+          </div>
+          <h3 class="work-card-title">
+            <span class="t-ar">تطبيق إدارة المهام — داتاماستر ERP</span>
+            <span class="t-en">Task Management App — DataMaster ERP</span>
+            <span class="t-fr">Application de Gestion des Tâches — DataMaster ERP</span>
+          </h3>
+          <p class="work-card-desc">
+            <span class="t-ar">تحويل العمليات التشغيلية المعقدة لمتاجر التجزئة إلى واجهة موبايل أولاً بسيطة وبديهية — وأول تطبيق حقيقي لنظام تصميم داتاماستر في الإنتاج.</span>
+            <span class="t-en">Transforming complex retail store operations into a simple, intuitive mobile-first interface — and the first real production implementation of the DataMaster Design System.</span>
+            <span class="t-fr">Transformer des opérations complexes de magasins retail en une interface mobile-first simple et intuitive — et la première implémentation production réelle du Design System DataMaster.</span>
+          </p>
+          <span class="work-card-link" aria-hidden="true">
+            <span class="t-ar">عرض المشروع</span>
+            <span class="t-en">View Project</span>
+            <span class="t-fr">Voir le projet</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </article>
+
+
+      <!-- ── Card 3 — B2B Sales ERP (live case study) ───────────────── -->
+      <article class="work-card wide">
+        <a href="case-study-b2bsales.html" class="work-card-overlay" aria-label="B2B Sales ERP Module — View Case Study"></a>
+        <div class="work-card-image">
+          <div class="ui-mockup" style="background:var(--c-surface);">
+            <div style="position:absolute;inset:16px;display:flex;flex-direction:column;gap:8px;">
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;">
+                <div style="background:rgba(234,88,12,0.08);border:1px solid rgba(234,88,12,0.18);border-radius:6px;padding:8px;">
+                  <div style="height:6px;border-radius:2px;background:rgba(234,88,12,0.3);margin-bottom:4px;width:60%;"></div>
+                  <div style="height:12px;border-radius:3px;background:var(--c-text-60);opacity:0.4;width:80%;"></div>
+                </div>
+                <div style="background:var(--c-bg-alt);border:1px solid var(--c-border);border-radius:6px;padding:8px;">
+                  <div style="height:6px;border-radius:2px;background:var(--c-border-lg);opacity:0.5;margin-bottom:4px;width:55%;"></div>
+                  <div style="height:12px;border-radius:3px;background:var(--c-text-60);opacity:0.3;width:70%;"></div>
+                </div>
+                <div style="background:var(--c-bg-alt);border:1px solid var(--c-border);border-radius:6px;padding:8px;">
+                  <div style="height:6px;border-radius:2px;background:var(--c-border-lg);opacity:0.5;margin-bottom:4px;width:70%;"></div>
+                  <div style="height:12px;border-radius:3px;background:var(--c-text-60);opacity:0.3;width:75%;"></div>
+                </div>
+              </div>
+              <div style="background:var(--c-bg-alt);border:1px solid var(--c-border);border-radius:6px;overflow:hidden;flex:1;">
+                <div style="display:flex;gap:8px;padding:6px 10px;background:var(--c-surface-md);border-bottom:1px solid var(--c-border);">
+                  <div style="height:7px;border-radius:2px;background:rgba(234,88,12,0.4);width:70px;"></div>
+                  <div style="height:7px;border-radius:2px;background:var(--c-border-lg);opacity:0.5;width:50px;"></div>
+                  <div style="height:7px;border-radius:2px;background:var(--c-border-lg);opacity:0.5;width:60px;"></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:1px;">
+                  <div style="display:flex;gap:8px;padding:5px 10px;border-bottom:1px solid var(--c-border);align-items:center;">
+                    <div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.3;width:80px;"></div>
+                    <div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.2;width:55px;"></div>
+                    <div style="height:16px;border-radius:8px;background:rgba(234,88,12,0.15);width:44px;flex-shrink:0;"></div>
+                  </div>
+                  <div style="display:flex;gap:8px;padding:5px 10px;border-bottom:1px solid var(--c-border);align-items:center;">
+                    <div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.25;width:70px;"></div>
+                    <div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.15;width:60px;"></div>
+                    <div style="height:16px;border-radius:8px;background:var(--c-border);opacity:0.6;width:44px;flex-shrink:0;"></div>
+                  </div>
+                  <div style="display:flex;gap:8px;padding:5px 10px;align-items:center;">
+                    <div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.25;width:85px;"></div>
+                    <div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.15;width:50px;"></div>
+                    <div style="height:16px;border-radius:8px;background:rgba(234,88,12,0.2);width:44px;flex-shrink:0;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-tags">
+            <span class="work-tag">B2B Sales</span>
+            <span class="work-tag">ERP</span>
+            <span class="work-tag">Enterprise UX</span>
+          </div>
+          <h3 class="work-card-title">
+            <span class="t-ar">وحدة المبيعات B2B — داتاماستر ERP</span>
+            <span class="t-en">B2B Sales ERP Module — DataMaster</span>
+            <span class="t-fr">Module ERP Ventes B2B — DataMaster</span>
+          </h3>
+          <p class="work-card-desc">
+            <span class="t-ar">منصة مبيعات مؤسسية شاملة تجمع عروض الأسعار، الطلبات، الفواتير، والمردودات في نظام واحد — كثيف بالبيانات، سهل الاستخدام.</span>
+            <span class="t-en">A comprehensive enterprise sales platform unifying quotes, orders, invoices, and returns in one system — data-dense and still easy to use.</span>
+            <span class="t-fr">Une plateforme de vente enterprise complète unifiant devis, commandes, factures et retours en un système — dense en données et toujours facile à utiliser.</span>
+          </p>
+          <span class="work-card-link" aria-hidden="true">
+            <span class="t-ar">عرض المشروع</span>
+            <span class="t-en">View Project</span>
+            <span class="t-fr">Voir le projet</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </article>
+
+
+      <!-- ── Card 4 — REACH eLearning (live case study) ─────────────── -->
+      <article class="work-card wide">
+        <a href="case-study-reach.html" class="work-card-overlay" aria-label="REACH eLearning Platform — View Case Study"></a>
+        <div class="work-card-image">
+          <div class="ui-mockup" style="background:var(--c-surface);">
+            <div style="position:absolute;inset:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div style="background:var(--c-bg-alt);border:1px solid var(--c-border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">
+                <div style="height:28px;background:var(--c-surface-md);border-bottom:1px solid var(--c-border);display:flex;align-items:center;padding:0 10px;">
+                  <div style="height:7px;border-radius:3px;background:rgba(13,148,136,0.4);width:80px;"></div>
+                </div>
+                <div style="padding:8px;display:flex;flex-direction:column;gap:6px;flex:1;">
+                  <div style="background:rgba(13,148,136,0.1);border:1px solid rgba(13,148,136,0.2);border-radius:6px;padding:8px;display:flex;align-items:center;gap:6px;">
+                    <div style="width:20px;height:20px;border-radius:4px;background:rgba(13,148,136,0.35);flex-shrink:0;"></div>
+                    <div style="flex:1;"><div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.45;margin-bottom:3px;width:80%;"></div><div style="height:6px;border-radius:2px;background:var(--c-text-60);opacity:0.25;width:55%;"></div></div>
+                  </div>
+                  <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:6px;padding:8px;display:flex;align-items:center;gap:6px;">
+                    <div style="width:20px;height:20px;border-radius:4px;background:var(--c-border-lg);opacity:0.5;flex-shrink:0;"></div>
+                    <div style="flex:1;"><div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.3;margin-bottom:3px;width:70%;"></div><div style="height:6px;border-radius:2px;background:var(--c-text-60);opacity:0.18;width:45%;"></div></div>
+                  </div>
+                  <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:6px;padding:8px;display:flex;align-items:center;gap:6px;">
+                    <div style="width:20px;height:20px;border-radius:4px;background:var(--c-border-lg);opacity:0.5;flex-shrink:0;"></div>
+                    <div style="flex:1;"><div style="height:7px;border-radius:2px;background:var(--c-text-60);opacity:0.3;margin-bottom:3px;width:75%;"></div><div style="height:6px;border-radius:2px;background:var(--c-text-60);opacity:0.18;width:50%;"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div style="background:var(--c-bg-alt);border:1px solid var(--c-border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;">
+                <div style="height:28px;background:var(--c-surface-md);border-bottom:1px solid var(--c-border);display:flex;align-items:center;padding:0 10px;">
+                  <div style="height:7px;border-radius:3px;background:var(--c-border-lg);opacity:0.6;width:70px;"></div>
+                </div>
+                <div style="padding:10px;display:flex;flex-direction:column;gap:8px;flex:1;justify-content:center;">
+                  <div><div style="height:6px;border-radius:2px;background:var(--c-text-60);opacity:0.25;margin-bottom:4px;width:55px;"></div><div style="height:8px;border-radius:4px;background:var(--c-border);overflow:hidden;"><div style="height:100%;width:72%;background:rgba(13,148,136,0.5);border-radius:4px;"></div></div></div>
+                  <div><div style="height:6px;border-radius:2px;background:var(--c-text-60);opacity:0.25;margin-bottom:4px;width:50px;"></div><div style="height:8px;border-radius:4px;background:var(--c-border);overflow:hidden;"><div style="height:100%;width:45%;background:rgba(13,148,136,0.35);border-radius:4px;"></div></div></div>
+                  <div><div style="height:6px;border-radius:2px;background:var(--c-text-60);opacity:0.25;margin-bottom:4px;width:60px;"></div><div style="height:8px;border-radius:4px;background:var(--c-border);overflow:hidden;"><div style="height:100%;width:88%;background:rgba(13,148,136,0.55);border-radius:4px;"></div></div></div>
+                  <div><div style="height:6px;border-radius:2px;background:var(--c-text-60);opacity:0.25;margin-bottom:4px;width:45px;"></div><div style="height:8px;border-radius:4px;background:var(--c-border);overflow:hidden;"><div style="height:100%;width:30%;background:rgba(13,148,136,0.3);border-radius:4px;"></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-tags">
+            <span class="work-tag">EdTech</span>
+            <span class="work-tag">SaaS</span>
+            <span class="work-tag">Teacher Tools</span>
+          </div>
+          <h3 class="work-card-title">
+            <span class="t-ar">منصة REACH للتعليم الإلكتروني — واجهة المعلم</span>
+            <span class="t-en">REACH eLearning Platform — Teacher Side</span>
+            <span class="t-fr">Plateforme REACH eLearning — Interface Enseignant</span>
+          </h3>
+          <p class="work-card-desc">
+            <span class="t-ar">تمكين المعلمين بأدوات بديهية لإنشاء المقررات وإدارة الطلاب وتتبع التقدم — منصة تشعر كغرفة الصف لا كنظام إداري.</span>
+            <span class="t-en">Empowering teachers with intuitive tools to create courses, manage students, and track progress — a platform that feels like a classroom, not an admin system.</span>
+            <span class="t-fr">Autonomiser les enseignants avec des outils intuitifs pour créer des cours, gérer les élèves et suivre les progrès — une plateforme qui ressemble à une salle de classe, pas à un système admin.</span>
+          </p>
+          <span class="work-card-link" aria-hidden="true">
+            <span class="t-ar">عرض المشروع</span>
+            <span class="t-en">View Project</span>
+            <span class="t-fr">Voir le projet</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </article>
+
+
+      <!-- ── Card 5 — Coming Soon: Iksir IA Redesign ───────────────── -->
+      <article class="work-card secondary">
+        <div class="work-card-image">
+          <div class="ui-mockup" style="background:var(--c-bg-alt);">
+            <!-- Sitemap / IA tree visualization -->
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+              <svg width="160" height="130" viewBox="0 0 160 130" fill="none" style="opacity:0.18;">
+                <!-- Root node -->
+                <rect x="60" y="8" width="40" height="22" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                <!-- Branch lines down from root -->
+                <line x1="80" y1="30" x2="80" y2="50" stroke="currentColor" stroke-width="1.2"/>
+                <line x1="80" y1="50" x2="28" y2="50" stroke="currentColor" stroke-width="1.2"/>
+                <line x1="80" y1="50" x2="80" y2="50" stroke="currentColor" stroke-width="1.2"/>
+                <line x1="80" y1="50" x2="132" y2="50" stroke="currentColor" stroke-width="1.2"/>
+                <!-- Mid-level nodes -->
+                <line x1="28" y1="50" x2="28" y2="60" stroke="currentColor" stroke-width="1.2"/>
+                <line x1="80" y1="50" x2="80" y2="60" stroke="currentColor" stroke-width="1.2"/>
+                <line x1="132" y1="50" x2="132" y2="60" stroke="currentColor" stroke-width="1.2"/>
+                <rect x="8"  y="60" width="40" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="60" y="60" width="40" height="18" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+                <rect x="112" y="60" width="40" height="18" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+                <!-- Leaf lines -->
+                <line x1="28" y1="78" x2="28" y2="95" stroke="currentColor" stroke-width="1"/>
+                <line x1="28" y1="95" x2="16" y2="95" stroke="currentColor" stroke-width="1"/>
+                <line x1="28" y1="95" x2="40" y2="95" stroke="currentColor" stroke-width="1"/>
+                <line x1="16" y1="95" x2="16" y2="105" stroke="currentColor" stroke-width="1"/>
+                <line x1="40" y1="95" x2="40" y2="105" stroke="currentColor" stroke-width="1"/>
+                <rect x="6"  y="105" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                <rect x="30" y="105" width="20" height="14" rx="3" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                <!-- Blue accent on root -->
+                <rect x="60" y="8" width="40" height="22" rx="5" fill="#2563EB" opacity="0.12"/>
+              </svg>
+            </div>
+            <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:16px;">
+              <span style="background:var(--c-bg);border:1px solid var(--c-border);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:500;color:var(--c-text-60);">
+                <span class="t-ar">قادم قريباً</span>
+                <span class="t-en">Coming Soon</span>
+                <span class="t-fr">À Venir</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-tags">
+            <span class="work-tag">
+              <span class="t-ar">المرحلة الثانية</span>
+              <span class="t-en">Phase 2</span>
+              <span class="t-fr">Phase 2</span>
+            </span>
+            <span class="work-tag">UX Research</span>
+            <span class="work-tag">IA</span>
+          </div>
+          <h3 class="work-card-title">
+            <span class="t-ar">إكسير — إعادة هيكلة المعلومات</span>
+            <span class="t-en">Iksir — Information Architecture Redesign</span>
+            <span class="t-fr">Iksir — Refonte de l'Architecture de l'Information</span>
+          </h3>
+          <p class="work-card-desc">
+            <span class="t-ar">إعادة هيكلة المعلومات لمنتجاتهم القائمة — بناء هيكل واضح يسهّل التنقل ويحسّن تجربة المستخدم قبل الانتقال لمرحلة إعادة التصميم.</span>
+            <span class="t-en">Restructuring the information architecture of their existing products — building a clear structure that simplifies navigation and improves UX before moving into the redesign phase.</span>
+            <span class="t-fr">Restructuration de l'architecture de l'information de leurs produits existants — construction d'une structure claire qui simplifie la navigation et améliore l'UX avant la phase de refonte.</span>
+          </p>
+        </div>
+      </article>
+
+
+      <!-- ── Card 6 — Coming Soon: Iksir Product Redesign ─────────── -->
+      <article class="work-card secondary">
+        <div class="work-card-image">
+          <div class="ui-mockup" style="background:var(--c-surface);">
+            <!-- Before/after UI redesign illustration -->
+            <div style="position:absolute;inset:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <!-- Before panel -->
+              <div style="border:1px solid var(--c-border);border-radius:var(--radius-sm);padding:8px;display:flex;flex-direction:column;gap:5px;opacity:0.5;">
+                <div style="height:8px;background:var(--c-text);border-radius:2px;width:70%;opacity:0.4;"></div>
+                <div style="height:5px;background:var(--c-text);border-radius:2px;width:90%;opacity:0.2;"></div>
+                <div style="height:5px;background:var(--c-text);border-radius:2px;width:60%;opacity:0.2;"></div>
+                <div style="flex:1;margin-top:4px;display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+                  <div style="background:var(--c-border);border-radius:2px;"></div>
+                  <div style="background:var(--c-border);border-radius:2px;"></div>
+                </div>
+              </div>
+              <!-- After panel (cleaner, blue accent) -->
+              <div style="border:1px solid rgba(37,99,235,0.3);border-radius:var(--radius-sm);padding:8px;display:flex;flex-direction:column;gap:5px;background:rgba(37,99,235,0.03);">
+                <div style="height:8px;background:#2563EB;border-radius:2px;width:70%;opacity:0.5;"></div>
+                <div style="height:5px;background:var(--c-text);border-radius:2px;width:90%;opacity:0.25;"></div>
+                <div style="height:5px;background:var(--c-text);border-radius:2px;width:60%;opacity:0.2;"></div>
+                <div style="flex:1;margin-top:4px;display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+                  <div style="background:rgba(37,99,235,0.15);border-radius:4px;"></div>
+                  <div style="background:rgba(37,99,235,0.15);border-radius:4px;"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Arrow between panels -->
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.25;">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </div>
+            <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:16px;">
+              <span style="background:var(--c-bg);border:1px solid var(--c-border);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:500;color:var(--c-text-60);">
+                <span class="t-ar">قادم قريباً</span>
+                <span class="t-en">Coming Soon</span>
+                <span class="t-fr">À Venir</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-tags">
+            <span class="work-tag">
+              <span class="t-ar">المرحلة الثالثة</span>
+              <span class="t-en">Phase 3</span>
+              <span class="t-fr">Phase 3</span>
+            </span>
+            <span class="work-tag">UX Design</span>
+            <span class="work-tag">Product Design</span>
+          </div>
+          <h3 class="work-card-title">
+            <span class="t-ar">إكسير — إعادة تصميم المنتجات</span>
+            <span class="t-en">Iksir — Product Redesign</span>
+            <span class="t-fr">Iksir — Refonte des Produits</span>
+          </h3>
+          <p class="work-card-desc">
+            <span class="t-ar">إعادة تصميم المنتجات القائمة — ERP، التطبيقات، وكل ما بُني قبل الأساس — باستخدام مكتبة التصميم والهيكل الجديد كنقطة انطلاق.</span>
+            <span class="t-en">Redesigning the existing products — ERP, apps, and everything built before the foundation — using the design library and new IA as the starting point.</span>
+            <span class="t-fr">Refonte des produits existants — ERP, applications et tout ce qui a été construit avant la fondation — en utilisant la bibliothèque de design et la nouvelle IA comme point de départ.</span>
+          </p>
+        </div>
+      </article>
+
+
+      <!-- ── Card 7 — Coming Soon: Iksir New Products ──────────────── -->
+      <article class="work-card secondary">
+        <div class="work-card-image">
+          <div class="ui-mockup" style="background:var(--c-bg-alt);">
+            <!-- Seed/growth motif — new products -->
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+              <svg width="130" height="130" viewBox="0 0 130 130" fill="none" style="opacity:0.16;">
+                <!-- Nawat seed motif — circles + center dot -->
+                <circle cx="65" cy="65" r="56" stroke="currentColor" stroke-width="1"/>
+                <circle cx="65" cy="65" r="38" stroke="currentColor" stroke-width="1"/>
+                <circle cx="65" cy="65" r="22" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="65" cy="65" r="7" fill="#2563EB" opacity="0.7"/>
+                <!-- Radiating lines — growth -->
+                <line x1="65" y1="9" x2="65" y2="27" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                <line x1="65" y1="103" x2="65" y2="121" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                <line x1="9" y1="65" x2="27" y2="65" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                <line x1="103" y1="65" x2="121" y2="65" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                <line x1="24.4" y1="24.4" x2="37.1" y2="37.1" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                <line x1="92.9" y1="92.9" x2="105.6" y2="105.6" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                <line x1="105.6" y1="24.4" x2="92.9" y2="37.1" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                <line x1="37.1" y1="92.9" x2="24.4" y2="105.6" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+              </svg>
+            </div>
+            <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:16px;">
+              <span style="background:var(--c-bg);border:1px solid var(--c-border);border-radius:100px;padding:5px 12px;font-size:11px;font-weight:500;color:var(--c-text-60);">
+                <span class="t-ar">قادم قريباً</span>
+                <span class="t-en">Coming Soon</span>
+                <span class="t-fr">À Venir</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-body">
+          <div class="work-tags">
+            <span class="work-tag">
+              <span class="t-ar">المرحلة الرابعة</span>
+              <span class="t-en">Phase 4</span>
+              <span class="t-fr">Phase 4</span>
+            </span>
+            <span class="work-tag">Product Design</span>
+            <span class="work-tag">Strategy</span>
+          </div>
+          <h3 class="work-card-title">
+            <span class="t-ar">إكسير — تصميم منتجات جديدة</span>
+            <span class="t-en">Iksir — New Products Design</span>
+            <span class="t-fr">Iksir — Design de Nouveaux Produits</span>
+          </h3>
+          <p class="work-card-desc">
+            <span class="t-ar">تصميم منتجات رقمية جديدة كلياً لداتاماستر — من الصفر، وعلى أسس صلبة: نظام التصميم، والهيكل المعلوماتي، والخبرة المكتسبة.</span>
+            <span class="t-en">Designing entirely new digital products for Datamaster — from scratch, built on solid foundations: the design system, the new IA, and the experience gained along the way.</span>
+            <span class="t-fr">Conception de produits numériques entièrement nouveaux pour Datamaster — de zéro, construits sur des fondations solides : le design system, la nouvelle IA et l'expérience acquise.</span>
+          </p>
+        </div>
+      </article>
+
+    </div><!-- /work-grid (old duplicate block removed) -->
+  </div>
+</section>
+
+
+<!-- Seed Divider -->
+<div id="sd-founder" class="seed-divider" aria-hidden="true">
+  <div class="seed-divider-inner">
+    <span class="seed-divider-line"></span>
+    <div class="seed-divider-mark-large">
+      <img src="assets/Nawat_Logo_ForLight.svg" class="logo-light-mode" alt="" loading="lazy">
+      <img src="assets/Nawat_Logo_ForDark_Transparent.svg" class="logo-dark-mode" alt="" loading="lazy">
+    </div>
+    <span class="seed-divider-line"></span>
+  </div>
+</div>
+
+<!-- ================================================================
+     FOUNDER / TEAM
+     ================================================================ -->
+<section id="founder" class="founder-section">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="section-header reveal">
+      <p class="section-label">
+        <span class="t-ar">من نحن</span>
+        <span class="t-en">Who We Are</span>
+        <span class="t-fr">Qui Nous Sommes</span>
+      </p>
+    </div>
+
+    <!-- Founder Layout -->
+    <div class="founder-layout">
+
+      <!-- Photo -->
+      <div class="founder-photo-wrap reveal-left">
+        <!--
+          ┌─────────────────────────────────────────┐
+          │  TO ADD YOUR PHOTO:                     │
+          │  1. Copy your photo to assets/          │
+          │  2. Replace the div below with:         │
+          │     <img class="founder-photo"          │
+          │          src="assets/founder.jpg"       │
+          │          alt="[Your Name]">             │
+          └─────────────────────────────────────────┘
+        -->
+        <div class="founder-photo-dark" style="width:100%;height:100%;min-height:480px;">
+          <!-- Dark professional studio background -->
+          <div class="founder-photo-silhouette"></div>
+          <div class="founder-photo-overlay"></div>
+          <!-- Decorative calligraphy watermark inside photo area -->
+          <img
+            src="assets/Nawat Studio.svg"
+            aria-hidden="true"
+            style="position:absolute;bottom:20px;inset-inline-start:-10%;width:120%;opacity:0.06;filter:invert(1);pointer-events:none;"
+          >
+          <div class="founder-img-instruction">
+            <div class="founder-img-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span class="founder-img-text">founder photo · assets/founder.jpg</span>
+          </div>
+        </div>
+        <div class="founder-caption">
+          <div class="founder-caption-title">
+            <span class="t-ar">اسم المؤسس</span>
+            <span class="t-en">Founder Name</span>
+            <span class="t-fr">Nom du Fondateur</span>
+          </div>
+          <div class="founder-caption-subtitle">
+            <span class="t-ar">مصمم منتجات · رائد أعمال</span>
+            <span class="t-en">Product Designer · Entrepreneur</span>
+            <span class="t-fr">Designer Produit · Entrepreneur</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="founder-bio-wrap reveal">
+        <span class="founder-role">
+          <span class="t-ar">المؤسس</span>
+          <span class="t-en">Founder</span>
+          <span class="t-fr">Fondateur</span>
+        </span>
+
+        <h2 class="founder-name">
+          <span class="t-ar">اسم المؤسس</span>
+          <span class="t-en">Founder Name</span>
+          <span class="t-fr">Nom du Fondateur</span>
+        </h2>
+
+        <p class="founder-title">
+          <span class="t-ar">مصمم منتجات رقمية ورائد أعمال</span>
+          <span class="t-en">Digital Product Designer & Entrepreneur</span>
+          <span class="t-fr">Designer Produit Numérique & Entrepreneur</span>
+        </p>
+
+        <p class="founder-desc">
+          <span class="t-ar">يمتلك خبرة شاملة في تصميم المنتجات الرقمية من الهوية البصرية إلى اختبار المستخدم. أسس نواة ستوديو إيماناً بأن المنتجات الرقمية الحقيقية لا تُبنى فحسب — بل تُزرع وتنمو بعناية.</span>
+          <span class="t-en">With comprehensive expertise in digital product design from visual identity to user testing. Founded Nawat Studio believing that great digital products aren't just built — they're seeded and grown with care.</span>
+          <span class="t-fr">Expert en design produit numérique de l'identité visuelle aux tests utilisateurs. A fondé Nawat Studio avec la conviction que les grands produits numériques ne se construisent pas seulement — ils se cultivent avec soin.</span>
+        </p>
+
+        <div class="founder-links">
+          <a href="#" class="founder-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="#" class="founder-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+          <a href="#" class="founder-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Behance
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Team divider -->
+    <div class="team-divider reveal">
+      <span class="team-divider-label">
+        <span class="t-ar">فريقنا</span>
+        <span class="t-en">Our Team</span>
+        <span class="t-fr">Notre Équipe</span>
+      </span>
+    </div>
+
+    <!-- Team Grid -->
+    <div class="team-grid">
+
+      <!-- Second Designer -->
+      <div class="team-card">
+        <!--
+          To add the designer photo: replace the div below with
+          <img src="assets/designer.jpg" alt="[Designer Name]" class="founder-photo">
+        -->
+        <div class="team-card-photo" style="aspect-ratio:1/1; min-height:260px;">
+          <div class="team-photo-dark" style="width:100%;height:100%;">
+            <div class="team-photo-silhouette"></div>
+            <div class="founder-img-instruction" style="gap:6px;">
+              <div class="founder-img-icon" style="width:36px;height:36px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <span class="founder-img-text">assets/designer.jpg</span>
+            </div>
+          </div>
+        </div>
+        <div class="team-card-body">
+          <div class="team-name">
+            <span class="t-ar">اسم المصمم</span>
+            <span class="t-en">Designer Name</span>
+            <span class="t-fr">Nom du Designer</span>
+          </div>
+          <div class="team-role">
+            <span class="t-ar">مصمم منتجات رقمية · مستقل</span>
+            <span class="t-en">Senior Product Designer · Freelance</span>
+            <span class="t-fr">Designer Produit Senior · Freelance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- "Hire as needed" card — neutral colours, no blue -->
+      <div class="team-card" style="display:flex;align-items:center;justify-content:center;min-height:260px;cursor:default;background:var(--c-surface);">
+        <div style="text-align:center;padding:32px;">
+          <div style="width:44px;height:44px;background:var(--c-surface-md);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:var(--c-text-60);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <p style="font-size:14px;font-weight:600;color:var(--c-text);margin-bottom:6px;">
+            <span class="t-ar">نوظّف عند الحاجة</span>
+            <span class="t-en">We Hire as Needed</span>
+            <span class="t-fr">Nous Recrutons selon les Besoins</span>
+          </p>
+          <p style="font-size:12px;color:var(--c-text-60);line-height:1.5;">
+            <span class="t-ar">نضم مصممين متميزين حسب طبيعة كل مشروع</span>
+            <span class="t-en">Exceptional designers join us based on each project's nature</span>
+            <span class="t-fr">Des designers exceptionnels nous rejoignent selon chaque projet</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Founder highlights row -->
+    <div class="founder-highlights reveal">
+      <div class="founder-highlight-item">
+        <div class="founder-highlight-num">5+</div>
+        <div class="founder-highlight-label">
+          <span class="t-ar">سنوات في تصميم المنتجات الرقمية</span>
+          <span class="t-en">Years in digital product design</span>
+          <span class="t-fr">Années en design produit numérique</span>
+        </div>
+      </div>
+      <div class="founder-highlight-item">
+        <div class="founder-highlight-num">E2E</div>
+        <div class="founder-highlight-label">
+          <span class="t-ar">من الهوية إلى الاختبار — تغطية كاملة</span>
+          <span class="t-en">From identity to testing — full coverage</span>
+          <span class="t-fr">De l'identité aux tests — couverture complète</span>
+        </div>
+      </div>
+      <div class="founder-highlight-item">
+        <div class="founder-highlight-num">MENA</div>
+        <div class="founder-highlight-label">
+          <span class="t-ar">وعالمياً — نصمم بلا حدود</span>
+          <span class="t-en">&amp; Global — we design without borders</span>
+          <span class="t-fr">&amp; Global — nous designons sans frontières</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Seed Divider -->
+<div class="seed-divider" aria-hidden="true">
+  <div class="seed-divider-inner">
+    <span class="seed-divider-line"></span>
+    <div class="seed-divider-mark-large">
+      <img src="assets/Nawat_Logo_ForLight.svg" class="logo-light-mode" alt="" loading="lazy">
+      <img src="assets/Nawat_Logo_ForDark_Transparent.svg" class="logo-dark-mode" alt="" loading="lazy">
+    </div>
+    <span class="seed-divider-line"></span>
+  </div>
+</div>
+
+<!-- ================================================================
+     PROCESS
+     ================================================================ -->
+<section id="process" class="process">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="section-header reveal">
+      <p class="section-label">
+        <span class="t-ar">كيف نعمل</span>
+        <span class="t-en">How We Work</span>
+        <span class="t-fr">Comment Nous Travaillons</span>
+      </p>
+      <h2 class="section-title">
+        <span class="t-ar">مسار العمل</span>
+        <span class="t-en">Our Process</span>
+        <span class="t-fr">Notre Processus</span>
+      </h2>
+    </div>
+
+    <!-- Steps -->
+    <div class="process-grid">
+
+      <div class="process-step">
+        <div class="process-num-wrap">
+          <div class="process-num">01</div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">
+            <span class="t-ar">اكتشاف</span>
+            <span class="t-en">Discovery</span>
+            <span class="t-fr">Découverte</span>
+          </h3>
+          <p class="process-desc">
+            <span class="t-ar">نبدأ بفهم عميق لاحتياجاتك ومستخدميك وسوقك.</span>
+            <span class="t-en">We start with a deep understanding of your needs, users, and market.</span>
+            <span class="t-fr">Nous commençons par comprendre vos besoins, vos utilisateurs et votre marché.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num-wrap">
+          <div class="process-num">02</div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">
+            <span class="t-ar">استراتيجية</span>
+            <span class="t-en">Strategy</span>
+            <span class="t-fr">Stratégie</span>
+          </h3>
+          <p class="process-desc">
+            <span class="t-ar">نضع خارطة طريق واضحة وأهدافاً قابلة للقياس.</span>
+            <span class="t-en">We define a clear roadmap and measurable objectives.</span>
+            <span class="t-fr">Nous définissons une feuille de route claire et des objectifs mesurables.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num-wrap">
+          <div class="process-num">03</div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">
+            <span class="t-ar">تصميم</span>
+            <span class="t-en">Design</span>
+            <span class="t-fr">Design</span>
+          </h3>
+          <p class="process-desc">
+            <span class="t-ar">نصنع حلولاً تصميمية دقيقة تجمع بين الجماليّة والوظيفية.</span>
+            <span class="t-en">We craft precise design solutions combining aesthetics and functionality.</span>
+            <span class="t-fr">Nous créons des solutions design précises alliant esthétique et fonctionnalité.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num-wrap">
+          <div class="process-num">04</div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">
+            <span class="t-ar">تسليم</span>
+            <span class="t-en">Delivery</span>
+            <span class="t-fr">Livraison</span>
+          </h3>
+          <p class="process-desc">
+            <span class="t-ar">نسلّم كل شيء بجودة عالية وتوثيق متكامل.</span>
+            <span class="t-en">We deliver everything with high quality and comprehensive documentation.</span>
+            <span class="t-fr">Nous livrons tout avec une haute qualité et une documentation complète.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num-wrap">
+          <div class="process-num">05</div>
+        </div>
+        <div class="process-content">
+          <h3 class="process-title">
+            <span class="t-ar">تحسين</span>
+            <span class="t-en">Refinement</span>
+            <span class="t-fr">Amélioration</span>
+          </h3>
+          <p class="process-desc">
+            <span class="t-ar">نتابع ونحسّن بناءً على بيانات حقيقية من المستخدمين.</span>
+            <span class="t-en">We follow up and improve based on real user data.</span>
+            <span class="t-fr">Nous assurons le suivi et améliorons basé sur les données utilisateurs réelles.</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Process Visual Connector -->
+    <div class="process-visual reveal">
+      <div class="process-visual-track">
+        <div class="process-visual-node">
+          <div class="process-visual-circle">01</div>
+          <span class="process-visual-label t-ar">هوية</span>
+          <span class="process-visual-label t-en">Identity</span>
+          <span class="process-visual-label t-fr">Identité</span>
+        </div>
+        <div class="process-visual-node">
+          <div class="process-visual-circle">02</div>
+          <span class="process-visual-label t-ar">بحث</span>
+          <span class="process-visual-label t-en">Research</span>
+          <span class="process-visual-label t-fr">Recherche</span>
+        </div>
+        <div class="process-visual-node">
+          <div class="process-visual-circle">03</div>
+          <span class="process-visual-label t-ar">تصميم</span>
+          <span class="process-visual-label t-en">Design</span>
+          <span class="process-visual-label t-fr">Design</span>
+        </div>
+        <div class="process-visual-node">
+          <div class="process-visual-circle">04</div>
+          <span class="process-visual-label t-ar">نموذج</span>
+          <span class="process-visual-label t-en">Prototype</span>
+          <span class="process-visual-label t-fr">Prototype</span>
+        </div>
+        <div class="process-visual-node">
+          <div class="process-visual-circle">05</div>
+          <span class="process-visual-label t-ar">اختبار</span>
+          <span class="process-visual-label t-en">Testing</span>
+          <span class="process-visual-label t-fr">Tests</span>
+        </div>
+      </div>
+      <p class="process-visual-label" style="margin-top:28px;font-size:12px;letter-spacing:0.05em;text-align:center;">
+        <span class="t-ar">الطريق الكامل — من الفكرة إلى المنتج</span>
+        <span class="t-en">The full journey — from idea to product</span>
+        <span class="t-fr">Le parcours complet — de l'idée au produit</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Seed Divider -->
+<div class="seed-divider" aria-hidden="true">
+  <div class="seed-divider-inner">
+    <span class="seed-divider-line"></span>
+    <div class="seed-divider-mark-large">
+      <img src="assets/Nawat_Logo_ForLight.svg" class="logo-light-mode" alt="" loading="lazy">
+      <img src="assets/Nawat_Logo_ForDark_Transparent.svg" class="logo-dark-mode" alt="" loading="lazy">
+    </div>
+    <span class="seed-divider-line"></span>
+  </div>
+</div>
+
+<!-- ================================================================
+     MANIFESTO
+     ================================================================ -->
+<section id="manifesto" class="manifesto">
+  <div class="manifesto-inner container">
+
+    <!-- Header — matches the rest of the site -->
+    <div class="manifesto-header">
+      <p class="section-label">
+        <span class="t-ar">فلسفتنا</span>
+        <span class="t-en">Our Philosophy</span>
+        <span class="t-fr">Notre Philosophie</span>
+      </p>
+    </div>
+
+    <!-- Two-column layout: text (left) · visual aside (right) -->
+    <div class="manifesto-layout">
+
+      <!-- Manifesto text — JS injects words from data-* -->
+      <div class="manifesto-body" id="manifestoText">
+        <p class="manifesto-line"
+           data-ar="نحن لا نرسم واجهات فقط."
+           data-en="We don't just draw interfaces."
+           data-fr="Nous ne dessinons pas que des interfaces."></p>
+
+        <p class="manifesto-line"
+           data-ar="نحن نبني أنظمة متكاملة."
+           data-en="We build complete systems."
+           data-fr="Nous construisons des systèmes complets."></p>
+
+        <p class="manifesto-line"
+           data-ar="من الهوية البصرية إلى اختبار المستخدم،"
+           data-en="From visual identity to user testing,"
+           data-fr="De l'identité visuelle aux tests utilisateurs,"></p>
+
+        <p class="manifesto-line"
+           data-ar="كل قرار تصميمي يستند إلى منطق واضح."
+           data-en="every design decision is grounded in clear logic."
+           data-fr="chaque décision de design repose sur une logique claire."></p>
+
+        <p class="manifesto-line"
+           data-ar="كل تفصيل له وظيفة ويؤثر على النتيجة النهائية."
+           data-en="Every detail has a function and shapes the final outcome."
+           data-fr="Chaque détail a une fonction et influence le résultat final."></p>
+
+        <p class="manifesto-line accent"
+           data-ar="في نواة، نؤمن أن التصميم الفعّال يبدأ من الأساس الصلب."
+           data-en="At Nawat, we believe effective design starts from a solid foundation."
+           data-fr="Chez Nawat, le design efficace commence par une base solide."></p>
+      </div>
+
+      <!-- Right: Visual aside -->
+      <div class="manifesto-aside" aria-hidden="true">
+
+        <!-- Core beliefs -->
+        <ul class="manifesto-beliefs">
+          <li class="manifesto-belief-item">
+            <span class="manifesto-belief-num">01</span>
+            <div>
+              <p class="manifesto-belief-title">
+                <span class="t-ar">وضوح الهدف</span>
+                <span class="t-en">Clarity of Purpose</span>
+                <span class="t-fr">Clarté de l'Objectif</span>
+              </p>
+              <p class="manifesto-belief-desc">
+                <span class="t-ar">نحن لا نصمم بناءً على افتراضاتنا الشخصية، بل نستمع لمتطلبات عملك ونترجمها إلى مسار تصميم منطقي يراعي ميزانيتك ووقتك.</span>
+                <span class="t-en">We don't design based on our own assumptions — we listen to your business needs and translate them into a logical design path that respects your budget and timeline.</span>
+                <span class="t-fr">Nous ne concevons pas selon nos propres suppositions — nous écoutons vos besoins et les traduisons en un parcours de design logique respectant votre budget et délais.</span>
+              </p>
+            </div>
+          </li>
+          <li class="manifesto-belief-item">
+            <span class="manifesto-belief-num">02</span>
+            <div>
+              <p class="manifesto-belief-title">
+                <span class="t-ar">جودة البناء</span>
+                <span class="t-en">Quality of Build</span>
+                <span class="t-fr">Qualité de Construction</span>
+              </p>
+              <p class="manifesto-belief-desc">
+                <span class="t-ar">التأسيس الصحيح قد يأخذ وقتاً أطول في البداية، لكنه ضروري. نحن نهتم بتوحيد الواجهات وتسليم ملفات نظيفة لتسهيل عملية البرمجة لاحقاً.</span>
+                <span class="t-en">Getting the foundation right may take longer upfront, but it's essential. We focus on interface consistency and delivering clean files that make development easier down the line.</span>
+                <span class="t-fr">Bien poser les fondations prend plus de temps au départ, mais c'est indispensable. Nous veillons à l'uniformité des interfaces et livrons des fichiers propres pour faciliter le développement.</span>
+              </p>
+            </div>
+          </li>
+          <li class="manifesto-belief-item">
+            <span class="manifesto-belief-num">03</span>
+            <div>
+              <p class="manifesto-belief-title">
+                <span class="t-ar">أثر ملموس</span>
+                <span class="t-en">Tangible Impact</span>
+                <span class="t-fr">Impact Concret</span>
+              </p>
+              <p class="manifesto-belief-desc">
+                <span class="t-ar">ندرك أن أي منتج سيتغير ويتطور بمجرد إطلاقه واحتكاكه بالواقع. لذلك نصمم واجهات مرنة وقابلة للتعديل، وبعيدة كل البعد عن مثاليات ملفات العرض البصرية (Dribbble/Behance).</span>
+                <span class="t-en">We know every product will change and evolve once it launches and meets reality. So we design flexible, adaptable interfaces — far removed from the visual perfection of portfolio showcases (Dribbble/Behance).</span>
+                <span class="t-fr">Nous savons que tout produit changera dès son lancement. Nous concevons donc des interfaces flexibles et adaptables — loin des perfections visuelles des portfolios (Dribbble/Behance).</span>
+              </p>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div><!-- /manifesto-layout -->
+
+    <!-- Closing pull-quote — full width -->
+    <div class="pull-quote reveal">
+      <div class="pull-quote-mark" aria-hidden="true"></div>
+      <p class="pull-quote-text">
+        <span class="t-ar">التأسيس الصحيح للتصميم من البداية ليس رفاهية، بل هو أقصر طريق لتقليل التكلفة التقنية وبناء منتج مستقر.</span>
+        <span class="t-en">Setting up design correctly from the start is not a luxury — it's the shortest path to reducing technical cost and building a stable product.</span>
+        <span class="t-fr">Bien poser les bases du design dès le début n'est pas un luxe — c'est le chemin le plus court pour réduire les coûts techniques et construire un produit stable.</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Seed Divider -->
+<div class="seed-divider" aria-hidden="true">
+  <div class="seed-divider-inner">
+    <span class="seed-divider-line"></span>
+    <div class="seed-divider-mark-large">
+      <img src="assets/Nawat_Logo_ForLight.svg" class="logo-light-mode" alt="" loading="lazy">
+      <img src="assets/Nawat_Logo_ForDark_Transparent.svg" class="logo-dark-mode" alt="" loading="lazy">
+    </div>
+    <span class="seed-divider-line"></span>
+  </div>
+</div>
+
+<!-- ================================================================
+     CONTACT
+     ================================================================ -->
+<section id="contact" class="contact">
+  <div class="container">
+
+    <div class="contact-layout">
+
+      <!-- Info -->
+      <div class="contact-info reveal-left">
+        <p class="section-label">
+          <span class="t-ar">تواصل معنا</span>
+          <span class="t-en">Get in Touch</span>
+          <span class="t-fr">Contactez-Nous</span>
+        </p>
+
+        <h2 class="contact-title">
+          <span class="t-ar">لنزرع منتجك معاً</span>
+          <span class="t-en">Let's Seed Your Product Together</span>
+          <span class="t-fr">Cultivons Votre Produit Ensemble</span>
+        </h2>
+
+        <p class="contact-subtitle">
+          <span class="t-ar">هل لديك فكرة منتج رقمي؟ أو تريد تحسين منتج قائم؟ نحن هنا للاستماع والمساعدة في رسم الطريق.</span>
+          <span class="t-en">Have a digital product idea? Or want to improve an existing one? We're here to listen and help map the way.</span>
+          <span class="t-fr">Vous avez une idée de produit numérique? Ou souhaitez améliorer un produit existant? Nous sommes là pour écouter et tracer la voie.</span>
+        </p>
+
+        <div class="contact-details">
+          <a href="mailto:hello@nawat.studio" class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            hello@nawat.studio
+          </a>
+          <a href="https://nawat.studio" target="_blank" rel="noopener" class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            nawat.studio
+          </a>
+        </div>
+
+        <!-- Seed visual -->
+        <div style="margin-top: 48px; padding: 32px; background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--radius-lg);">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="width:8px;height:8px;background:var(--blue);border-radius:50%;animation:dotPulse 2s ease-in-out infinite;"></div>
+            <span style="font-size:11px; font-weight:600; color:var(--blue); letter-spacing:0.1em; text-transform:uppercase;">
+              <span class="t-ar">متاح الآن</span>
+              <span class="t-en">Available Now</span>
+              <span class="t-fr">Disponible Maintenant</span>
+            </span>
+          </div>
+          <p style="font-size:14px; color:var(--c-text-60); line-height:1.6;">
+            <span class="t-ar">نقبل مشاريع جديدة ونرحب بكل فكرة طموحة. تواصل معنا ولنبدأ رحلة بناء منتجك.</span>
+            <span class="t-en">We're accepting new projects and welcome every ambitious idea. Reach out and let's begin building your product journey.</span>
+            <span class="t-fr">Nous acceptons de nouveaux projets et accueillons chaque idée ambitieuse. Contactez-nous pour commencer.</span>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Form -->
+      <div class="reveal">
+        <form class="contact-form" id="contactForm" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fname">
+                <span class="t-ar">الاسم</span>
+                <span class="t-en">Name</span>
+                <span class="t-fr">Nom</span>
+              </label>
+              <input
+                type="text"
+                id="fname"
+                name="name"
+                class="form-input"
+                required
+                autocomplete="name"
+                placeholder=""
+              >
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="femail">
+                <span class="t-ar">البريد الإلكتروني</span>
+                <span class="t-en">Email</span>
+                <span class="t-fr">Email</span>
+              </label>
+              <input
+                type="email"
+                id="femail"
+                name="email"
+                class="form-input"
+                required
+                autocomplete="email"
+                placeholder=""
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fcompany">
+              <span class="t-ar">الشركة / المشروع</span>
+              <span class="t-en">Company / Project</span>
+              <span class="t-fr">Société / Projet</span>
+            </label>
+            <input
+              type="text"
+              id="fcompany"
+              name="company"
+              class="form-input"
+              autocomplete="organization"
+              placeholder=""
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="ftype">
+              <span class="t-ar">نوع المشروع</span>
+              <span class="t-en">Project Type</span>
+              <span class="t-fr">Type de Projet</span>
+            </label>
+            <select id="ftype" name="project_type" class="form-select"
+              data-opts-ar="اختر نوع المشروع,الهوية البصرية,مكتبة التصميم,تصميم تجربة المستخدم,النمذجة التفاعلية,اختبار المستخدم,مشروع متكامل,استراتيجية المنتج الرقمي,آخر"
+              data-opts-en="Select project type,Visual Identity,Design Library,UX Design,Interactive Prototyping,User Testing,Full Project,Digital Product Strategy,Other"
+              data-opts-fr="Sélectionner le type,Identité Visuelle,Bibliothèque de Design,Design UX,Prototypage Interactif,Tests Utilisateurs,Projet Complet,Stratégie Produit Numérique,Autre">
+              <option value="" disabled selected>اختر نوع المشروع</option>
+              <option value="identity">الهوية البصرية</option>
+              <option value="library">مكتبة التصميم</option>
+              <option value="ux">تصميم تجربة المستخدم</option>
+              <option value="prototype">النمذجة التفاعلية</option>
+              <option value="testing">اختبار المستخدم</option>
+              <option value="full">مشروع متكامل</option>
+              <option value="strategy">استراتيجية المنتج الرقمي</option>
+              <option value="other">آخر</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fmessage">
+              <span class="t-ar">رسالتك</span>
+              <span class="t-en">Your Message</span>
+              <span class="t-fr">Votre Message</span>
+            </label>
+            <textarea
+              id="fmessage"
+              name="message"
+              class="form-textarea"
+              required
+              rows="5"
+              placeholder=""
+            ></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            <span class="t-ar">أرسل الآن</span>
+            <span class="t-en">Send Now</span>
+            <span class="t-fr">Envoyer</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+
+          <p class="form-note">
+            <span class="t-ar">سنرد عليك خلال 24 ساعة</span>
+            <span class="t-en">We'll reply within 24 hours</span>
+            <span class="t-fr">Nous répondrons dans les 24 heures</span>
+          </p>
+
+        </form>
+
+        <!-- Success State -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 style="font-size:20px; font-weight:600; color:var(--c-text);">
+            <span class="t-ar">شكراً لك!</span>
+            <span class="t-en">Thank You!</span>
+            <span class="t-fr">Merci!</span>
+          </h3>
+          <p style="font-size:14px; color:var(--c-text-60); max-width:280px;">
+            <span class="t-ar">استلمنا رسالتك وسنتواصل معك قريباً.</span>
+            <span class="t-en">We received your message and will be in touch soon.</span>
+            <span class="t-fr">Nous avons reçu votre message et vous contacterons bientôt.</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-top">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#" class="footer-logo" aria-label="Nawat Studio">
+          <div class="footer-logo-mark">
+            <img src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio">
+          </div>
+          <span class="footer-wordmark">Nawat Studio</span>
+        </a>
+        <p class="footer-tagline">
+          <span class="t-ar">نواة كلّ منتج رقمي استثنائي — نصمم من الهوية البصرية إلى اختبار المستخدم.</span>
+          <span class="t-en">The seed of every exceptional digital product — designing from visual identity to user testing.</span>
+          <span class="t-fr">La graine de chaque produit numérique exceptionnel — de l'identité visuelle aux tests utilisateurs.</span>
+        </p>
+      </div>
+
+      <!-- Links: Services -->
+      <div>
+        <p class="footer-col-title">
+          <span class="t-ar">خدماتنا</span>
+          <span class="t-en">Services</span>
+          <span class="t-fr">Services</span>
+        </p>
+        <ul class="footer-links">
+          <li><a href="#services" class="footer-link">
+            <span class="t-ar">الهوية البصرية</span>
+            <span class="t-en">Visual Identity</span>
+            <span class="t-fr">Identité Visuelle</span>
+          </a></li>
+          <li><a href="#services" class="footer-link">
+            <span class="t-ar">مكتبة التصميم</span>
+            <span class="t-en">Design Library</span>
+            <span class="t-fr">Bibliothèque de Design</span>
+          </a></li>
+          <li><a href="#services" class="footer-link">
+            <span class="t-ar">تصميم UX</span>
+            <span class="t-en">UX Design</span>
+            <span class="t-fr">Design UX</span>
+          </a></li>
+          <li><a href="#services" class="footer-link">
+            <span class="t-ar">اختبار المستخدم</span>
+            <span class="t-en">User Testing</span>
+            <span class="t-fr">Tests Utilisateurs</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <!-- Links: Studio -->
+      <div>
+        <p class="footer-col-title">
+          <span class="t-ar">الاستوديو</span>
+          <span class="t-en">Studio</span>
+          <span class="t-fr">Studio</span>
+        </p>
+        <ul class="footer-links">
+          <li><a href="#work" class="footer-link">
+            <span class="t-ar">أعمالنا</span>
+            <span class="t-en">Our Work</span>
+            <span class="t-fr">Notre Travail</span>
+          </a></li>
+          <li><a href="#founder" class="footer-link">
+            <span class="t-ar">المؤسس</span>
+            <span class="t-en">Founder</span>
+            <span class="t-fr">Fondateur</span>
+          </a></li>
+          <li><a href="#process" class="footer-link">
+            <span class="t-ar">مسار العمل</span>
+            <span class="t-en">Process</span>
+            <span class="t-fr">Processus</span>
+          </a></li>
+          <li><a href="#contact" class="footer-link">
+            <span class="t-ar">تواصل معنا</span>
+            <span class="t-en">Contact</span>
+            <span class="t-fr">Contact</span>
+          </a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer-bottom">
+      <p class="footer-copy-ar t-ar">
+        © 2026 نواة ستوديو. جميع الحقوق محفوظة.
+      </p>
+      <p class="footer-copy t-en">
+        © 2026 Nawat Studio. All rights reserved.
+      </p>
+      <p class="footer-copy t-fr">
+        © 2026 Nawat Studio. Tous droits réservés.
+      </p>
+
+      <div class="footer-social">
+        <a href="#" class="footer-social-link" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Behance">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.718-3.967c-.088-1.443-1.019-2.017-2.029-2.017-1.138 0-1.967.641-2.171 2.017h4.2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+
+<!-- ================================================================
+     SCRIPTS
+     ================================================================ -->
+<script src="script.js"></script>
+
+
+<!-- LTR ↔ RTL direction transition overlay -->
+<div id="langOverlay" class="lang-transition-overlay" aria-hidden="true"></div>
+
+</body>
+</html>

@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light" data-lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Iksir Design Library — مكتبة تصميم إكسير | نواة ستوديو × داتاماستر">
+  <meta name="theme-color" content="#F5F5F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E0E11" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Iksir Design Library — Nawat Studio">
+  <meta property="og:description" content="How we built a comprehensive Figma design library with 1,014+ variables, full RTL/LTR support, and complete documentation for Datamaster's digital products.">
+  <meta property="og:image" content="https://nawat.studio/assets/og-iksir.jpg">
+  <meta property="og:url" content="https://nawat.studio/case-study-iksir.html">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://nawat.studio/case-study-iksir.html">
+  <title>Iksir Design Library — نواة ستوديو | Nawat Studio</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Prevent transition flash on load -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nawat-theme') || 'light';
+      var savedLang = localStorage.getItem('nawat-lang');
+      var deviceLang = (navigator.language || navigator.userLanguage || 'ar').toLowerCase().slice(0, 2);
+      var lang = savedLang || (['ar', 'en', 'fr'].indexOf(deviceLang) !== -1 ? deviceLang : 'ar');
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.classList.add('no-transitions');
+      document.addEventListener('DOMContentLoaded', function() {
+        document.documentElement.classList.remove('no-transitions');
+      });
+    })();
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230E0E11'/><circle cx='50' cy='50' r='18' fill='none' stroke='%23F5F5F5' stroke-width='4'/><circle cx='50' cy='50' r='6' fill='%232563EB'/></svg>">
+
+  <style>
+    /* ================================================================
+       CASE STUDY — Page-scoped styles
+       Uses only tokens defined in styles.css :root
+       ================================================================ */
+
+    /* ── Page accent: blue ───────────────────────────────────────── */
+    :root {
+      --cs-accent:       #2563EB;
+      --cs-accent-08:    rgba(37, 99, 235, 0.08);
+      --cs-accent-hover: #1d4ed8;
+    }
+
+    /* ── RTL-aware back arrow ──────────────────────────────────────── */
+    html[dir="rtl"] .cs-back-arrow { transform: scaleX(-1); }
+
+    /* ── Breadcrumb ───────────────────────────────────────────────── */
+    .cs-breadcrumb {
+      padding-top: calc(var(--nav-h) + 40px);
+    }
+    .cs-breadcrumb-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--c-text-60);
+    }
+    .cs-breadcrumb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--c-text-60);
+      transition: color var(--t-fast);
+    }
+    .cs-breadcrumb-link:hover { color: var(--c-text); }
+    .cs-breadcrumb-sep { color: var(--c-text-30); }
+
+    /* ── Hero ─────────────────────────────────────────────────────── */
+    .cs-hero {
+      padding-top: clamp(28px, 4vw, 56px);
+      padding-bottom: 0;
+    }
+    .cs-hero-inner { max-width: 900px; }
+
+    .cs-hero-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cs-accent);
+      margin-bottom: 20px;
+      font-family: var(--font-latin);
+    }
+    .cs-hero-meta-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--cs-accent);
+      opacity: 0.5;
+    }
+
+    .cs-hero-title {
+      font-size: clamp(36px, 7vw, 80px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+      margin-bottom: 28px;
+    }
+    html[lang="en"] .cs-hero-title,
+    html[lang="fr"] .cs-hero-title { letter-spacing: -0.03em; }
+
+    /* Tags */
+    .cs-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .cs-tag {
+      padding: 5px 14px;
+      border: 1px solid var(--c-border);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--c-text-60);
+      background: transparent;
+    }
+
+    /* Stats row */
+    .cs-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: clamp(48px, 8vw, 80px);
+    }
+    .cs-stat { display: flex; flex-direction: column; gap: 5px; }
+    .cs-stat-num {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--c-text);
+      font-family: var(--font-latin);
+    }
+    .cs-stat-num em { color: var(--cs-accent); font-style: normal; }
+    .cs-stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--c-text-60);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .cs-stat-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--c-border);
+      flex-shrink: 0;
+    }
+
+    /* ── Cover image area ─────────────────────────────────────────── */
+    .cs-cover {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      aspect-ratio: 16 / 7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cs-cover-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--c-border) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .cs-cover-placeholder {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .cs-cover-icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--c-surface-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--c-text-30);
+    }
+    .cs-cover-hint {
+      font-size: 11px;
+      color: var(--c-text-30);
+      font-family: var(--font-latin);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Generic section ──────────────────────────────────────────── */
+    .cs-section {
+      padding-top: var(--section-py);
+      padding-bottom: var(--section-py);
+    }
+    .cs-section + .cs-section {
+      border-top: 1px solid var(--c-border);
+    }
+    .cs-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cs-accent);
+      margin-bottom: 14px;
+    }
+    .cs-section-title {
+      font-size: clamp(28px, 4.5vw, 52px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+      margin-bottom: 20px;
+    }
+    html[lang="en"] .cs-section-title,
+    html[lang="fr"] .cs-section-title { letter-spacing: -0.03em; }
+    .cs-section-body {
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.8;
+      color: var(--c-text-60);
+      max-width: 620px;
+    }
+
+    /* ── Challenge layout ─────────────────────────────────────────── */
+    .cs-problem-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 88px);
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .cs-problem-layout { grid-template-columns: 1fr; }
+    }
+
+    .cs-problem-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cs-problem-card {
+      padding: 20px 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+      transition: border-color var(--t-fast), background var(--t-fast);
+    }
+    .cs-problem-card:hover {
+      border-color: var(--c-border-lg);
+      background: var(--c-surface-md);
+    }
+    .cs-problem-num {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--c-text-30);
+      margin-bottom: 6px;
+      font-family: var(--font-latin);
+    }
+    .cs-problem-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 5px;
+      line-height: 1.35;
+    }
+    .cs-problem-desc {
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--c-text-60);
+    }
+
+    /* ── Solution features grid ───────────────────────────────────── */
+    .cs-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: clamp(48px, 6vw, 72px);
+    }
+    @media (max-width: 580px) {
+      .cs-features { grid-template-columns: 1fr; }
+    }
+    .cs-feature-card {
+      padding: clamp(24px, 3vw, 36px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+      transition: border-color var(--t-fast), transform var(--t-base);
+    }
+    .cs-feature-card:hover {
+      border-color: var(--c-border-lg);
+      transform: translateY(-3px);
+    }
+    .cs-feature-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--cs-accent-08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cs-accent);
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+    .cs-feature-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cs-feature-body {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--c-text-60);
+    }
+    .cs-feature-badge {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 4px 11px;
+      border-radius: 100px;
+      background: var(--cs-accent-08);
+      color: var(--cs-accent);
+      font-size: 11px;
+      font-weight: 600;
+      font-family: var(--font-latin);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CTA closing section ──────────────────────────────────────── */
+    .cs-cta {
+      position: relative;
+      background: var(--black);
+      overflow: hidden;
+      padding: clamp(100px, 16vw, 180px) 0;
+      /* currentColor used by SVG watermark — white in dark, black in light */
+      color: var(--white);
+    }
+    [data-theme="light"] .cs-cta {
+      background: var(--c-bg-alt);
+      color: var(--black);
+    }
+
+    .cs-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--cs-accent) 40%, var(--cs-accent) 60%, transparent 100%);
+      opacity: 0.4;
+    }
+
+    .cs-cta-watermark {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(400px, 70vw, 800px);
+      height: clamp(400px, 70vw, 800px);
+      pointer-events: none;
+      opacity: 0.055;
+    }
+    [data-theme="light"] .cs-cta-watermark { opacity: 0.07; }
+
+    .cs-cta-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(245,245,245,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    [data-theme="light"] .cs-cta-dots {
+      background-image: radial-gradient(var(--black-10) 1px, transparent 1px);
+    }
+
+    .cs-cta-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cs-cta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border: 1px solid rgba(245,245,245,0.12);
+      border-radius: 100px;
+      font-family: var(--font-latin);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,245,245,0.45);
+      margin-bottom: 36px;
+    }
+    [data-theme="light"] .cs-cta-pill {
+      border-color: var(--c-border-lg);
+      color: var(--c-text-60);
+    }
+
+    .cs-cta-pill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cs-accent);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(37,99,235,0.8);
+    }
+
+    .cs-cta-title {
+      font-size: clamp(36px, 6.5vw, 76px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      max-width: 820px;
+      margin-bottom: 24px;
+    }
+    [data-theme="light"] .cs-cta-title { color: var(--c-text); }
+    html[lang="ar"] .cs-cta-title { letter-spacing: -0.01em; }
+    .cs-cta-title em {
+      font-style: normal;
+      color: var(--cs-accent);
+    }
+
+    .cs-cta-body {
+      font-size: clamp(14px, 1.6vw, 17px);
+      line-height: 1.8;
+      color: rgba(245,245,245,0.45);
+      max-width: 500px;
+      margin-bottom: 48px;
+    }
+    [data-theme="light"] .cs-cta-body { color: var(--c-text-60); }
+
+    .cs-cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cs-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform var(--t-fast), background var(--t-fast), border-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
+      white-space: nowrap;
+    }
+    .cs-cta-btn.primary {
+      background: var(--cs-accent);
+      color: var(--white);
+      border: 1px solid var(--cs-accent);
+    }
+    .cs-cta-btn.primary:hover {
+      background: var(--cs-accent-hover);
+      border-color: var(--cs-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37,99,235,0.35);
+    }
+    .cs-cta-btn.ghost {
+      background: transparent;
+      color: rgba(245,245,245,0.65);
+      border: 1px solid rgba(245,245,245,0.18);
+    }
+    .cs-cta-btn.ghost:hover {
+      color: var(--white);
+      border-color: rgba(245,245,245,0.45);
+      transform: translateY(-2px);
+    }
+    [data-theme="light"] .cs-cta-btn.ghost {
+      color: var(--c-text-60);
+      border-color: var(--c-border-lg);
+    }
+    [data-theme="light"] .cs-cta-btn.ghost:hover {
+      color: var(--c-text);
+      border-color: var(--c-text-85);
+    }
+
+    html[dir="rtl"] .cs-cta-arrow { transform: scaleX(-1); }
+
+    /* ── Image slots ──────────────────────────────────────────────── */
+    .cs-img-slot {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cs-img-slot-bg {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--c-border) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .cs-img-slot-label {
+      position: relative;
+      z-index: 1;
+      font-size: 11px;
+      color: var(--c-text-30);
+      font-family: var(--font-latin);
+      letter-spacing: 0.06em;
+    }
+
+    .cs-solution-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: clamp(40px, 5vw, 64px);
+    }
+    .cs-solution-images .cs-img-slot:first-child {
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 580px) {
+      .cs-solution-images { grid-template-columns: 1fr; }
+      .cs-solution-images .cs-img-slot:first-child { grid-column: auto; }
+    }
+
+    /* ── Process steps ────────────────────────────────────────────── */
+    .cs-process-steps {
+      margin-top: clamp(48px, 6vw, 72px);
+    }
+    .cs-process-step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      border-top: 1px solid var(--c-border);
+    }
+    .cs-process-step:last-child { border-bottom: 1px solid var(--c-border); }
+    @media (max-width: 580px) {
+      .cs-process-step { grid-template-columns: 48px 1fr; gap: 16px; }
+    }
+    .cs-process-num {
+      font-size: clamp(24px, 2.5vw, 36px);
+      font-weight: 700;
+      color: var(--c-text-30);
+      font-family: var(--font-latin);
+      line-height: 1;
+      padding-top: 4px;
+      transition: color var(--t-fast);
+    }
+    .cs-process-step:hover .cs-process-num { color: var(--cs-accent); }
+    .cs-process-title {
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .cs-process-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--c-text-60);
+      max-width: 580px;
+    }
+
+    /* ── Related Case Studies ─────────────────────────────────────── */
+    .cs-related {
+      padding: var(--section-py) 0;
+      border-top: 1px solid var(--c-border);
+    }
+    .cs-related-header { margin-bottom: clamp(40px, 5vw, 56px); }
+    .cs-related-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cs-accent);
+      margin-bottom: 12px;
+    }
+    .cs-related-heading {
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+    }
+    html[lang="en"] .cs-related-heading,
+    html[lang="fr"] .cs-related-heading { letter-spacing: -0.03em; }
+    .cs-related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .cs-related-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--c-text);
+      transition: border-color var(--t-fast), transform var(--t-base), box-shadow var(--t-base);
+    }
+    .cs-related-card:hover {
+      border-color: var(--card-accent);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 52px rgba(0,0,0,0.08);
+    }
+    [data-theme="dark"] .cs-related-card:hover {
+      box-shadow: 0 24px 52px rgba(0,0,0,0.35);
+    }
+    .cs-related-card-bar { height: 3px; background: var(--card-accent); flex-shrink: 0; }
+    .cs-related-card-body {
+      padding: clamp(22px, 3vw, 32px);
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+    }
+    .cs-related-card-client {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--card-accent);
+      font-family: var(--font-latin);
+    }
+    .cs-related-card-title {
+      font-size: clamp(17px, 1.8vw, 21px);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--c-text);
+      letter-spacing: -0.01em;
+    }
+    .cs-related-card-metric {
+      font-size: clamp(28px, 3.2vw, 40px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--card-accent);
+      font-family: var(--font-latin);
+    }
+    .cs-related-card-metric-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--c-text-60);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+    .cs-related-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .cs-related-card-tags span {
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--c-border);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--c-text-60);
+    }
+    .cs-related-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--c-border);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--card-accent);
+      transition: gap var(--t-fast);
+    }
+    .cs-related-card:hover .cs-related-card-cta { gap: 10px; }
+    html[dir="rtl"] .cs-related-card-arrow { transform: scaleX(-1); }
+  </style>
+</head>
+
+<body>
+
+<!-- ================================================================
+     NAVIGATION
+     ================================================================ -->
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <div class="nav-inner container">
+
+    <a href="index.html" class="nav-logo" aria-label="نواة ستوديو">
+      <div class="nav-logo-mark">
+        <img class="logo-light-mode" src="assets/Nawat_Logo_ForLight.svg" alt="Nawat Studio" aria-hidden="true">
+        <img class="logo-dark-mode"  src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio" aria-hidden="true">
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html#services" class="nav-link">
+        <span class="t-ar">خدماتنا</span>
+        <span class="t-en">Services</span>
+        <span class="t-fr">Services</span>
+      </a>
+      <a href="index.html#work" class="nav-link">
+        <span class="t-ar">أعمالنا</span>
+        <span class="t-en">Work</span>
+        <span class="t-fr">Travaux</span>
+      </a>
+      <a href="index.html#process" class="nav-link">
+        <span class="t-ar">المسار</span>
+        <span class="t-en">Process</span>
+        <span class="t-fr">Processus</span>
+      </a>
+    </div>
+
+    <div class="nav-controls">
+      <div class="lang-switcher" role="group" aria-label="Language selector">
+        <button class="lang-btn active" data-lang-btn="ar" aria-label="العربية">AR</button>
+        <button class="lang-btn"        data-lang-btn="en" aria-label="English">EN</button>
+        <button class="lang-btn"        data-lang-btn="fr" aria-label="Français">FR</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <a href="index.html#contact" class="nav-cta btn">
+        <span class="t-ar">ابدأ مشروعك</span>
+        <span class="t-en">Start Your Project</span>
+        <span class="t-fr">Démarrer votre projet</span>
+      </a>
+    </div>
+
+    <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Main navigation">
+  <a href="index.html#services" class="nav-link">
+    <span class="t-ar">خدماتنا</span>
+    <span class="t-en">Services</span>
+    <span class="t-fr">Services</span>
+  </a>
+  <a href="index.html#work" class="nav-link">
+    <span class="t-ar">أعمالنا</span>
+    <span class="t-en">Work</span>
+    <span class="t-fr">Travaux</span>
+  </a>
+  <a href="index.html#process" class="nav-link">
+    <span class="t-ar">المسار</span>
+    <span class="t-en">Process</span>
+    <span class="t-fr">Processus</span>
+  </a>
+  <div class="mobile-menu-footer">
+    <a href="index.html#contact" class="btn btn-primary" style="justify-content:center;">
+      <span class="t-ar">ابدأ مشروعك</span>
+      <span class="t-en">Start Your Project</span>
+      <span class="t-fr">Démarrer votre projet</span>
+    </a>
+  </div>
+</div>
+
+
+<main id="main-content">
+
+<!-- ── Breadcrumb ────────────────────────────────────────────────── -->
+<div class="cs-breadcrumb container">
+  <div class="cs-breadcrumb-inner">
+    <a href="index.html#work" class="cs-breadcrumb-link">
+      <svg class="cs-back-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      <span class="t-ar">أعمالنا</span>
+      <span class="t-en">Work</span>
+      <span class="t-fr">Travaux</span>
+    </a>
+    <span class="cs-breadcrumb-sep">/</span>
+    <span>Iksir</span>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="cs-hero container">
+  <div class="cs-hero-inner reveal">
+
+    <!-- Client label -->
+    <div class="cs-hero-meta">
+      <span>DataMaster</span>
+      <span class="cs-hero-meta-dot"></span>
+      <span>Nawat Studio</span>
+    </div>
+
+    <!-- Title -->
+    <h1 class="cs-hero-title">
+      <span class="t-ar">مكتبة تصميم إكسير</span>
+      <span class="t-en">Iksir Design Library</span>
+      <span class="t-fr">Bibliothèque de Design Iksir</span>
+    </h1>
+
+    <!-- Tags -->
+    <div class="cs-tags">
+      <span class="cs-tag">
+        <span class="t-ar">نظام تصميم</span>
+        <span class="t-en">Design System</span>
+        <span class="t-fr">Design System</span>
+      </span>
+      <span class="cs-tag">
+        <span class="t-ar">مكتبة فيغما</span>
+        <span class="t-en">Figma Library</span>
+        <span class="t-fr">Bibliothèque Figma</span>
+      </span>
+      <span class="cs-tag">
+        <span class="t-ar">توثيق</span>
+        <span class="t-en">Documentation</span>
+        <span class="t-fr">Documentation</span>
+      </span>
+      <span class="cs-tag">RTL / LTR</span>
+      <span class="cs-tag">
+        <span class="t-ar">إمكانية الوصول</span>
+        <span class="t-en">Accessibility</span>
+        <span class="t-fr">Accessibilité</span>
+      </span>
+    </div>
+
+    <!-- Stats -->
+    <div class="cs-stats">
+      <div class="cs-stat">
+        <div class="cs-stat-num">1014<em>+</em></div>
+        <div class="cs-stat-label">
+          <span class="t-ar">متغير في فيغما</span>
+          <span class="t-en">Figma Variables</span>
+          <span class="t-fr">Variables Figma</span>
+        </div>
+      </div>
+      <div class="cs-stat-divider"></div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">100<em>%</em></div>
+        <div class="cs-stat-label">
+          <span class="t-ar">موثّق ومقنَّن</span>
+          <span class="t-en">Documented</span>
+          <span class="t-fr">Documenté</span>
+        </div>
+      </div>
+      <div class="cs-stat-divider"></div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">2</div>
+        <div class="cs-stat-label">
+          <span class="t-ar">اتجاه — RTL &amp; LTR</span>
+          <span class="t-en">Directions — RTL &amp; LTR</span>
+          <span class="t-fr">Directions — RTL &amp; LTR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cover placeholder (full-width) -->
+  <div class="cs-cover reveal">
+    <div class="cs-cover-dots"></div>
+    <!-- Decorative abstract design-system visualization -->
+    <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1;" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Color swatch row -->
+      <rect x="72" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.9"/>
+      <rect x="116" y="60" width="36" height="36" rx="7" fill="#2563EB" opacity="0.85"/>
+      <rect x="160" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.55"/>
+      <rect x="204" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.35"/>
+      <rect x="248" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.18"/>
+      <!-- Type scale -->
+      <rect x="72" y="120" width="280" height="18" rx="5" fill="currentColor" opacity="0.65"/>
+      <rect x="72" y="147" width="220" height="13" rx="4" fill="currentColor" opacity="0.40"/>
+      <rect x="72" y="168" width="180" height="10" rx="3" fill="currentColor" opacity="0.28"/>
+      <rect x="72" y="185" width="140" height="8" rx="3"  fill="currentColor" opacity="0.18"/>
+      <!-- Buttons -->
+      <rect x="72" y="218" width="110" height="38" rx="8" fill="#2563EB" opacity="0.55"/>
+      <rect x="190" y="218" width="110" height="38" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.35"/>
+      <rect x="308" y="218" width="110" height="38" rx="8" fill="currentColor" opacity="0.12"/>
+      <!-- Input field -->
+      <rect x="72" y="272" width="260" height="38" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
+      <!-- Badge / chip -->
+      <rect x="72" y="328" width="90" height="28" rx="14" fill="#2563EB" opacity="0.2"/>
+      <rect x="170" y="328" width="70" height="28" rx="14" fill="currentColor" opacity="0.1"/>
+      <rect x="248" y="328" width="80" height="28" rx="14" fill="currentColor" opacity="0.1"/>
+      <!-- Card -->
+      <rect x="380" y="60" width="200" height="310" rx="14" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
+      <rect x="396" y="76" width="168" height="110" rx="8" fill="currentColor" opacity="0.08"/>
+      <rect x="396" y="200" width="130" height="11" rx="4" fill="currentColor" opacity="0.3"/>
+      <rect x="396" y="218" width="100" height="9" rx="3"  fill="currentColor" opacity="0.2"/>
+      <rect x="396" y="238" width="168" height="7" rx="3"  fill="currentColor" opacity="0.12"/>
+      <rect x="396" y="252" width="148" height="7" rx="3"  fill="currentColor" opacity="0.10"/>
+      <rect x="396" y="278" width="72" height="30" rx="6" fill="#2563EB" opacity="0.4"/>
+      <!-- Token table / variable list -->
+      <rect x="620" y="60" width="508" height="310" rx="14" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+      <!-- Table header -->
+      <rect x="636" y="76" width="476" height="36" rx="6" fill="currentColor" opacity="0.08"/>
+      <rect x="648" y="88" width="90" height="10" rx="3" fill="#2563EB" opacity="0.5"/>
+      <rect x="760" y="88" width="70" height="10" rx="3" fill="currentColor" opacity="0.3"/>
+      <rect x="852" y="88" width="55" height="10" rx="3" fill="currentColor" opacity="0.3"/>
+      <rect x="928" y="88" width="65" height="10" rx="3" fill="currentColor" opacity="0.3"/>
+      <!-- Rows -->
+      <line x1="636" y1="130" x2="1112" y2="130" stroke="currentColor" stroke-width="1" opacity="0.12"/>
+      <rect x="648" y="138" width="80" height="9" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="760" y="138" width="50" height="9" rx="3" fill="currentColor" opacity="0.15"/>
+      <line x1="636" y1="164" x2="1112" y2="164" stroke="currentColor" stroke-width="1" opacity="0.12"/>
+      <rect x="648" y="172" width="90" height="9" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="760" y="172" width="60" height="9" rx="3" fill="currentColor" opacity="0.15"/>
+      <line x1="636" y1="198" x2="1112" y2="198" stroke="currentColor" stroke-width="1" opacity="0.12"/>
+      <rect x="648" y="206" width="70" height="9" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="760" y="206" width="55" height="9" rx="3" fill="currentColor" opacity="0.15"/>
+      <line x1="636" y1="232" x2="1112" y2="232" stroke="currentColor" stroke-width="1" opacity="0.12"/>
+      <rect x="648" y="240" width="85" height="9" rx="3" fill="currentColor" opacity="0.22"/>
+      <line x1="636" y1="266" x2="1112" y2="266" stroke="currentColor" stroke-width="1" opacity="0.12"/>
+      <rect x="648" y="274" width="75" height="9" rx="3" fill="currentColor" opacity="0.22"/>
+      <line x1="636" y1="300" x2="1112" y2="300" stroke="currentColor" stroke-width="1" opacity="0.12"/>
+      <rect x="648" y="308" width="92" height="9" rx="3" fill="currentColor" opacity="0.22"/>
+      <!-- Dot grid watermark pattern -->
+    </svg>
+    <div class="cs-cover-placeholder">
+      <div class="cs-cover-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="3"/>
+          <path d="M3 9h18M9 21V9"/>
+        </svg>
+      </div>
+      <p class="cs-cover-hint">project screenshots · add to assets/</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CHALLENGE
+     ================================================================ -->
+<section class="cs-section container">
+  <div class="cs-problem-layout">
+
+    <!-- Left: label + title + body -->
+    <div class="reveal">
+      <p class="cs-section-label">
+        <span class="t-ar">التحدي</span>
+        <span class="t-en">The Challenge</span>
+        <span class="t-fr">Le Défi</span>
+      </p>
+      <h2 class="cs-section-title">
+        <span class="t-ar">البنية التحتية المفقودة</span>
+        <span class="t-en">The Missing Foundation</span>
+        <span class="t-fr">La Fondation Manquante</span>
+      </h2>
+      <p class="cs-section-body">
+        <span class="t-ar">كانت منتجات داتاماستر الرقمية تعاني من تشتت بصري واضح — كل منتج يبدو وكأنه صُمِّم من الصفر، دون توافق في الألوان أو الخطوط أو المكونات. لم يكن لدى المطورين أساس يبنون عليه، ولم يكن لدى المصممين مرجع يعودون إليه.<br><br>إكسير هي علامة داتاماستر التجارية لمنتجاتها الرقمية — ERP، تطبيقات موبايل، ومنتجات مستقبلية — وكانت تحتاج إلى نظام تصميم متكامل كأساس لكل ما سيأتي.</span>
+        <span class="t-en">Datamaster's digital products suffered from clear visual inconsistency — each one looking as if designed from scratch, with no shared colors, typography, or components. Developers had no foundation to build from, and designers had no common reference to return to.<br><br>Iksir is Datamaster's brand for their digital products — ERP, mobile apps, and future products — and it needed a comprehensive design system as the foundation for everything that follows.</span>
+        <span class="t-fr">Les produits numériques de Datamaster souffraient d'une incohérence visuelle évidente — chacun semblant conçu de zéro, sans couleurs, typographies ou composants partagés. Les développeurs n'avaient aucune base sur laquelle construire, et les designers aucune référence commune.<br><br>Iksir est la marque de Datamaster pour ses produits numériques — ERP, applications mobiles et futurs produits — et elle avait besoin d'un système de design complet comme fondation pour tout ce qui suit.</span>
+      </p>
+    </div>
+
+    <!-- Right: problem cards -->
+    <div class="cs-problem-cards reveal">
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">01</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">منتجات غير متسقة</span>
+          <span class="t-en">Inconsistent Products</span>
+          <span class="t-fr">Produits Incohérents</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">تجارب بصرية متباينة عبر المنتجات — كل منتج يبدو مختلفاً عن الآخر، دون خيط بصري موحِّد.</span>
+          <span class="t-en">Divergent visual experiences across products — each one looking different from the others, with no unifying visual thread.</span>
+          <span class="t-fr">Expériences visuelles divergentes entre les produits — chacun ayant une apparence distincte, sans fil directeur visuel.</span>
+        </div>
+      </div>
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">02</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">لا بنية تحتية للمطورين</span>
+          <span class="t-en">No Developer Infrastructure</span>
+          <span class="t-fr">Aucune Infrastructure Dev</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">كل مشروع يبدأ من الصفر — لا مكونات جاهزة، لا رموز، لا أساس مشترك يوفّر الوقت والجهد.</span>
+          <span class="t-en">Every project started from zero — no reusable components, no tokens, no shared base to save time and effort.</span>
+          <span class="t-fr">Chaque projet repartait de zéro — aucun composant réutilisable, aucun token, aucune base commune pour économiser temps et effort.</span>
+        </div>
+      </div>
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">03</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">غياب التوثيق والمعايير</span>
+          <span class="t-en">No Documentation or Standards</span>
+          <span class="t-fr">Pas de Documentation ni Standards</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">لا قواعد تصميمية مكتوبة، لا مرجعية مشتركة، ولا معايير يلتزم بها الفريق أثناء العمل.</span>
+          <span class="t-en">No written design rules, no shared references, and no standards for the team to follow when working.</span>
+          <span class="t-fr">Aucune règle de design écrite, aucune référence commune, et aucun standard pour l'équipe à respecter en travaillant.</span>
+        </div>
+      </div>
+
+      <div class="cs-problem-card">
+        <div class="cs-problem-num">04</div>
+        <div class="cs-problem-title">
+          <span class="t-ar">بداية تعاون استراتيجي طويل</span>
+          <span class="t-en">Start of a Long-Term Collaboration</span>
+          <span class="t-fr">Début d'une Collaboration Stratégique</span>
+        </div>
+        <div class="cs-problem-desc">
+          <span class="t-ar">المكتبة ليست الهدف النهائي — بل هي الخطوة الأولى. بعدها: إعادة هيكلة المعلومات، ثم إعادة تصميم المنتجات القائمة، ثم بناء المنتجات الجديدة.</span>
+          <span class="t-en">The library isn't the end goal — it's the first step. Next: information architecture redesign, then existing product redesign, then building new products.</span>
+          <span class="t-fr">La bibliothèque n'est pas l'objectif final — c'est la première étape. Ensuite : refonte de l'architecture de l'information, puis refonte des produits existants, puis création de nouveaux produits.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SOLUTION
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">الحل</span>
+      <span class="t-en">The Solution</span>
+      <span class="t-fr">La Solution</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">نواة لكل منتج قادم</span>
+      <span class="t-en">A Foundation for Every Future Product</span>
+      <span class="t-fr">Une Fondation pour Chaque Futur Produit</span>
+    </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">صممنا مكتبة تصميم فيغما شاملة ومنظمة، مرفقة بموقع توثيق غير تقني موجَّه لغير المصممين أيضاً. تجاوزت المكتبة ١٠١٤ متغيراً في فيغما وحده، وتشمل كل مكون وكل حالة وكل متغير ممكن — مع وثائق وافية وقواعد واضحة ودعم كامل لـ RTL و LTR ومعايير إمكانية الوصول.</span>
+      <span class="t-en">We designed a comprehensive, well-organized Figma design library paired with a non-technical documentation website aimed at non-designers too. The library exceeds 1,014 variables in Figma alone and covers every component, every state, and every possible variant — with thorough documentation, clear rules, full RTL & LTR support, and accessibility compliance.</span>
+      <span class="t-fr">Nous avons conçu une bibliothèque de design Figma complète et bien organisée, accompagnée d'un site de documentation non-technique destiné aussi aux non-designers. La bibliothèque dépasse 1 014 variables dans Figma seul et couvre chaque composant, chaque état et chaque variante possible — avec une documentation complète, des règles claires, un support RTL & LTR intégral et la conformité accessibilité.</span>
+    </p>
+  </div>
+
+  <!-- Feature cards 2×2 -->
+  <div class="cs-features">
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">رموز ومتغيرات</span>
+        <span class="t-en">Tokens &amp; Variables</span>
+        <span class="t-fr">Tokens &amp; Variables</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">بنينا نظاماً متكاملاً من المتغيرات — ألوان، طباعة، مسافات، أحجام، حواف، ظلال، وكل تفصيلة ممكنة. لا شيء تُرك للصدفة.</span>
+        <span class="t-en">We built a complete variable system — colors, typography, spacing, sizing, border radius, shadows, and every possible detail. Nothing left to chance.</span>
+        <span class="t-fr">Nous avons construit un système complet de variables — couleurs, typographie, espacement, tailles, rayons, ombres et chaque détail possible. Rien laissé au hasard.</span>
+      </p>
+      <span class="cs-feature-badge">1014+ variables</span>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="6" height="6" rx="1"/><rect x="16" y="7" width="6" height="6" rx="1"/>
+          <rect x="9" y="2" width="6" height="6" rx="1"/><rect x="9" y="16" width="6" height="6" rx="1"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">مكونات شاملة</span>
+        <span class="t-en">Full Component Library</span>
+        <span class="t-fr">Bibliothèque Complète</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">كل مكون في كل حالاته ومتغيراته الممكنة — من الأزرار والمدخلات إلى الجداول والنماذج المعقدة. لا استثناءات.</span>
+        <span class="t-en">Every component in all its possible states and variants — from buttons and inputs to complex tables and forms. No exceptions.</span>
+        <span class="t-fr">Chaque composant dans tous ses états et variantes possibles — des boutons et champs de saisie aux tableaux et formulaires complexes. Sans exception.</span>
+      </p>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">توثيق كامل وقواعد واضحة</span>
+        <span class="t-en">Complete Documentation</span>
+        <span class="t-fr">Documentation Complète</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">وثّقنا كل مكون بقواعد استخدامه وحالاته وقيوده — في موقع توثيق مُصمَّم ليكون مفهوماً لغير المصممين أيضاً.</span>
+        <span class="t-en">We documented every component with its usage rules, states, and constraints — on a documentation site designed to be understandable for non-designers too.</span>
+        <span class="t-fr">Nous avons documenté chaque composant avec ses règles d'utilisation, états et contraintes — sur un site de documentation conçu pour être compris aussi par les non-designers.</span>
+      </p>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="17 1 21 5 17 9"/>
+          <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+          <polyline points="7 23 3 19 7 15"/>
+          <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">إمكانية الوصول وثنائية الاتجاه</span>
+        <span class="t-en">Accessibility &amp; Bidirectionality</span>
+        <span class="t-fr">Accessibilité &amp; Bidirectionnalité</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">المكتبة تدعم اتجاهَي الكتابة RTL و LTR بشكل أصيل، وتلتزم بمعايير WCAG في كل مكوناتها.</span>
+        <span class="t-en">The library natively supports both RTL &amp; LTR text directions and complies with WCAG accessibility standards across all components.</span>
+        <span class="t-fr">La bibliothèque prend en charge nativement les deux directions RTL &amp; LTR et est conforme aux normes WCAG pour tous ses composants.</span>
+      </p>
+      <span class="cs-feature-badge">WCAG · RTL &amp; LTR</span>
+    </div>
+
+  </div>
+
+  <!-- Solution image slots -->
+  <div class="cs-solution-images">
+    <div class="cs-img-slot reveal" style="aspect-ratio:16/7;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">design library overview — 1600 × 700</span>
+    </div>
+    <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">token system — 800 × 600</span>
+    </div>
+    <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
+      <div class="cs-img-slot-bg"></div>
+      <span class="cs-img-slot-label">component library — 800 × 600</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ================================================================
+     PROCESS
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">كيف عملنا</span>
+      <span class="t-en">How We Worked</span>
+      <span class="t-fr">Comment Nous Avons Travaillé</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">مسار البناء</span>
+      <span class="t-en">The Build Process</span>
+      <span class="t-fr">Le Processus de Construction</span>
+    </h2>
+  </div>
+
+  <div class="cs-process-steps">
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">01</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">اكتشاف وتدقيق</span>
+          <span class="t-en">Discovery &amp; Audit</span>
+          <span class="t-fr">Découverte &amp; Audit</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">درسنا المنتجات القائمة بعمق واستكشفنا المشاكل والفجوات — فهمنا احتياجات الفريق ومتطلبات المنتجات المستقبلية قبل أن نرسم أي خط.</span>
+          <span class="t-en">We studied the existing products in depth, explored problems and gaps, and understood the team's needs and future product requirements — before drawing a single line.</span>
+          <span class="t-fr">Nous avons étudié en profondeur les produits existants, exploré les problèmes et lacunes, et compris les besoins de l'équipe et les exigences des futurs produits — avant de tracer la moindre ligne.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">02</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">بنية الرموز والمتغيرات</span>
+          <span class="t-en">Token Architecture</span>
+          <span class="t-fr">Architecture des Tokens</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">بنينا نظام المتغيرات الكامل — الألوان، الطباعة، المسافات، الأحجام، الحواف، وكل تفصيلة ممكنة. أكثر من ١٠١٤ متغير في فيغما وحده، منظَّم في طبقات دلالية واضحة.</span>
+          <span class="t-en">We built the full variable system — colors, typography, spacing, sizing, borders, and every possible detail. Over 1,014 variables in Figma alone, organized into clear semantic layers.</span>
+          <span class="t-fr">Nous avons construit le système complet de variables — couleurs, typographie, espacements, tailles, bordures et chaque détail possible. Plus de 1 014 variables dans Figma seul, organisées en couches sémantiques claires.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">03</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">تصميم المكونات</span>
+          <span class="t-en">Component Design</span>
+          <span class="t-fr">Design des Composants</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">صممنا كل مكون في كل حالاته ومتغيراته الممكنة — من الأبسط إلى الأكثر تعقيداً. لم نتجاهل أي حالة ولم نترك أي متغير دون تصميم متعمَّد.</span>
+          <span class="t-en">We designed every component in all its possible states and variants — from the simplest to the most complex. No state was overlooked, no variant was left without deliberate design.</span>
+          <span class="t-fr">Nous avons conçu chaque composant dans tous ses états et variantes possibles — du plus simple au plus complexe. Aucun état négligé, aucune variante sans design délibéré.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-process-step reveal">
+      <div class="cs-process-num">04</div>
+      <div>
+        <h3 class="cs-process-title">
+          <span class="t-ar">التوثيق والقواعد</span>
+          <span class="t-en">Documentation &amp; Rules</span>
+          <span class="t-fr">Documentation &amp; Règles</span>
+        </h3>
+        <p class="cs-process-desc">
+          <span class="t-ar">وثّقنا كل شيء — قواعد الاستخدام، معايير إمكانية الوصول، وإرشادات RTL/LTR. ثم أنشأنا موقع توثيق يمكن لغير المصممين فهمه والتعامل معه باستقلالية.</span>
+          <span class="t-en">We documented everything — usage rules, accessibility standards, and RTL/LTR guidelines. Then we built a documentation website that non-designers can understand and use independently.</span>
+          <span class="t-fr">Nous avons tout documenté — règles d'utilisation, normes d'accessibilité et directives RTL/LTR. Puis nous avons créé un site de documentation que les non-designers peuvent comprendre et utiliser de manière autonome.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CTA — Close the chapter
+     ================================================================ -->
+<section class="cs-cta">
+
+  <!-- Dot grid -->
+  <div class="cs-cta-dots" aria-hidden="true"></div>
+
+  <!-- Large concentric-circle watermark (Nawat seed motif) -->
+  <svg class="cs-cta-watermark" aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="98"  stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="100" cy="100" r="80"  stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="100" cy="100" r="62"  stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="100" cy="100" r="44"  stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="100" cy="100" r="28"  stroke="currentColor" stroke-width="1"/>
+    <circle cx="100" cy="100" r="14"  stroke="currentColor" stroke-width="1"/>
+    <circle cx="100" cy="100" r="5"   fill="#2563EB"/>
+    <line x1="100" y1="2"   x2="100" y2="20"  stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="100" y1="180" x2="100" y2="198" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="2"   y1="100" x2="20"  y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+    <line x1="180" y1="100" x2="198" y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
+  </svg>
+
+  <div class="container">
+    <div class="cs-cta-inner reveal">
+
+      <!-- Phase pill -->
+      <div class="cs-cta-pill">
+        <span class="cs-cta-pill-dot"></span>
+        <span>Iksir</span>
+        <span style="opacity:0.3;">·</span>
+        <span>
+          <span class="t-ar">المرحلة الأولى · مُنجَزة</span>
+          <span class="t-en">Phase 01 · Complete</span>
+          <span class="t-fr">Phase 01 · Complète</span>
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <h2 class="cs-cta-title">
+        <span class="t-ar">
+          جاهز لتزرع<br>
+          <em>منتجك</em> معنا؟
+        </span>
+        <span class="t-en">
+          Ready to plant<br>
+          <em>your product</em> with us?
+        </span>
+        <span class="t-fr">
+          Prêt à planter<br>
+          <em>votre produit</em> avec nous ?
+        </span>
+      </h2>
+
+      <!-- Body -->
+      <p class="cs-cta-body">
+        <span class="t-ar">ما بنيناه لإكسير — كل متغير، كل مكون، كل قاعدة — يمكن أن يكون نقطة انطلاق منتجك القادم. الأساس الصح يغيّر كل شيء.</span>
+        <span class="t-en">What we built for Iksir — every token, every component, every rule — can be the starting point for your next product. The right foundation changes everything.</span>
+        <span class="t-fr">Ce que nous avons construit pour Iksir — chaque token, chaque composant, chaque règle — peut être le point de départ de votre prochain produit. La bonne fondation change tout.</span>
+      </p>
+
+      <!-- Actions -->
+      <div class="cs-cta-actions">
+        <a href="index.html#contact" class="cs-cta-btn primary">
+          <span class="t-ar">ابدأ مشروعك</span>
+          <span class="t-en">Start Your Project</span>
+          <span class="t-fr">Démarrer votre projet</span>
+          <svg class="cs-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <a href="index.html#work" class="cs-cta-btn ghost">
+          <span class="t-ar">أعمالنا</span>
+          <span class="t-en">More Work</span>
+          <span class="t-fr">Plus de Travaux</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     RELATED CASE STUDIES
+     ================================================================ -->
+<section class="cs-related container">
+
+  <div class="cs-related-header reveal">
+    <p class="cs-related-label">
+      <span class="t-ar">أعمال أخرى</span>
+      <span class="t-en">More Work</span>
+      <span class="t-fr">Plus de Travaux</span>
+    </p>
+    <h2 class="cs-related-heading">
+      <span class="t-ar">مشاريع قد تهمك</span>
+      <span class="t-en">More Projects</span>
+      <span class="t-fr">Autres Projets</span>
+    </h2>
+  </div>
+
+  <div class="cs-related-grid">
+
+    <!-- Task Management App -->
+    <a href="case-study-tasks.html" class="cs-related-card reveal" style="--card-accent: #2563EB;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">DataMaster</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">تطبيق إدارة المهام</span>
+          <span class="t-en">Task Management App</span>
+          <span class="t-fr">Application de Gestion des Tâches</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">50%</div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">تقليل وقت إنجاز المهام</span>
+            <span class="t-en">Reduction in Task Completion Time</span>
+            <span class="t-fr">Réduction du Temps d'Exécution</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span>ERP</span>
+          <span><span class="t-ar">موبايل أولاً</span><span class="t-en">Mobile First</span><span class="t-fr">Mobile First</span></span>
+          <span><span class="t-ar">نظام تصميم</span><span class="t-en">Design System</span><span class="t-fr">Design System</span></span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- B2B Sales ERP Module -->
+    <a href="case-study-b2bsales.html" class="cs-related-card reveal" style="--card-accent: #EA580C;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">DataMaster</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">وحدة المبيعات B2B في ERP</span>
+          <span class="t-en">B2B Sales ERP Module</span>
+          <span class="t-fr">Module ERP Ventes B2B</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">40%</div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">تسريع إنشاء عروض الأسعار</span>
+            <span class="t-en">Faster Quote Creation</span>
+            <span class="t-fr">Création de Devis Plus Rapide</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span>ERP</span>
+          <span><span class="t-ar">مبيعات B2B</span><span class="t-en">B2B Sales</span><span class="t-fr">Ventes B2B</span></span>
+          <span><span class="t-ar">UX المؤسسي</span><span class="t-en">Enterprise UX</span><span class="t-fr">UX Entreprise</span></span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- REACH eLearning Platform -->
+    <a href="case-study-reach.html" class="cs-related-card reveal" style="--card-accent: #0D9488;">
+      <div class="cs-related-card-bar"></div>
+      <div class="cs-related-card-body">
+        <span class="cs-related-card-client">REACH</span>
+        <h3 class="cs-related-card-title">
+          <span class="t-ar">منصة التعليم الإلكتروني</span>
+          <span class="t-en">eLearning Platform</span>
+          <span class="t-fr">Plateforme eLearning</span>
+        </h3>
+        <div>
+          <div class="cs-related-card-metric">60%</div>
+          <div class="cs-related-card-metric-label">
+            <span class="t-ar">تقليل وقت إنشاء المحتوى</span>
+            <span class="t-en">Reduction in Course Creation Time</span>
+            <span class="t-fr">Réduction du Temps de Création</span>
+          </div>
+        </div>
+        <div class="cs-related-card-tags">
+          <span>EdTech</span>
+          <span>SaaS</span>
+          <span><span class="t-ar">أدوات التدريس</span><span class="t-en">Teacher Tools</span><span class="t-fr">Outils Enseignant</span></span>
+        </div>
+        <div class="cs-related-card-cta">
+          <span class="t-ar">عرض المشروع</span>
+          <span class="t-en">View Case Study</span>
+          <span class="t-fr">Voir le Projet</span>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+</main>
+
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="Nawat Studio">
+          <div class="footer-logo-mark">
+            <img src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio">
+          </div>
+          <span class="footer-wordmark">Nawat Studio</span>
+        </a>
+        <p class="footer-tagline">
+          <span class="t-ar">نواة كلّ منتج رقمي استثنائي — نصمم من الهوية البصرية إلى اختبار المستخدم.</span>
+          <span class="t-en">The seed of every exceptional digital product — designing from visual identity to user testing.</span>
+          <span class="t-fr">La graine de chaque produit numérique exceptionnel — de l'identité visuelle aux tests utilisateurs.</span>
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <p class="footer-col-title">
+          <span class="t-ar">خدماتنا</span>
+          <span class="t-en">Services</span>
+          <span class="t-fr">Services</span>
+        </p>
+        <ul class="footer-links">
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">الهوية البصرية</span>
+            <span class="t-en">Visual Identity</span>
+            <span class="t-fr">Identité Visuelle</span>
+          </a></li>
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">مكتبة التصميم</span>
+            <span class="t-en">Design Library</span>
+            <span class="t-fr">Bibliothèque de Design</span>
+          </a></li>
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">تصميم UX</span>
+            <span class="t-en">UX Design</span>
+            <span class="t-fr">Design UX</span>
+          </a></li>
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">اختبار المستخدم</span>
+            <span class="t-en">User Testing</span>
+            <span class="t-fr">Tests Utilisateurs</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <!-- Studio -->
+      <div>
+        <p class="footer-col-title">
+          <span class="t-ar">الاستوديو</span>
+          <span class="t-en">Studio</span>
+          <span class="t-fr">Studio</span>
+        </p>
+        <ul class="footer-links">
+          <li><a href="index.html#work" class="footer-link">
+            <span class="t-ar">أعمالنا</span>
+            <span class="t-en">Our Work</span>
+            <span class="t-fr">Notre Travail</span>
+          </a></li>
+          <li><a href="index.html#process" class="footer-link">
+            <span class="t-ar">مسار العمل</span>
+            <span class="t-en">Process</span>
+            <span class="t-fr">Processus</span>
+          </a></li>
+          <li><a href="index.html#contact" class="footer-link">
+            <span class="t-ar">تواصل معنا</span>
+            <span class="t-en">Contact</span>
+            <span class="t-fr">Contact</span>
+          </a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy-ar t-ar">© 2026 نواة ستوديو. جميع الحقوق محفوظة.</p>
+      <p class="footer-copy t-en">© 2026 Nawat Studio. All rights reserved.</p>
+      <p class="footer-copy t-fr">© 2026 Nawat Studio. Tous droits réservés.</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-link" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Behance">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.718-3.967c-.088-1.443-1.019-2.017-2.029-2.017-1.138 0-1.967.641-2.171 2.017h4.2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
