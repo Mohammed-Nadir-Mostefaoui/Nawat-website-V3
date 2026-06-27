@@ -489,7 +489,9 @@ function initServiceCards() {
 
       // Scroll so the Name field is the first thing visible
       const nameField = document.getElementById('fname') || contact;
-      nameField.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+      const y = nameField.getBoundingClientRect().top + window.pageYOffset - navH - 16;
+      window.scrollTo({ top: y, behavior: 'smooth' });
 
       // After scroll settles, briefly highlight the select
       setTimeout(() => {
