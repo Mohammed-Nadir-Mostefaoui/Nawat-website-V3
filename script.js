@@ -476,7 +476,7 @@ function initServiceCards() {
   const contact = $('#contact');
   if (!select || !contact) return;
 
-  $$('.service-card[data-service]').forEach(card => {
+  $$('.service-card[data-service], .spectrum-cta[data-service]').forEach(card => {
     // Handle both click and Enter/Space for keyboard users
     const activate = () => {
       const value = card.dataset.service;
@@ -505,7 +505,7 @@ function initServiceCards() {
       }, 700);
     };
 
-    card.addEventListener('click', activate);
+    card.addEventListener('click', (e) => { e.preventDefault(); activate(); });
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
     });
