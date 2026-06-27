@@ -49,7 +49,7 @@
   </script>
 
   <!-- Favicon inline SVG -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230E0E11'/><circle cx='50' cy='50' r='18' fill='none' stroke='%23F5F5F5' stroke-width='4'/><circle cx='50' cy='50' r='6' fill='%232563EB'/></svg>">
+  <link rel="icon" href="assets/Nawat_Logo_ForLight.svg" type="image/svg+xml">
 </head>
 
 <body>
@@ -92,7 +92,7 @@
           </p>
 
           <div class="nwp-cards">
-            <a href="case-study-iksir.html" class="nwp-card" style="--nwp-accent:#2563EB;" role="menuitem">
+            <div class="nwp-card" style="--nwp-accent:#2563EB; cursor:default;" role="menuitem">
               <span class="nwp-accent-bar"></span>
               <div class="nwp-info">
                 <span class="nwp-num">01</span>
@@ -107,9 +107,9 @@
               </div>
               <span class="nwp-dot"></span>
               <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            </div>
 
-            <a href="case-study-tasks.html" class="nwp-card" style="--nwp-accent:#2563EB;" role="menuitem">
+            <div class="nwp-card" style="--nwp-accent:#2563EB; cursor:default;" role="menuitem">
               <span class="nwp-accent-bar"></span>
               <div class="nwp-info">
                 <span class="nwp-num">02</span>
@@ -124,9 +124,9 @@
               </div>
               <span class="nwp-dot"></span>
               <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            </div>
 
-            <a href="case-study-b2bsales.html" class="nwp-card" style="--nwp-accent:#EA580C;" role="menuitem">
+            <div class="nwp-card" style="--nwp-accent:#EA580C; cursor:default;" role="menuitem">
               <span class="nwp-accent-bar"></span>
               <div class="nwp-info">
                 <span class="nwp-num">03</span>
@@ -141,9 +141,9 @@
               </div>
               <span class="nwp-dot"></span>
               <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            </div>
 
-            <a href="case-study-reach.html" class="nwp-card" style="--nwp-accent:#0D9488;" role="menuitem">
+            <div class="nwp-card" style="--nwp-accent:#0D9488; cursor:default;" role="menuitem">
               <span class="nwp-accent-bar"></span>
               <div class="nwp-info">
                 <span class="nwp-num">04</span>
@@ -158,7 +158,7 @@
               </div>
               <span class="nwp-dot"></span>
               <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            </div>
           </div>
 
           <div class="nwp-footer">
@@ -691,7 +691,6 @@
       <!-- ── Card 1 — Iksir Design System (live case study) ─────── -->
       <article class="work-card featured">
         <!-- Stretched overlay link — makes the entire card clickable -->
-        <a href="case-study-iksir.html" class="work-card-overlay" aria-label="Iksir Design System — View Case Study"></a>
 
         <div class="work-card-image">
           <div class="ui-mockup brand-mockup">
@@ -763,7 +762,6 @@
 
       <!-- ── Card 2 — Tasks App (live case study) ─────────────────── -->
       <article class="work-card secondary">
-        <a href="case-study-tasks.html" class="work-card-overlay" aria-label="Task Management App — View Case Study"></a>
         <div class="work-card-image">
           <div class="ui-mockup" style="background:var(--c-surface);">
             <div style="position:absolute;inset:16px;display:flex;align-items:center;gap:12px;">
@@ -836,7 +834,6 @@
 
       <!-- ── Card 3 — B2B Sales ERP (live case study) ───────────────── -->
       <article class="work-card wide">
-        <a href="case-study-b2bsales.html" class="work-card-overlay" aria-label="B2B Sales ERP Module — View Case Study"></a>
         <div class="work-card-image">
           <div class="ui-mockup" style="background:var(--c-surface);">
             <div style="position:absolute;inset:16px;display:flex;flex-direction:column;gap:8px;">
@@ -909,7 +906,6 @@
 
       <!-- ── Card 4 — REACH eLearning (live case study) ─────────────── -->
       <article class="work-card wide">
-        <a href="case-study-reach.html" class="work-card-overlay" aria-label="Muhandis Al-Qiyam — View Case Study"></a>
         <div class="work-card-image">
           <div class="ui-mockup" style="background:var(--c-surface);">
             <div style="position:absolute;inset:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
@@ -1823,16 +1819,16 @@
               <span class="t-fr">Type de Projet</span>
             </label>
             <select id="ftype" name="project_type" class="form-select"
-              data-opts-ar="اختر نوع المشروع,الهوية البصرية,نظام التصميم,تصميم تجربة المستخدم,النمذجة التفاعلية,اختبار المستخدم,مشروع متكامل,استراتيجية المنتج الرقمي,آخر"
-              data-opts-en="Select project type,Visual Identity,Design System,UX Design,Interactive Prototyping,User Testing,Full Project,Digital Product Strategy,Other"
-              data-opts-fr="Sélectionner le type,Identité Visuelle,Design System,Design UX,Prototypage Interactif,Tests Utilisateurs,Projet Complet,Stratégie Produit Numérique,Autre">
+              data-opts-ar="اختر نوع المشروع,مشروع متكامل,الهوية البصرية,نظام التصميم,تصميم تجربة المستخدم,النمذجة التفاعلية,اختبار المستخدم,استراتيجية المنتج الرقمي,آخر"
+              data-opts-en="Select project type,Full Project,Visual Identity,Design System,UX Design,Interactive Prototyping,User Testing,Digital Product Strategy,Other"
+              data-opts-fr="Sélectionner le type,Projet Complet,Identité Visuelle,Design System,Design UX,Prototypage Interactif,Tests Utilisateurs,Stratégie Produit Numérique,Autre">
               <option value="" disabled selected>اختر نوع المشروع</option>
+              <option value="full">مشروع متكامل</option>
               <option value="identity">الهوية البصرية</option>
               <option value="library">نظام التصميم</option>
               <option value="ux">تصميم تجربة المستخدم</option>
               <option value="prototype">النمذجة التفاعلية</option>
               <option value="testing">اختبار المستخدم</option>
-              <option value="full">مشروع متكامل</option>
               <option value="strategy">استراتيجية المنتج الرقمي</option>
               <option value="other">آخر</option>
             </select>

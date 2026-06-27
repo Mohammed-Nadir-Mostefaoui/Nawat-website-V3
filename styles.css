@@ -490,6 +490,10 @@ html[dir="rtl"] .reveal-left {
 }
 
 .nwp-card:last-child { border-bottom: none; }
+/* When cards are non-clickable divs, hide interactive hints */
+div.nwp-card { cursor: default; }
+div.nwp-card .nwp-arrow,
+div.nwp-card .nwp-dot { display: none; }
 
 .nwp-card:hover {
   background: var(--c-surface);
