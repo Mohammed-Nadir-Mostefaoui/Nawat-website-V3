@@ -714,56 +714,168 @@
       </div>
     </a>
 
+    <!-- Desktop Nav Links -->
     <div class="nav-links">
       <a href="index.html#services" class="nav-link">
         <span class="t-ar">خدماتنا</span>
         <span class="t-en">Services</span>
         <span class="t-fr">Services</span>
       </a>
-      <a href="index.html#work" class="nav-link">
-        <span class="t-ar">أعمالنا</span>
-        <span class="t-en">Work</span>
-        <span class="t-fr">Travaux</span>
-      </a>
+      <!-- Work nav with hover dropdown -->
+      <div class="nav-work" id="navWork">
+        <a href="index.html#work" class="nav-link nav-work-trigger" id="navWorkTrigger">
+          <span class="t-ar">أعمالنا</span>
+          <span class="t-en">Work</span>
+          <span class="t-fr">Travaux</span>
+          <svg class="nav-work-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+
+        <div class="nav-work-panel" id="navWorkPanel" role="menu">
+          <p class="nwp-label">
+            <span class="t-ar">مشاريع مختارة</span>
+            <span class="t-en">Selected Projects</span>
+            <span class="t-fr">Projets Sélectionnés</span>
+          </p>
+
+          <div class="nwp-cards">
+            <a href="case-study-iksir.html" class="nwp-card" style="--nwp-accent:#2563EB;" role="menuitem">
+              <span class="nwp-accent-bar"></span>
+              <div class="nwp-info">
+                <span class="nwp-num">01</span>
+                <div class="nwp-text">
+                  <p class="nwp-title">
+                    <span class="t-ar">إكسير — نظام التصميم</span>
+                    <span class="t-en">Iksir — Design System</span>
+                    <span class="t-fr">Iksir — Design System</span>
+                  </p>
+                  <p class="nwp-tags">Design System · Figma · RTL</p>
+                </div>
+              </div>
+              <span class="nwp-dot"></span>
+              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="case-study-tasks.html" class="nwp-card" style="--nwp-accent:#2563EB;" role="menuitem">
+              <span class="nwp-accent-bar"></span>
+              <div class="nwp-info">
+                <span class="nwp-num">02</span>
+                <div class="nwp-text">
+                  <p class="nwp-title">
+                    <span class="t-ar">تطبيق إدارة المهام</span>
+                    <span class="t-en">Tasks — Mobile App</span>
+                    <span class="t-fr">Tasks — App Mobile</span>
+                  </p>
+                  <p class="nwp-tags">UX/UI · Mobile · ERP</p>
+                </div>
+              </div>
+              <span class="nwp-dot"></span>
+              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="case-study-b2bsales.html" class="nwp-card" style="--nwp-accent:#EA580C;" role="menuitem">
+              <span class="nwp-accent-bar"></span>
+              <div class="nwp-info">
+                <span class="nwp-num">03</span>
+                <div class="nwp-text">
+                  <p class="nwp-title">
+                    <span class="t-ar">وحدة مبيعات B2B</span>
+                    <span class="t-en">B2B Sales Module</span>
+                    <span class="t-fr">Module Ventes B2B</span>
+                  </p>
+                  <p class="nwp-tags">ERP · B2B · Data Design</p>
+                </div>
+              </div>
+              <span class="nwp-dot"></span>
+              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+
+            <a href="case-study-reach.html" class="nwp-card" style="--nwp-accent:#0D9488;" role="menuitem">
+              <span class="nwp-accent-bar"></span>
+              <div class="nwp-info">
+                <span class="nwp-num">04</span>
+                <div class="nwp-text">
+                  <p class="nwp-title">
+                    <span class="t-ar">مهندس القيم — منصة التعليم الإلكتروني</span>
+                    <span class="t-en">Muhandis Al-Qiyam — eLearning Platform</span>
+                    <span class="t-fr">Muhandis Al-Qiyam — Plateforme eLearning</span>
+                  </p>
+                  <p class="nwp-tags">EdTech · UX Research · Product</p>
+                </div>
+              </div>
+              <span class="nwp-dot"></span>
+              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+          <div class="nwp-footer">
+            <a href="index.html#work" class="nwp-view-all">
+              <span class="t-ar">عرض جميع الأعمال</span>
+              <span class="t-en">View All Work</span>
+              <span class="t-fr">Voir tous les projets</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
       <a href="index.html#process" class="nav-link">
         <span class="t-ar">المسار</span>
         <span class="t-en">Process</span>
         <span class="t-fr">Processus</span>
       </a>
+      <a href="index.html#manifesto" class="nav-link">
+        <span class="t-ar">فلسفتنا</span>
+        <span class="t-en">Philosophy</span>
+        <span class="t-fr">Philosophie</span>
+      </a>
     </div>
 
+    <!-- Controls -->
     <div class="nav-controls">
+      <!-- Language Switcher -->
       <div class="lang-switcher" role="group" aria-label="Language selector">
-        <button class="lang-btn active" data-lang-btn="ar" aria-label="العربية">AR</button>
+        <div class="lang-pill" id="langPill" aria-hidden="true"></div>
+        <button class="lang-btn active" data-lang-btn="ar" aria-label="العربية"><span dir="rtl" style="font-size:12px;">ع</span></button>
         <button class="lang-btn"        data-lang-btn="en" aria-label="English">EN</button>
         <button class="lang-btn"        data-lang-btn="fr" aria-label="Français">FR</button>
       </div>
+
+      <!-- Theme Toggle -->
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
         <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       </button>
+
+      <!-- CTA -->
       <a href="index.html#contact" class="nav-cta btn">
         <span class="t-ar">ابدأ مشروعك</span>
         <span class="t-en">Start Your Project</span>
-        <span class="t-fr">Démarrer votre projet</span>
+        <span class="t-fr">Votre Projet</span>
       </a>
     </div>
 
+    <!-- Mobile Toggle -->
     <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </div>
+
 </nav>
 
-<!-- Mobile Menu -->
+<!-- Mobile Menu — kept outside <nav> so backdrop-filter on .nav.scrolled doesn't clip it -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Main navigation">
   <a href="index.html#services" class="nav-link">
     <span class="t-ar">خدماتنا</span>
@@ -780,6 +892,11 @@
     <span class="t-en">Process</span>
     <span class="t-fr">Processus</span>
   </a>
+  <a href="index.html#manifesto" class="nav-link">
+    <span class="t-ar">فلسفتنا</span>
+    <span class="t-en">Philosophy</span>
+    <span class="t-fr">Philosophie</span>
+  </a>
   <div class="mobile-menu-footer">
     <a href="index.html#contact" class="btn btn-primary" style="justify-content:center;">
       <span class="t-ar">ابدأ مشروعك</span>
@@ -787,6 +904,8 @@
       <span class="t-fr">Démarrer votre projet</span>
     </a>
   </div>
+</div>
+
 </div>
 
 
@@ -1435,15 +1554,15 @@
       </div>
     </a>
 
-    <!-- REACH eLearning Platform -->
+    <!-- مهندس القيم -->
     <a href="case-study-reach.html" class="cs-related-card reveal" style="--card-accent: #0D9488;">
       <div class="cs-related-card-bar"></div>
       <div class="cs-related-card-body">
-        <span class="cs-related-card-client">REACH</span>
+        <span class="cs-related-card-client">مهندس القيم</span>
         <h3 class="cs-related-card-title">
           <span class="t-ar">منصة التعليم الإلكتروني</span>
-          <span class="t-en">eLearning Platform</span>
-          <span class="t-fr">Plateforme eLearning</span>
+          <span class="t-en">Muhandis Al-Qiyam</span>
+          <span class="t-fr">Muhandis Al-Qiyam</span>
         </h3>
         <div>
           <div class="cs-related-card-metric">60%</div>

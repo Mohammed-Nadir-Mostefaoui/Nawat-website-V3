@@ -487,11 +487,14 @@ function initServiceCards() {
       // Dispatch a change event so any listeners (e.g. applyLang) pick it up
       select.dispatchEvent(new Event('change'));
 
-      // Smooth scroll to contact section
+      // Smooth scroll — mobile goes straight to form, desktop to section header
       const navH = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
       ) || 72;
-      const top = contact.getBoundingClientRect().top + window.scrollY - navH - 24;
+      const scrollTarget = (window.innerWidth < 769)
+        ? (document.getElementById('contactForm') || contact)
+        : contact;
+      const top = scrollTarget.getBoundingClientRect().top + window.scrollY - navH - 24;
       window.scrollTo({ top, behavior: 'smooth' });
 
       // After scroll settles, briefly highlight the select

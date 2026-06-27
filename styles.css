@@ -1263,6 +1263,15 @@ html[data-lang="fr"] .pipeline-name.t-fr { display: block !important; }
   box-shadow: 0 24px 60px rgba(0,0,0,0.1);
   border-color: var(--c-border-lg);
 }
+/* Cards without a case study page — not interactive */
+.work-card:not(:has(.work-card-overlay)) {
+  cursor: default;
+}
+.work-card:not(:has(.work-card-overlay)):hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--c-border);
+}
 [data-theme="dark"] .work-card:hover {
   box-shadow: 0 24px 60px rgba(0,0,0,0.4);
 }
@@ -1275,13 +1284,12 @@ html[data-lang="fr"] .pipeline-name.t-fr { display: block !important; }
 .work-card-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   border-radius: inherit;
 }
-/* Keep card body interactive above overlay */
 .work-card-body {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .work-card-image {
@@ -3174,9 +3182,13 @@ html[dir="ltr"] .pull-quote-mark::after {
   .hero-calligraphy-main { width: clamp(220px, 82vw, 420px); }
   .founder-highlights { grid-template-columns: 1fr 1fr; }
   .spectrum-top { grid-template-columns: repeat(3, 1fr); }
+  /* Fill the empty cell in the last row when 5 items don't divide evenly */
+  .spectrum-cell:last-child { grid-column: span 2; }
   .process-visual { padding: 24px 16px; }
   .pull-quote { flex-direction: column; gap: 16px; }
   .pull-quote-mark { font-size: 60px; }
+  /* Faster ticker on mobile */
+  .ticker-track { animation-duration: 15s !important; }
 }
 @media (max-width: 480px) {
   .hero-latin-track { letter-spacing: 0.35em; }
