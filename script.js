@@ -487,14 +487,11 @@ function initServiceCards() {
       // Dispatch a change event so any listeners (e.g. applyLang) pick it up
       select.dispatchEvent(new Event('change'));
 
-      // Smooth scroll — mobile goes straight to form, desktop to section header
+      // Smooth scroll to contact section
       const navH = parseInt(
         getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
       ) || 72;
-      const scrollTarget = (window.innerWidth < 769)
-        ? (document.getElementById('contactForm') || contact)
-        : contact;
-      const top = scrollTarget.getBoundingClientRect().top + window.scrollY - navH - 24;
+      const top = contact.getBoundingClientRect().top + window.scrollY - navH - 24;
       window.scrollTo({ top, behavior: 'smooth' });
 
       // After scroll settles, briefly highlight the select
@@ -505,7 +502,7 @@ function initServiceCards() {
       }, 700);
     };
 
-    card.addEventListener('click', (e) => { e.preventDefault(); activate(); });
+    card.addEventListener('click', activate);
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
     });
