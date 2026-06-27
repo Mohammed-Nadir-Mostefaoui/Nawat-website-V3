@@ -393,26 +393,9 @@ html[dir="rtl"] .reveal-left {
 }
 
 /* Active section indicator — blue dot below the active link */
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%) scale(0);
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--blue);
-  transition: transform 0.25s var(--ease-spring), opacity 0.2s;
-  opacity: 0;
-}
 .nav-link.active {
-  color: var(--c-text);
+  color: var(--blue);
   font-weight: 500;
-}
-.nav-link.active::after {
-  transform: translateX(-50%) scale(1);
-  opacity: 1;
 }
 
 /* ── Work Nav Dropdown ──────────────────────────────────────────── */
@@ -792,9 +775,11 @@ html[dir="rtl"] .nwp-card:hover .nwp-arrow {
   font-size: 20px;
   font-weight: 500;
   padding: 16px 0;
+  padding-inline-start: 16px;
   border-bottom: 1px solid var(--c-border);
   color: var(--c-text);
   border-radius: 0;
+  position: relative;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out), background 0.15s;
@@ -805,6 +790,21 @@ html[dir="rtl"] .nwp-card:hover .nwp-arrow {
 .mobile-menu.open .nav-link:nth-child(3) { transition-delay: 140ms; }
 .mobile-menu.open .nav-link:nth-child(4) { transition-delay: 180ms; }
 .mobile-menu .nav-link:hover { background: none; color: var(--blue); }
+.mobile-menu .nav-link.active {
+  color: var(--blue);
+  font-weight: 600;
+}
+.mobile-menu .nav-link.active::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--blue);
+  border-radius: 2px;
+}
 .mobile-menu-footer {
   margin-top: auto;
   display: flex;
@@ -2206,6 +2206,35 @@ html[dir="rtl"] .form-submit:hover svg {
 
   .hero-title { font-size: clamp(36px, 10vw, 56px); }
 
+  /* ── 1. Contact spacing fix ─────────────────────────────────── */
+  /* Prevent reveal-left/right from causing horizontal overflow    */
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(24px) !important;
+  }
+  .reveal-left.visible,
+  .reveal-right.visible {
+    transform: translateY(0) !important;
+  }
+
+  /* ── 2. Services — always show CTA on mobile ────────────────── */
+  .service-card-link-text {
+    max-width: 200px;
+    opacity: 1;
+  }
+  .service-card::after {
+    transform: scaleX(1);
+  }
+  .service-card:active {
+    background: var(--c-surface);
+  }
+  .service-card:active .service-icon-wrap {
+    background: var(--blue-15);
+    color: var(--blue);
+    transform: scale(1.05);
+  }
+
+  /* ── 3. Process — vertical timeline on mobile ───────────────── */
   .services-grid { grid-template-columns: 1fr; }
 
   .work-card.featured,
@@ -2216,9 +2245,28 @@ html[dir="rtl"] .form-submit:hover svg {
   .founder-photo-wrap { max-width: 380px; margin: 0 auto; }
 
   .process-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-inline-start: 24px;
+    border-inline-start: 2px solid var(--c-border);
   }
+  .process-grid::before { display: none; }
+  .process-step {
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    padding-bottom: 40px;
+    padding-inline-start: 24px;
+    margin-inline-start: -25px;
+  }
+  .process-step:last-child { padding-bottom: 0; }
+  .process-num-wrap { flex-shrink: 0; margin-top: 2px; }
+  .process-num { width: 44px; height: 44px; font-size: 14px; background: var(--c-bg); }
+  .process-content { text-align: start; }
+
+  /* ── 4. Pull-quote — mobile ─────────────────────────────────── */
+  .pull-quote { flex-direction: column; gap: 16px; }
+  .pull-quote-mark::after { font-size: 60px; }
 
   .form-row { grid-template-columns: 1fr; }
 

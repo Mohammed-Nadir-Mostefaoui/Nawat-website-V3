@@ -226,12 +226,14 @@ function initSectionTracker() {
     'manifesto' : '[href="#manifesto"]',
   };
 
-  const navLinks = $$('.nav-links .nav-link, .nav-links .nav-work-trigger');
+  const navLinks = $$('.nav-links .nav-link, .nav-links .nav-work-trigger, .mobile-menu .nav-link');
 
   function setActive(id) {
     navLinks.forEach(l => l.classList.remove('active'));
     if (!id || !sectionMap[id]) return;
-    document.querySelectorAll(sectionMap[id]).forEach(l => l.classList.add('active'));
+    document.querySelectorAll(
+      sectionMap[id] + ', .mobile-menu ' + sectionMap[id]
+    ).forEach(l => l.classList.add('active'));
   }
 
   const sections = Object.keys(sectionMap)
@@ -251,8 +253,8 @@ function initSectionTracker() {
     });
     if (best) setActive(best);
   }, {
-    threshold: [0.2, 0.5],
-    rootMargin: '-10% 0px -10% 0px'
+    threshold: [0.1, 0.3, 0.5],
+    rootMargin: '-5% 0px -5% 0px'
   });
 
   sections.forEach(s => observer.observe(s));
