@@ -1815,6 +1815,9 @@ html[dir="rtl"] .founder-layout { direction: rtl; }
   flex-direction: column;
   gap: 8px;
 }
+#fname {
+  scroll-margin-top: calc(var(--nav-h, 72px) + 16px);
+}
 
 .form-label {
   font-size: 12px;
