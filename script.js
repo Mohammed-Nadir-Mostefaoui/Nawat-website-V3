@@ -629,11 +629,19 @@ function initSmoothNav() {
     a.addEventListener('click', (e) => {
       const href = a.getAttribute('href');
       if (href === '#') return;
-      const target = $(href);
+      let target = $(href);
+      let extra = 24;
+      // On stacked layouts (<=1024px) the contact section shows its intro
+      // (title, subtitle, links) above the form. Contact CTAs should land
+      // directly on the form instead of that intro.
+      if (href === '#contact' && window.matchMedia('(max-width: 1024px)').matches) {
+        target = document.getElementById('contactForm') || target;
+        extra = 16;
+      }
       if (target) {
         e.preventDefault();
         const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
-        const top = target.getBoundingClientRect().top + window.scrollY - navH - 24;
+        const top = target.getBoundingClientRect().top + window.scrollY - navH - extra;
         window.scrollTo({ top, behavior: 'smooth' });
       }
     });
