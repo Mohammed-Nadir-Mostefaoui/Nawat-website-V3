@@ -344,6 +344,10 @@ html[dir="rtl"] .reveal-left {
   flex-shrink: 0;
   overflow: hidden;
   transition: transform 0.5s var(--ease-spring);
+  /* Stable compositor layer + fixed rotation direction (prevents reverse-spin glitch) */
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .nav-logo-mark img {
@@ -352,7 +356,7 @@ html[dir="rtl"] .reveal-left {
   object-fit: contain;
 }
 .nav-logo:hover .nav-logo-mark {
-  transform: rotate(180deg) scale(1.05);
+  transform: rotate(179.99deg) scale(1.05);
 }
 
 /* Show correct logo per theme × language */
@@ -433,10 +437,12 @@ html[dir="rtl"] .reveal-left {
   opacity: 0.45;
   transition: transform 0.25s var(--ease-out), opacity 0.2s;
   flex-shrink: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .nav-work:hover .nav-work-chevron {
-  transform: rotate(180deg);
+  transform: rotate(179.99deg);
   opacity: 1;
 }
 
@@ -2347,6 +2353,26 @@ html[dir="rtl"] .stat-num { direction: ltr; text-align: right; }
 }
 
 /* ================================================================
+   LITE MODE — weak device / slow-connection graceful degradation.
+   Set via html.lite by the head init script. Keeps layout, colors,
+   content and hover interactions intact; drops only the GPU-heavy
+   effects (backdrop/blur filters) and decorative infinite loops.
+   ================================================================ */
+html.lite *,
+html.lite *::before,
+html.lite *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+}
+/* Opaque nav instead of translucent blur */
+html.lite .nav.scrolled { background: var(--c-bg) !important; }
+/* Drop decorative floating particles + ring pulse */
+html.lite .hero-particles { display: none !important; }
+html.lite .particle { animation: none !important; }
+html.lite .manifesto-ring { animation: none !important; }
+
+/* ================================================================
    ADDITIONAL FIXES & POLISH
    ================================================================ */
 
@@ -2788,6 +2814,8 @@ body.intro-active { overflow: hidden; }
   width: 80px;
   height: 80px;
   background: var(--c-bg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   border: 1px solid var(--c-border);
   border-radius: 50%;
   display: flex;
@@ -2797,7 +2825,7 @@ body.intro-active { overflow: hidden; }
   z-index: 1;
   transition: transform 0.6s var(--ease-spring);
 }
-.seed-divider-mark-large:hover { transform: rotate(180deg) scale(1.1); }
+.seed-divider-mark-large:hover { transform: rotate(179.99deg) scale(1.1); }
 .seed-divider-mark-large img {
   width: 48px;
   height: 48px;
@@ -3353,6 +3381,8 @@ html[dir="ltr"] .pull-quote-mark::after {
 .manifesto-seed-center {
   width: 76px; height: 76px;
   background: var(--c-bg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   border: 1px solid var(--c-border);
   border-radius: 50%;
   display: flex;
@@ -3362,7 +3392,7 @@ html[dir="ltr"] .pull-quote-mark::after {
   z-index: 1;
   transition: transform 0.6s var(--ease-spring);
 }
-.manifesto-seed-center:hover { transform: rotate(180deg) scale(1.08); }
+.manifesto-seed-center:hover { transform: rotate(179.99deg) scale(1.08); }
 .manifesto-seed-center img {
   width: 44px; height: 44px;
   object-fit: contain;

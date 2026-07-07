@@ -23,18 +23,11 @@
   <script>
     (function() {
       var theme = localStorage.getItem('nawat-theme') || 'light';
-      var savedLang = localStorage.getItem('nawat-lang');
-      var lang = savedLang || 'ar';
+      var savedLang = localStorage.getItem('nawat-lang');      var lang = savedLang || (['ar', 'en', 'fr'].indexOf(deviceLang) !== -1 ? deviceLang : 'ar');
       document.documentElement.setAttribute('data-theme', theme);
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang);
       document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-      try {
-        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        var slowNet = conn && (conn.saveData === true || ['slow-2g','2g'].indexOf(conn.effectiveType) !== -1);
-        var weakDevice = (navigator.deviceMemory || 8) <= 4 && (navigator.hardwareConcurrency || 8) <= 4;
-        if (slowNet || weakDevice) document.documentElement.classList.add('lite');
-      } catch (e) {}
       document.documentElement.classList.add('no-transitions');
       document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.remove('no-transitions');

@@ -4,16 +4,16 @@
   <meta http-equiv="refresh" content="0; url=index.html">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="B2B Sales ERP Module — وحدة المبيعات B2B | نواة ستوديو × داتاماستر">
+  <meta name="description" content="Muhandis Al-Qiyam — منصة التعليم الإلكتروني | نواة ستوديو">
   <meta name="theme-color" content="#F5F5F5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0E0E11" media="(prefers-color-scheme: dark)">
-  <meta property="og:title" content="B2B Sales ERP Module — Nawat Studio">
-  <meta property="og:description" content="How we designed a unified B2B sales platform — quotes, orders, invoices, and returns in one coherent system — cutting quote creation time by 40%.">
-  <meta property="og:image" content="https://nawat.studio/assets/og-b2bsales.jpg">
-  <meta property="og:url" content="https://nawat.studio/case-study-b2bsales.html">
+  <meta property="og:title" content="Muhandis Al-Qiyam — Nawat Studio">
+  <meta property="og:description" content="How we designed the teacher-side of Muhandis Al-Qiyam — a drag-and-drop eLearning platform that reduced course creation time by 60%, built from 15+ teacher interviews.">
+  <meta property="og:image" content="https://nawat.studio/assets/og-reach.jpg">
+  <meta property="og:url" content="https://nawat.studio/case-study-reach.html">
   <meta property="og:type" content="website">
-  <link rel="canonical" href="https://nawat.studio/case-study-b2bsales.html">
-  <title>B2B Sales ERP Module — نواة ستوديو | Nawat Studio</title>
+  <link rel="canonical" href="https://nawat.studio/case-study-reach.html">
+  <title>Muhandis Al-Qiyam — نواة ستوديو | Nawat Studio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,18 +23,11 @@
   <script>
     (function() {
       var theme = localStorage.getItem('nawat-theme') || 'light';
-      var savedLang = localStorage.getItem('nawat-lang');
-      var lang = savedLang || 'ar';
+      var savedLang = localStorage.getItem('nawat-lang');      var lang = savedLang || (['ar', 'en', 'fr'].indexOf(deviceLang) !== -1 ? deviceLang : 'ar');
       document.documentElement.setAttribute('data-theme', theme);
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang);
       document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-      try {
-        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        var slowNet = conn && (conn.saveData === true || ['slow-2g','2g'].indexOf(conn.effectiveType) !== -1);
-        var weakDevice = (navigator.deviceMemory || 8) <= 4 && (navigator.hardwareConcurrency || 8) <= 4;
-        if (slowNet || weakDevice) document.documentElement.classList.add('lite');
-      } catch (e) {}
       document.documentElement.classList.add('no-transitions');
       document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.remove('no-transitions');
@@ -45,114 +38,58 @@
   <link rel="icon" href="assets/Nawat_Logo_ForLight.svg" type="image/svg+xml">
 
   <style>
-    /* ── Page accent: orange ──────────────────────────────────────── */
+    /* ── Page accent: teal ──────────────────────────────────────────── */
     :root {
-      --cs-accent: #EA580C;
-      --cs-accent-08: rgba(234, 88, 12, 0.08);
-      --cs-accent-hover: #c2460a;
+      --cs-accent: #0D9488;
+      --cs-accent-08: rgba(13, 148, 136, 0.08);
+      --cs-accent-hover: #0a7a70;
     }
 
     html[dir="rtl"] .cs-back-arrow { transform: scaleX(-1); }
 
     .cs-breadcrumb { padding-top: calc(var(--nav-h) + 40px); }
-    .cs-breadcrumb-inner {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 13px; color: var(--c-text-60);
-    }
-    .cs-breadcrumb-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      color: var(--c-text-60); transition: color var(--t-fast);
-    }
+    .cs-breadcrumb-inner { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--c-text-60); }
+    .cs-breadcrumb-link { display: inline-flex; align-items: center; gap: 6px; color: var(--c-text-60); transition: color var(--t-fast); }
     .cs-breadcrumb-link:hover { color: var(--c-text); }
     .cs-breadcrumb-sep { color: var(--c-text-30); }
 
     .cs-hero { padding-top: clamp(28px, 4vw, 56px); padding-bottom: 0; }
     .cs-hero-inner { max-width: 900px; }
 
-    .cs-hero-meta {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--cs-accent);
-      margin-bottom: 20px; font-family: var(--font-latin);
-    }
-    .cs-hero-meta-dot {
-      width: 4px; height: 4px; border-radius: 50%;
-      background: var(--cs-accent); opacity: 0.5;
-    }
+    .cs-hero-meta { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 20px; font-family: var(--font-latin); }
+    .cs-hero-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--cs-accent); opacity: 0.5; }
 
-    .cs-hero-title {
-      font-size: clamp(36px, 7vw, 80px); font-weight: 700;
-      line-height: 1.08; letter-spacing: -0.02em; color: var(--c-text); margin-bottom: 28px;
-    }
-    html[lang="en"] .cs-hero-title,
-    html[lang="fr"] .cs-hero-title { letter-spacing: -0.03em; }
+    .cs-hero-title { font-size: clamp(36px, 7vw, 80px); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; color: var(--c-text); margin-bottom: 28px; }
+    html[lang="en"] .cs-hero-title, html[lang="fr"] .cs-hero-title { letter-spacing: -0.03em; }
 
     .cs-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
-    .cs-tag {
-      padding: 5px 14px; border: 1px solid var(--c-border); border-radius: 100px;
-      font-size: 12px; font-weight: 500; color: var(--c-text-60); background: transparent;
-    }
+    .cs-tag { padding: 5px 14px; border: 1px solid var(--c-border); border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--c-text-60); background: transparent; }
 
-    .cs-stats {
-      display: flex; flex-wrap: wrap; align-items: center;
-      gap: 32px; margin-bottom: clamp(48px, 8vw, 80px);
-    }
+    .cs-stats { display: flex; flex-wrap: wrap; align-items: center; gap: 32px; margin-bottom: clamp(48px, 8vw, 80px); }
     .cs-stat { display: flex; flex-direction: column; gap: 5px; }
-    .cs-stat-num {
-      font-size: clamp(28px, 3.5vw, 44px); font-weight: 700;
-      line-height: 1; color: var(--c-text); font-family: var(--font-latin);
-    }
+    .cs-stat-num { font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; line-height: 1; color: var(--c-text); font-family: var(--font-latin); }
     .cs-stat-num em { color: var(--cs-accent); font-style: normal; }
-    .cs-stat-label {
-      font-size: 11px; font-weight: 600; color: var(--c-text-60);
-      text-transform: uppercase; letter-spacing: 0.08em;
-    }
+    .cs-stat-label { font-size: 11px; font-weight: 600; color: var(--c-text-60); text-transform: uppercase; letter-spacing: 0.08em; }
     .cs-stat-divider { width: 1px; height: 36px; background: var(--c-border); flex-shrink: 0; }
 
-    .cs-cover {
-      position: relative; width: 100%; border-radius: var(--radius-lg);
-      overflow: hidden; background: var(--c-surface); border: 1px solid var(--c-border);
-      aspect-ratio: 16 / 7; display: flex; align-items: center; justify-content: center;
-    }
-    .cs-cover-dots {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(var(--c-border) 1px, transparent 1px);
-      background-size: 28px 28px;
-    }
-    .cs-cover-placeholder {
-      position: relative; z-index: 1; display: flex;
-      flex-direction: column; align-items: center; gap: 12px;
-    }
-    .cs-cover-icon-wrap {
-      width: 48px; height: 48px; border-radius: var(--radius-md);
-      background: var(--c-surface-md); display: flex; align-items: center;
-      justify-content: center; color: var(--c-text-30);
-    }
+    .cs-cover { position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; background: var(--c-surface); border: 1px solid var(--c-border); aspect-ratio: 16 / 7; display: flex; align-items: center; justify-content: center; }
+    .cs-cover-dots { position: absolute; inset: 0; background-image: radial-gradient(var(--c-border) 1px, transparent 1px); background-size: 28px 28px; }
+    .cs-cover-placeholder { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .cs-cover-icon-wrap { width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--c-surface-md); display: flex; align-items: center; justify-content: center; color: var(--c-text-30); }
     .cs-cover-hint { font-size: 11px; color: var(--c-text-30); font-family: var(--font-latin); letter-spacing: 0.06em; }
 
     .cs-section { padding-top: var(--section-py); padding-bottom: var(--section-py); }
     .cs-section + .cs-section { border-top: 1px solid var(--c-border); }
-    .cs-section-label {
-      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--cs-accent); margin-bottom: 14px;
-    }
-    .cs-section-title {
-      font-size: clamp(28px, 4.5vw, 52px); font-weight: 700;
-      line-height: 1.12; letter-spacing: -0.02em; color: var(--c-text); margin-bottom: 20px;
-    }
-    html[lang="en"] .cs-section-title,
-    html[lang="fr"] .cs-section-title { letter-spacing: -0.03em; }
+    .cs-section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 14px; }
+    .cs-section-title { font-size: clamp(28px, 4.5vw, 52px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; color: var(--c-text); margin-bottom: 20px; }
+    html[lang="en"] .cs-section-title, html[lang="fr"] .cs-section-title { letter-spacing: -0.03em; }
     .cs-section-body { font-size: clamp(15px, 1.8vw, 18px); line-height: 1.8; color: var(--c-text-60); max-width: 620px; }
 
     .cs-problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 88px); align-items: start; }
     @media (max-width: 768px) { .cs-problem-layout { grid-template-columns: 1fr; } }
 
     .cs-problem-cards { display: flex; flex-direction: column; gap: 10px; }
-    .cs-problem-card {
-      padding: 20px 24px; border-radius: var(--radius-md);
-      border: 1px solid var(--c-border); background: var(--c-surface);
-      transition: border-color var(--t-fast), background var(--t-fast);
-    }
+    .cs-problem-card { padding: 20px 24px; border-radius: var(--radius-md); border: 1px solid var(--c-border); background: var(--c-surface); transition: border-color var(--t-fast), background var(--t-fast); }
     .cs-problem-card:hover { border-color: var(--c-border-lg); background: var(--c-surface-md); }
     .cs-problem-num { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; color: var(--c-text-30); margin-bottom: 6px; font-family: var(--font-latin); }
     .cs-problem-title { font-size: 15px; font-weight: 600; color: var(--c-text); margin-bottom: 5px; line-height: 1.35; }
@@ -160,85 +97,41 @@
 
     .cs-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: clamp(48px, 6vw, 72px); }
     @media (max-width: 580px) { .cs-features { grid-template-columns: 1fr; } }
-    .cs-feature-card {
-      padding: clamp(24px, 3vw, 36px); border-radius: var(--radius-lg);
-      border: 1px solid var(--c-border); background: var(--c-surface);
-      transition: border-color var(--t-fast), transform var(--t-base);
-    }
+    .cs-feature-card { padding: clamp(24px, 3vw, 36px); border-radius: var(--radius-lg); border: 1px solid var(--c-border); background: var(--c-surface); transition: border-color var(--t-fast), transform var(--t-base); }
     .cs-feature-card:hover { border-color: var(--c-border-lg); transform: translateY(-3px); }
-    .cs-feature-icon {
-      width: 40px; height: 40px; border-radius: var(--radius-md);
-      background: var(--cs-accent-08); display: flex; align-items: center;
-      justify-content: center; color: var(--cs-accent); margin-bottom: 16px; flex-shrink: 0;
-    }
+    .cs-feature-icon { width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--cs-accent-08); display: flex; align-items: center; justify-content: center; color: var(--cs-accent); margin-bottom: 16px; flex-shrink: 0; }
     .cs-feature-title { font-size: 15px; font-weight: 600; color: var(--c-text); margin-bottom: 8px; line-height: 1.3; }
     .cs-feature-body { font-size: 13px; line-height: 1.7; color: var(--c-text-60); }
-    .cs-feature-badge {
-      display: inline-flex; margin-top: 14px; padding: 4px 11px; border-radius: 100px;
-      background: var(--cs-accent-08); color: var(--cs-accent);
-      font-size: 11px; font-weight: 600; font-family: var(--font-latin); letter-spacing: 0.04em;
-    }
+    .cs-feature-badge { display: inline-flex; margin-top: 14px; padding: 4px 11px; border-radius: 100px; background: var(--cs-accent-08); color: var(--cs-accent); font-size: 11px; font-weight: 600; font-family: var(--font-latin); letter-spacing: 0.04em; }
 
-    .cs-cta {
-      position: relative; background: var(--black); overflow: hidden;
-      padding: clamp(100px, 16vw, 180px) 0; color: var(--white);
-    }
+    .cs-cta { position: relative; background: var(--black); overflow: hidden; padding: clamp(100px, 16vw, 180px) 0; color: var(--white); }
     [data-theme="light"] .cs-cta { background: var(--c-bg-alt); color: var(--black); }
-    .cs-cta::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent 0%, var(--cs-accent) 40%, var(--cs-accent) 60%, transparent 100%);
-      opacity: 0.4;
-    }
-    .cs-cta-watermark {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: clamp(400px, 70vw, 800px); height: clamp(400px, 70vw, 800px);
-      pointer-events: none; opacity: 0.055;
-    }
+    .cs-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, var(--cs-accent) 40%, var(--cs-accent) 60%, transparent 100%); opacity: 0.4; }
+    .cs-cta-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: clamp(400px, 70vw, 800px); height: clamp(400px, 70vw, 800px); pointer-events: none; opacity: 0.055; }
     [data-theme="light"] .cs-cta-watermark { opacity: 0.07; }
-    .cs-cta-dots {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(245,245,245,0.07) 1px, transparent 1px);
-      background-size: 32px 32px; pointer-events: none;
-    }
+    .cs-cta-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(245,245,245,0.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
     [data-theme="light"] .cs-cta-dots { background-image: radial-gradient(var(--black-10) 1px, transparent 1px); }
     .cs-cta-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
-    .cs-cta-pill {
-      display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px;
-      border: 1px solid rgba(245,245,245,0.12); border-radius: 100px;
-      font-family: var(--font-latin); font-size: 11px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,245,245,0.45); margin-bottom: 36px;
-    }
+    .cs-cta-pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 16px; border: 1px solid rgba(245,245,245,0.12); border-radius: 100px; font-family: var(--font-latin); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,245,245,0.45); margin-bottom: 36px; }
     [data-theme="light"] .cs-cta-pill { border-color: var(--c-border-lg); color: var(--c-text-60); }
-    .cs-cta-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cs-accent); flex-shrink: 0; box-shadow: 0 0 8px rgba(234,88,12,0.8); }
-    .cs-cta-title {
-      font-size: clamp(36px, 6.5vw, 76px); font-weight: 700; line-height: 1.08;
-      letter-spacing: -0.025em; color: var(--white); max-width: 820px; margin-bottom: 24px;
-    }
+    .cs-cta-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cs-accent); flex-shrink: 0; box-shadow: 0 0 8px rgba(13,148,136,0.8); }
+    .cs-cta-title { font-size: clamp(36px, 6.5vw, 76px); font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; color: var(--white); max-width: 820px; margin-bottom: 24px; }
     [data-theme="light"] .cs-cta-title { color: var(--c-text); }
     html[lang="ar"] .cs-cta-title { letter-spacing: -0.01em; }
     .cs-cta-title em { font-style: normal; color: var(--cs-accent); }
     .cs-cta-body { font-size: clamp(14px, 1.6vw, 17px); line-height: 1.8; color: rgba(245,245,245,0.45); max-width: 500px; margin-bottom: 48px; }
     [data-theme="light"] .cs-cta-body { color: var(--c-text-60); }
     .cs-cta-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; }
-    .cs-cta-btn {
-      display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
-      border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none;
-      transition: transform var(--t-fast), background var(--t-fast), border-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
-      white-space: nowrap;
-    }
+    .cs-cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; transition: transform var(--t-fast), background var(--t-fast), border-color var(--t-fast), color var(--t-fast), box-shadow var(--t-fast); white-space: nowrap; }
     .cs-cta-btn.primary { background: var(--cs-accent); color: var(--white); border: 1px solid var(--cs-accent); }
-    .cs-cta-btn.primary:hover { background: var(--cs-accent-hover); border-color: var(--cs-accent-hover); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(234,88,12,0.35); }
+    .cs-cta-btn.primary:hover { background: var(--cs-accent-hover); border-color: var(--cs-accent-hover); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(13,148,136,0.35); }
     .cs-cta-btn.ghost { background: transparent; color: rgba(245,245,245,0.65); border: 1px solid rgba(245,245,245,0.18); }
     .cs-cta-btn.ghost:hover { color: var(--white); border-color: rgba(245,245,245,0.45); transform: translateY(-2px); }
     [data-theme="light"] .cs-cta-btn.ghost { color: var(--c-text-60); border-color: var(--c-border-lg); }
     [data-theme="light"] .cs-cta-btn.ghost:hover { color: var(--c-text); border-color: var(--c-text-85); }
     html[dir="rtl"] .cs-cta-arrow { transform: scaleX(-1); }
 
-    .cs-img-slot {
-      position: relative; width: 100%; border-radius: var(--radius-md); overflow: hidden;
-      background: var(--c-surface); border: 1px solid var(--c-border);
-      aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center;
-    }
+    .cs-img-slot { position: relative; width: 100%; border-radius: var(--radius-md); overflow: hidden; background: var(--c-surface); border: 1px solid var(--c-border); aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; }
     .cs-img-slot-bg { position: absolute; inset: 0; background-image: radial-gradient(var(--c-border) 1px, transparent 1px); background-size: 24px 24px; }
     .cs-img-slot-label { position: relative; z-index: 1; font-size: 11px; color: var(--c-text-30); font-family: var(--font-latin); letter-spacing: 0.06em; }
     .cs-solution-images { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: clamp(40px, 5vw, 64px); }
@@ -254,27 +147,27 @@
     .cs-process-title { font-size: clamp(17px, 2vw, 22px); font-weight: 600; color: var(--c-text); margin-bottom: 10px; line-height: 1.3; }
     .cs-process-desc { font-size: 14px; line-height: 1.75; color: var(--c-text-60); max-width: 580px; }
 
-    /* ── Related Case Studies ─────────────────────────────────────── */
-    .cs-related { padding: var(--section-py) 0; border-top: 1px solid var(--c-border); }
-    .cs-related-header { margin-bottom: clamp(40px, 5vw, 56px); }
-    .cs-related-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 12px; }
-    .cs-related-heading { font-size: clamp(24px, 3.5vw, 40px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--c-text); }
-    html[lang="en"] .cs-related-heading, html[lang="fr"] .cs-related-heading { letter-spacing: -0.03em; }
+    /* ── Related Case Studies ───────────────────────────────────────── */
+    .cs-related { padding: clamp(64px, 8vw, 96px) 0; }
+    .cs-related-header { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
+    .cs-related-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--cs-accent); background: var(--cs-accent-08); border: 1px solid var(--cs-accent); border-radius: 999px; padding: 4px 14px; margin-bottom: 14px; }
+    .cs-related-heading { font-size: clamp(22px, 3vw, 30px); font-weight: 700; color: var(--c-text); margin: 0; }
     .cs-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     .cs-related-card { display: flex; flex-direction: column; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background: var(--c-surface); overflow: hidden; text-decoration: none; color: var(--c-text); transition: border-color var(--t-fast), transform var(--t-base), box-shadow var(--t-base); }
     .cs-related-card:hover { border-color: var(--card-accent); transform: translateY(-5px); box-shadow: 0 24px 52px rgba(0,0,0,0.08); }
-    [data-theme="dark"] .cs-related-card:hover { box-shadow: 0 24px 52px rgba(0,0,0,0.35); }
     .cs-related-card-bar { height: 3px; background: var(--card-accent); flex-shrink: 0; }
-    .cs-related-card-body { padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; flex: 1; gap: 10px; }
-    .cs-related-card-client { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-accent); font-family: var(--font-latin); }
-    .cs-related-card-title { font-size: clamp(17px, 1.8vw, 21px); font-weight: 700; line-height: 1.25; color: var(--c-text); letter-spacing: -0.01em; }
-    .cs-related-card-metric { font-size: clamp(28px, 3.2vw, 40px); font-weight: 700; line-height: 1; color: var(--card-accent); font-family: var(--font-latin); }
-    .cs-related-card-metric-label { font-size: 11px; font-weight: 600; color: var(--c-text-60); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
-    .cs-related-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
-    .cs-related-card-tags span { padding: 4px 12px; border-radius: 100px; border: 1px solid var(--c-border); font-size: 11px; font-weight: 500; color: var(--c-text-60); }
-    .cs-related-card-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--c-border); font-size: 13px; font-weight: 600; color: var(--card-accent); transition: gap var(--t-fast); }
-    .cs-related-card:hover .cs-related-card-cta { gap: 10px; }
+    .cs-related-card-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+    .cs-related-card-client { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--card-accent); }
+    .cs-related-card-title { font-size: clamp(16px, 2vw, 19px); font-weight: 700; line-height: 1.3; margin: 0; color: var(--c-text); }
+    .cs-related-card-metric { font-size: clamp(36px, 5vw, 48px); font-weight: 700; line-height: 1; color: var(--card-accent); }
+    .cs-related-card-metric-label { font-size: 13px; color: var(--c-text-60); margin-top: 4px; line-height: 1.4; }
+    .cs-related-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .cs-related-card-tags span { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 999px; background: var(--c-bg-alt); color: var(--c-text-60); border: 1px solid var(--c-border); }
+    .cs-related-card-cta { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--card-accent); padding-top: 4px; }
+    .cs-related-card-arrow { transition: transform var(--t-fast); }
+    html[dir="ltr"] .cs-related-card:hover .cs-related-card-arrow { transform: translateX(4px); }
     html[dir="rtl"] .cs-related-card-arrow { transform: scaleX(-1); }
+    html[dir="rtl"] .cs-related-card:hover .cs-related-card-arrow { transform: scaleX(-1) translateX(-4px); }
   </style>
 </head>
 
@@ -496,7 +389,7 @@
       <span class="t-ar">أعمالنا</span><span class="t-en">Work</span><span class="t-fr">Travaux</span>
     </a>
     <span class="cs-breadcrumb-sep">/</span>
-    <span>B2B Sales</span>
+    <span>مهندس القيم</span>
   </div>
 </div>
 
@@ -508,41 +401,45 @@
   <div class="cs-hero-inner reveal">
 
     <div class="cs-hero-meta">
-      <span>DataMaster</span>
+      <span>مهندس القيم</span>
       <span class="cs-hero-meta-dot"></span>
       <span>Nawat Studio</span>
     </div>
 
     <h1 class="cs-hero-title">
-      <span class="t-ar">وحدة المبيعات B2B في ERP</span>
-      <span class="t-en">B2B Sales ERP Module</span>
-      <span class="t-fr">Module ERP Ventes B2B</span>
+      <span class="t-ar">منصة التعليم الإلكتروني — واجهة المعلم</span>
+      <span class="t-en">eLearning Platform — Teacher Side</span>
+      <span class="t-fr">Plateforme eLearning — Interface Enseignant</span>
     </h1>
 
     <div class="cs-tags">
-      <span class="cs-tag"><span class="t-ar">مبيعات B2B</span><span class="t-en">B2B Sales</span><span class="t-fr">Ventes B2B</span></span>
-      <span class="cs-tag">ERP</span>
-      <span class="cs-tag"><span class="t-ar">تصميم البيانات</span><span class="t-en">Data Design</span><span class="t-fr">Design de Données</span></span>
-      <span class="cs-tag"><span class="t-ar">UX المؤسسي</span><span class="t-en">Enterprise UX</span><span class="t-fr">UX Entreprise</span></span>
+      <span class="cs-tag">EdTech</span>
+      <span class="cs-tag">SaaS</span>
+      <span class="cs-tag"><span class="t-ar">أدوات التدريس</span><span class="t-en">Teacher Tools</span><span class="t-fr">Outils Enseignant</span></span>
+      <span class="cs-tag"><span class="t-ar">إدارة المحتوى</span><span class="t-en">Course Management</span><span class="t-fr">Gestion des Cours</span></span>
     </div>
 
     <div class="cs-stats">
       <div class="cs-stat">
-        <div class="cs-stat-num">01</div>
-        <div class="cs-stat-label"><span class="t-ar">مصمم</span><span class="t-en">Designer</span><span class="t-fr">Designer</span></div>
-      </div>
-      <div class="cs-stat-divider"></div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">40<em>%</em></div>
+        <div class="cs-stat-num">60<em>%</em></div>
         <div class="cs-stat-label">
-          <span class="t-ar">تسريع إنشاء عروض الأسعار</span>
-          <span class="t-en">Faster Quote Creation</span>
-          <span class="t-fr">Création de Devis Plus Rapide</span>
+          <span class="t-ar">تقليل وقت إنشاء المحتوى</span>
+          <span class="t-en">Reduction in Course Creation Time</span>
+          <span class="t-fr">Réduction du Temps de Création</span>
         </div>
       </div>
       <div class="cs-stat-divider"></div>
       <div class="cs-stat">
-        <div class="cs-stat-num">Q1–Q3</div>
+        <div class="cs-stat-num">15<em>+</em></div>
+        <div class="cs-stat-label">
+          <span class="t-ar">معلماً في بحث المستخدم</span>
+          <span class="t-en">Teachers in User Research</span>
+          <span class="t-fr">Enseignants en Recherche</span>
+        </div>
+      </div>
+      <div class="cs-stat-divider"></div>
+      <div class="cs-stat">
+        <div class="cs-stat-num">Q1–Q4</div>
         <div class="cs-stat-label"><span class="t-ar">2024</span><span class="t-en">2024</span><span class="t-fr">2024</span></div>
       </div>
     </div>
@@ -551,88 +448,77 @@
   <!-- Cover placeholder -->
   <div class="cs-cover reveal">
     <div class="cs-cover-dots"></div>
-    <!-- Abstract ERP data-dense visualization -->
+    <!-- Abstract eLearning platform visualization -->
     <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1;" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Main dashboard frame -->
-      <rect x="48" y="40" width="720" height="350" rx="12" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
-      <!-- Top bar -->
-      <rect x="48" y="40" width="720" height="48" rx="12" fill="currentColor" opacity="0.07"/>
-      <rect x="66" y="56" width="100" height="14" rx="4" fill="currentColor" opacity="0.28"/>
-      <rect x="186" y="58" width="70" height="10" rx="3" fill="currentColor" opacity="0.18"/>
-      <rect x="268" y="58" width="70" height="10" rx="3" fill="currentColor" opacity="0.18"/>
-      <rect x="624" y="54" width="120" height="20" rx="6" fill="#EA580C" opacity="0.3"/>
-      <!-- Stat cards row -->
-      <rect x="66" y="106" width="156" height="72" rx="8" fill="currentColor" opacity="0.06"/>
-      <rect x="82" y="118" width="60" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="82" y="134" width="90" height="20" rx="4" fill="currentColor" opacity="0.28"/>
-      <rect x="82" y="158" width="70" height="8" rx="3" fill="#EA580C" opacity="0.35"/>
-      <rect x="238" y="106" width="156" height="72" rx="8" fill="currentColor" opacity="0.06"/>
-      <rect x="254" y="118" width="55" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="254" y="134" width="80" height="20" rx="4" fill="currentColor" opacity="0.28"/>
-      <rect x="254" y="158" width="65" height="8" rx="3" fill="currentColor" opacity="0.18"/>
-      <rect x="410" y="106" width="156" height="72" rx="8" fill="currentColor" opacity="0.06"/>
-      <rect x="426" y="118" width="70" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="426" y="134" width="95" height="20" rx="4" fill="currentColor" opacity="0.28"/>
-      <rect x="426" y="158" width="75" height="8" rx="3" fill="#EA580C" opacity="0.25"/>
-      <rect x="582" y="106" width="156" height="72" rx="8" fill="#EA580C" opacity="0.05"/>
-      <rect x="598" y="118" width="65" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="598" y="134" width="100" height="20" rx="4" fill="currentColor" opacity="0.28"/>
-      <rect x="598" y="158" width="80" height="8" rx="3" fill="#EA580C" opacity="0.4"/>
-      <!-- Data table -->
-      <rect x="66" y="196" width="680" height="36" rx="4" fill="currentColor" opacity="0.06"/>
-      <rect x="80" y="206" width="80" height="8" rx="3" fill="#EA580C" opacity="0.4"/>
-      <rect x="200" y="206" width="70" height="8" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="320" y="206" width="90" height="8" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="460" y="206" width="60" height="8" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="570" y="206" width="80" height="8" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="700" y="206" width="30" height="8" rx="3" fill="currentColor" opacity="0.22"/>
-      <!-- Table rows -->
-      <line x1="66" y1="240" x2="746" y2="240" stroke="currentColor" stroke-width="1" opacity="0.1"/>
-      <rect x="80" y="248" width="90" height="7" rx="3" fill="currentColor" opacity="0.2"/>
-      <rect x="200" y="248" width="60" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="320" y="248" width="80" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="460" y="244" width="52" height="16" rx="8" fill="#EA580C" opacity="0.18"/>
-      <line x1="66" y1="272" x2="746" y2="272" stroke="currentColor" stroke-width="1" opacity="0.1"/>
-      <rect x="80" y="280" width="75" height="7" rx="3" fill="currentColor" opacity="0.2"/>
-      <rect x="200" y="280" width="65" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="320" y="280" width="85" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="460" y="276" width="52" height="16" rx="8" fill="currentColor" opacity="0.1"/>
-      <line x1="66" y1="304" x2="746" y2="304" stroke="currentColor" stroke-width="1" opacity="0.1"/>
-      <rect x="80" y="312" width="88" height="7" rx="3" fill="currentColor" opacity="0.2"/>
-      <rect x="200" y="312" width="55" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="320" y="312" width="75" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="460" y="308" width="52" height="16" rx="8" fill="currentColor" opacity="0.1"/>
-      <line x1="66" y1="336" x2="746" y2="336" stroke="currentColor" stroke-width="1" opacity="0.1"/>
-      <rect x="80" y="344" width="80" height="7" rx="3" fill="currentColor" opacity="0.2"/>
-      <rect x="200" y="344" width="70" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="320" y="344" width="90" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="460" y="340" width="52" height="16" rx="8" fill="#EA580C" opacity="0.2"/>
-      <!-- Right panel — quote builder -->
-      <rect x="820" y="40" width="340" height="350" rx="12" stroke="currentColor" stroke-width="1.5" opacity="0.22"/>
-      <rect x="820" y="40" width="340" height="48" rx="12" fill="currentColor" opacity="0.06"/>
-      <rect x="836" y="56" width="120" height="14" rx="4" fill="currentColor" opacity="0.25"/>
-      <!-- Quote lines -->
-      <rect x="836" y="108" width="308" height="1" rx="0" fill="currentColor" opacity="0.1"/>
-      <rect x="836" y="116" width="180" height="8" rx="3" fill="currentColor" opacity="0.2"/>
-      <rect x="836" y="128" width="100" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="836" y="148" width="308" height="1" rx="0" fill="currentColor" opacity="0.1"/>
-      <rect x="836" y="156" width="160" height="8" rx="3" fill="currentColor" opacity="0.2"/>
-      <rect x="836" y="168" width="90" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <rect x="836" y="188" width="308" height="1" rx="0" fill="currentColor" opacity="0.1"/>
-      <rect x="836" y="196" width="200" height="8" rx="3" fill="currentColor" opacity="0.2"/>
-      <rect x="836" y="208" width="120" height="7" rx="3" fill="currentColor" opacity="0.14"/>
-      <!-- Total block -->
-      <rect x="836" y="280" width="308" height="52" rx="8" fill="#EA580C" opacity="0.08"/>
-      <rect x="852" y="292" width="80" height="10" rx="3" fill="currentColor" opacity="0.25"/>
-      <rect x="852" y="308" width="130" height="14" rx="4" fill="#EA580C" opacity="0.5"/>
-      <!-- CTA button -->
-      <rect x="836" y="348" width="308" height="32" rx="8" fill="#EA580C" opacity="0.35"/>
+      <!-- Main app frame -->
+      <rect x="48" y="36" width="700" height="358" rx="12" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
+      <!-- Top nav -->
+      <rect x="48" y="36" width="700" height="48" rx="12" fill="currentColor" opacity="0.07"/>
+      <rect x="66" y="52" width="100" height="16" rx="4" fill="currentColor" opacity="0.28"/>
+      <rect x="190" y="54" width="60" height="12" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="262" y="54" width="60" height="12" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="334" y="54" width="60" height="12" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="608" y="50" width="120" height="20" rx="6" fill="#0D9488" opacity="0.3"/>
+      <!-- Sidebar -->
+      <rect x="48" y="84" width="160" height="310" fill="currentColor" opacity="0.04"/>
+      <rect x="66" y="104" width="124" height="12" rx="3" fill="#0D9488" opacity="0.35"/>
+      <rect x="66" y="124" width="108" height="10" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="66" y="142" width="116" height="10" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="66" y="160" width="100" height="10" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="66" y="178" width="112" height="10" rx="3" fill="currentColor" opacity="0.18"/>
+      <!-- Course cards grid -->
+      <rect x="228" y="100" width="200" height="140" rx="10" fill="currentColor" opacity="0.06"/>
+      <rect x="228" y="100" width="200" height="80" rx="10" fill="#0D9488" opacity="0.1"/>
+      <rect x="244" y="196" width="140" height="10" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="244" y="210" width="100" height="8" rx="3" fill="currentColor" opacity="0.16"/>
+      <rect x="244" y="222" width="60" height="8" rx="3" fill="#0D9488" opacity="0.35"/>
+      <rect x="444" y="100" width="200" height="140" rx="10" fill="currentColor" opacity="0.06"/>
+      <rect x="444" y="100" width="200" height="80" rx="10" fill="currentColor" opacity="0.08"/>
+      <rect x="460" y="196" width="130" height="10" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="460" y="210" width="90" height="8" rx="3" fill="currentColor" opacity="0.16"/>
+      <rect x="460" y="222" width="55" height="8" rx="3" fill="currentColor" opacity="0.18"/>
+      <!-- Lesson builder -->
+      <rect x="228" y="260" width="416" height="130" rx="10" fill="currentColor" opacity="0.05"/>
+      <rect x="244" y="274" width="180" height="12" rx="3" fill="currentColor" opacity="0.22"/>
+      <!-- Drag blocks -->
+      <rect x="244" y="298" width="120" height="36" rx="6" fill="#0D9488" opacity="0.15"/>
+      <rect x="374" y="298" width="120" height="36" rx="6" fill="currentColor" opacity="0.08"/>
+      <rect x="504" y="298" width="120" height="36" rx="6" fill="currentColor" opacity="0.08"/>
+      <rect x="244" y="344" width="90" height="28" rx="6" fill="#0D9488" opacity="0.2"/>
+      <rect x="344" y="344" width="90" height="28" rx="6" fill="currentColor" opacity="0.07"/>
+      <rect x="444" y="344" width="90" height="28" rx="6" fill="currentColor" opacity="0.07"/>
+      <!-- Right panel — analytics -->
+      <rect x="800" y="36" width="360" height="358" rx="12" stroke="currentColor" stroke-width="1.5" opacity="0.22"/>
+      <rect x="800" y="36" width="360" height="48" rx="12" fill="currentColor" opacity="0.06"/>
+      <rect x="818" y="52" width="130" height="14" rx="4" fill="currentColor" opacity="0.25"/>
+      <!-- Student progress bars -->
+      <rect x="818" y="104" width="328" height="12" rx="3" fill="currentColor" opacity="0.08"/>
+      <rect x="818" y="104" width="230" height="12" rx="3" fill="#0D9488" opacity="0.3"/>
+      <rect x="818" y="90" width="90" height="8" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="818" y="128" width="328" height="12" rx="3" fill="currentColor" opacity="0.08"/>
+      <rect x="818" y="128" width="180" height="12" rx="3" fill="#0D9488" opacity="0.22"/>
+      <rect x="818" y="114" width="85" height="8" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="818" y="152" width="328" height="12" rx="3" fill="currentColor" opacity="0.08"/>
+      <rect x="818" y="152" width="280" height="12" rx="3" fill="#0D9488" opacity="0.28"/>
+      <rect x="818" y="138" width="95" height="8" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="818" y="176" width="328" height="12" rx="3" fill="currentColor" opacity="0.08"/>
+      <rect x="818" y="176" width="140" height="12" rx="3" fill="#0D9488" opacity="0.18"/>
+      <rect x="818" y="162" width="80" height="8" rx="3" fill="currentColor" opacity="0.2"/>
+      <!-- Completion donut -->
+      <circle cx="980" cy="260" r="60" stroke="currentColor" stroke-width="12" opacity="0.08"/>
+      <circle cx="980" cy="260" r="60" stroke="#0D9488" stroke-width="12" stroke-dasharray="226 377" stroke-dashoffset="56" opacity="0.4"/>
+      <rect x="955" y="252" width="50" height="16" rx="4" fill="currentColor" opacity="0.25"/>
+      <rect x="960" y="272" width="40" height="10" rx="3" fill="currentColor" opacity="0.16"/>
+      <!-- Recent activity list -->
+      <rect x="818" y="336" width="328" height="1" fill="currentColor" opacity="0.1"/>
+      <circle cx="830" cy="358" r="8" fill="currentColor" opacity="0.1"/>
+      <rect x="848" y="352" width="110" height="8" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="848" y="364" width="75" height="7" rx="3" fill="currentColor" opacity="0.12"/>
     </svg>
     <div class="cs-cover-placeholder">
       <div class="cs-cover-icon-wrap">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
         </svg>
       </div>
       <p class="cs-cover-hint">project screenshots · add to assets/</p>
@@ -652,14 +538,14 @@
         <span class="t-ar">التحدي</span><span class="t-en">The Challenge</span><span class="t-fr">Le Défi</span>
       </p>
       <h2 class="cs-section-title">
-        <span class="t-ar">بيانات كثيفة، واجهة واضحة</span>
-        <span class="t-en">Dense Data, Clear Interface</span>
-        <span class="t-fr">Données Denses, Interface Claire</span>
+        <span class="t-ar">المعلم يريد أن يُعلِّم، لا أن يُدار</span>
+        <span class="t-en">Teachers Want to Teach, Not to Be Managed</span>
+        <span class="t-fr">Les Enseignants Veulent Enseigner, Pas Être Gérés</span>
       </h2>
       <p class="cs-section-body">
-        <span class="t-ar">كانت فرق المبيعات في داتاماستر تعمل بأنظمة منفصلة لعروض الأسعار والطلبات والفواتير والمردودات — لا رؤية موحدة، ولا تكامل فعلي مع بيانات المخزون والتسعير. كل عملية كانت تستلزم الانتقال بين تطبيقات متعددة وإدخال بيانات متكرر.<br><br>كان الهدف بناء منصة مبيعات B2B متكاملة — كثيفة بالبيانات، لكن قابلة للاستخدام — تجمع كل شيء في نظام واحد متماسك.</span>
-        <span class="t-en">DataMaster's sales teams were working across disconnected systems for quotes, orders, invoices, and returns — no unified view, and no real integration with pricing and inventory data. Every operation required switching between multiple apps and re-entering data repeatedly.<br><br>The goal was to build a comprehensive B2B sales platform — data-dense but usable — that brings everything together into a single coherent system.</span>
-        <span class="t-fr">Les équipes commerciales de DataMaster travaillaient sur des systèmes déconnectés pour les devis, commandes, factures et retours — pas de vue unifiée, et pas de vraie intégration avec les données de tarification et d'inventaire. Chaque opération nécessitait de jongler entre plusieurs applications et de ressaisir des données.<br><br>L'objectif était de construire une plateforme de vente B2B complète — dense en données mais utilisable — qui réunit tout dans un système cohérent.</span>
+        <span class="t-ar">كان المعلمون يعانون من منصات LMS ضخمة ومعقدة تتطلب ساعات من التدريب قبل إنشاء أول درس. الأدوات كانت مصممة للمؤسسة لا للمعلم — مليئة بخيارات إدارية تُشتت التركيز عن ما يهم فعلاً: التدريس.<br><br>هدفنا كان بناء منصة تجعل إنشاء المحتوى وإدارة الطلاب وتتبع التقدم بسيطاً وبديهياً — بحيث يتفرغ المعلم لما يُجيده.</span>
+        <span class="t-en">Teachers were struggling with bloated, complex LMS platforms that required hours of training before creating a first lesson. Tools were designed for the institution, not the teacher — packed with administrative options that distracted from what truly matters: teaching.<br><br>Our goal was to build a platform that makes content creation, student management, and progress tracking simple and intuitive — so teachers can focus on what they do best.</span>
+        <span class="t-fr">Les enseignants luttaient avec des plateformes LMS volumineuses et complexes nécessitant des heures de formation avant de créer un premier cours. Les outils étaient conçus pour l'institution, pas pour l'enseignant — remplis d'options administratives qui distraient de ce qui compte vraiment : l'enseignement.<br><br>Notre objectif était de construire une plateforme qui rend la création de contenu, la gestion des élèves et le suivi des progrès simples et intuitifs — pour que les enseignants se concentrent sur ce qu'ils font le mieux.</span>
       </p>
     </div>
 
@@ -668,42 +554,42 @@
       <div class="cs-problem-card">
         <div class="cs-problem-num">01</div>
         <div class="cs-problem-title">
-          <span class="t-ar">هندسة المعلومات</span>
-          <span class="t-en">Information Architecture</span>
-          <span class="t-fr">Architecture de l'Information</span>
+          <span class="t-ar">سهولة الاستخدام</span>
+          <span class="t-en">Ease of Use</span>
+          <span class="t-fr">Facilité d'Utilisation</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">كيف ترتب مئات الحقول والجداول والعلاقات في واجهة يفهمها مندوب المبيعات دون تدريب مطوّل؟</span>
-          <span class="t-en">How do you organize hundreds of fields, tables, and relationships into an interface a sales rep understands without extensive training?</span>
-          <span class="t-fr">Comment organiser des centaines de champs, tableaux et relations dans une interface qu'un commercial comprend sans formation extensive ?</span>
+          <span class="t-ar">المعلمون ليسوا خبراء تقنيين — المنصة يجب أن تكون واضحة تماماً من اليوم الأول، دون تدريب مكثف.</span>
+          <span class="t-en">Teachers are not tech experts — the platform must be completely clear from day one, without intensive training.</span>
+          <span class="t-fr">Les enseignants ne sont pas des experts tech — la plateforme doit être entièrement claire dès le premier jour, sans formation intensive.</span>
         </div>
       </div>
 
       <div class="cs-problem-card">
         <div class="cs-problem-num">02</div>
         <div class="cs-problem-title">
-          <span class="t-ar">كثافة البيانات مقابل سهولة الاستخدام</span>
-          <span class="t-en">Data Density vs. Usability</span>
-          <span class="t-fr">Densité des Données vs. Utilisabilité</span>
+          <span class="t-ar">مرونة المحتوى</span>
+          <span class="t-en">Content Flexibility</span>
+          <span class="t-fr">Flexibilité du Contenu</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">المستخدم المؤسسي يحتاج كل البيانات أمامه — لكنه في نفس الوقت يحتاج واجهة سريعة وغير مربكة. التوازن هنا هو التحدي الأصعب.</span>
-          <span class="t-en">Enterprise users need all the data in front of them — but they also need a fast, non-overwhelming interface. Finding that balance was the hardest challenge.</span>
-          <span class="t-fr">Les utilisateurs enterprise ont besoin de toutes les données devant eux — mais aussi d'une interface rapide et non accablante. Trouver cet équilibre était le défi le plus difficile.</span>
+          <span class="t-ar">كل معلم يُدرِّس بطريقته الخاصة — المنصة يجب أن تدعم أساليب تربوية متنوعة دون فرض هيكل واحد.</span>
+          <span class="t-en">Every teacher teaches in their own way — the platform must support diverse pedagogical approaches without imposing a single rigid structure.</span>
+          <span class="t-fr">Chaque enseignant enseigne à sa façon — la plateforme doit soutenir des approches pédagogiques diverses sans imposer une structure rigide unique.</span>
         </div>
       </div>
 
       <div class="cs-problem-card">
         <div class="cs-problem-num">03</div>
         <div class="cs-problem-title">
-          <span class="t-ar">التكامل مع البنية التحتية القائمة</span>
-          <span class="t-en">Workflow Integration</span>
-          <span class="t-fr">Intégration des Flux</span>
+          <span class="t-ar">رؤى قابلة للتنفيذ</span>
+          <span class="t-en">Actionable Insights</span>
+          <span class="t-fr">Insights Actionnables</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">التصميم لا يعمل في فراغ — يجب أن يتكامل بشكل سلس مع نظام ERP القائم ومنطق الأعمال الموجود.</span>
-          <span class="t-en">Design doesn't work in a vacuum — it must integrate seamlessly with the existing ERP infrastructure and established business logic.</span>
-          <span class="t-fr">Le design ne fonctionne pas dans le vide — il doit s'intégrer parfaitement avec l'infrastructure ERP existante et la logique métier établie.</span>
+          <span class="t-ar">المعلم يحتاج أن يعرف أين يتعثر الطلاب — ليس فقط أرقاماً، بل رؤى مباشرة تساعده على تحسين دروسه.</span>
+          <span class="t-en">Teachers need to know where students are struggling — not just numbers, but direct insights that help them improve their lessons.</span>
+          <span class="t-fr">Les enseignants doivent savoir où les élèves ont des difficultés — pas seulement des chiffres, mais des insights directs qui les aident à améliorer leurs cours.</span>
         </div>
       </div>
 
@@ -722,14 +608,14 @@
       <span class="t-ar">الحل</span><span class="t-en">The Solution</span><span class="t-fr">La Solution</span>
     </p>
     <h2 class="cs-section-title">
-      <span class="t-ar">منصة موحدة لعمليات المبيعات</span>
-      <span class="t-en">A Unified Sales Operations Platform</span>
-      <span class="t-fr">Une Plateforme Unifiée pour les Opérations Commerciales</span>
+      <span class="t-ar">أدوات تشعر كغرفة الصف</span>
+      <span class="t-en">Tools That Feel Like a Classroom</span>
+      <span class="t-fr">Des Outils Qui Ressemblent à une Salle de Classe</span>
     </h2>
     <p class="cs-section-body">
-      <span class="t-ar">صممنا منصة مبيعات B2B شاملة تجمع عروض الأسعار، الطلبات، الفواتير، والمردودات في نظام واحد متكامل. اعتمدنا على جداول هيكلية هرمية وبطاقات وحدات مرنة لتنظيم البيانات الكثيفة — مع الحفاظ على تدفق سريع للعمليات اليومية.</span>
-      <span class="t-en">We designed a comprehensive B2B sales platform that unifies quotes, orders, invoices, and returns in a single coherent system. We relied on hierarchical structured tables and modular cards to organize dense data — while preserving a fast flow for daily operations.</span>
-      <span class="t-fr">Nous avons conçu une plateforme de vente B2B complète qui unifie devis, commandes, factures et retours dans un système cohérent. Nous avons utilisé des tableaux structurés hiérarchiques et des cartes modulaires pour organiser les données denses — tout en préservant un flux rapide pour les opérations quotidiennes.</span>
+      <span class="t-ar">صممنا منصة مهندس القيم من منظور المعلم أولاً — محرر محتوى بالسحب والإفلات، لوحة إدارة الطلاب، معاينة المحتوى في الوقت الفعلي، ورؤى واضحة عن أداء الطلاب. الهدف لم يكن فقط تقليل التعقيد — بل جعل التجربة طبيعية كأنها امتداد لقاعة الدرس.</span>
+      <span class="t-en">We designed Muhandis Al-Qiyam from the teacher's perspective first — a drag-and-drop course builder, student management dashboard, real-time content preview, and clear student performance insights. The goal wasn't just to reduce complexity — it was to make the experience feel as natural as an extension of the classroom.</span>
+      <span class="t-fr">Nous avons conçu Muhandis Al-Qiyam depuis la perspective de l'enseignant en premier — un constructeur de cours par glisser-déposer, un tableau de gestion des élèves, une prévisualisation du contenu en temps réel et des insights clairs sur les performances. L'objectif n'était pas seulement de réduire la complexité — mais de rendre l'expérience aussi naturelle qu'une extension de la salle de classe.</span>
     </p>
   </div>
 
@@ -738,73 +624,76 @@
     <div class="cs-feature-card reveal">
       <div class="cs-feature-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/>
+          <polyline points="5 9 2 12 5 15"/><polyline points="19 9 22 12 19 15"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
         </svg>
       </div>
       <h3 class="cs-feature-title">
-        <span class="t-ar">هندسة المعلومات الهيكلية</span>
-        <span class="t-en">Structured Information Architecture</span>
-        <span class="t-fr">Architecture d'Information Structurée</span>
+        <span class="t-ar">منشئ المحتوى بالسحب والإفلات</span>
+        <span class="t-en">Drag-and-Drop Course Builder</span>
+        <span class="t-fr">Constructeur de Cours par Glisser-Déposer</span>
       </h3>
       <p class="cs-feature-body">
-        <span class="t-ar">جداول هيكلية هرمية، بطاقات وحدات مرنة، وتصفح واضح — تنظيم يجعل البيانات الكثيفة قابلة للاستيعاب والتنقل.</span>
-        <span class="t-en">Hierarchical structured tables, modular cards, and clear navigation — an organization that makes dense data digestible and navigable.</span>
-        <span class="t-fr">Tableaux structurés hiérarchiques, cartes modulaires et navigation claire — une organisation qui rend les données denses digestes et navigables.</span>
+        <span class="t-ar">يرتّب المعلم وحدات الدرس بسحب بسيط — فيديو، نص، اختبارات، مهام — دون كتابة أي كود أو التعامل مع واجهات تقنية معقدة.</span>
+        <span class="t-en">Teachers arrange lesson modules with a simple drag — video, text, quizzes, assignments — without writing any code or dealing with complex technical interfaces.</span>
+        <span class="t-fr">Les enseignants organisent les modules de cours par simple glisser — vidéo, texte, quiz, devoirs — sans écrire de code ni gérer des interfaces techniques complexes.</span>
+      </p>
+      <span class="cs-feature-badge">60% faster</span>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">لوحة إدارة الطلاب</span>
+        <span class="t-en">Student Management Dashboard</span>
+        <span class="t-fr">Tableau de Gestion des Élèves</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">رؤية موحدة لكل طالب — تقدمه في المقرر، درجاته، مشاركته، وتنبيهات ذكية عند انخفاض الأداء.</span>
+        <span class="t-en">A unified view of every student — course progress, grades, participation, and smart alerts when performance drops.</span>
+        <span class="t-fr">Une vue unifiée de chaque élève — progression dans le cours, notes, participation et alertes intelligentes en cas de baisse de performance.</span>
       </p>
     </div>
 
     <div class="cs-feature-card reveal">
       <div class="cs-feature-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
         </svg>
       </div>
       <h3 class="cs-feature-title">
-        <span class="t-ar">تدفق إنشاء عروض الأسعار</span>
-        <span class="t-en">Quote Creation Flow</span>
-        <span class="t-fr">Flux de Création de Devis</span>
+        <span class="t-ar">معاينة المحتوى في الوقت الفعلي</span>
+        <span class="t-en">Real-Time Content Preview</span>
+        <span class="t-fr">Prévisualisation en Temps Réel</span>
       </h3>
       <p class="cs-feature-body">
-        <span class="t-ar">صممنا تدفق إنشاء عروض الأسعار من الصفر — خطوات واضحة، اقتراحات ذكية، وتكامل فوري مع بيانات التسعير والمخزون.</span>
-        <span class="t-en">We designed the quote creation flow from scratch — clear steps, smart suggestions, and instant integration with pricing and inventory data.</span>
-        <span class="t-fr">Nous avons conçu le flux de création de devis de zéro — étapes claires, suggestions intelligentes et intégration instantanée avec les données de tarification et d'inventaire.</span>
-      </p>
-      <span class="cs-feature-badge">40% faster</span>
-    </div>
-
-    <div class="cs-feature-card reveal">
-      <div class="cs-feature-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
-        </svg>
-      </div>
-      <h3 class="cs-feature-title">
-        <span class="t-ar">لوحة إدارة الطلبات</span>
-        <span class="t-en">Order Management Dashboard</span>
-        <span class="t-fr">Tableau de Bord de Gestion des Commandes</span>
-      </h3>
-      <p class="cs-feature-body">
-        <span class="t-ar">لوحة تحكم مركزية تعطي المدير ومندوب المبيعات رؤية فورية على كل طلب مفتوح — حالته، قيمته، والخطوة التالية.</span>
-        <span class="t-en">A central dashboard giving managers and reps instant visibility into every open order — its status, value, and next step.</span>
-        <span class="t-fr">Un tableau de bord central donnant aux managers et commerciaux une visibilité instantanée sur chaque commande ouverte — son statut, sa valeur et la prochaine étape.</span>
+        <span class="t-ar">المعلم يرى درسه كما سيراه الطالب — في نفس اللحظة أثناء البناء — دون الحاجة إلى نشر ومعاينة منفصلين.</span>
+        <span class="t-en">Teachers see their lesson exactly as the student will — in real time while building — without a separate publish-and-preview cycle.</span>
+        <span class="t-fr">Les enseignants voient leur cours exactement comme l'élève le verra — en temps réel pendant la construction — sans cycle publication-prévisualisation séparé.</span>
       </p>
     </div>
 
     <div class="cs-feature-card reveal">
       <div class="cs-feature-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
         </svg>
       </div>
       <h3 class="cs-feature-title">
-        <span class="t-ar">توليد الفواتير والمردودات</span>
-        <span class="t-en">Invoice &amp; Returns Generation</span>
-        <span class="t-fr">Génération de Factures &amp; Retours</span>
+        <span class="t-ar">رؤى أداء الطلاب</span>
+        <span class="t-en">Student Performance Insights</span>
+        <span class="t-fr">Insights de Performance des Élèves</span>
       </h3>
       <p class="cs-feature-body">
-        <span class="t-ar">توليد الفواتير ومعالجة المردودات مدمجان في نفس النظام — لا انتقال بين تطبيقات، ولا إدخال مكرر للبيانات.</span>
-        <span class="t-en">Invoice generation and returns processing are built into the same system — no app switching, no duplicate data entry.</span>
-        <span class="t-fr">La génération de factures et le traitement des retours sont intégrés dans le même système — pas de changement d'application, pas de saisie en double.</span>
+        <span class="t-ar">بيانات واضحة وقابلة للتنفيذ — أين يتوقف الطلاب؟ أي وحدة تحتاج مراجعة؟ كل هذا في لوحة بسيطة وغير مزدحمة.</span>
+        <span class="t-en">Clear, actionable data — where do students stop? Which module needs revision? All of this in a simple, uncluttered dashboard.</span>
+        <span class="t-fr">Des données claires et actionnables — où les élèves s'arrêtent-ils ? Quel module nécessite une révision ? Tout cela dans un tableau simple et non encombré.</span>
       </p>
     </div>
 
@@ -813,15 +702,15 @@
   <div class="cs-solution-images">
     <div class="cs-img-slot reveal" style="aspect-ratio:16/7;">
       <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">sales dashboard overview — 1600 × 700</span>
+      <span class="cs-img-slot-label">platform overview — course builder + dashboard — 1600 × 700</span>
     </div>
     <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
       <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">quote creation flow — 800 × 600</span>
+      <span class="cs-img-slot-label">drag-and-drop course builder — 800 × 600</span>
     </div>
     <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
       <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">order management &amp; invoice view — 800 × 600</span>
+      <span class="cs-img-slot-label">student progress & analytics — 800 × 600</span>
     </div>
   </div>
 
@@ -838,9 +727,9 @@
       <span class="t-ar">كيف عملنا</span><span class="t-en">How We Worked</span><span class="t-fr">Comment Nous Avons Travaillé</span>
     </p>
     <h2 class="cs-section-title">
-      <span class="t-ar">مسار التصميم والتنفيذ</span>
-      <span class="t-en">Design &amp; Implementation Process</span>
-      <span class="t-fr">Processus de Design &amp; Implémentation</span>
+      <span class="t-ar">مسار التصميم والتكرار</span>
+      <span class="t-en">Design &amp; Iteration Process</span>
+      <span class="t-fr">Processus de Design &amp; Itération</span>
     </h2>
   </div>
 
@@ -850,14 +739,14 @@
       <div class="cs-process-num">01</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">البحث والاكتشاف</span>
-          <span class="t-en">Research &amp; Discovery</span>
-          <span class="t-fr">Recherche &amp; Découverte</span>
+          <span class="t-ar">مقابلات المعلمين والبحث الميداني</span>
+          <span class="t-en">Teacher Interviews &amp; Research</span>
+          <span class="t-fr">Entretiens Enseignants &amp; Recherche</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">أجرينا أكثر من 12 مقابلة مع مندوبي المبيعات والمديرين، ورسمنا خرائط سير العمل الحالية، وحللنا المنافسين والأدوات المؤسسية الموجودة — قبل رسم أي تصميم.</span>
-          <span class="t-en">We conducted 12+ interviews with sales reps and managers, mapped current workflow processes, and analyzed competitors and existing enterprise tools — before designing anything.</span>
-          <span class="t-fr">Nous avons conduit 12+ entretiens avec des commerciaux et managers, cartographié les processus existants et analysé les concurrents et outils enterprise existants — avant de concevoir quoi que ce soit.</span>
+          <span class="t-ar">أجرينا أكثر من 15 مقابلة مع معلمين من K-12 والتعليم العالي — لفهم كيف يُخططون دروسهم، ما يُعيقهم، وما يتمنون أن تفعله الأدوات لكنها لا تفعله.</span>
+          <span class="t-en">We conducted 15+ interviews with K-12 and higher education teachers — to understand how they plan their lessons, what blocks them, and what they wish tools could do but can't.</span>
+          <span class="t-fr">Nous avons conduit 15+ entretiens avec des enseignants K-12 et de l'enseignement supérieur — pour comprendre comment ils planifient leurs cours, ce qui les bloque et ce qu'ils souhaitent que les outils fassent mais ne peuvent pas.</span>
         </p>
       </div>
     </div>
@@ -871,9 +760,9 @@
           <span class="t-fr">Architecture de l'Information</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">بنينا هندسة معلومات هرمية تجمع الجداول والبطاقات والتنقل في منظومة متسقة — قبل الانتقال إلى أي تفاصيل بصرية.</span>
-          <span class="t-en">We built a hierarchical information architecture combining tables, cards, and navigation into a consistent system — before moving to any visual details.</span>
-          <span class="t-fr">Nous avons construit une architecture d'information hiérarchique combinant tableaux, cartes et navigation en un système cohérent — avant de passer aux détails visuels.</span>
+          <span class="t-ar">هيكلنا المنصة على أربعة محاور رئيسية: بناء المقرر، إدارة الطلاب، تقديم المحتوى، التقييم — مع تدفق واضح يربطها جميعاً دون تعقيد تنقّل.</span>
+          <span class="t-en">We structured the platform around four core areas: course building, student management, content delivery, and assessment — with a clear flow connecting them all without complex navigation.</span>
+          <span class="t-fr">Nous avons structuré la plateforme autour de quatre axes principaux : construction de cours, gestion des élèves, livraison de contenu et évaluation — avec un flux clair les reliant tous sans navigation complexe.</span>
         </p>
       </div>
     </div>
@@ -887,9 +776,9 @@
           <span class="t-fr">Design de l'Interface</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">طبّقنا مكتبة داتاماستر (إكسير) وصممنا الواجهة الكاملة — تدفق إنشاء العروض، لوحة إدارة الطلبات، توليد الفواتير — مع اهتمام خاص بتوازن كثافة البيانات وسهولة القراءة.</span>
-          <span class="t-en">We applied the DataMaster (Iksir) library and designed the full interface — quote creation flow, order management dashboard, invoice generation — paying special attention to balancing data density with readability.</span>
-          <span class="t-fr">Nous avons appliqué le design system DataMaster (Iksir) et conçu l'interface complète — flux de création de devis, tableau de commandes, génération de factures — avec une attention particulière à l'équilibre entre densité des données et lisibilité.</span>
+          <span class="t-ar">صممنا محرر المحتوى بالسحب والإفلات، معاينة الوقت الفعلي، لوحة الطلاب الموحدة، ولوحة التحليلات — مع اهتمام خاص بجعل كل ميزة مكتفية بذاتها وسهلة الاكتشاف.</span>
+          <span class="t-en">We designed the drag-and-drop content editor, real-time preview, unified student dashboard, and analytics panel — with special care to make every feature self-evident and easy to discover.</span>
+          <span class="t-fr">Nous avons conçu l'éditeur de contenu par glisser-déposer, la prévisualisation en temps réel, le tableau des élèves unifié et le panneau d'analytique — avec un soin particulier pour rendre chaque fonction évidente et facile à découvrir.</span>
         </p>
       </div>
     </div>
@@ -903,9 +792,9 @@
           <span class="t-fr">Tests &amp; Itération</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">أجرينا 5 جولات اختبار مع مستخدمين حقيقيين، وعملنا بشكل متواصل مع فريق التطوير لضمان أمانة التنفيذ وحل أي تعارض بين التصميم والمتطلبات التقنية.</span>
-          <span class="t-en">We ran 5 rounds of testing with real users, and worked continuously with the development team to ensure implementation fidelity and resolve any conflicts between design and technical requirements.</span>
-          <span class="t-fr">Nous avons effectué 5 tours de tests avec de vrais utilisateurs, et travaillé en continu avec l'équipe dev pour assurer la fidélité d'implémentation et résoudre les conflits entre design et exigences techniques.</span>
+          <span class="t-ar">أجرينا 6 جولات اختبار مع أكثر من 20 معلماً، واختبرنا تصميمات A/B للتخطيطات الرئيسية — كل جولة أعادت ضبط أولوياتنا وكشفت عن احتياجات لم نر أنها كانت مخفية في البداية.</span>
+          <span class="t-en">We ran 6 testing rounds with 20+ teachers, and A/B tested key layouts — each round recalibrated our priorities and revealed needs we hadn't initially seen.</span>
+          <span class="t-fr">Nous avons effectué 6 tours de tests avec 20+ enseignants et testé en A/B les mises en page clés — chaque tour recalibrait nos priorités et révélait des besoins que nous n'avions pas initialement vus.</span>
         </p>
       </div>
     </div>
@@ -926,7 +815,7 @@
     <circle cx="100" cy="100" r="44" stroke="currentColor" stroke-width="0.8"/>
     <circle cx="100" cy="100" r="28" stroke="currentColor" stroke-width="1"/>
     <circle cx="100" cy="100" r="14" stroke="currentColor" stroke-width="1"/>
-    <circle cx="100" cy="100" r="5" fill="#EA580C"/>
+    <circle cx="100" cy="100" r="5" fill="#0D9488"/>
     <line x1="100" y1="2" x2="100" y2="20" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
     <line x1="100" y1="180" x2="100" y2="198" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
     <line x1="2" y1="100" x2="20" y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
@@ -938,34 +827,34 @@
 
       <div class="cs-cta-pill">
         <span class="cs-cta-pill-dot"></span>
-        <span>B2B Sales</span>
+        <span>مهندس القيم</span>
         <span style="opacity:0.3;">·</span>
         <span>
-          <span class="t-ar">مُسلَّم · Q3 2024</span>
-          <span class="t-en">Delivered · Q3 2024</span>
-          <span class="t-fr">Livré · Q3 2024</span>
+          <span class="t-ar">مُسلَّم · Q4 2024</span>
+          <span class="t-en">Delivered · Q4 2024</span>
+          <span class="t-fr">Livré · Q4 2024</span>
         </span>
       </div>
 
       <h2 class="cs-cta-title">
         <span class="t-ar">
-          هل نظامكم يواكب<br>
-          <em>حجم عملياتكم</em>؟
+          هل منتجكم يضع<br>
+          <em>المستخدم الحقيقي</em> في المركز؟
         </span>
         <span class="t-en">
-          Does your system match<br>
-          <em>the scale of your operations</em>?
+          Does your product put<br>
+          <em>the real user</em> at the center?
         </span>
         <span class="t-fr">
-          Votre système correspond-il<br>
-          à <em>l'échelle de vos opérations</em> ?
+          Votre produit place-t-il<br>
+          <em>l'utilisateur réel</em> au centre ?
         </span>
       </h2>
 
       <p class="cs-cta-body">
-        <span class="t-ar">الأنظمة المؤسسية لا يجب أن تكون معقدة لأنها ضخمة. نصمم واجهات كثيفة بالبيانات لكنها سريعة وسهلة — تواكب المستخدم لا تعيقه.</span>
-        <span class="t-en">Enterprise systems don't have to be complicated just because they're large. We design data-dense interfaces that are fast and easy — keeping pace with users, not slowing them down.</span>
-        <span class="t-fr">Les systèmes enterprise n'ont pas à être compliqués parce qu'ils sont grands. Nous concevons des interfaces denses en données mais rapides et faciles — qui suivent les utilisateurs, pas qui les ralentissent.</span>
+        <span class="t-ar">التجارب الرائعة لا تُبنى بالافتراضات — بل بفهم عميق لمن يستخدم المنتج وماذا يحتاج فعلاً. هذا ما نبدأ به في كل مشروع.</span>
+        <span class="t-en">Great experiences aren't built on assumptions — they're built on a deep understanding of who uses the product and what they actually need. This is where we start with every project.</span>
+        <span class="t-fr">Les grandes expériences ne se construisent pas sur des hypothèses — elles se construisent sur une compréhension profonde de qui utilise le produit et ce dont ils ont vraiment besoin. C'est là que nous commençons avec chaque projet.</span>
       </p>
 
       <div class="cs-cta-actions">
@@ -988,18 +877,17 @@
 <!-- ================================================================
      RELATED CASE STUDIES
      ================================================================ -->
-<section class="cs-related container">
-
+<section class="cs-related container" aria-labelledby="related-heading">
   <div class="cs-related-header reveal">
-    <p class="cs-related-label">
-      <span class="t-ar">أعمال أخرى</span>
+    <div class="cs-related-label">
+      <span class="t-ar">مشاريع أخرى</span>
       <span class="t-en">More Work</span>
-      <span class="t-fr">Plus de Travaux</span>
-    </p>
-    <h2 class="cs-related-heading">
-      <span class="t-ar">مشاريع قد تهمك</span>
-      <span class="t-en">More Projects</span>
       <span class="t-fr">Autres Projets</span>
+    </div>
+    <h2 class="cs-related-heading" id="related-heading">
+      <span class="t-ar">اكتشف المزيد من مشاريعنا</span>
+      <span class="t-en">Explore More Case Studies</span>
+      <span class="t-fr">Découvrez d'Autres Projets</span>
     </h2>
   </div>
 
@@ -1013,33 +901,31 @@
         <h3 class="cs-related-card-title">
           <span class="t-ar">نظام تصميم إكسير</span>
           <span class="t-en">Iksir Design System</span>
-          <span class="t-fr">Design System Iksir</span>
+          <span class="t-fr">Système de Design Iksir</span>
         </h3>
         <div>
           <div class="cs-related-card-metric">1014<span style="font-size:0.55em;">+</span></div>
           <div class="cs-related-card-metric-label">
-            <span class="t-ar">متغير في فيغما</span>
+            <span class="t-ar">متغيرات فيغما</span>
             <span class="t-en">Figma Variables</span>
             <span class="t-fr">Variables Figma</span>
           </div>
         </div>
         <div class="cs-related-card-tags">
           <span><span class="t-ar">نظام تصميم</span><span class="t-en">Design System</span><span class="t-fr">Design System</span></span>
+          <span><span class="t-ar">فيغما</span><span class="t-en">Figma</span><span class="t-fr">Figma</span></span>
           <span>RTL / LTR</span>
-          <span><span class="t-ar">توثيق</span><span class="t-en">Documentation</span><span class="t-fr">Documentation</span></span>
         </div>
         <div class="cs-related-card-cta">
           <span class="t-ar">عرض المشروع</span>
           <span class="t-en">View Case Study</span>
           <span class="t-fr">Voir le Projet</span>
-          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
       </div>
     </a>
 
-    <!-- Task Management App -->
+    <!-- Tasks App -->
     <a href="case-study-tasks.html" class="cs-related-card reveal" style="--card-accent: #2563EB;">
       <div class="cs-related-card-bar"></div>
       <div class="cs-related-card-body">
@@ -1066,43 +952,39 @@
           <span class="t-ar">عرض المشروع</span>
           <span class="t-en">View Case Study</span>
           <span class="t-fr">Voir le Projet</span>
-          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
       </div>
     </a>
 
-    <!-- مهندس القيم -->
-    <a href="case-study-reach.html" class="cs-related-card reveal" style="--card-accent: #0D9488;">
+    <!-- B2B Sales -->
+    <a href="case-study-b2bsales.html" class="cs-related-card reveal" style="--card-accent: #EA580C;">
       <div class="cs-related-card-bar"></div>
       <div class="cs-related-card-body">
-        <span class="cs-related-card-client">مهندس القيم</span>
+        <span class="cs-related-card-client">B2B Sales</span>
         <h3 class="cs-related-card-title">
-          <span class="t-ar">منصة التعليم الإلكتروني</span>
-          <span class="t-en">Muhandis Al-Qiyam</span>
-          <span class="t-fr">Muhandis Al-Qiyam</span>
+          <span class="t-ar">منصة المبيعات B2B</span>
+          <span class="t-en">B2B Sales Platform</span>
+          <span class="t-fr">Plateforme de Vente B2B</span>
         </h3>
         <div>
-          <div class="cs-related-card-metric">60%</div>
+          <div class="cs-related-card-metric">40%</div>
           <div class="cs-related-card-metric-label">
-            <span class="t-ar">تقليل وقت إنشاء المحتوى</span>
-            <span class="t-en">Reduction in Course Creation Time</span>
-            <span class="t-fr">Réduction du Temps de Création</span>
+            <span class="t-ar">تسريع في إنشاء العروض</span>
+            <span class="t-en">Faster Quote Creation</span>
+            <span class="t-fr">Création de Devis Plus Rapide</span>
           </div>
         </div>
         <div class="cs-related-card-tags">
-          <span>EdTech</span>
           <span>SaaS</span>
-          <span><span class="t-ar">أدوات التدريس</span><span class="t-en">Teacher Tools</span><span class="t-fr">Outils Enseignant</span></span>
+          <span><span class="t-ar">تجربة المستخدم</span><span class="t-en">UX Research</span><span class="t-fr">Recherche UX</span></span>
+          <span><span class="t-ar">لوحة تحكم</span><span class="t-en">Dashboard</span><span class="t-fr">Tableau de Bord</span></span>
         </div>
         <div class="cs-related-card-cta">
           <span class="t-ar">عرض المشروع</span>
           <span class="t-en">View Case Study</span>
           <span class="t-fr">Voir le Projet</span>
-          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
+          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
       </div>
     </a>

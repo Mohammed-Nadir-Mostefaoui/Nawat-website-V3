@@ -734,6 +734,20 @@ function initIntroAnimation() {
   const overlay = document.getElementById('intro-overlay');
   if (!overlay) return;
 
+  // Guaranteed dismissal — the overlay can never get stuck covering the
+  // page, even on slow devices or if a step below throws / a logo is missing.
+  function dismiss() {
+    overlay.classList.add('intro-done');
+    setTimeout(() => document.body.classList.remove('intro-active'), 650);
+  }
+
+  // Respect reduced-motion: skip the reveal animation, show the page at once.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    overlay.classList.add('intro-done');
+    document.body.classList.remove('intro-active');
+    return;
+  }
+
   // Read theme + lang that were already set by the inline <head> script
   const theme   = document.documentElement.getAttribute('data-theme') || 'light';
   const lang    = document.documentElement.getAttribute('data-lang')  || 'ar';
@@ -741,25 +755,19 @@ function initIntroAnimation() {
   const variantKey = theme + '-' + langKey; // e.g. "dark-la", "light-ar"
 
   const target = overlay.querySelector('[data-variant="' + variantKey + '"]');
-  if (!target) return;
-
-  // Reveal only the correct logo — inline style beats any CSS rule
-  target.style.display = 'block';
-  // Force reflow so the browser registers the display change before animation starts
-  void target.getBoundingClientRect();
+  if (target) {
+    // Reveal only the correct logo — inline style beats any CSS rule
+    target.style.display = 'block';
+    // Force reflow so the browser registers the display change before animation starts
+    void target.getBoundingClientRect();
+  }
 
   // Lock scroll during animation
   document.body.classList.add('intro-active');
 
-  // Dismiss overlay after clip-path animation finishes (0.25s delay + 1.3s anim + brief hold)
-  setTimeout(() => {
-    overlay.classList.add('intro-done');
-  }, 1800);
-
-  // Unlock scroll after fade-out completes (0.65s transition)
-  setTimeout(() => {
-    document.body.classList.remove('intro-active');
-  }, 1800 + 650);
+  // Dismiss after the reveal (0.25s delay + 1.3s anim + brief hold).
+  // Fires unconditionally, so a missing/failed logo never traps the page.
+  setTimeout(dismiss, 1800);
 }
 
 /* ================================================================

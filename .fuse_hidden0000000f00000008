@@ -4,16 +4,16 @@
   <meta http-equiv="refresh" content="0; url=index.html">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Iksir Design System — نظام تصميم إكسير | نواة ستوديو × داتاماستر">
+  <meta name="description" content="Task Management App — تطبيق إدارة المهام | نواة ستوديو × داتاماستر">
   <meta name="theme-color" content="#F5F5F5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0E0E11" media="(prefers-color-scheme: dark)">
-  <meta property="og:title" content="Iksir Design System — Nawat Studio">
-  <meta property="og:description" content="How we built a comprehensive Figma design system with 1,014+ variables, full RTL/LTR support, and complete documentation for Datamaster's digital products.">
-  <meta property="og:image" content="https://nawat.studio/assets/og-iksir.jpg">
-  <meta property="og:url" content="https://nawat.studio/case-study-iksir.html">
+  <meta property="og:title" content="Task Management App — Nawat Studio">
+  <meta property="og:description" content="How we designed a mobile-first task management app built on the Iksir design system — reducing task completion time by 50% for DataMaster retail teams.">
+  <meta property="og:image" content="https://nawat.studio/assets/og-tasks.jpg">
+  <meta property="og:url" content="https://nawat.studio/case-study-tasks.html">
   <meta property="og:type" content="website">
-  <link rel="canonical" href="https://nawat.studio/case-study-iksir.html">
-  <title>Iksir Design System — نواة ستوديو | Nawat Studio</title>
+  <link rel="canonical" href="https://nawat.studio/case-study-tasks.html">
+  <title>Task Management App — نواة ستوديو | Nawat Studio</title>
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,12 +35,6 @@
       document.documentElement.setAttribute('data-lang', lang);
       document.documentElement.setAttribute('lang', lang);
       document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-      try {
-        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        var slowNet = conn && (conn.saveData === true || ['slow-2g','2g'].indexOf(conn.effectiveType) !== -1);
-        var weakDevice = (navigator.deviceMemory || 8) <= 4 && (navigator.hardwareConcurrency || 8) <= 4;
-        if (slowNet || weakDevice) document.documentElement.classList.add('lite');
-      } catch (e) {}
       document.documentElement.classList.add('no-transitions');
       document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.classList.remove('no-transitions');
@@ -356,7 +350,6 @@
       background: var(--black);
       overflow: hidden;
       padding: clamp(100px, 16vw, 180px) 0;
-      /* currentColor used by SVG watermark — white in dark, black in light */
       color: var(--white);
     }
     [data-theme="light"] .cs-cta {
@@ -590,116 +583,24 @@
     }
 
     /* ── Related Case Studies ─────────────────────────────────────── */
-    .cs-related {
-      padding: var(--section-py) 0;
-      border-top: 1px solid var(--c-border);
-    }
+    .cs-related { padding: var(--section-py) 0; border-top: 1px solid var(--c-border); }
     .cs-related-header { margin-bottom: clamp(40px, 5vw, 56px); }
-    .cs-related-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cs-accent);
-      margin-bottom: 12px;
-    }
-    .cs-related-heading {
-      font-size: clamp(24px, 3.5vw, 40px);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--c-text);
-    }
-    html[lang="en"] .cs-related-heading,
-    html[lang="fr"] .cs-related-heading { letter-spacing: -0.03em; }
-    .cs-related-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .cs-related-card {
-      display: flex;
-      flex-direction: column;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--c-border);
-      background: var(--c-surface);
-      overflow: hidden;
-      text-decoration: none;
-      color: var(--c-text);
-      transition: border-color var(--t-fast), transform var(--t-base), box-shadow var(--t-base);
-    }
-    .cs-related-card:hover {
-      border-color: var(--card-accent);
-      transform: translateY(-5px);
-      box-shadow: 0 24px 52px rgba(0,0,0,0.08);
-    }
-    [data-theme="dark"] .cs-related-card:hover {
-      box-shadow: 0 24px 52px rgba(0,0,0,0.35);
-    }
+    .cs-related-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cs-accent); margin-bottom: 12px; }
+    .cs-related-heading { font-size: clamp(24px, 3.5vw, 40px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--c-text); }
+    html[lang="en"] .cs-related-heading, html[lang="fr"] .cs-related-heading { letter-spacing: -0.03em; }
+    .cs-related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .cs-related-card { display: flex; flex-direction: column; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background: var(--c-surface); overflow: hidden; text-decoration: none; color: var(--c-text); transition: border-color var(--t-fast), transform var(--t-base), box-shadow var(--t-base); }
+    .cs-related-card:hover { border-color: var(--card-accent); transform: translateY(-5px); box-shadow: 0 24px 52px rgba(0,0,0,0.08); }
+    [data-theme="dark"] .cs-related-card:hover { box-shadow: 0 24px 52px rgba(0,0,0,0.35); }
     .cs-related-card-bar { height: 3px; background: var(--card-accent); flex-shrink: 0; }
-    .cs-related-card-body {
-      padding: clamp(22px, 3vw, 32px);
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      gap: 10px;
-    }
-    .cs-related-card-client {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--card-accent);
-      font-family: var(--font-latin);
-    }
-    .cs-related-card-title {
-      font-size: clamp(17px, 1.8vw, 21px);
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--c-text);
-      letter-spacing: -0.01em;
-    }
-    .cs-related-card-metric {
-      font-size: clamp(28px, 3.2vw, 40px);
-      font-weight: 700;
-      line-height: 1;
-      color: var(--card-accent);
-      font-family: var(--font-latin);
-    }
-    .cs-related-card-metric-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--c-text-60);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 4px;
-    }
-    .cs-related-card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 2px;
-    }
-    .cs-related-card-tags span {
-      padding: 4px 12px;
-      border-radius: 100px;
-      border: 1px solid var(--c-border);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--c-text-60);
-    }
-    .cs-related-card-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: auto;
-      padding-top: 20px;
-      border-top: 1px solid var(--c-border);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--card-accent);
-      transition: gap var(--t-fast);
-    }
+    .cs-related-card-body { padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; flex: 1; gap: 10px; }
+    .cs-related-card-client { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--card-accent); font-family: var(--font-latin); }
+    .cs-related-card-title { font-size: clamp(17px, 1.8vw, 21px); font-weight: 700; line-height: 1.25; color: var(--c-text); letter-spacing: -0.01em; }
+    .cs-related-card-metric { font-size: clamp(28px, 3.2vw, 40px); font-weight: 700; line-height: 1; color: var(--card-accent); font-family: var(--font-latin); }
+    .cs-related-card-metric-label { font-size: 11px; font-weight: 600; color: var(--c-text-60); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+    .cs-related-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+    .cs-related-card-tags span { padding: 4px 12px; border-radius: 100px; border: 1px solid var(--c-border); font-size: 11px; font-weight: 500; color: var(--c-text-60); }
+    .cs-related-card-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--c-border); font-size: 13px; font-weight: 600; color: var(--card-accent); transition: gap var(--t-fast); }
     .cs-related-card:hover .cs-related-card-cta { gap: 10px; }
     html[dir="rtl"] .cs-related-card-arrow { transform: scaleX(-1); }
   </style>
@@ -932,7 +833,7 @@
       <span class="t-fr">Travaux</span>
     </a>
     <span class="cs-breadcrumb-sep">/</span>
-    <span>Iksir</span>
+    <span>Tasks</span>
   </div>
 </div>
 
@@ -952,62 +853,57 @@
 
     <!-- Title -->
     <h1 class="cs-hero-title">
-      <span class="t-ar">نظام تصميم إكسير</span>
-      <span class="t-en">Iksir Design System</span>
-      <span class="t-fr">Design System Iksir</span>
+      <span class="t-ar">تطبيق إدارة المهام</span>
+      <span class="t-en">Task Management App</span>
+      <span class="t-fr">Application de Gestion des Tâches</span>
     </h1>
 
     <!-- Tags -->
     <div class="cs-tags">
       <span class="cs-tag">
+        <span class="t-ar">تصميم المنتج</span>
+        <span class="t-en">Product Design</span>
+        <span class="t-fr">Design Produit</span>
+      </span>
+      <span class="cs-tag">ERP</span>
+      <span class="cs-tag">
+        <span class="t-ar">موبايل أولاً</span>
+        <span class="t-en">Mobile First</span>
+        <span class="t-fr">Mobile First</span>
+      </span>
+      <span class="cs-tag">
         <span class="t-ar">نظام تصميم</span>
         <span class="t-en">Design System</span>
         <span class="t-fr">Design System</span>
-      </span>
-      <span class="cs-tag">
-        <span class="t-ar">مكتبة فيغما</span>
-        <span class="t-en">Figma Library</span>
-        <span class="t-fr">Design System Figma</span>
-      </span>
-      <span class="cs-tag">
-        <span class="t-ar">توثيق</span>
-        <span class="t-en">Documentation</span>
-        <span class="t-fr">Documentation</span>
-      </span>
-      <span class="cs-tag">RTL / LTR</span>
-      <span class="cs-tag">
-        <span class="t-ar">إمكانية الوصول</span>
-        <span class="t-en">Accessibility</span>
-        <span class="t-fr">Accessibilité</span>
       </span>
     </div>
 
     <!-- Stats -->
     <div class="cs-stats">
       <div class="cs-stat">
-        <div class="cs-stat-num">1014<em>+</em></div>
+        <div class="cs-stat-num">01</div>
         <div class="cs-stat-label">
-          <span class="t-ar">متغير في فيغما</span>
-          <span class="t-en">Figma Variables</span>
-          <span class="t-fr">Variables Figma</span>
+          <span class="t-ar">مصمم</span>
+          <span class="t-en">Designer</span>
+          <span class="t-fr">Designer</span>
         </div>
       </div>
       <div class="cs-stat-divider"></div>
       <div class="cs-stat">
-        <div class="cs-stat-num">100<em>%</em></div>
+        <div class="cs-stat-num">50<em>%</em></div>
         <div class="cs-stat-label">
-          <span class="t-ar">موثّق ومقنَّن</span>
-          <span class="t-en">Documented</span>
-          <span class="t-fr">Documenté</span>
+          <span class="t-ar">تقليل وقت إنجاز المهام</span>
+          <span class="t-en">Reduction in Task Completion Time</span>
+          <span class="t-fr">Réduction du Temps d'Exécution</span>
         </div>
       </div>
       <div class="cs-stat-divider"></div>
       <div class="cs-stat">
-        <div class="cs-stat-num">2</div>
+        <div class="cs-stat-num">Q2–Q4</div>
         <div class="cs-stat-label">
-          <span class="t-ar">اتجاه — RTL &amp; LTR</span>
-          <span class="t-en">Directions — RTL &amp; LTR</span>
-          <span class="t-fr">Directions — RTL &amp; LTR</span>
+          <span class="t-ar">2024</span>
+          <span class="t-en">2024</span>
+          <span class="t-fr">2024</span>
         </div>
       </div>
     </div>
@@ -1016,68 +912,78 @@
   <!-- Cover placeholder (full-width) -->
   <div class="cs-cover reveal">
     <div class="cs-cover-dots"></div>
-    <!-- Decorative abstract design-system visualization -->
+    <!-- Abstract mobile+desktop ERP visualization -->
     <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1;" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Color swatch row -->
-      <rect x="72" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.9"/>
-      <rect x="116" y="60" width="36" height="36" rx="7" fill="#2563EB" opacity="0.85"/>
-      <rect x="160" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.55"/>
-      <rect x="204" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.35"/>
-      <rect x="248" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.18"/>
-      <!-- Type scale -->
-      <rect x="72" y="120" width="280" height="18" rx="5" fill="currentColor" opacity="0.65"/>
-      <rect x="72" y="147" width="220" height="13" rx="4" fill="currentColor" opacity="0.40"/>
-      <rect x="72" y="168" width="180" height="10" rx="3" fill="currentColor" opacity="0.28"/>
-      <rect x="72" y="185" width="140" height="8" rx="3"  fill="currentColor" opacity="0.18"/>
-      <!-- Buttons -->
-      <rect x="72" y="218" width="110" height="38" rx="8" fill="#2563EB" opacity="0.55"/>
-      <rect x="190" y="218" width="110" height="38" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.35"/>
-      <rect x="308" y="218" width="110" height="38" rx="8" fill="currentColor" opacity="0.12"/>
-      <!-- Input field -->
-      <rect x="72" y="272" width="260" height="38" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
-      <!-- Badge / chip -->
-      <rect x="72" y="328" width="90" height="28" rx="14" fill="#2563EB" opacity="0.2"/>
-      <rect x="170" y="328" width="70" height="28" rx="14" fill="currentColor" opacity="0.1"/>
-      <rect x="248" y="328" width="80" height="28" rx="14" fill="currentColor" opacity="0.1"/>
-      <!-- Card -->
-      <rect x="380" y="60" width="200" height="310" rx="14" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
-      <rect x="396" y="76" width="168" height="110" rx="8" fill="currentColor" opacity="0.08"/>
-      <rect x="396" y="200" width="130" height="11" rx="4" fill="currentColor" opacity="0.3"/>
-      <rect x="396" y="218" width="100" height="9" rx="3"  fill="currentColor" opacity="0.2"/>
-      <rect x="396" y="238" width="168" height="7" rx="3"  fill="currentColor" opacity="0.12"/>
-      <rect x="396" y="252" width="148" height="7" rx="3"  fill="currentColor" opacity="0.10"/>
-      <rect x="396" y="278" width="72" height="30" rx="6" fill="#2563EB" opacity="0.4"/>
-      <!-- Token table / variable list -->
-      <rect x="620" y="60" width="508" height="310" rx="14" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-      <!-- Table header -->
-      <rect x="636" y="76" width="476" height="36" rx="6" fill="currentColor" opacity="0.08"/>
-      <rect x="648" y="88" width="90" height="10" rx="3" fill="#2563EB" opacity="0.5"/>
-      <rect x="760" y="88" width="70" height="10" rx="3" fill="currentColor" opacity="0.3"/>
-      <rect x="852" y="88" width="55" height="10" rx="3" fill="currentColor" opacity="0.3"/>
-      <rect x="928" y="88" width="65" height="10" rx="3" fill="currentColor" opacity="0.3"/>
-      <!-- Rows -->
-      <line x1="636" y1="130" x2="1112" y2="130" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="138" width="80" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="760" y="138" width="50" height="9" rx="3" fill="currentColor" opacity="0.15"/>
-      <line x1="636" y1="164" x2="1112" y2="164" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="172" width="90" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="760" y="172" width="60" height="9" rx="3" fill="currentColor" opacity="0.15"/>
-      <line x1="636" y1="198" x2="1112" y2="198" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="206" width="70" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="760" y="206" width="55" height="9" rx="3" fill="currentColor" opacity="0.15"/>
-      <line x1="636" y1="232" x2="1112" y2="232" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="240" width="85" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <line x1="636" y1="266" x2="1112" y2="266" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="274" width="75" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <line x1="636" y1="300" x2="1112" y2="300" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="308" width="92" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <!-- Dot grid watermark pattern -->
+      <!-- Desktop app frame -->
+      <rect x="60" y="50" width="580" height="330" rx="12" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+      <!-- Top bar -->
+      <rect x="60" y="50" width="580" height="44" rx="12" fill="currentColor" opacity="0.08"/>
+      <rect x="76" y="64" width="80" height="16" rx="4" fill="currentColor" opacity="0.3"/>
+      <rect x="180" y="64" width="60" height="16" rx="4" fill="currentColor" opacity="0.2"/>
+      <rect x="254" y="64" width="60" height="16" rx="4" fill="currentColor" opacity="0.2"/>
+      <!-- Sidebar -->
+      <rect x="60" y="94" width="140" height="286" fill="currentColor" opacity="0.05"/>
+      <rect x="76" y="114" width="108" height="12" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="76" y="136" width="92" height="12" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="76" y="158" width="100" height="12" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="76" y="180" width="88" height="12" rx="3" fill="currentColor" opacity="0.18"/>
+      <!-- Task list area -->
+      <rect x="216" y="110" width="408" height="52" rx="8" fill="currentColor" opacity="0.07"/>
+      <rect x="232" y="124" width="24" height="24" rx="4" fill="#2563EB" opacity="0.3"/>
+      <rect x="266" y="128" width="160" height="10" rx="3" fill="currentColor" opacity="0.3"/>
+      <rect x="266" y="142" width="100" height="8" rx="3" fill="currentColor" opacity="0.18"/>
+      <rect x="216" y="170" width="408" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="232" y="184" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.25"/>
+      <rect x="266" y="188" width="140" height="10" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="266" y="202" width="90" height="8" rx="3" fill="currentColor" opacity="0.15"/>
+      <rect x="216" y="230" width="408" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="232" y="244" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.25"/>
+      <rect x="266" y="248" width="180" height="10" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="266" y="262" width="110" height="8" rx="3" fill="currentColor" opacity="0.15"/>
+      <rect x="216" y="290" width="408" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="232" y="304" width="24" height="24" rx="4" fill="#2563EB" opacity="0.3"/>
+      <rect x="266" y="308" width="120" height="10" rx="3" fill="currentColor" opacity="0.3"/>
+      <rect x="266" y="322" width="80" height="8" rx="3" fill="currentColor" opacity="0.18"/>
+      <!-- Mobile frame -->
+      <rect x="700" y="40" width="180" height="350" rx="20" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
+      <rect x="700" y="40" width="180" height="56" rx="20" fill="currentColor" opacity="0.07"/>
+      <circle cx="790" cy="68" r="16" fill="currentColor" opacity="0.08"/>
+      <rect x="724" y="112" width="132" height="10" rx="3" fill="currentColor" opacity="0.28"/>
+      <rect x="724" y="132" width="132" height="52" rx="8" fill="currentColor" opacity="0.07"/>
+      <rect x="736" y="144" width="20" height="20" rx="4" fill="#2563EB" opacity="0.35"/>
+      <rect x="764" y="147" width="80" height="8" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="764" y="159" width="60" height="7" rx="3" fill="currentColor" opacity="0.15"/>
+      <rect x="724" y="192" width="132" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="736" y="204" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.22"/>
+      <rect x="764" y="207" width="70" height="8" rx="3" fill="currentColor" opacity="0.22"/>
+      <rect x="764" y="219" width="50" height="7" rx="3" fill="currentColor" opacity="0.13"/>
+      <rect x="724" y="252" width="132" height="52" rx="8" fill="currentColor" opacity="0.05"/>
+      <rect x="736" y="264" width="20" height="20" rx="4" fill="#2563EB" opacity="0.35"/>
+      <rect x="764" y="267" width="90" height="8" rx="3" fill="currentColor" opacity="0.25"/>
+      <rect x="764" y="279" width="65" height="7" rx="3" fill="currentColor" opacity="0.15"/>
+      <!-- Bottom nav bar mobile -->
+      <rect x="700" y="330" width="180" height="60" rx="0" fill="currentColor" opacity="0.05"/>
+      <circle cx="735" cy="360" r="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="765" cy="360" r="8" fill="#2563EB" opacity="0.4"/>
+      <circle cx="795" cy="360" r="8" fill="currentColor" opacity="0.2"/>
+      <circle cx="825" cy="360" r="8" fill="currentColor" opacity="0.2"/>
+      <!-- Second mobile frame -->
+      <rect x="920" y="60" width="160" height="310" rx="18" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
+      <rect x="920" y="60" width="160" height="50" rx="18" fill="currentColor" opacity="0.06"/>
+      <rect x="936" y="130" width="128" height="80" rx="8" fill="currentColor" opacity="0.06"/>
+      <rect x="948" y="142" width="104" height="9" rx="3" fill="currentColor" opacity="0.2"/>
+      <rect x="948" y="156" width="80" height="8" rx="3" fill="currentColor" opacity="0.14"/>
+      <rect x="948" y="170" width="60" height="26" rx="6" fill="#2563EB" opacity="0.3"/>
+      <rect x="936" y="224" width="60" height="60" rx="8" fill="currentColor" opacity="0.06"/>
+      <rect x="1004" y="224" width="60" height="60" rx="8" fill="currentColor" opacity="0.06"/>
+      <rect x="936" y="292" width="60" height="60" rx="8" fill="#2563EB" opacity="0.08"/>
+      <rect x="1004" y="292" width="60" height="60" rx="8" fill="currentColor" opacity="0.06"/>
     </svg>
     <div class="cs-cover-placeholder">
       <div class="cs-cover-icon-wrap">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="3"/>
-          <path d="M3 9h18M9 21V9"/>
+          <polyline points="9 11 12 14 22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
         </svg>
       </div>
       <p class="cs-cover-hint">project screenshots · add to assets/</p>
@@ -1100,14 +1006,14 @@
         <span class="t-fr">Le Défi</span>
       </p>
       <h2 class="cs-section-title">
-        <span class="t-ar">البنية التحتية المفقودة</span>
-        <span class="t-en">The Missing Foundation</span>
-        <span class="t-fr">La Fondation Manquante</span>
+        <span class="t-ar">عمليات معقدة، واجهة بسيطة</span>
+        <span class="t-en">Operational Chaos, Unified</span>
+        <span class="t-fr">Chaos Opérationnel, Unifié</span>
       </h2>
       <p class="cs-section-body">
-        <span class="t-ar">كانت منتجات داتاماستر الرقمية تعاني من تشتت بصري واضح — كل منتج يبدو وكأنه صُمِّم من الصفر، دون توافق في الألوان أو الخطوط أو المكونات. لم يكن لدى المطورين أساس يبنون عليه، ولم يكن لدى المصممين مرجع يعودون إليه.<br><br>إكسير هي علامة داتاماستر التجارية لمنتجاتها الرقمية — ERP، تطبيقات موبايل، ومنتجات مستقبلية — وكانت تحتاج إلى نظام تصميم متكامل كأساس لكل ما سيأتي.</span>
-        <span class="t-en">Datamaster's digital products suffered from clear visual inconsistency — each one looking as if designed from scratch, with no shared colors, typography, or components. Developers had no foundation to build from, and designers had no common reference to return to.<br><br>Iksir is Datamaster's brand for their digital products — ERP, mobile apps, and future products — and it needed a comprehensive design system as the foundation for everything that follows.</span>
-        <span class="t-fr">Les produits numériques de Datamaster souffraient d'une incohérence visuelle évidente — chacun semblant conçu de zéro, sans couleurs, typographies ou composants partagés. Les développeurs n'avaient aucune base sur laquelle construire, et les designers aucune référence commune.<br><br>Iksir est la marque de Datamaster pour ses produits numériques — ERP, applications mobiles et futurs produits — et elle avait besoin d'un système de design complet comme fondation pour tout ce qui suit.</span>
+        <span class="t-ar">كانت فرق متاجر التجزئة في داتاماستر تدير عمليات يومية معقدة عبر جداول بيانات متفرقة وأدوات غير مترابطة. لا رؤية موحدة، لا تعاون فعلي، ولا وضوح في تتبع المهام. وفوق ذلك، كان هذا المشروع أول تطبيق حقيقي لنظام تصميم داتاماستر الجديد — مما جعله فرصة لإثبات أن المكتبة قادرة على حمل منتجات معقدة.<br><br>هدفنا كان تحويل هذه الفوضى التشغيلية إلى واجهة بسيطة وبديهية، تعمل على الموبايل والسطح المكتبي معاً، وتقلص وقت إنجاز المهام لدى المستخدم بنسبة ملموسة.</span>
+        <span class="t-en">DataMaster's retail store teams were managing complex daily operations through scattered spreadsheets and disconnected tools — no unified view, no real collaboration, and no clear task tracking. On top of that, this was the first real implementation of the new DataMaster Design System, making it an opportunity to prove that the library could carry complex, production-grade products.<br><br>Our goal was to transform this operational complexity into a simple, intuitive interface — one that works seamlessly on both mobile and desktop, and measurably reduces the time it takes users to complete their work.</span>
+        <span class="t-fr">Les équipes des magasins de détail de DataMaster géraient des opérations quotidiennes complexes via des feuilles de calcul éparpillées et des outils déconnectés — pas de vue unifiée, pas de vraie collaboration, et pas de suivi clair des tâches. En plus, ce projet était la première implémentation réelle du nouveau Design System DataMaster — une opportunité de prouver que le design system pouvait porter des produits complexes.<br><br>Notre objectif était de transformer cette complexité opérationnelle en une interface simple et intuitive, fonctionnant sur mobile et bureau, réduisant sensiblement le temps d'exécution des tâches.</span>
       </p>
     </div>
 
@@ -1117,56 +1023,42 @@
       <div class="cs-problem-card">
         <div class="cs-problem-num">01</div>
         <div class="cs-problem-title">
-          <span class="t-ar">منتجات غير متسقة</span>
-          <span class="t-en">Inconsistent Products</span>
-          <span class="t-fr">Produits Incohérents</span>
+          <span class="t-ar">سير عمل معقد</span>
+          <span class="t-en">Complex Workflows</span>
+          <span class="t-fr">Flux de Travail Complexes</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">تجارب بصرية متباينة عبر المنتجات — كل منتج يبدو مختلفاً عن الآخر، دون خيط بصري موحِّد.</span>
-          <span class="t-en">Divergent visual experiences across products — each one looking different from the others, with no unifying visual thread.</span>
-          <span class="t-fr">Expériences visuelles divergentes entre les produits — chacun ayant une apparence distincte, sans fil directeur visuel.</span>
+          <span class="t-ar">عمليات التجزئة تضم طبقات متشعبة من المهام والتبعيات — من التخزين إلى المبيعات إلى خدمة العملاء — دون ترتيب واضح.</span>
+          <span class="t-en">Retail operations include layered tasks and dependencies — from inventory to sales to customer service — with no clear structure or priority.</span>
+          <span class="t-fr">Les opérations retail incluent des tâches en couches et des dépendances — de l'inventaire aux ventes au service client — sans structure ni priorité claire.</span>
         </div>
       </div>
 
       <div class="cs-problem-card">
         <div class="cs-problem-num">02</div>
         <div class="cs-problem-title">
-          <span class="t-ar">لا بنية تحتية للمطورين</span>
-          <span class="t-en">No Developer Infrastructure</span>
-          <span class="t-fr">Aucune Infrastructure Dev</span>
+          <span class="t-ar">أول تطبيق لنظام التصميم</span>
+          <span class="t-en">Design System Integration</span>
+          <span class="t-fr">Intégration du Design System</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">كل مشروع يبدأ من الصفر — لا مكونات جاهزة، لا رموز، لا أساس مشترك يوفّر الوقت والجهد.</span>
-          <span class="t-en">Every project started from zero — no reusable components, no tokens, no shared base to save time and effort.</span>
-          <span class="t-fr">Chaque projet repartait de zéro — aucun composant réutilisable, aucun token, aucune base commune pour économiser temps et effort.</span>
+          <span class="t-ar">كان هذا المشروع الاختبار الأول الحقيقي لمكتبة إكسير — كل قرار تصميمي كان يُختبر على أرض الواقع للمرة الأولى.</span>
+          <span class="t-en">This project was the first real test of the Iksir library — every design decision was being validated in production for the first time.</span>
+          <span class="t-fr">Ce projet était le premier vrai test de la design system Iksir — chaque décision design était validée en production pour la toute première fois.</span>
         </div>
       </div>
 
       <div class="cs-problem-card">
         <div class="cs-problem-num">03</div>
         <div class="cs-problem-title">
-          <span class="t-ar">غياب التوثيق والمعايير</span>
-          <span class="t-en">No Documentation or Standards</span>
-          <span class="t-fr">Pas de Documentation ni Standards</span>
+          <span class="t-ar">توافق الموبايل والسطح المكتبي</span>
+          <span class="t-en">Cross-Platform Consistency</span>
+          <span class="t-fr">Cohérence Multi-Plateforme</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">لا قواعد تصميمية مكتوبة، لا مرجعية مشتركة، ولا معايير يلتزم بها الفريق أثناء العمل.</span>
-          <span class="t-en">No written design rules, no shared references, and no standards for the team to follow when working.</span>
-          <span class="t-fr">Aucune règle de design écrite, aucune référence commune, et aucun standard pour l'équipe à respecter en travaillant.</span>
-        </div>
-      </div>
-
-      <div class="cs-problem-card">
-        <div class="cs-problem-num">04</div>
-        <div class="cs-problem-title">
-          <span class="t-ar">بداية تعاون استراتيجي طويل</span>
-          <span class="t-en">Start of a Long-Term Collaboration</span>
-          <span class="t-fr">Début d'une Collaboration Stratégique</span>
-        </div>
-        <div class="cs-problem-desc">
-          <span class="t-ar">المكتبة ليست الهدف النهائي — بل هي الخطوة الأولى. بعدها: إعادة هيكلة المعلومات، ثم إعادة تصميم المنتجات القائمة، ثم بناء المنتجات الجديدة.</span>
-          <span class="t-en">The library isn't the end goal — it's the first step. Next: information architecture redesign, then existing product redesign, then building new products.</span>
-          <span class="t-fr">Le design system n'est pas l'objectif final — c'est la première étape. Ensuite : refonte de l'architecture de l'information, puis refonte des produits existants, puis création de nouveaux produits.</span>
+          <span class="t-ar">المستخدمون يعملون على هاتفهم في الميدان وعلى الحاسوب في المكتب — الواجهة يجب أن تكون متسقة وفعّالة على كليهما.</span>
+          <span class="t-en">Users work on their phones in the field and on desktop in the office — the interface needs to be consistent and efficient on both.</span>
+          <span class="t-fr">Les utilisateurs travaillent sur mobile sur le terrain et sur bureau au bureau — l'interface doit être cohérente et efficace sur les deux.</span>
         </div>
       </div>
 
@@ -1187,14 +1079,14 @@
       <span class="t-fr">La Solution</span>
     </p>
     <h2 class="cs-section-title">
-      <span class="t-ar">نواة لكل منتج قادم</span>
-      <span class="t-en">A Foundation for Every Future Product</span>
-      <span class="t-fr">Une Fondation pour Chaque Futur Produit</span>
+      <span class="t-ar">تجربة موحدة وقابلة للتوسع</span>
+      <span class="t-en">A Unified, Scalable Experience</span>
+      <span class="t-fr">Une Expérience Unifiée et Évolutive</span>
     </h2>
     <p class="cs-section-body">
-      <span class="t-ar">صممنا نظام تصميم فيغما شاملة ومنظمة، مرفقة بموقع توثيق غير تقني موجَّه لغير المصممين أيضاً. تجاوزت المكتبة ١٠١٤ متغيراً في فيغما وحده، وتشمل كل مكون وكل حالة وكل متغير ممكن — مع وثائق وافية وقواعد واضحة ودعم كامل لـ RTL و LTR ومعايير إمكانية الوصول.</span>
-      <span class="t-en">We designed a comprehensive, well-organized Figma design system paired with a non-technical documentation website aimed at non-designers too. The library exceeds 1,014 variables in Figma alone and covers every component, every state, and every possible variant — with thorough documentation, clear rules, full RTL & LTR support, and accessibility compliance.</span>
-      <span class="t-fr">Nous avons conçu une design system Figma complète et bien organisée, accompagnée d'un site de documentation non-technique destiné aussi aux non-designers. Le design system dépasse 1 014 variables dans Figma seul et couvre chaque composant, chaque état et chaque variante possible — avec une documentation complète, des règles claires, un support RTL & LTR intégral et la conformité accessibilité.</span>
+      <span class="t-ar">صممنا تطبيق إدارة مهام مبني على ثلاث طبقات واضحة: عرض القائمة، تفاصيل المهمة، وعرض التنفيذ — بنية بسيطة تناسب أكثر العمليات تعقيداً. اعتمدنا على نظام تباعد 8px وشبكة تكيّفية ورموز تصميمية من مكتبة إكسير لضمان الاتساق عبر المنصتين.</span>
+      <span class="t-en">We designed a task management app built on three clear layers: List View, Task Details, and Execution View — a simple architecture that handles even the most complex operations. We applied an 8px spacing system, responsive grid, and design tokens from the Iksir library to ensure consistency across both platforms.</span>
+      <span class="t-fr">Nous avons conçu une application de gestion des tâches construite sur trois couches claires : Vue Liste, Détails de la Tâche, et Vue d'Exécution — une architecture simple qui gère même les opérations les plus complexes. Nous avons appliqué un système d'espacement 8px, une grille responsive et des tokens du système Iksir pour assurer la cohérence sur les deux plateformes.</span>
     </p>
   </div>
 
@@ -1204,82 +1096,78 @@
     <div class="cs-feature-card reveal">
       <div class="cs-feature-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+        </svg>
+      </div>
+      <h3 class="cs-feature-title">
+        <span class="t-ar">نموذج مهام ثلاثي الطبقات</span>
+        <span class="t-en">Three-Layer Task Model</span>
+        <span class="t-fr">Modèle de Tâches en Trois Couches</span>
+      </h3>
+      <p class="cs-feature-body">
+        <span class="t-ar">القائمة العامة → تفاصيل المهمة → عرض التنفيذ. بنية واضحة تُقلّص عدد الخطوات وتُعطي المستخدم رؤية فورية على ما يهمه.</span>
+        <span class="t-en">List View → Task Details → Execution View. A clear structure that reduces steps and gives the user immediate visibility into what matters.</span>
+        <span class="t-fr">Vue Liste → Détails Tâche → Vue Exécution. Une structure claire qui réduit les étapes et donne à l'utilisateur une visibilité immédiate sur ce qui compte.</span>
+      </p>
+      <span class="cs-feature-badge">3 layers</span>
+    </div>
+
+    <div class="cs-feature-card reveal">
+      <div class="cs-feature-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
         </svg>
       </div>
       <h3 class="cs-feature-title">
-        <span class="t-ar">رموز ومتغيرات</span>
-        <span class="t-en">Tokens &amp; Variables</span>
-        <span class="t-fr">Tokens &amp; Variables</span>
+        <span class="t-ar">أساس نظام التصميم</span>
+        <span class="t-en">Design System Foundation</span>
+        <span class="t-fr">Base du Design System</span>
       </h3>
       <p class="cs-feature-body">
-        <span class="t-ar">بنينا نظاماً متكاملاً من المتغيرات — ألوان، طباعة، مسافات، أحجام، حواف، ظلال، وكل تفصيلة ممكنة. لا شيء تُرك للصدفة.</span>
-        <span class="t-en">We built a complete variable system — colors, typography, spacing, sizing, border radius, shadows, and every possible detail. Nothing left to chance.</span>
-        <span class="t-fr">Nous avons construit un système complet de variables — couleurs, typographie, espacement, tailles, rayons, ombres et chaque détail possible. Rien laissé au hasard.</span>
+        <span class="t-ar">اعتمدنا على مكتبة إكسير بشكل كامل — تباعد 8px، شبكة متكيّفة، ورموز تصميمية — وأثبتنا أن النظام جاهز للإنتاج الفعلي.</span>
+        <span class="t-en">We relied fully on the Iksir library — 8px spacing, responsive grid, design tokens — proving the system ready for real production use.</span>
+        <span class="t-fr">Nous nous sommes appuyés pleinement sur la design system Iksir — espacement 8px, grille responsive, tokens — prouvant que le système est prêt pour la production réelle.</span>
       </p>
-      <span class="cs-feature-badge">1014+ variables</span>
+      <span class="cs-feature-badge">Iksir DS</span>
     </div>
 
     <div class="cs-feature-card reveal">
       <div class="cs-feature-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="7" width="6" height="6" rx="1"/><rect x="16" y="7" width="6" height="6" rx="1"/>
-          <rect x="9" y="2" width="6" height="6" rx="1"/><rect x="9" y="16" width="6" height="6" rx="1"/>
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
         </svg>
       </div>
       <h3 class="cs-feature-title">
-        <span class="t-ar">مكونات شاملة</span>
-        <span class="t-en">Full Component Library</span>
-        <span class="t-fr">Système Complet</span>
+        <span class="t-ar">تصميم موبايل أولاً</span>
+        <span class="t-en">Mobile-First Design</span>
+        <span class="t-fr">Conception Mobile-First</span>
       </h3>
       <p class="cs-feature-body">
-        <span class="t-ar">كل مكون في كل حالاته ومتغيراته الممكنة — من الأزرار والمدخلات إلى الجداول والنماذج المعقدة. لا استثناءات.</span>
-        <span class="t-en">Every component in all its possible states and variants — from buttons and inputs to complex tables and forms. No exceptions.</span>
-        <span class="t-fr">Chaque composant dans tous ses états et variantes possibles — des boutons et champs de saisie aux tableaux et formulaires complexes. Sans exception.</span>
-      </p>
-    </div>
-
-    <div class="cs-feature-card reveal">
-      <div class="cs-feature-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10 9 9 9 8 9"/>
-        </svg>
-      </div>
-      <h3 class="cs-feature-title">
-        <span class="t-ar">توثيق كامل وقواعد واضحة</span>
-        <span class="t-en">Complete Documentation</span>
-        <span class="t-fr">Documentation Complète</span>
-      </h3>
-      <p class="cs-feature-body">
-        <span class="t-ar">وثّقنا كل مكون بقواعد استخدامه وحالاته وقيوده — في موقع توثيق مُصمَّم ليكون مفهوماً لغير المصممين أيضاً.</span>
-        <span class="t-en">We documented every component with its usage rules, states, and constraints — on a documentation site designed to be understandable for non-designers too.</span>
-        <span class="t-fr">Nous avons documenté chaque composant avec ses règles d'utilisation, états et contraintes — sur un site de documentation conçu pour être compris aussi par les non-designers.</span>
+        <span class="t-ar">بدأنا التصميم من الموبايل وتوسعنا للسطح المكتبي — ضمن ذلك أن الواجهة تعمل بكفاءة أولاً حيث يكون المستخدم في الميدان.</span>
+        <span class="t-en">We designed mobile-first, then expanded to desktop — ensuring the interface works efficiently first where users are in the field.</span>
+        <span class="t-fr">Nous avons conçu en mobile-first, puis élargi au bureau — s'assurant que l'interface fonctionne efficacement d'abord là où les utilisateurs sont sur le terrain.</span>
       </p>
     </div>
 
     <div class="cs-feature-card reveal">
       <div class="cs-feature-icon">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="17 1 21 5 17 9"/>
-          <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-          <polyline points="7 23 3 19 7 15"/>
-          <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+          <polyline points="9 11 12 14 22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
         </svg>
       </div>
       <h3 class="cs-feature-title">
-        <span class="t-ar">إمكانية الوصول وثنائية الاتجاه</span>
-        <span class="t-en">Accessibility &amp; Bidirectionality</span>
-        <span class="t-fr">Accessibilité &amp; Bidirectionnalité</span>
+        <span class="t-ar">تبسيط سير العمل</span>
+        <span class="t-en">Workflow Simplification</span>
+        <span class="t-fr">Simplification des Flux</span>
       </h3>
       <p class="cs-feature-body">
-        <span class="t-ar">المكتبة تدعم اتجاهَي الكتابة RTL و LTR بشكل أصيل، وتلتزم بمعايير WCAG في كل مكوناتها.</span>
-        <span class="t-en">The library natively supports both RTL &amp; LTR text directions and complies with WCAG accessibility standards across all components.</span>
-        <span class="t-fr">Le design system prend en charge nativement les deux directions RTL &amp; LTR et est conforme aux normes WCAG pour tous ses composants.</span>
+        <span class="t-ar">حوّلنا العمليات التشغيلية المعقدة إلى تسلسلات واضحة وخطوات مُرتَّبة — المستخدم يعرف دائماً ما الخطوة التالية وما الذي ينتظر التنفيذ.</span>
+        <span class="t-en">We transformed complex operational workflows into clear sequences and ordered steps — users always know what comes next and what is waiting for action.</span>
+        <span class="t-fr">Nous avons transformé les flux opérationnels complexes en séquences claires et étapes ordonnées — les utilisateurs savent toujours quelle est la prochaine étape et ce qui attend une action.</span>
       </p>
-      <span class="cs-feature-badge">WCAG · RTL &amp; LTR</span>
     </div>
 
   </div>
@@ -1288,15 +1176,15 @@
   <div class="cs-solution-images">
     <div class="cs-img-slot reveal" style="aspect-ratio:16/7;">
       <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">design system overview — 1600 × 700</span>
+      <span class="cs-img-slot-label">app overview — desktop + mobile — 1600 × 700</span>
     </div>
     <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
       <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">token system — 800 × 600</span>
+      <span class="cs-img-slot-label">task list view — 800 × 600</span>
     </div>
     <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
       <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">component library — 800 × 600</span>
+      <span class="cs-img-slot-label">task detail & execution view — 800 × 600</span>
     </div>
   </div>
 
@@ -1315,9 +1203,9 @@
       <span class="t-fr">Comment Nous Avons Travaillé</span>
     </p>
     <h2 class="cs-section-title">
-      <span class="t-ar">مسار البناء</span>
-      <span class="t-en">The Build Process</span>
-      <span class="t-fr">Le Processus de Construction</span>
+      <span class="t-ar">مسار التصميم والتعاون</span>
+      <span class="t-en">Design &amp; Collaboration Process</span>
+      <span class="t-fr">Processus de Design &amp; Collaboration</span>
     </h2>
   </div>
 
@@ -1327,14 +1215,14 @@
       <div class="cs-process-num">01</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">اكتشاف وتدقيق</span>
-          <span class="t-en">Discovery &amp; Audit</span>
-          <span class="t-fr">Découverte &amp; Audit</span>
+          <span class="t-ar">جمع المتطلبات</span>
+          <span class="t-en">Requirements Gathering</span>
+          <span class="t-fr">Collecte des Exigences</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">درسنا المنتجات القائمة بعمق واستكشفنا المشاكل والفجوات — فهمنا احتياجات الفريق ومتطلبات المنتجات المستقبلية قبل أن نرسم أي خط.</span>
-          <span class="t-en">We studied the existing products in depth, explored problems and gaps, and understood the team's needs and future product requirements — before drawing a single line.</span>
-          <span class="t-fr">Nous avons étudié en profondeur les produits existants, exploré les problèmes et lacunes, et compris les besoins de l'équipe et les exigences des futurs produits — avant de tracer la moindre ligne.</span>
+          <span class="t-ar">عقدنا جلسات محاذاة مع محللي الأعمال، القيادة التقنية، وفريق التطوير — لضمان أن ما نصممه ينبع من الواقع التشغيلي الفعلي وليس من افتراضات.</span>
+          <span class="t-en">We ran alignment sessions with business analysts, the tech lead, and the development team — ensuring everything we designed emerged from actual operational reality, not assumptions.</span>
+          <span class="t-fr">Nous avons organisé des sessions d'alignement avec les analystes métier, le lead technique et l'équipe dev — s'assurant que tout ce que nous avons conçu émerge de la réalité opérationnelle réelle, pas d'hypothèses.</span>
         </p>
       </div>
     </div>
@@ -1343,14 +1231,14 @@
       <div class="cs-process-num">02</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">بنية الرموز والمتغيرات</span>
-          <span class="t-en">Token Architecture</span>
-          <span class="t-fr">Architecture des Tokens</span>
+          <span class="t-ar">أساس نظام التصميم</span>
+          <span class="t-en">Design System Foundation</span>
+          <span class="t-fr">Fondation du Design System</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">بنينا نظام المتغيرات الكامل — الألوان، الطباعة، المسافات، الأحجام، الحواف، وكل تفصيلة ممكنة. أكثر من ١٠١٤ متغير في فيغما وحده، منظَّم في طبقات دلالية واضحة.</span>
-          <span class="t-en">We built the full variable system — colors, typography, spacing, sizing, borders, and every possible detail. Over 1,014 variables in Figma alone, organized into clear semantic layers.</span>
-          <span class="t-fr">Nous avons construit le système complet de variables — couleurs, typographie, espacements, tailles, bordures et chaque détail possible. Plus de 1 014 variables dans Figma seul, organisées en couches sémantiques claires.</span>
+          <span class="t-ar">طبّقنا مكتبة داتاماستر (إكسير) بشكل كامل — نظام التباعد 8px، الشبكة المتكيّفة، والرموز التصميمية. كان هذا أول تطبيق حقيقي للمكتبة، مما جعله اختباراً شاملاً لصمودها في الإنتاج.</span>
+          <span class="t-en">We fully applied the DataMaster (Iksir) library — the 8px spacing system, responsive grid, and design tokens. This was the library's first real production test, making it a comprehensive stress-test of its robustness.</span>
+          <span class="t-fr">Nous avons entièrement appliqué le design system DataMaster (Iksir) — le système d'espacement 8px, la grille responsive et les tokens. C'était le premier vrai test de production de le design system, en faisant un test complet de sa robustesse.</span>
         </p>
       </div>
     </div>
@@ -1359,14 +1247,14 @@
       <div class="cs-process-num">03</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">تصميم المكونات</span>
-          <span class="t-en">Component Design</span>
-          <span class="t-fr">Design des Composants</span>
+          <span class="t-ar">تبسيط سير العمل</span>
+          <span class="t-en">Workflow Simplification</span>
+          <span class="t-fr">Simplification des Flux</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">صممنا كل مكون في كل حالاته ومتغيراته الممكنة — من الأبسط إلى الأكثر تعقيداً. لم نتجاهل أي حالة ولم نترك أي متغير دون تصميم متعمَّد.</span>
-          <span class="t-en">We designed every component in all its possible states and variants — from the simplest to the most complex. No state was overlooked, no variant was left without deliberate design.</span>
-          <span class="t-fr">Nous avons conçu chaque composant dans tous ses états et variantes possibles — du plus simple au plus complexe. Aucun état négligé, aucune variante sans design délibéré.</span>
+          <span class="t-ar">هيكلنا تجربة المستخدم على ثلاث طبقات — عرض القائمة، تفاصيل المهمة، وعرض التنفيذ. هذه البنية الثلاثية أبقت الواجهة بسيطة رغم تعقيد العمليات الكامنة.</span>
+          <span class="t-en">We structured the user experience into three layers — List View, Task Details, and Execution View. This three-layer architecture kept the interface simple despite the complexity of the underlying operations.</span>
+          <span class="t-fr">Nous avons structuré l'expérience utilisateur en trois couches — Vue Liste, Détails Tâche et Vue Exécution. Cette architecture trois couches a maintenu l'interface simple malgré la complexité des opérations sous-jacentes.</span>
         </p>
       </div>
     </div>
@@ -1375,14 +1263,14 @@
       <div class="cs-process-num">04</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">التوثيق والقواعد</span>
-          <span class="t-en">Documentation &amp; Rules</span>
-          <span class="t-fr">Documentation &amp; Règles</span>
+          <span class="t-ar">التكرار والتسليم</span>
+          <span class="t-en">Iteration &amp; Delivery</span>
+          <span class="t-fr">Itération &amp; Livraison</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">وثّقنا كل شيء — قواعد الاستخدام، معايير إمكانية الوصول، وإرشادات RTL/LTR. ثم أنشأنا موقع توثيق يمكن لغير المصممين فهمه والتعامل معه باستقلالية.</span>
-          <span class="t-en">We documented everything — usage rules, accessibility standards, and RTL/LTR guidelines. Then we built a documentation website that non-designers can understand and use independently.</span>
-          <span class="t-fr">Nous avons tout documenté — règles d'utilisation, normes d'accessibilité et directives RTL/LTR. Puis nous avons créé un site de documentation que les non-designers peuvent comprendre et utiliser de manière autonome.</span>
+          <span class="t-ar">عملنا في حلقات تكرارية متواصلة مع المطورين — التواصل عبر Teams، وإدارة الإصدارات عبر Figma. كل مرحلة تسليم كانت مصحوبة بجلسة مراجعة لضمان أمانة التنفيذ.</span>
+          <span class="t-en">We worked in continuous iterative loops with developers — communicating via Teams and managing versions through Figma. Every delivery phase was paired with a review session to ensure implementation fidelity.</span>
+          <span class="t-fr">Nous avons travaillé en boucles itératives continues avec les développeurs — en communiquant via Teams et en gérant les versions via Figma. Chaque phase de livraison était accompagnée d'une session de révision pour assurer la fidélité d'implémentation.</span>
         </p>
       </div>
     </div>
@@ -1420,36 +1308,36 @@
       <!-- Phase pill -->
       <div class="cs-cta-pill">
         <span class="cs-cta-pill-dot"></span>
-        <span>Iksir</span>
+        <span>Tasks</span>
         <span style="opacity:0.3;">·</span>
         <span>
-          <span class="t-ar">المرحلة الأولى · مُنجَزة</span>
-          <span class="t-en">Phase 01 · Complete</span>
-          <span class="t-fr">Phase 01 · Complète</span>
+          <span class="t-ar">مُسلَّم · Q4 2024</span>
+          <span class="t-en">Delivered · Q4 2024</span>
+          <span class="t-fr">Livré · Q4 2024</span>
         </span>
       </div>
 
       <!-- Headline -->
       <h2 class="cs-cta-title">
         <span class="t-ar">
-          جاهز لتزرع<br>
-          <em>منتجك</em> معنا؟
+          هل أنتم مستعدون لتحويل<br>
+          <em>عمليات فريقكم</em> إلى تجربة بسيطة؟
         </span>
         <span class="t-en">
-          Ready to plant<br>
-          <em>your product</em> with us?
+          Ready to turn<br>
+          <em>your team's operations</em> into a simple experience?
         </span>
         <span class="t-fr">
-          Prêt à planter<br>
-          <em>votre produit</em> avec nous ?
+          Prêts à transformer<br>
+          <em>les opérations de votre équipe</em> en expérience simple ?
         </span>
       </h2>
 
       <!-- Body -->
       <p class="cs-cta-body">
-        <span class="t-ar">ما بنيناه لإكسير — كل متغير، كل مكون، كل قاعدة — يمكن أن يكون نقطة انطلاق منتجك القادم. الأساس الصح يغيّر كل شيء.</span>
-        <span class="t-en">What we built for Iksir — every token, every component, every rule — can be the starting point for your next product. The right foundation changes everything.</span>
-        <span class="t-fr">Ce que nous avons construit pour Iksir — chaque token, chaque composant, chaque règle — peut être le point de départ de votre prochain produit. La bonne fondation change tout.</span>
+        <span class="t-ar">التعقيد التشغيلي لا يجب أن ينعكس على واجهة المستخدم. نصمم تجارب تُخفي التعقيد وتُظهر الوضوح — أياً كان حجم العمليات.</span>
+        <span class="t-en">Operational complexity doesn't have to show on the user interface. We design experiences that hide complexity and surface clarity — regardless of the scale of your operations.</span>
+        <span class="t-fr">La complexité opérationnelle n'a pas à se refléter sur l'interface utilisateur. Nous concevons des expériences qui cachent la complexité et font émerger la clarté — quelle que soit l'échelle de vos opérations.</span>
       </p>
 
       <!-- Actions -->
@@ -1494,28 +1382,28 @@
 
   <div class="cs-related-grid">
 
-    <!-- Task Management App -->
-    <a href="case-study-tasks.html" class="cs-related-card reveal" style="--card-accent: #2563EB;">
+    <!-- Iksir Design System -->
+    <a href="case-study-iksir.html" class="cs-related-card reveal" style="--card-accent: #2563EB;">
       <div class="cs-related-card-bar"></div>
       <div class="cs-related-card-body">
         <span class="cs-related-card-client">DataMaster</span>
         <h3 class="cs-related-card-title">
-          <span class="t-ar">تطبيق إدارة المهام</span>
-          <span class="t-en">Task Management App</span>
-          <span class="t-fr">Application de Gestion des Tâches</span>
+          <span class="t-ar">نظام تصميم إكسير</span>
+          <span class="t-en">Iksir Design System</span>
+          <span class="t-fr">Design System Iksir</span>
         </h3>
         <div>
-          <div class="cs-related-card-metric">50%</div>
+          <div class="cs-related-card-metric">1014<span style="font-size:0.55em;">+</span></div>
           <div class="cs-related-card-metric-label">
-            <span class="t-ar">تقليل وقت إنجاز المهام</span>
-            <span class="t-en">Reduction in Task Completion Time</span>
-            <span class="t-fr">Réduction du Temps d'Exécution</span>
+            <span class="t-ar">متغير في فيغما</span>
+            <span class="t-en">Figma Variables</span>
+            <span class="t-fr">Variables Figma</span>
           </div>
         </div>
         <div class="cs-related-card-tags">
-          <span>ERP</span>
-          <span><span class="t-ar">موبايل أولاً</span><span class="t-en">Mobile First</span><span class="t-fr">Mobile First</span></span>
           <span><span class="t-ar">نظام تصميم</span><span class="t-en">Design System</span><span class="t-fr">Design System</span></span>
+          <span>RTL / LTR</span>
+          <span><span class="t-ar">توثيق</span><span class="t-en">Documentation</span><span class="t-fr">Documentation</span></span>
         </div>
         <div class="cs-related-card-cta">
           <span class="t-ar">عرض المشروع</span>
