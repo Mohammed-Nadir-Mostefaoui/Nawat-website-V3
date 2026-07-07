@@ -46,6 +46,18 @@
 <body>
 
 <!-- ================================================================
+     INTRO ANIMATION OVERLAY
+     ================================================================ -->
+<div id="intro-overlay" role="presentation" aria-hidden="true">
+  <div class="intro-sig-wrap">
+    <img class="intro-sig intro-sig-ar" data-variant="light-ar" src="assets/Nawat_Studio_forLight_Arabic.svg" alt="" style="display:none">
+    <img class="intro-sig intro-sig-la" data-variant="light-la" src="assets/Nawat_Studio_forLight_Latin.svg"  alt="" style="display:none">
+    <img class="intro-sig intro-sig-ar" data-variant="dark-ar"  src="assets/Nawat_Studio_forDark_Arabic.svg"  alt="" style="display:none">
+    <img class="intro-sig intro-sig-la" data-variant="dark-la"  src="assets/Nawat_Studio_forDark_Latin.svg"   alt="" style="display:none">
+  </div>
+</div>
+
+<!-- ================================================================
      NAVIGATION
      ================================================================ -->
 <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
@@ -54,8 +66,10 @@
     <!-- Logo -->
     <a href="#" class="nav-logo" aria-label="نواة ستوديو">
       <div class="nav-logo-mark">
-        <img class="logo-light-mode" src="assets/Nawat_Logo_ForLight.svg" alt="" aria-hidden="true">
-        <img class="logo-dark-mode"  src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="" aria-hidden="true">
+        <img class="logo-variant lv-light-ar" src="assets/Nawat_Logo_forLight_Arabic.svg" alt="" aria-hidden="true">
+        <img class="logo-variant lv-light-la" src="assets/Nawat_Logo_forLight_Latin.svg"  alt="" aria-hidden="true">
+        <img class="logo-variant lv-dark-ar"  src="assets/Nawat_Logo_forDark_Arabic.svg"  alt="" aria-hidden="true">
+        <img class="logo-variant lv-dark-la"  src="assets/Nawat_Logo_forDark_Latin.svg"   alt="" aria-hidden="true">
       </div>
       <span class="nav-wordmark">
         <span class="t-ar">نواة ستوديو</span>
@@ -173,13 +187,11 @@
 
   <!-- Background layer -->
   <div class="hero-bg">
-    <!-- Calligraphic "نواة ستوديو" watermark -->
-    <img
-      class="hero-calligraphy"
-      src="assets/Nawat Studio.svg"
-      alt=""
-      aria-hidden="true"
-    >
+    <!-- Calligraphic "نواة ستوديو" watermark — theme × language variants -->
+    <img class="hero-calligraphy logo-variant lv-light-ar" src="assets/Nawat_Studio_forLight_Arabic.svg" alt="" aria-hidden="true">
+    <img class="hero-calligraphy logo-variant lv-light-la" src="assets/Nawat_Studio_forLight_Latin.svg"  alt="" aria-hidden="true">
+    <img class="hero-calligraphy logo-variant lv-dark-ar"  src="assets/Nawat_Studio_forDark_Arabic.svg"  alt="" aria-hidden="true">
+    <img class="hero-calligraphy logo-variant lv-dark-la"  src="assets/Nawat_Studio_forDark_Latin.svg"   alt="" aria-hidden="true">
     <!-- Seed glow -->
     <div class="hero-glow" aria-hidden="true"></div>
     <!-- Floating particles -->
@@ -1192,7 +1204,10 @@
       <div class="footer-brand">
         <a href="#" class="footer-logo">
           <div class="footer-logo-mark">
-            <img src="assets/Nawat_Logo_ForDark_Transparent.svg" alt="Nawat Studio">
+            <img class="logo-variant lv-light-ar" src="assets/Nawat_Logo_forLight_Arabic.svg" alt="Nawat Studio" aria-hidden="true">
+            <img class="logo-variant lv-light-la" src="assets/Nawat_Logo_forLight_Latin.svg"  alt="Nawat Studio" aria-hidden="true">
+            <img class="logo-variant lv-dark-ar"  src="assets/Nawat_Logo_forDark_Arabic.svg"  alt="Nawat Studio" aria-hidden="true">
+            <img class="logo-variant lv-dark-la"  src="assets/Nawat_Logo_forDark_Latin.svg"   alt="Nawat Studio" aria-hidden="true">
           </div>
           <span class="footer-wordmark">
             <span class="t-ar">نواة ستوديو</span>

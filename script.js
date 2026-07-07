@@ -728,9 +728,45 @@ function initCursorGlow() {
 }
 
 /* ================================================================
+   INTRO OVERLAY ANIMATION
+   ================================================================ */
+function initIntroAnimation() {
+  const overlay = document.getElementById('intro-overlay');
+  if (!overlay) return;
+
+  // Read theme + lang that were already set by the inline <head> script
+  const theme   = document.documentElement.getAttribute('data-theme') || 'light';
+  const lang    = document.documentElement.getAttribute('data-lang')  || 'ar';
+  const langKey = lang === 'ar' ? 'ar' : 'la';
+  const variantKey = theme + '-' + langKey; // e.g. "dark-la", "light-ar"
+
+  const target = overlay.querySelector('[data-variant="' + variantKey + '"]');
+  if (!target) return;
+
+  // Reveal only the correct logo — inline style beats any CSS rule
+  target.style.display = 'block';
+  // Force reflow so the browser registers the display change before animation starts
+  void target.getBoundingClientRect();
+
+  // Lock scroll during animation
+  document.body.classList.add('intro-active');
+
+  // Dismiss overlay after clip-path animation finishes (0.25s delay + 1.3s anim + brief hold)
+  setTimeout(() => {
+    overlay.classList.add('intro-done');
+  }, 1800);
+
+  // Unlock scroll after fade-out completes (0.65s transition)
+  setTimeout(() => {
+    document.body.classList.remove('intro-active');
+  }, 1800 + 650);
+}
+
+/* ================================================================
    INIT ALL
    ================================================================ */
 function init() {
+  initIntroAnimation(); // Run first — dismisses overlay after animation
   initTheme();
   initLang();
   initNav();

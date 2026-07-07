@@ -355,10 +355,20 @@ html[dir="rtl"] .reveal-left {
   transform: rotate(180deg) scale(1.05);
 }
 
-/* Show correct logo for light/dark mode */
-.logo-dark-mode { display: none; }
-[data-theme="dark"] .logo-light-mode { display: none; }
-[data-theme="dark"] .logo-dark-mode  { display: block; }
+/* Show correct logo per theme × language */
+.logo-variant { display: none; }
+[data-theme="light"][data-lang="ar"] .lv-light-ar { display: block; }
+[data-theme="light"][data-lang="en"] .lv-light-la { display: block; }
+[data-theme="light"][data-lang="fr"] .lv-light-la { display: block; }
+[data-theme="dark"][data-lang="ar"]  .lv-dark-ar  { display: block; }
+[data-theme="dark"][data-lang="en"]  .lv-dark-la  { display: block; }
+[data-theme="dark"][data-lang="fr"]  .lv-dark-la  { display: block; }
+
+/* Footer is always dark — show dark logo variants regardless of theme */
+.footer-logo-mark .logo-variant { display: none !important; }
+[data-lang="ar"] .footer-logo-mark .lv-dark-ar { display: block !important; }
+[data-lang="en"] .footer-logo-mark .lv-dark-la { display: block !important; }
+[data-lang="fr"] .footer-logo-mark .lv-dark-la { display: block !important; }
 
 .nav-wordmark {
   font-size: 16px;
@@ -2340,8 +2350,7 @@ html[dir="rtl"] .stat-num { direction: ltr; text-align: right; }
    ADDITIONAL FIXES & POLISH
    ================================================================ */
 
-/* Footer logo always shows the light variant (footer is always dark) */
-.footer-logo-mark img { display: block !important; }
+/* Footer logo overrides are handled in the logo-variant block above */
 
 /* RTL: flip inline arrows in buttons */
 html[dir="rtl"] .btn svg,
@@ -2575,15 +2584,85 @@ html[dir="rtl"] .form-select {
   animation: blurIn 1.4s 0.1s var(--ease-out) both;
 }
 
+/* Background watermark calligraphy */
+.hero-calligraphy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(280px, 55vw, 700px);
+  height: auto;
+  opacity: 0.06;
+  pointer-events: none;
+  will-change: transform;
+  /* note: display controlled by .logo-variant + lv-* rules */
+}
+
+/* Legacy class — used in index.html hero brand display */
 .hero-calligraphy-main {
   width: clamp(200px, 38vw, 520px);
   height: auto;
   display: block;
   will-change: transform;
 }
-[data-theme="dark"] .hero-calligraphy-main {
-  filter: invert(1) opacity(0.9);
+/* When used as a logo variant, hide by default (theme+lang rules override) */
+.hero-calligraphy-main.logo-variant { display: none; }
+
+/* ================================================================
+   INTRO OVERLAY ANIMATION
+   ================================================================ */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--c-bg);           /* matches page bg — light or dark */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.65s cubic-bezier(0.4, 0, 0.2, 1);
 }
+#intro-overlay.intro-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#intro-overlay.intro-done .intro-sig-wrap {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.intro-sig-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sizing + animation — NO display:block here (controlled by .logo-variant rules) */
+/* Latin logo: reveal left → right */
+.intro-sig-la {
+  width: clamp(240px, 44vw, 580px);
+  height: auto;
+  clip-path: inset(0 100% 0 0);
+  animation: sig-write 1.3s cubic-bezier(0.76, 0, 0.24, 1) 0.25s 1 normal both;
+}
+/* Arabic logo: reveal right → left */
+.intro-sig-ar {
+  width: clamp(180px, 28vw, 400px);
+  height: auto;
+  clip-path: inset(0 0 0 100%);
+  animation: sig-write-rtl 1.3s cubic-bezier(0.76, 0, 0.24, 1) 0.25s 1 normal both;
+}
+@keyframes sig-write {
+  0%   { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+@keyframes sig-write-rtl {
+  0%   { clip-path: inset(0 0 0 100%); }
+  100% { clip-path: inset(0 0 0 0%); }
+}
+/* Prevent scroll during intro */
+body.intro-active { overflow: hidden; }
 
 /* Latin tracked wordmark */
 .hero-latin-track {
