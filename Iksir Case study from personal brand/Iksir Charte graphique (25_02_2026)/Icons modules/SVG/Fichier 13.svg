@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 218.62 222.38">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Dégradé_sans_nom_38-2);
+      }
+
+      .cls-2 {
+        fill: url(#Dégradé_sans_nom_38);
+      }
+    </style>
+    <linearGradient id="Dégradé_sans_nom_38" data-name="Dégradé sans nom 38" x1="-25.4" y1="293.2" x2="257.99" y2="57.43" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#8ccb1f"/>
+    </linearGradient>
+    <linearGradient id="Dégradé_sans_nom_38-2" data-name="Dégradé sans nom 38" x1="-80.93" y1="226.45" x2="202.46" y2="-9.31" xlink:href="#Dégradé_sans_nom_38"/>
+  </defs>
+  <g id="Calque_1-2" data-name="Calque_1">
+    <g>
+      <polygon class="cls-2" points="0 222.18 207.19 222.38 111.17 56.91 0 222.18"/>
+      <polygon class="cls-1" points="218.62 .11 99.51 0 158.97 103.21 218.62 .11"/>
+    </g>
+  </g>
+</svg>

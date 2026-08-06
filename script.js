@@ -612,6 +612,22 @@ function initBackToTop() {
   const btn = $('#backToTop');
   if (!btn) return;
 
+  // The button is fixed to the viewport corner and the footer's social icons
+  // sit in that same corner, so at the very bottom of the page they collide.
+  // Track the footer and tuck the button away once it comes into view.
+  const footer = $('.footer');
+  let footerVisible = false;
+
+  if (footer && 'IntersectionObserver' in window) {
+    new IntersectionObserver(
+      ([entry]) => {
+        footerVisible = entry.isIntersecting;
+        btn.classList.toggle('tucked', footerVisible);
+      },
+      { rootMargin: '0px 0px -60px 0px' }
+    ).observe(footer);
+  }
+
   window.addEventListener('scroll', () => {
     btn.classList.toggle('visible', window.scrollY > 600);
   }, { passive: true });

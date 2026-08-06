@@ -1,4 +1,4 @@
-# Nawat Studio — QA Report
+# Nawat Studio, QA Report
 **Date:** May 27, 2026  
 **Files reviewed:** `index.html` (1,644 lines) · `styles.css` (2,930 lines) · `script.js` (522 lines)  
 **Summary:** 3 critical bugs, 6 high-severity issues, 7 medium-severity issues, 9 low/polish items.
@@ -9,7 +9,7 @@
 
 ### 1. Footer is invisible in light mode
 **File:** `styles.css` lines 1662–1665  
-The footer uses `color: var(--white-85)` (pure white `rgba(245,245,245,0.85)`) but its background is `var(--manifesto-bg)`, which in light mode resolves to `var(--white)` = `#F5F5F5`. Result: near-white text on a near-white background — the entire footer content is invisible in light mode. A CSS comment on line 1967 even acknowledges _"Footer is always dark"_ but the token system doesn't enforce it.
+The footer uses `color: var(--white-85)` (pure white `rgba(245,245,245,0.85)`) but its background is `var(--manifesto-bg)`, which in light mode resolves to `var(--white)` = `#F5F5F5`. Result: near-white text on a near-white background, the entire footer content is invisible in light mode. A CSS comment on line 1967 even acknowledges _"Footer is always dark"_ but the token system doesn't enforce it.
 
 **Fix:** Give the footer its own dedicated always-dark background token or hardcode it:
 ```css
@@ -23,7 +23,7 @@ The footer uses `color: var(--white-85)` (pure white `rgba(245,245,245,0.85)`) b
 
 ### 2. Mobile menu CTA doesn't close the overlay
 **File:** `script.js` line 102  
-The close-on-click handler looks for `.mobile-menu .nav-cta`, but the mobile menu's "Start Your Project" button has classes `btn btn-primary` — it doesn't have the `.nav-cta` class. Clicking it navigates to `#contact` but leaves the full-screen menu open on top of the content.
+The close-on-click handler looks for `.mobile-menu .nav-cta`, but the mobile menu's "Start Your Project" button has classes `btn btn-primary`, it doesn't have the `.nav-cta` class. Clicking it navigates to `#contact` but leaves the full-screen menu open on top of the content.
 
 **Fix:** Add `.nav-cta` class to the mobile CTA anchor, or update the selector:
 ```javascript
@@ -37,9 +37,9 @@ $$('.mobile-menu .nav-link, .mobile-menu a[href]').forEach(...)
 
 ### 3. Contact form never actually sends
 **File:** `script.js` lines 314–317  
-The form submit handler fakes a send with `setTimeout(1200)` — no backend call, no mailto, no third-party service (Formspree, EmailJS, etc.). Visitors who submit the form receive a success message but the message is never delivered.
+The form submit handler fakes a send with `setTimeout(1200)`, no backend call, no mailto, no third-party service (Formspree, EmailJS, etc.). Visitors who submit the form receive a success message but the message is never delivered.
 
-**Action needed:** Integrate a real form endpoint before going live. Also add error handling — if the call fails, the button stays permanently disabled with no recovery path.
+**Action needed:** Integrate a real form endpoint before going live. Also add error handling, if the call fails, the button stays permanently disabled with no recovery path.
 
 ---
 
@@ -47,11 +47,11 @@ The form submit handler fakes a send with `setTimeout(1200)` — no backend call
 
 ### 4. Google Fonts loaded twice
 **Files:** `styles.css` line 7 AND `index.html` line 20  
-Google Fonts is imported via `@import` in the CSS file AND via a `<link>` tag in the HTML. Both requests fire on every page load, doubling font download time. Remove the `@import` from `styles.css` — the HTML `<link>` is already optimally placed with `preconnect` hints.
+Google Fonts is imported via `@import` in the CSS file AND via a `<link>` tag in the HTML. Both requests fire on every page load, doubling font download time. Remove the `@import` from `styles.css`, the HTML `<link>` is already optimally placed with `preconnect` hints.
 
 ---
 
-### 5. Nested `<nav>` inside `<nav>` — invalid HTML
+### 5. Nested `<nav>` inside `<nav>`, invalid HTML
 **File:** `index.html` lines 51 and 63  
 `<nav class="nav">` contains a second `<nav class="nav-links">`. Nested `<nav>` elements are invalid HTML5 and confuse screen readers (assistive tech announces two separate navigation landmarks). The inner one should be changed to `<div class="nav-links">`.
 
@@ -65,7 +65,7 @@ The page has no `<main>` element wrapping the page content. This is a WCAG 2.1 a
 
 ### 7. `initParallax()` is dead code
 **File:** `script.js` lines 264–283  
-This function targets `.hero-calligraphy` which no longer exists — the current hero design uses `.hero-calligraphy-main`. The function runs on every scroll event and silently returns early on every frame. Safe to remove or update to `.hero-calligraphy-main`.
+This function targets `.hero-calligraphy` which no longer exists, the current hero design uses `.hero-calligraphy-main`. The function runs on every scroll event and silently returns early on every frame. Safe to remove or update to `.hero-calligraphy-main`.
 
 ---
 
@@ -83,24 +83,24 @@ All three language variants of the footer copyright read `© 2025`. Should be `�
 
 ## 🟡 Medium Severity
 
-### 10. Duplicate and dead CSS — needs cleanup
+### 10. Duplicate and dead CSS, needs cleanup
 **File:** `styles.css`
 
 Several issues in the stylesheet make it harder to maintain:
 
-- **`@keyframes dotPulse` defined twice** — lines 593–596 and 2023–2026. Last one wins, but the first is dead.
-- **`@media (max-width: 480px)` process-step rules duplicated** — lines 1930–1931 and 2001–2003. Identical rules repeated 60 lines apart.
-- **`.hero { }` declared twice** — lines 481–489 and 2165–2172. Some properties conflict; should be merged into one rule.
-- **`.work-card { display: flex... }` declared twice** — lines 1009 and 2042.
-- **`.work-card-image { overflow: hidden }` declared twice** — lines 1031 and 1997.
-- **Dead old-hero CSS** — Classes `.hero-calligraphy`, `.hero-bg`, `.hero-content`, `.hero-badge`, `.hero-title`, `.hero-sub`, `.hero-actions` are fully styled in CSS (lines 500–644) but none of these elements exist in the current HTML. The hero was redesigned but the old CSS wasn't removed. This is roughly ~140 lines of dead code.
-- **`.hero-glow { display: none }` at line 2116** — There is no `.hero-glow` element in the HTML at all.
+- **`@keyframes dotPulse` defined twice**, lines 593–596 and 2023–2026. Last one wins, but the first is dead.
+- **`@media (max-width: 480px)` process-step rules duplicated**, lines 1930–1931 and 2001–2003. Identical rules repeated 60 lines apart.
+- **`.hero { }` declared twice**, lines 481–489 and 2165–2172. Some properties conflict; should be merged into one rule.
+- **`.work-card { display: flex... }` declared twice**, lines 1009 and 2042.
+- **`.work-card-image { overflow: hidden }` declared twice**, lines 1031 and 1997.
+- **Dead old-hero CSS**, Classes `.hero-calligraphy`, `.hero-bg`, `.hero-content`, `.hero-badge`, `.hero-title`, `.hero-sub`, `.hero-actions` are fully styled in CSS (lines 500–644) but none of these elements exist in the current HTML. The hero was redesigned but the old CSS wasn't removed. This is roughly ~140 lines of dead code.
+- **`.hero-glow { display: none }` at line 2116**, There is no `.hero-glow` element in the HTML at all.
 
 ---
 
 ### 11. Blue-reduction overrides create a maintenance trap
 **File:** `styles.css` lines 2054–2160  
-A large "BLUE-REDUCTION OVERRIDES" block systematically overrides the blue color tokens established earlier in the file (e.g., buttons, nav CTA, form focus, pipeline dots all revert from `var(--blue)` to dark/neutral). This means the same component is styled in two places — change one, forget the other. The base token definitions for buttons, CTAs, and form elements should be updated directly instead of patched with overrides.
+A large "BLUE-REDUCTION OVERRIDES" block systematically overrides the blue color tokens established earlier in the file (e.g., buttons, nav CTA, form focus, pipeline dots all revert from `var(--blue)` to dark/neutral). This means the same component is styled in two places, change one, forget the other. The base token definitions for buttons, CTAs, and form elements should be updated directly instead of patched with overrides.
 
 ---
 
@@ -122,12 +122,12 @@ The flash-of-transition prevention removes `no-transitions` on the `load` event,
 
 ---
 
-### 15. `initProcess()` — variable shadowing
+### 15. `initProcess()`, variable shadowing
 **File:** `script.js` lines 239 and 246  
 ```javascript
-const steps = $$('.process-step');          // outer — never used after declaration
+const steps = $$('.process-step');          // outer, never used after declaration
 // ...inside callback:
-const steps = $$('.process-step', $('.process-grid'));  // inner — shadows outer
+const steps = $$('.process-step', $('.process-grid'));  // inner, shadows outer
 ```
 The outer `steps` variable is queried but never used. Only the inner re-query inside the callback is ever acted upon. The outer declaration can be removed.
 
@@ -136,7 +136,7 @@ The outer `steps` variable is queried but never used. Only the inner re-query in
 ### 16. Missing OG image and Twitter card meta tags
 **File:** `index.html` lines 9–12  
 Open Graph tags are present (`og:title`, `og:description`, `og:url`) but missing:
-- `og:image` — without this, link previews on WhatsApp, LinkedIn, Facebook, etc. will show no image
+- `og:image`, without this, link previews on WhatsApp, LinkedIn, Facebook, etc. will show no image
 - `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`
 - `<link rel="canonical" href="https://nawat.studio">`
 
@@ -158,7 +158,7 @@ LinkedIn, Instagram, Behance, and footer social icons all have `href="#"`. These
 
 ### 19. Card tilt has no touch device guard
 **File:** `script.js` lines 408–425  
-`initCardTilt()` applies a 3D mousemove effect but — unlike `initCursorGlow()` — doesn't check `(hover: none)` to skip on touch devices. On iOS/Android, synthetic mousemove events can fire and produce unexpected tilt behavior. Add the same guard used in `initCursorGlow()`:
+`initCardTilt()` applies a 3D mousemove effect but, unlike `initCursorGlow()`, doesn't check `(hover: none)` to skip on touch devices. On iOS/Android, synthetic mousemove events can fire and produce unexpected tilt behavior. Add the same guard used in `initCursorGlow()`:
 ```javascript
 if (window.matchMedia('(hover: none)').matches) return;
 ```
@@ -167,7 +167,7 @@ if (window.matchMedia('(hover: none)').matches) return;
 
 ### 20. `window._manifestoProcessed` global flag
 **File:** `script.js` lines 63 and 208  
-State management via `window._manifestoProcessed` is fragile — any other script can accidentally overwrite it. Promote it to a module-level `let` variable at the top of `script.js`.
+State management via `window._manifestoProcessed` is fragile, any other script can accidentally overwrite it. Promote it to a module-level `let` variable at the top of `script.js`.
 
 ---
 
@@ -179,7 +179,7 @@ State management via `window._manifestoProcessed` is fragile — any other scrip
 
 ### 22. Service card "Learn more" is not interactive
 **File:** `index.html` service cards, `styles.css` lines 880–896  
-The `.service-card-arrow` span shows "Learn more" text and an arrow icon on hover, implying interactivity — but the card has `cursor: default` and no link or button wrapping it. Either make each card a link (to a service detail page, or `href="#contact"`), or remove the "Learn more" arrow since it creates a false affordance.
+The `.service-card-arrow` span shows "Learn more" text and an arrow icon on hover, implying interactivity, but the card has `cursor: default` and no link or button wrapping it. Either make each card a link (to a service detail page, or `href="#contact"`), or remove the "Learn more" arrow since it creates a false affordance.
 
 ---
 
@@ -203,7 +203,7 @@ Only an SVG favicon is provided. Safari (older versions) and some environments d
 | 2 | Mobile menu CTA doesn't close overlay | 🔴 Critical | script.js |
 | 3 | Contact form never sends | 🔴 Critical | script.js |
 | 4 | Google Fonts loaded twice | 🟠 High | css + html |
-| 5 | Nested `<nav>` — invalid HTML | 🟠 High | index.html |
+| 5 | Nested `<nav>`, invalid HTML | 🟠 High | index.html |
 | 6 | Missing `<main>` landmark | 🟠 High | index.html |
 | 7 | `initParallax()` is dead code | 🟠 High | script.js |
 | 8 | Cursor glow RAF never cancelled | 🟠 High | script.js |
@@ -217,7 +217,7 @@ Only an SVG favicon is provided. Safari (older versions) and some environments d
 | 16 | Missing og:image & Twitter cards | 🟡 Medium | index.html |
 | 17 | Founder section all placeholder | 🔵 Low | index.html |
 | 18 | Social links point to `#` | 🔵 Low | index.html |
-| 19 | Card tilt — no touch guard | 🔵 Low | script.js |
+| 19 | Card tilt, no touch guard | 🔵 Low | script.js |
 | 20 | `window._manifestoProcessed` global | 🔵 Low | script.js |
 | 21 | Redundant `role="navigation"` | 🔵 Low | index.html |
 | 22 | "Learn more" is a false affordance | 🔵 Low | html + css |
@@ -226,4 +226,4 @@ Only an SVG favicon is provided. Safari (older versions) and some environments d
 
 ---
 
-*QA review conducted on full source reading — no browser rendering. Recommend visual testing on Chrome/Safari/Firefox in both light and dark modes, desktop and mobile, across AR/EN/FR language states.*
+*QA review conducted on full source reading, no browser rendering. Recommend visual testing on Chrome/Safari/Firefox in both light and dark modes, desktop and mobile, across AR/EN/FR language states.*

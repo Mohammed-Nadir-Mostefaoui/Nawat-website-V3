@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="light" data-lang="ar">
 <head>
-  <meta http-equiv="refresh" content="0; url=index.html">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Iksir Design System — نظام تصميم إكسير | نواة ستوديو × داتاماستر">
+  <meta name="description" content="Iksir Design System, نظام تصميم إكسير | نواة ستوديو × داتاماستر. نظام تصميم قائم على الرموز بـ1,033 متغيّراً و24 مكوّناً، ثلاثي اللغة وثنائي الاتجاه، لمنتجات داتاماستر.">
   <meta name="theme-color" content="#F5F5F5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0E0E11" media="(prefers-color-scheme: dark)">
-  <meta property="og:title" content="Iksir Design System — Nawat Studio">
-  <meta property="og:description" content="How we built a comprehensive Figma design system with 1,014+ variables, full RTL/LTR support, and complete documentation for Datamaster's digital products.">
-  <meta property="og:image" content="https://nawat.studio/assets/og-iksir.jpg">
+  <meta property="og:title" content="Iksir Design System, Nawat Studio">
+  <meta property="og:description" content="A token-first design foundation for Datamaster's ERP and mobile products, 1,033 variables, 24 components, WCAG 2.1 AA, and true RTL/LTR from the ground up.">
+  <meta property="og:image" content="https://nawat.studio/assets/images/iksir/og-iksir.jpg">
   <meta property="og:url" content="https://nawat.studio/case-study-iksir.html">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://nawat.studio/case-study-iksir.html">
-  <title>Iksir Design System — نواة ستوديو | Nawat Studio</title>
+  <title>Iksir Design System, نواة ستوديو | Nawat Studio</title>
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,9 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Preload hero cover -->
+  <link rel="preload" as="image" href="assets/images/iksir/iksir-hero-art.webp">
 
   <!-- Shared styles -->
   <link rel="stylesheet" href="styles.css">
@@ -53,7 +56,7 @@
 
   <style>
     /* ================================================================
-       CASE STUDY — Page-scoped styles
+       CASE STUDY, Page-scoped styles
        Uses only tokens defined in styles.css :root
        ================================================================ */
 
@@ -356,7 +359,7 @@
       background: var(--black);
       overflow: hidden;
       padding: clamp(100px, 16vw, 180px) 0;
-      /* currentColor used by SVG watermark — white in dark, black in light */
+      /* currentColor used by SVG watermark, white in dark, black in light */
       color: var(--white);
     }
     [data-theme="light"] .cs-cta {
@@ -702,6 +705,929 @@
     }
     .cs-related-card:hover .cs-related-card-cta { gap: 10px; }
     html[dir="rtl"] .cs-related-card-arrow { transform: scaleX(-1); }
+
+    /* ================================================================
+       IKSIR, additions (v2)
+       Real assets, three-layer diagram, library gallery, lightbox.
+       Tokens only. No new dependencies.
+       ================================================================ */
+
+    /* ── Accent: Iksir brand purple ───────────────────────────────── */
+    :root {
+      --cs-accent:       #430098;
+      --cs-accent-08:    rgba(67, 0, 152, 0.07);
+      --cs-accent-15:    rgba(67, 0, 152, 0.14);
+      --cs-accent-hover: #35007A;
+      --cs-accent-glow:  rgba(67, 0, 152, 0.30);
+      --cs-on-accent:    var(--white);
+    }
+    [data-theme="dark"] {
+      --cs-accent:       #B69CF5;
+      --cs-accent-08:    rgba(182, 156, 245, 0.10);
+      --cs-accent-15:    rgba(182, 156, 245, 0.18);
+      --cs-accent-hover: #CFBEFA;
+      --cs-accent-glow:  rgba(182, 156, 245, 0.28);
+      --cs-on-accent:    #1B0038;
+    }
+    .cs-cta-btn.primary { color: var(--cs-on-accent); }
+    .cs-cta-btn.primary:hover { box-shadow: 0 12px 32px var(--cs-accent-glow); }
+    .cs-cta-pill-dot { box-shadow: 0 0 8px var(--cs-accent-glow); }
+
+    /* ── Hero lead + meta grid ────────────────────────────────────── */
+    .cs-lead {
+      font-size: clamp(16px, 2.1vw, 21px);
+      line-height: 1.75;
+      color: var(--c-text-85);
+      max-width: 660px;
+      margin-bottom: 32px;
+    }
+
+    /* Fixed column counts, not auto-fit: these grids paint their gaps with a
+       background colour, so a half-empty final row would show as a grey void.
+       Column counts are chosen to always divide the item count exactly. */
+    .cs-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);   /* 5 items */
+      gap: 1px;
+      background: var(--c-border);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 900px) {
+      .cs-meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .cs-meta-item:last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 420px) {
+      .cs-meta-grid { grid-template-columns: 1fr; }
+    }
+    .cs-meta-item {
+      background: var(--c-bg);
+      padding: 16px 18px;
+    }
+    .cs-meta-k {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--c-text-30);
+      margin-bottom: 6px;
+    }
+    .cs-meta-v {
+      font-size: 13.5px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--c-text);
+    }
+
+    /* ── Cover: real image ────────────────────────────────────────── */
+    .cs-cover.has-image {
+      aspect-ratio: auto;
+      display: block;
+      background: #430098;
+      border-color: transparent;
+    }
+    .cs-cover.has-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── Numbers band (6-up) ──────────────────────────────────────── */
+    .cs-numbers {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);   /* 6 items */
+      gap: 1px;
+      background: var(--c-border);
+      border-block: 1px solid var(--c-border);
+      margin-top: clamp(40px, 6vw, 64px);
+    }
+    @media (max-width: 1000px) { .cs-numbers { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 560px)  { .cs-numbers { grid-template-columns: repeat(2, 1fr); } }
+    .cs-number {
+      background: var(--c-bg);
+      padding: clamp(20px, 3vw, 30px) clamp(16px, 2vw, 24px);
+    }
+    .cs-number-num {
+      font-family: var(--font-latin);
+      font-size: clamp(26px, 3.4vw, 40px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+      margin-bottom: 8px;
+    }
+    .cs-number-num em { font-style: normal; color: var(--cs-accent); }
+    .cs-number-label {
+      font-size: 11.5px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--c-text-60);
+    }
+
+    /* ── Scope: what we did / what we didn't ──────────────────────── */
+    .cs-scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: clamp(40px, 5vw, 60px);
+    }
+    @media (max-width: 700px) { .cs-scope-grid { grid-template-columns: 1fr; } }
+    .cs-scope-col {
+      padding: clamp(24px, 3vw, 34px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+    }
+    .cs-scope-col.is-accent {
+      border-color: var(--cs-accent-15);
+      background: var(--cs-accent-08);
+    }
+    /* On the dark background the accent tint alone reads as noise, lean on the
+       border so the "what we delivered" panel is still clearly the primary one. */
+    [data-theme="dark"] .cs-scope-col.is-accent {
+      border-color: rgba(182, 156, 245, 0.30);
+      background: rgba(182, 156, 245, 0.055);
+    }
+    .cs-scope-col-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--c-text-30);
+      margin-bottom: 18px;
+    }
+    .cs-scope-col.is-accent .cs-scope-col-title { color: var(--cs-accent); }
+    .cs-scope-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .cs-scope-list li {
+      position: relative;
+      padding-inline-start: 22px;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--c-text-85);
+    }
+    .cs-scope-list li::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 0;
+      top: 8px;
+      width: 7px; height: 7px;
+      border-radius: 2px;
+      background: var(--cs-accent);
+      opacity: 0.55;
+    }
+    .cs-scope-col:not(.is-accent) .cs-scope-list li::before {
+      background: none;
+      border: 1px solid var(--c-border-lg);
+      opacity: 1;
+    }
+
+    /* ── Honest note / aside ──────────────────────────────────────── */
+    .cs-note {
+      margin-top: clamp(32px, 4vw, 48px);
+      padding: clamp(20px, 2.6vw, 28px) clamp(22px, 3vw, 32px);
+      border-radius: var(--radius-md);
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-inline-start: 2px solid var(--cs-accent);
+    }
+    .cs-note-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cs-accent);
+      margin-bottom: 8px;
+    }
+    .cs-note-body {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--c-text-60);
+      max-width: 720px;
+    }
+
+    /* ── Process callout inside a phase ───────────────────────────── */
+    .cs-process-callout {
+      display: block;
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--cs-accent-08);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--c-text-85);
+      max-width: 580px;
+    }
+    .cs-process-callout strong { color: var(--cs-accent); font-weight: 600; }
+
+    /* ── Three-layer architecture diagram ────────────────────────── */
+    .cs-layers {
+      margin-top: clamp(40px, 5vw, 60px);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+    .cs-layer {
+      padding: clamp(22px, 3vw, 30px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+      transition: border-color var(--t-fast), background var(--t-fast);
+    }
+    .cs-layer:hover { border-color: var(--cs-accent-15); background: var(--cs-accent-08); }
+    .cs-layer-head {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .cs-layer-badge {
+      font-family: var(--font-latin);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cs-accent);
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--cs-accent-15);
+      flex-shrink: 0;
+    }
+    .cs-layer-title {
+      font-size: clamp(16px, 1.9vw, 20px);
+      font-weight: 600;
+      color: var(--c-text);
+      line-height: 1.3;
+    }
+    .cs-layer-desc {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--c-text-60);
+      max-width: 640px;
+      margin-bottom: 16px;
+    }
+    .cs-layer-tokens { display: flex; flex-wrap: wrap; gap: 7px; }
+    .cs-token-chip {
+      font-family: var(--font-latin);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: var(--radius-sm);
+      background: var(--c-surface-md);
+      color: var(--c-text-85);
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .cs-layer-arrow {
+      align-self: center;
+      color: var(--c-text-30);
+      padding: 10px 0;
+      line-height: 0;
+    }
+
+    /* ── Payoff band ─────────────────────────────────────────────── */
+    .cs-payoff {
+      margin-top: clamp(28px, 3.5vw, 40px);
+      padding: clamp(22px, 3vw, 30px);
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--c-border-lg);
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--c-text-85);
+    }
+    .cs-payoff strong { color: var(--c-text); font-weight: 600; }
+
+    /* ── Figures + lightbox trigger ──────────────────────────────── */
+    .cs-figs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(14px, 2vw, 22px);
+      margin-top: clamp(40px, 5vw, 60px);
+    }
+    .cs-figs.is-single { grid-template-columns: 1fr; }
+    .cs-figs.is-three { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 760px) {
+      .cs-figs, .cs-figs.is-three { grid-template-columns: 1fr; }
+    }
+    .cs-fig { margin: 0; }
+    .cs-fig-frame {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--c-surface);
+      cursor: zoom-in;
+      transition: border-color var(--t-fast), transform var(--t-base);
+      line-height: 0;
+      /* clamp very tall images so the page stays readable */
+      max-height: 620px;
+    }
+    .cs-fig-frame:hover { border-color: var(--cs-accent-15); transform: translateY(-2px); }
+    .cs-fig-frame:focus-visible { outline: 2px solid var(--cs-accent); outline-offset: 3px; }
+    .cs-fig-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: top center;
+      max-height: 620px;
+    }
+    .cs-fig-zoom {
+      position: absolute;
+      top: 10px;
+      inset-inline-end: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 100px;
+      background: rgba(14,14,17,0.62);
+      color: #fff;
+      font-family: var(--font-latin);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity var(--t-fast), transform var(--t-fast);
+      pointer-events: none;
+      line-height: 1;
+    }
+    .cs-fig-frame:hover .cs-fig-zoom,
+    .cs-fig-frame:focus-visible .cs-fig-zoom { opacity: 1; transform: translateY(0); }
+    .cs-fig-cap {
+      margin-top: 12px;
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: var(--c-text-60);
+    }
+    .cs-fig-cap b { color: var(--c-text); font-weight: 600; }
+
+    .cs-gallery-sub {
+      margin-top: clamp(44px, 5vw, 64px);
+      margin-bottom: -8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-text-30);
+    }
+
+    /* ── Colour swatches (click to copy) ─────────────────────────── */
+    .cs-swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+      gap: 10px;
+      margin-top: clamp(32px, 4vw, 44px);
+    }
+    .cs-swatch {
+      display: block;
+      text-align: start;
+      padding: 0;
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-md);
+      background: var(--c-bg);
+      overflow: hidden;
+      cursor: copy;
+      transition: border-color var(--t-fast), transform var(--t-base);
+      font: inherit;
+      color: inherit;
+      width: 100%;
+    }
+    .cs-swatch:hover { border-color: var(--c-border-lg); transform: translateY(-2px); }
+    .cs-swatch:focus-visible { outline: 2px solid var(--cs-accent); outline-offset: 2px; }
+    .cs-swatch-chip { height: 56px; width: 100%; }
+    .cs-swatch-meta { padding: 10px 12px 12px; }
+    .cs-swatch-name {
+      font-family: var(--font-latin);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--c-text);
+      direction: ltr;
+      unicode-bidi: isolate;
+      margin-bottom: 3px;
+      word-break: break-all;
+    }
+    .cs-swatch-hex {
+      font-family: var(--font-latin);
+      font-size: 11px;
+      color: var(--c-text-60);
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .cs-swatch.copied .cs-swatch-hex { color: var(--cs-accent); font-weight: 600; }
+
+    .cs-detail-line {
+      margin-top: clamp(28px, 3.5vw, 38px);
+      font-size: 13.5px;
+      line-height: 1.85;
+      color: var(--c-text-60);
+      max-width: 760px;
+    }
+    .cs-detail-line strong { color: var(--c-text-85); font-weight: 600; }
+
+    /* ── Component chip list ─────────────────────────────────────── */
+    .cs-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: clamp(32px, 4vw, 44px);
+    }
+    .cs-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 13px;
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-latin);
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--c-text-85);
+      background: var(--c-bg);
+      transition: border-color var(--t-fast), background var(--t-fast);
+    }
+    .cs-chip:hover { border-color: var(--cs-accent-15); background: var(--cs-accent-08); }
+    .cs-chip em {
+      font-style: normal;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--cs-accent);
+      background: var(--cs-accent-15);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .cs-chip.is-mobile { border-style: dashed; }
+
+    /* ── Accessibility grid ──────────────────────────────────────── */
+    .cs-a11y-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);   /* 6 items, 2 clean rows */
+      gap: 1px;
+      background: var(--c-border);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: clamp(40px, 5vw, 60px);
+    }
+    @media (max-width: 900px) { .cs-a11y-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .cs-a11y-grid { grid-template-columns: 1fr; } }
+    .cs-a11y-item {
+      background: var(--c-bg);
+      padding: clamp(22px, 2.8vw, 30px);
+      transition: background var(--t-fast);
+    }
+    .cs-a11y-item:hover { background: var(--c-surface); }
+    .cs-a11y-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 9px;
+      line-height: 1.35;
+    }
+    .cs-a11y-title svg { color: var(--cs-accent); flex-shrink: 0; }
+    .cs-a11y-desc {
+      font-size: 13px;
+      line-height: 1.72;
+      color: var(--c-text-60);
+    }
+
+    /* ── Status ──────────────────────────────────────────────────── */
+    .cs-status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: clamp(40px, 5vw, 56px);
+    }
+    .cs-status {
+      padding: clamp(22px, 2.8vw, 30px);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border);
+      background: var(--c-surface);
+    }
+    .cs-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 11px;
+      border-radius: 100px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--c-surface-md);
+      color: var(--c-text-60);
+      margin-bottom: 14px;
+    }
+    .cs-status-pill::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .cs-status.is-done .cs-status-pill { background: var(--cs-accent-15); color: var(--cs-accent); }
+    .cs-status.is-live .cs-status-pill::before { animation: cs-pulse 2s var(--ease-inout) infinite; }
+    @keyframes cs-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    html.lite .cs-status.is-live .cs-status-pill::before { animation: none; }
+    .cs-status-title {
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .cs-status-desc {
+      font-size: 13px;
+      line-height: 1.72;
+      color: var(--c-text-60);
+    }
+
+    /* ── Governance rules ────────────────────────────────────────── */
+    .cs-rules { margin-top: clamp(40px, 5vw, 56px); }
+    .cs-rule {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+      padding: 26px 0;
+      border-top: 1px solid var(--c-border);
+      align-items: start;
+    }
+    .cs-rule:last-child { border-bottom: 1px solid var(--c-border); }
+    @media (max-width: 580px) { .cs-rule { grid-template-columns: 40px 1fr; gap: 14px; } }
+    .cs-rule-num {
+      font-family: var(--font-latin);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--cs-accent);
+      padding-top: 4px;
+    }
+    .cs-rule-title {
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--c-text);
+      margin-bottom: 7px;
+      line-height: 1.35;
+    }
+    .cs-rule-desc {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: var(--c-text-60);
+      max-width: 700px;
+    }
+
+    /* ── Reflection pull quote ───────────────────────────────────── */
+    .cs-quote {
+      margin-top: clamp(36px, 4.5vw, 52px);
+      padding-inline-start: clamp(20px, 3vw, 32px);
+      border-inline-start: 2px solid var(--cs-accent);
+      font-size: clamp(19px, 2.8vw, 30px);
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: var(--c-text);
+      max-width: 800px;
+    }
+
+    /* ── Lightbox ────────────────────────────────────────────────── */
+    .cs-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(16px, 4vw, 48px);
+      background: rgba(8, 8, 12, 0.9);
+      backdrop-filter: blur(6px);
+    }
+    html.lite .cs-lightbox { backdrop-filter: none; background: rgba(8, 8, 12, 0.96); }
+    .cs-lightbox.open { display: flex; }
+    .cs-lightbox-img {
+      max-width: 100%;
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      border-radius: var(--radius-md);
+      background: #fff;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    }
+    .cs-lightbox-cap {
+      position: absolute;
+      bottom: clamp(12px, 2.4vw, 22px);
+      inset-inline: 0;
+      text-align: center;
+      font-size: 12.5px;
+      color: rgba(245,245,245,0.7);
+      padding: 0 24px;
+    }
+    .cs-lightbox-close {
+      position: absolute;
+      top: clamp(12px, 2.4vw, 24px);
+      inset-inline-end: clamp(12px, 2.4vw, 24px);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,245,245,0.2);
+      background: rgba(245,245,245,0.07);
+      color: rgba(245,245,245,0.85);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background var(--t-fast), color var(--t-fast);
+    }
+    .cs-lightbox-close:hover { background: rgba(245,245,245,0.16); color: #fff; }
+
+    /* ================================================================
+       CLOSING SECTION, headline + contact form as one composition
+       The old CTA band and a separate contact block read as two
+       competing sections. This merges them: one atmospheric band,
+       one headline, and the form landing inside it.
+       ================================================================ */
+    .cs-close {
+      position: relative;
+      overflow: hidden;
+      background: var(--c-bg-alt);
+      color: var(--black);
+      padding: clamp(80px, 12vw, 140px) 0 clamp(72px, 10vw, 120px);
+    }
+    [data-theme="dark"] .cs-close {
+      background: var(--black);
+      color: var(--white);
+    }
+    .cs-close::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--cs-accent) 40%, var(--cs-accent) 60%, transparent 100%);
+      opacity: 0.4;
+    }
+    .cs-close-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--black-10) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    [data-theme="dark"] .cs-close-dots {
+      background-image: radial-gradient(rgba(245,245,245,0.07) 1px, transparent 1px);
+    }
+    .cs-close-watermark {
+      position: absolute;
+      top: clamp(-140px, -12vw, -60px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(420px, 62vw, 760px);
+      height: clamp(420px, 62vw, 760px);
+      pointer-events: none;
+      opacity: 0.07;
+    }
+    [data-theme="dark"] .cs-close-watermark { opacity: 0.055; }
+    html.lite .cs-close-watermark { display: none; }
+
+    .cs-close-inner { position: relative; z-index: 1; }
+
+    /* ── Header ──────────────────────────────────────────────────── */
+    .cs-close-head {
+      max-width: 720px;
+      margin: 0 auto clamp(48px, 6vw, 72px);
+      text-align: center;
+    }
+    .cs-close-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cs-accent);
+      margin-bottom: 16px;
+    }
+    .cs-close-title {
+      font-size: clamp(30px, 5.2vw, 62px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--c-text);
+      margin-bottom: 20px;
+    }
+    html[lang="ar"] .cs-close-title { letter-spacing: -0.01em; }
+    .cs-close-title em { font-style: normal; color: var(--cs-accent); }
+    .cs-close-lead {
+      font-size: clamp(15px, 1.7vw, 18px);
+      line-height: 1.75;
+      color: var(--c-text-60);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── Layout ──────────────────────────────────────────────────── */
+    .cs-close-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: start;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .cs-close-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Aside: what happens next ────────────────────────────────── */
+    .cs-close-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-top: 8px;
+    }
+    .cs-aside-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-text-30);
+      margin-bottom: 18px;
+    }
+    .cs-steps { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+    .cs-step {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .cs-step-num {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--cs-accent-15);
+      color: var(--cs-accent);
+      font-family: var(--font-latin);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .cs-step-text {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--c-text-85);
+      padding-top: 4px;
+    }
+
+    /* ── Status bar: sits at the top of the aside ────────────────── */
+    .cs-status-bar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--c-border);
+      font-size: 12px;
+    }
+    .cs-status-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--cs-accent);
+    }
+    .cs-status-live::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px var(--cs-accent-08);
+      animation: cs-pulse 2s var(--ease-inout) infinite;
+    }
+    html.lite .cs-status-live::before { animation: none; }
+    .cs-status-dot-sep {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--c-text-30);
+      flex-shrink: 0;
+    }
+    .cs-status-muted { color: var(--c-text-60); }
+
+    /* ── Direct contact rows ─────────────────────────────────────── */
+    .cs-reach {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-reach-link {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 13px 15px;
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-md);
+      background: var(--c-bg);
+      text-decoration: none;
+      transition: border-color var(--t-fast), transform var(--t-base), background var(--t-fast);
+    }
+    .cs-reach-link:hover {
+      border-color: var(--cs-accent-15);
+      background: var(--cs-accent-08);
+      transform: translateY(-2px);
+    }
+    .cs-reach-icon {
+      width: 34px; height: 34px;
+      border-radius: var(--radius-sm);
+      background: var(--cs-accent-15);
+      color: var(--cs-accent);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .cs-reach-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .cs-reach-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-text-30);
+    }
+    .cs-reach-value {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--c-text);
+      direction: ltr;
+      unicode-bidi: isolate;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    html[dir="rtl"] .cs-reach-value { text-align: right; }
+    .cs-reach-arrow {
+      margin-inline-start: auto;
+      color: var(--c-text-30);
+      flex-shrink: 0;
+      transition: color var(--t-fast), transform var(--t-fast);
+    }
+    html[dir="rtl"] .cs-reach-arrow { transform: scaleX(-1); }
+    .cs-reach-link:hover .cs-reach-arrow { color: var(--cs-accent); transform: translateX(3px); }
+    html[dir="rtl"] .cs-reach-link:hover .cs-reach-arrow { transform: scaleX(-1) translateX(3px); }
+
+    /* ── Form card ───────────────────────────────────────────────── */
+    .cs-form-card {
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 3.4vw, 40px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.06);
+    }
+    [data-theme="dark"] .cs-form-card {
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+
+    /* Accent the shared form components with the case study purple */
+    .cs-close .form-input:focus,
+    .cs-close .form-select:focus,
+    .cs-close .form-textarea:focus {
+      border-color: var(--cs-accent);
+      box-shadow: 0 0 0 3px var(--cs-accent-08);
+    }
+    .cs-close .form-submit {
+      background: var(--cs-accent);
+      color: var(--cs-on-accent);
+    }
+    .cs-close .form-submit:hover {
+      background: var(--cs-accent-hover);
+      box-shadow: 0 10px 28px var(--cs-accent-glow);
+    }
+    .cs-close .form-select.prefilled {
+      border-color: var(--cs-accent);
+      box-shadow: 0 0 0 3px var(--cs-accent-08);
+      animation: none;
+    }
+    .cs-close .success-icon {
+      background: var(--cs-accent-15);
+      color: var(--cs-accent);
+    }
+    .cs-close .form-success {
+      background: transparent;
+      border: none;
+      padding: 24px 0;
+    }
+
+    /* Back-to-top picks up the page accent instead of the site blue */
+    .back-to-top {
+      background: var(--cs-accent);
+      color: var(--cs-on-accent);
+      box-shadow: 0 4px 16px var(--cs-accent-glow);
+    }
+    .back-to-top:hover {
+      background: var(--cs-accent-hover);
+      box-shadow: 0 8px 24px var(--cs-accent-glow);
+    }
   </style>
 </head>
 
@@ -746,15 +1672,15 @@
           </p>
 
           <div class="nwp-cards">
-            <a href="case-study-iksir.html" class="nwp-card" style="--nwp-accent:#2563EB;" role="menuitem">
+            <a href="case-study-iksir.html" class="nwp-card" style="--nwp-accent:#430098;" role="menuitem">
               <span class="nwp-accent-bar"></span>
               <div class="nwp-info">
                 <span class="nwp-num">01</span>
                 <div class="nwp-text">
                   <p class="nwp-title">
-                    <span class="t-ar">إكسير — نظام التصميم</span>
-                    <span class="t-en">Iksir — Design System</span>
-                    <span class="t-fr">Iksir — Design System</span>
+                    <span class="t-ar">إكسير، نظام التصميم</span>
+                    <span class="t-en">Iksir, Design System</span>
+                    <span class="t-fr">Iksir, Design System</span>
                   </p>
                   <p class="nwp-tags">Design System · Figma · RTL</p>
                 </div>
@@ -763,56 +1689,63 @@
               <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
 
-            <a href="case-study-tasks.html" class="nwp-card" style="--nwp-accent:#2563EB;" role="menuitem">
+            <!-- 02–04, not published yet, so these are inert previews of what's next -->
+            <div class="nwp-card" style="--nwp-accent:#430098; cursor:default;" role="menuitem">
               <span class="nwp-accent-bar"></span>
               <div class="nwp-info">
                 <span class="nwp-num">02</span>
                 <div class="nwp-text">
                   <p class="nwp-title">
-                    <span class="t-ar">تطبيق إدارة المهام</span>
-                    <span class="t-en">Tasks — Mobile App</span>
-                    <span class="t-fr">Tasks — App Mobile</span>
+                    <span class="t-ar">إكسير، إعادة هيكلة المعلومات</span>
+                    <span class="t-en">Iksir, IA Redesign</span>
+                    <span class="t-fr">Iksir, Refonte de l'IA</span>
                   </p>
-                  <p class="nwp-tags">UX/UI · Mobile · ERP</p>
+                  <p class="nwp-tags">
+                    <span class="t-ar">قادم قريباً</span>
+                    <span class="t-en">Coming Soon</span>
+                    <span class="t-fr">À Venir</span>
+                  </p>
                 </div>
               </div>
-              <span class="nwp-dot"></span>
-              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            </div>
 
-            <a href="case-study-b2bsales.html" class="nwp-card" style="--nwp-accent:#EA580C;" role="menuitem">
+            <div class="nwp-card" style="--nwp-accent:#430098; cursor:default;" role="menuitem">
               <span class="nwp-accent-bar"></span>
               <div class="nwp-info">
                 <span class="nwp-num">03</span>
                 <div class="nwp-text">
                   <p class="nwp-title">
-                    <span class="t-ar">وحدة مبيعات B2B</span>
-                    <span class="t-en">B2B Sales Module</span>
-                    <span class="t-fr">Module Ventes B2B</span>
+                    <span class="t-ar">إكسير، إعادة تصميم المنتجات</span>
+                    <span class="t-en">Iksir, Product Redesign</span>
+                    <span class="t-fr">Iksir, Refonte des Produits</span>
                   </p>
-                  <p class="nwp-tags">ERP · B2B · Data Design</p>
+                  <p class="nwp-tags">
+                    <span class="t-ar">قادم قريباً</span>
+                    <span class="t-en">Coming Soon</span>
+                    <span class="t-fr">À Venir</span>
+                  </p>
                 </div>
               </div>
-              <span class="nwp-dot"></span>
-              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            </div>
 
-            <a href="case-study-reach.html" class="nwp-card" style="--nwp-accent:#0D9488;" role="menuitem">
+            <div class="nwp-card" style="--nwp-accent:#430098; cursor:default;" role="menuitem">
               <span class="nwp-accent-bar"></span>
               <div class="nwp-info">
                 <span class="nwp-num">04</span>
                 <div class="nwp-text">
                   <p class="nwp-title">
-                    <span class="t-ar">مهندس القيم — منصة التعليم الإلكتروني</span>
-                    <span class="t-en">Muhandis Al-Qiyam — eLearning Platform</span>
-                    <span class="t-fr">Muhandis Al-Qiyam — Plateforme eLearning</span>
+                    <span class="t-ar">إكسير، تصميم منتجات جديدة</span>
+                    <span class="t-en">Iksir, New Products</span>
+                    <span class="t-fr">Iksir, Nouveaux Produits</span>
                   </p>
-                  <p class="nwp-tags">EdTech · UX Research · Product</p>
+                  <p class="nwp-tags">
+                    <span class="t-ar">قادم قريباً</span>
+                    <span class="t-en">Coming Soon</span>
+                    <span class="t-fr">À Venir</span>
+                  </p>
                 </div>
               </div>
-              <span class="nwp-dot"></span>
-              <svg class="nwp-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            </div>
           </div>
 
           <div class="nwp-footer">
@@ -866,7 +1799,7 @@
       </button>
 
       <!-- CTA -->
-      <a href="index.html#contact" class="nav-cta btn">
+      <a href="#contact" class="nav-cta btn">
         <span class="t-ar">ابدأ مشروعك</span>
         <span class="t-en">Start Your Project</span>
         <span class="t-fr">Votre Projet</span>
@@ -883,7 +1816,7 @@
 
 </nav>
 
-<!-- Mobile Menu — kept outside <nav> so backdrop-filter on .nav.scrolled doesn't clip it -->
+<!-- Mobile Menu, kept outside <nav> so backdrop-filter on .nav.scrolled doesn't clip it -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Main navigation">
   <a href="index.html#services" class="nav-link">
     <span class="t-ar">خدماتنا</span>
@@ -906,14 +1839,12 @@
     <span class="t-fr">Philosophie</span>
   </a>
   <div class="mobile-menu-footer">
-    <a href="index.html#contact" class="btn btn-primary" style="justify-content:center;">
+    <a href="#contact" class="btn btn-primary" style="justify-content:center;">
       <span class="t-ar">ابدأ مشروعك</span>
       <span class="t-en">Start Your Project</span>
       <span class="t-fr">Démarrer votre projet</span>
     </a>
   </div>
-</div>
-
 </div>
 
 
@@ -943,230 +1874,206 @@
 <section class="cs-hero container">
   <div class="cs-hero-inner reveal">
 
-    <!-- Client label -->
     <div class="cs-hero-meta">
       <span>DataMaster</span>
       <span class="cs-hero-meta-dot"></span>
       <span>Nawat Studio</span>
     </div>
 
-    <!-- Title -->
     <h1 class="cs-hero-title">
       <span class="t-ar">نظام تصميم إكسير</span>
       <span class="t-en">Iksir Design System</span>
       <span class="t-fr">Design System Iksir</span>
     </h1>
 
-    <!-- Tags -->
-    <div class="cs-tags">
-      <span class="cs-tag">
-        <span class="t-ar">نظام تصميم</span>
-        <span class="t-en">Design System</span>
-        <span class="t-fr">Design System</span>
-      </span>
-      <span class="cs-tag">
-        <span class="t-ar">مكتبة فيغما</span>
-        <span class="t-en">Figma Library</span>
-        <span class="t-fr">Design System Figma</span>
-      </span>
-      <span class="cs-tag">
-        <span class="t-ar">توثيق</span>
-        <span class="t-en">Documentation</span>
-        <span class="t-fr">Documentation</span>
-      </span>
-      <span class="cs-tag">RTL / LTR</span>
-      <span class="cs-tag">
-        <span class="t-ar">إمكانية الوصول</span>
-        <span class="t-en">Accessibility</span>
-        <span class="t-fr">Accessibilité</span>
-      </span>
-    </div>
+    <p class="cs-lead">
+      <span class="t-ar">أساس تصميم قائم على الرموز (Tokens) تبني عليه منتجات داتاماستر على الويب والموبايل، متّسق، متاح للجميع، وثلاثي اللغة من أول يوم.</span>
+      <span class="t-en">A token-first design foundation that Datamaster's web and mobile products build on, consistent, accessible, and trilingual from day one.</span>
+      <span class="t-fr">Une fondation design token-first sur laquelle s'appuient les produits web et mobile de Datamaster, cohérente, accessible et trilingue dès le premier jour.</span>
+    </p>
 
-    <!-- Stats -->
-    <div class="cs-stats">
-      <div class="cs-stat">
-        <div class="cs-stat-num">1014<em>+</em></div>
-        <div class="cs-stat-label">
-          <span class="t-ar">متغير في فيغما</span>
-          <span class="t-en">Figma Variables</span>
-          <span class="t-fr">Variables Figma</span>
+    <div class="cs-meta-grid">
+      <div class="cs-meta-item">
+        <div class="cs-meta-k">
+          <span class="t-ar">العميل</span>
+          <span class="t-en">Client</span>
+          <span class="t-fr">Client</span>
+        </div>
+        <div class="cs-meta-v">DataMaster Analytics</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-k">
+          <span class="t-ar">ما قدّمناه</span>
+          <span class="t-en">What we delivered</span>
+          <span class="t-fr">Ce que nous avons livré</span>
+        </div>
+        <div class="cs-meta-v">
+          <span class="t-ar">نظام تصميم + توثيق</span>
+          <span class="t-en">Design system + documentation</span>
+          <span class="t-fr">Design system + documentation</span>
         </div>
       </div>
-      <div class="cs-stat-divider"></div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">100<em>%</em></div>
-        <div class="cs-stat-label">
-          <span class="t-ar">موثّق ومقنَّن</span>
-          <span class="t-en">Documented</span>
-          <span class="t-fr">Documenté</span>
+      <div class="cs-meta-item">
+        <div class="cs-meta-k">
+          <span class="t-ar">الفريق</span>
+          <span class="t-en">Team</span>
+          <span class="t-fr">Équipe</span>
+        </div>
+        <div class="cs-meta-v">
+          <span class="t-ar">مصمّمان، بقيادة نذير</span>
+          <span class="t-en">Two designers, Nadir leading</span>
+          <span class="t-fr">Deux designers, Nadir à la direction</span>
         </div>
       </div>
-      <div class="cs-stat-divider"></div>
-      <div class="cs-stat">
-        <div class="cs-stat-num">2</div>
-        <div class="cs-stat-label">
-          <span class="t-ar">اتجاه — RTL &amp; LTR</span>
-          <span class="t-en">Directions — RTL &amp; LTR</span>
-          <span class="t-fr">Directions — RTL &amp; LTR</span>
+      <div class="cs-meta-item">
+        <div class="cs-meta-k">
+          <span class="t-ar">المدة</span>
+          <span class="t-en">Timeline</span>
+          <span class="t-fr">Durée</span>
         </div>
+        <div class="cs-meta-v">
+          <span class="t-ar">فبراير – يونيو ٢٠٢٦ · الإصدار الأول</span>
+          <span class="t-en">Feb – Jun 2026 · V1</span>
+          <span class="t-fr">Fév – Juin 2026 · V1</span>
+        </div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="cs-meta-k">
+          <span class="t-ar">المنصّات</span>
+          <span class="t-en">Platforms</span>
+          <span class="t-fr">Plateformes</span>
+        </div>
+        <div class="cs-meta-v">Web · iOS · Android</div>
       </div>
     </div>
   </div>
 
-  <!-- Cover placeholder (full-width) -->
-  <div class="cs-cover reveal">
-    <div class="cs-cover-dots"></div>
-    <!-- Decorative abstract design-system visualization -->
-    <svg aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.1;" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Color swatch row -->
-      <rect x="72" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.9"/>
-      <rect x="116" y="60" width="36" height="36" rx="7" fill="#2563EB" opacity="0.85"/>
-      <rect x="160" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.55"/>
-      <rect x="204" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.35"/>
-      <rect x="248" y="60" width="36" height="36" rx="7" fill="currentColor" opacity="0.18"/>
-      <!-- Type scale -->
-      <rect x="72" y="120" width="280" height="18" rx="5" fill="currentColor" opacity="0.65"/>
-      <rect x="72" y="147" width="220" height="13" rx="4" fill="currentColor" opacity="0.40"/>
-      <rect x="72" y="168" width="180" height="10" rx="3" fill="currentColor" opacity="0.28"/>
-      <rect x="72" y="185" width="140" height="8" rx="3"  fill="currentColor" opacity="0.18"/>
-      <!-- Buttons -->
-      <rect x="72" y="218" width="110" height="38" rx="8" fill="#2563EB" opacity="0.55"/>
-      <rect x="190" y="218" width="110" height="38" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.35"/>
-      <rect x="308" y="218" width="110" height="38" rx="8" fill="currentColor" opacity="0.12"/>
-      <!-- Input field -->
-      <rect x="72" y="272" width="260" height="38" rx="8" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
-      <!-- Badge / chip -->
-      <rect x="72" y="328" width="90" height="28" rx="14" fill="#2563EB" opacity="0.2"/>
-      <rect x="170" y="328" width="70" height="28" rx="14" fill="currentColor" opacity="0.1"/>
-      <rect x="248" y="328" width="80" height="28" rx="14" fill="currentColor" opacity="0.1"/>
-      <!-- Card -->
-      <rect x="380" y="60" width="200" height="310" rx="14" stroke="currentColor" stroke-width="1.5" opacity="0.28"/>
-      <rect x="396" y="76" width="168" height="110" rx="8" fill="currentColor" opacity="0.08"/>
-      <rect x="396" y="200" width="130" height="11" rx="4" fill="currentColor" opacity="0.3"/>
-      <rect x="396" y="218" width="100" height="9" rx="3"  fill="currentColor" opacity="0.2"/>
-      <rect x="396" y="238" width="168" height="7" rx="3"  fill="currentColor" opacity="0.12"/>
-      <rect x="396" y="252" width="148" height="7" rx="3"  fill="currentColor" opacity="0.10"/>
-      <rect x="396" y="278" width="72" height="30" rx="6" fill="#2563EB" opacity="0.4"/>
-      <!-- Token table / variable list -->
-      <rect x="620" y="60" width="508" height="310" rx="14" stroke="currentColor" stroke-width="1.5" opacity="0.2"/>
-      <!-- Table header -->
-      <rect x="636" y="76" width="476" height="36" rx="6" fill="currentColor" opacity="0.08"/>
-      <rect x="648" y="88" width="90" height="10" rx="3" fill="#2563EB" opacity="0.5"/>
-      <rect x="760" y="88" width="70" height="10" rx="3" fill="currentColor" opacity="0.3"/>
-      <rect x="852" y="88" width="55" height="10" rx="3" fill="currentColor" opacity="0.3"/>
-      <rect x="928" y="88" width="65" height="10" rx="3" fill="currentColor" opacity="0.3"/>
-      <!-- Rows -->
-      <line x1="636" y1="130" x2="1112" y2="130" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="138" width="80" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="760" y="138" width="50" height="9" rx="3" fill="currentColor" opacity="0.15"/>
-      <line x1="636" y1="164" x2="1112" y2="164" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="172" width="90" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="760" y="172" width="60" height="9" rx="3" fill="currentColor" opacity="0.15"/>
-      <line x1="636" y1="198" x2="1112" y2="198" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="206" width="70" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <rect x="760" y="206" width="55" height="9" rx="3" fill="currentColor" opacity="0.15"/>
-      <line x1="636" y1="232" x2="1112" y2="232" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="240" width="85" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <line x1="636" y1="266" x2="1112" y2="266" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="274" width="75" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <line x1="636" y1="300" x2="1112" y2="300" stroke="currentColor" stroke-width="1" opacity="0.12"/>
-      <rect x="648" y="308" width="92" height="9" rx="3" fill="currentColor" opacity="0.22"/>
-      <!-- Dot grid watermark pattern -->
-    </svg>
-    <div class="cs-cover-placeholder">
-      <div class="cs-cover-icon-wrap">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="3"/>
-          <path d="M3 9h18M9 21V9"/>
-        </svg>
+  <!-- Cover -->
+  <div class="cs-cover has-image reveal">
+    <img src="assets/images/iksir/iksir-hero-art.webp"
+         alt="Iksir Design System, cover"
+         width="1800" height="1012" loading="eager" decoding="async">
+  </div>
+
+  <!-- Numbers -->
+  <div class="cs-numbers reveal">
+    <div class="cs-number">
+      <div class="cs-number-num">1,033</div>
+      <div class="cs-number-label">
+        <span class="t-ar">متغيّر تصميم</span>
+        <span class="t-en">design variables</span>
+        <span class="t-fr">variables de design</span>
       </div>
-      <p class="cs-cover-hint">project screenshots · add to assets/</p>
+    </div>
+    <div class="cs-number">
+      <div class="cs-number-num">24</div>
+      <div class="cs-number-label">
+        <span class="t-ar">مكوّناً</span>
+        <span class="t-en">components</span>
+        <span class="t-fr">composants</span>
+      </div>
+    </div>
+    <div class="cs-number">
+      <div class="cs-number-num">5</div>
+      <div class="cs-number-label">
+        <span class="t-ar">أنماط UX</span>
+        <span class="t-en">UX patterns</span>
+        <span class="t-fr">patterns UX</span>
+      </div>
+    </div>
+    <div class="cs-number">
+      <div class="cs-number-num">191</div>
+      <div class="cs-number-label">
+        <span class="t-ar">رمز لوني دلالي</span>
+        <span class="t-en">colour tokens</span>
+        <span class="t-fr">tokens de couleur</span>
+      </div>
+    </div>
+    <div class="cs-number">
+      <div class="cs-number-num">3</div>
+      <div class="cs-number-label">
+        <span class="t-ar">لغات، يمين ويسار</span>
+        <span class="t-en">languages, RTL &amp; LTR</span>
+        <span class="t-fr">langues, RTL &amp; LTR</span>
+      </div>
+    </div>
+    <div class="cs-number">
+      <div class="cs-number-num">2</div>
+      <div class="cs-number-label">
+        <span class="t-ar">وضعان، فاتح وداكن</span>
+        <span class="t-en">modes, light &amp; dark</span>
+        <span class="t-fr">modes, clair &amp; sombre</span>
+      </div>
     </div>
   </div>
 </section>
 
 
 <!-- ================================================================
-     CHALLENGE
+     THE PROBLEM
      ================================================================ -->
 <section class="cs-section container">
   <div class="cs-problem-layout">
 
-    <!-- Left: label + title + body -->
     <div class="reveal">
       <p class="cs-section-label">
-        <span class="t-ar">التحدي</span>
-        <span class="t-en">The Challenge</span>
-        <span class="t-fr">Le Défi</span>
+        <span class="t-ar">المشكلة</span>
+        <span class="t-en">The problem</span>
+        <span class="t-fr">Le problème</span>
       </p>
       <h2 class="cs-section-title">
-        <span class="t-ar">البنية التحتية المفقودة</span>
-        <span class="t-en">The Missing Foundation</span>
-        <span class="t-fr">La Fondation Manquante</span>
+        <span class="t-ar">منتجات تكبر بلا لغة مشتركة</span>
+        <span class="t-en">A growing product suite with no shared language</span>
+        <span class="t-fr">Une gamme de produits qui grandit sans langage commun</span>
       </h2>
       <p class="cs-section-body">
-        <span class="t-ar">كانت منتجات داتاماستر الرقمية تعاني من تشتت بصري واضح — كل منتج يبدو وكأنه صُمِّم من الصفر، دون توافق في الألوان أو الخطوط أو المكونات. لم يكن لدى المطورين أساس يبنون عليه، ولم يكن لدى المصممين مرجع يعودون إليه.<br><br>إكسير هي علامة داتاماستر التجارية لمنتجاتها الرقمية — ERP، تطبيقات موبايل، ومنتجات مستقبلية — وكانت تحتاج إلى نظام تصميم متكامل كأساس لكل ما سيأتي.</span>
-        <span class="t-en">Datamaster's digital products suffered from clear visual inconsistency — each one looking as if designed from scratch, with no shared colors, typography, or components. Developers had no foundation to build from, and designers had no common reference to return to.<br><br>Iksir is Datamaster's brand for their digital products — ERP, mobile apps, and future products — and it needed a comprehensive design system as the foundation for everything that follows.</span>
-        <span class="t-fr">Les produits numériques de Datamaster souffraient d'une incohérence visuelle évidente — chacun semblant conçu de zéro, sans couleurs, typographies ou composants partagés. Les développeurs n'avaient aucune base sur laquelle construire, et les designers aucune référence commune.<br><br>Iksir est la marque de Datamaster pour ses produits numériques — ERP, applications mobiles et futurs produits — et elle avait besoin d'un système de design complet comme fondation pour tout ce qui suit.</span>
+        <span class="t-ar">تبني داتاماستر نظام ERP معياريّاً وعائلة تطبيقات موبايل تحت علامة منتجاتها «إكسير». ومع توسّع هذه العائلة، صارت كل شاشة تحلّ نفس مشاكل الواجهة من الصفر.<br><br>لم تكن المشكلة أن التصميم سيئ، بل أن كل قرار صغير كان يُتَّخذ مرتين، أو ثلاثاً، أو في كل مرة من جديد.</span>
+        <span class="t-en">Datamaster builds a modular ERP and a family of mobile apps under its Iksir product brand. As the suite grew, every screen was solving the same UI problems from scratch.<br><br>The problem wasn't bad design. It was that every small decision was being made twice, or three times, or freshly every time.</span>
+        <span class="t-fr">Datamaster développe un ERP modulaire et une famille d'applications mobiles sous sa marque produit Iksir. À mesure que la gamme grandissait, chaque écran résolvait les mêmes problèmes d'interface depuis zéro.<br><br>Le problème n'était pas un mauvais design. C'était que chaque petite décision était prise deux fois, ou trois, ou à chaque nouvelle occasion.</span>
       </p>
     </div>
 
-    <!-- Right: problem cards -->
     <div class="cs-problem-cards reveal">
 
       <div class="cs-problem-card">
         <div class="cs-problem-num">01</div>
         <div class="cs-problem-title">
-          <span class="t-ar">منتجات غير متسقة</span>
-          <span class="t-en">Inconsistent Products</span>
-          <span class="t-fr">Produits Incohérents</span>
+          <span class="t-ar">عدم الاتساق كان يُبطئ كل شيء</span>
+          <span class="t-en">Inconsistency slowed everything down</span>
+          <span class="t-fr">L'incohérence ralentissait tout</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">تجارب بصرية متباينة عبر المنتجات — كل منتج يبدو مختلفاً عن الآخر، دون خيط بصري موحِّد.</span>
-          <span class="t-en">Divergent visual experiences across products — each one looking different from the others, with no unifying visual thread.</span>
-          <span class="t-fr">Expériences visuelles divergentes entre les produits — chacun ayant une apparence distincte, sans fil directeur visuel.</span>
+          <span class="t-ar">الألوان والمسافات والأزرار والتحقّق من النماذج كانت تُبنى من جديد في كل شاشة، وتتصرّف بشكل مختلف بين المنتجات، وقت تطوير مهدور وأخطاء واجهة كان يمكن تجنّبها.</span>
+          <span class="t-en">Colours, spacing, buttons, and form validation were rebuilt per screen and behaved differently across products, wasted development time and avoidable UI bugs.</span>
+          <span class="t-fr">Couleurs, espacements, boutons et validation de formulaires étaient reconstruits écran par écran et se comportaient différemment d'un produit à l'autre, du temps de développement perdu et des bugs d'interface évitables.</span>
         </div>
       </div>
 
       <div class="cs-problem-card">
         <div class="cs-problem-num">02</div>
         <div class="cs-problem-title">
-          <span class="t-ar">لا بنية تحتية للمطورين</span>
-          <span class="t-en">No Developer Infrastructure</span>
-          <span class="t-fr">Aucune Infrastructure Dev</span>
+          <span class="t-ar">منصّتان برمجيّتان، ولا ارتباط بأي مكتبة</span>
+          <span class="t-en">Two stacks, no lock-in</span>
+          <span class="t-fr">Deux stacks, aucune dépendance</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">كل مشروع يبدأ من الصفر — لا مكونات جاهزة، لا رموز، لا أساس مشترك يوفّر الوقت والجهد.</span>
-          <span class="t-en">Every project started from zero — no reusable components, no tokens, no shared base to save time and effort.</span>
-          <span class="t-fr">Chaque projet repartait de zéro — aucun composant réutilisable, aucun token, aucune base commune pour économiser temps et effort.</span>
+          <span class="t-ar">الويب في طريقه من Ant Design إلى Shadcn، والموبايل على Flutter. كان على النظام أن يُغذّي الاثنين بنفس القرارات عبر الرموز، وأن يبقى مستقلاً عن أي مكتبة، حتى يبقى للفريق حرية البناء خارج أي إطار واحد.</span>
+          <span class="t-en">The web is moving from Ant Design to Shadcn, with Flutter on mobile. The system had to feed them both the same decisions through tokens while staying library-agnostic, so the team keeps the freedom to build beyond any single framework.</span>
+          <span class="t-fr">Le web passe d'Ant Design à Shadcn, avec Flutter sur mobile. Le système devait alimenter les deux avec les mêmes décisions via les tokens tout en restant agnostique, pour que l'équipe garde la liberté de construire au-delà d'un seul framework.</span>
         </div>
       </div>
 
       <div class="cs-problem-card">
         <div class="cs-problem-num">03</div>
         <div class="cs-problem-title">
-          <span class="t-ar">غياب التوثيق والمعايير</span>
-          <span class="t-en">No Documentation or Standards</span>
-          <span class="t-fr">Pas de Documentation ni Standards</span>
+          <span class="t-ar">مبنيّ لثلاث لغات</span>
+          <span class="t-en">Built for three languages</span>
+          <span class="t-fr">Conçu pour trois langues</span>
         </div>
         <div class="cs-problem-desc">
-          <span class="t-ar">لا قواعد تصميمية مكتوبة، لا مرجعية مشتركة، ولا معايير يلتزم بها الفريق أثناء العمل.</span>
-          <span class="t-en">No written design rules, no shared references, and no standards for the team to follow when working.</span>
-          <span class="t-fr">Aucune règle de design écrite, aucune référence commune, et aucun standard pour l'équipe à respecter en travaillant.</span>
-        </div>
-      </div>
-
-      <div class="cs-problem-card">
-        <div class="cs-problem-num">04</div>
-        <div class="cs-problem-title">
-          <span class="t-ar">بداية تعاون استراتيجي طويل</span>
-          <span class="t-en">Start of a Long-Term Collaboration</span>
-          <span class="t-fr">Début d'une Collaboration Stratégique</span>
-        </div>
-        <div class="cs-problem-desc">
-          <span class="t-ar">المكتبة ليست الهدف النهائي — بل هي الخطوة الأولى. بعدها: إعادة هيكلة المعلومات، ثم إعادة تصميم المنتجات القائمة، ثم بناء المنتجات الجديدة.</span>
-          <span class="t-en">The library isn't the end goal — it's the first step. Next: information architecture redesign, then existing product redesign, then building new products.</span>
-          <span class="t-fr">Le design system n'est pas l'objectif final — c'est la première étape. Ensuite : refonte de l'architecture de l'information, puis refonte des produits existants, puis création de nouveaux produits.</span>
+          <span class="t-ar">المنتجات تتوسّع إلى الفرنسية والإنجليزية والعربية (تطبيق المهام أولاً)، فكان لا بد أن يعيش دعم الاتجاه من اليمين إلى اليسار والطباعة بخطَّين في الأساس نفسه، لا أن يُضاف لاحقاً.</span>
+          <span class="t-en">The products are expanding to French, English, and Arabic (the task app first), so true right-to-left support and dual-script typography had to live in the foundation from the start, not be bolted on later.</span>
+          <span class="t-fr">Les produits s'étendent au français, à l'anglais et à l'arabe (l'app de tâches d'abord), donc un vrai support droite-à-gauche et une typographie bi-script devaient vivre dans la fondation dès le départ, pas être ajoutés après.</span>
         </div>
       </div>
 
@@ -1176,130 +2083,101 @@
 
 
 <!-- ================================================================
-     SOLUTION
+     WHAT WE DID, scope honesty
      ================================================================ -->
 <section class="cs-section container">
 
   <div class="reveal">
     <p class="cs-section-label">
-      <span class="t-ar">الحل</span>
-      <span class="t-en">The Solution</span>
-      <span class="t-fr">La Solution</span>
+      <span class="t-ar">دورنا</span>
+      <span class="t-en">Our role</span>
+      <span class="t-fr">Notre rôle</span>
     </p>
     <h2 class="cs-section-title">
-      <span class="t-ar">نواة لكل منتج قادم</span>
-      <span class="t-en">A Foundation for Every Future Product</span>
-      <span class="t-fr">Une Fondation pour Chaque Futur Produit</span>
+      <span class="t-ar">مصمّمان، ونطاق محدَّد بوضوح</span>
+      <span class="t-en">Two designers, and a clearly bounded scope</span>
+      <span class="t-fr">Deux designers, un périmètre clairement défini</span>
     </h2>
     <p class="cs-section-body">
-      <span class="t-ar">صممنا نظام تصميم فيغما شاملة ومنظمة، مرفقة بموقع توثيق غير تقني موجَّه لغير المصممين أيضاً. تجاوزت المكتبة ١٠١٤ متغيراً في فيغما وحده، وتشمل كل مكون وكل حالة وكل متغير ممكن — مع وثائق وافية وقواعد واضحة ودعم كامل لـ RTL و LTR ومعايير إمكانية الوصول.</span>
-      <span class="t-en">We designed a comprehensive, well-organized Figma design system paired with a non-technical documentation website aimed at non-designers too. The library exceeds 1,014 variables in Figma alone and covers every component, every state, and every possible variant — with thorough documentation, clear rules, full RTL & LTR support, and accessibility compliance.</span>
-      <span class="t-fr">Nous avons conçu une design system Figma complète et bien organisée, accompagnée d'un site de documentation non-technique destiné aussi aux non-designers. Le design system dépasse 1 014 variables dans Figma seul et couvre chaque composant, chaque état et chaque variante possible — avec une documentation complète, des règles claires, un support RTL & LTR intégral et la conformité accessibilité.</span>
+      <span class="t-ar">عملنا على هذا المشروع كفريق تصميم من شخصين، بقيادة نذير. لم نكن نبني منتجات داتاماستر، كنا نبني الأساس الذي تُبنى عليه. هذا التمييز مهم، ونفضّل أن نكون صريحين فيه.</span>
+      <span class="t-en">We worked on this as a two-person design team, led by Nadir. We weren't building Datamaster's products, we were building the foundation they're built on. That distinction matters, and we'd rather be straight about it.</span>
+      <span class="t-fr">Nous avons travaillé sur ce projet en équipe de deux designers, sous la direction de Nadir. Nous ne construisions pas les produits de Datamaster, nous construisions la fondation sur laquelle ils reposent. Cette distinction compte, et nous préférons être clairs.</span>
     </p>
   </div>
 
-  <!-- Feature cards 2×2 -->
-  <div class="cs-features">
+  <div class="cs-scope-grid">
 
-    <div class="cs-feature-card reveal">
-      <div class="cs-feature-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-        </svg>
+    <div class="cs-scope-col is-accent reveal">
+      <div class="cs-scope-col-title">
+        <span class="t-ar">ما قدّمناه</span>
+        <span class="t-en">What we delivered</span>
+        <span class="t-fr">Ce que nous avons livré</span>
       </div>
-      <h3 class="cs-feature-title">
-        <span class="t-ar">رموز ومتغيرات</span>
-        <span class="t-en">Tokens &amp; Variables</span>
-        <span class="t-fr">Tokens &amp; Variables</span>
-      </h3>
-      <p class="cs-feature-body">
-        <span class="t-ar">بنينا نظاماً متكاملاً من المتغيرات — ألوان، طباعة، مسافات، أحجام، حواف، ظلال، وكل تفصيلة ممكنة. لا شيء تُرك للصدفة.</span>
-        <span class="t-en">We built a complete variable system — colors, typography, spacing, sizing, border radius, shadows, and every possible detail. Nothing left to chance.</span>
-        <span class="t-fr">Nous avons construit un système complet de variables — couleurs, typographie, espacement, tailles, rayons, ombres et chaque détail possible. Rien laissé au hasard.</span>
-      </p>
-      <span class="cs-feature-badge">1014+ variables</span>
+      <ul class="cs-scope-list">
+        <li>
+          <span class="t-ar">تدقيق المنتجات القائمة، ومواءمة أصحاب القرار على رؤية ومعايير نجاح مكتوبة</span>
+          <span class="t-en">An audit of the existing products, and stakeholder alignment on a written vision and success criteria</span>
+          <span class="t-fr">Un audit des produits existants, et l'alignement des parties prenantes sur une vision et des critères de succès écrits</span>
+        </li>
+        <li>
+          <span class="t-ar">استراتيجية الرموز الكاملة ومعمارية الطبقات الثلاث التي يقوم عليها النظام</span>
+          <span class="t-en">The full design-token strategy and the three-layer architecture the system rests on</span>
+          <span class="t-fr">La stratégie complète de tokens et l'architecture en trois couches sur laquelle repose le système</span>
+        </li>
+        <li>
+          <span class="t-ar">أساس ثلاثي اللغة وثنائي الاتجاه، خصائص منطقية، طباعة بخطَّين، وقواعد انعكاس الأيقونات</span>
+          <span class="t-en">A trilingual, bidirectional foundation, logical properties, dual-script type, and icon-mirroring rules</span>
+          <span class="t-fr">Une fondation trilingue et bidirectionnelle, propriétés logiques, typographie bi-script et règles de miroir d'icônes</span>
+        </li>
+        <li>
+          <span class="t-ar">إطار إمكانية الوصول (WCAG 2.1 AA) مُترجَم إلى رموز وفحوصات قابلة للتطبيق</span>
+          <span class="t-en">An accessibility framework (WCAG 2.1 AA) translated into tokens and reusable checks</span>
+          <span class="t-fr">Un cadre d'accessibilité (WCAG 2.1 AA) traduit en tokens et en contrôles réutilisables</span>
+        </li>
+        <li>
+          <span class="t-ar">٢٤ مكوّناً و٥ أنماط في فيغما، بما فيها طبقة الموبايل الأصيلة بالكامل</span>
+          <span class="t-en">24 components and 5 patterns in Figma, including the entire mobile-native layer</span>
+          <span class="t-fr">24 composants et 5 patterns dans Figma, y compris toute la couche mobile native</span>
+        </li>
+        <li>
+          <span class="t-ar">منصّة توثيق ونموذج حَوكمة يمكن للفريق العمل بهما دوننا في الغرفة</span>
+          <span class="t-en">A documentation platform and a governance model the team can work from without us in the room</span>
+          <span class="t-fr">Une plateforme de documentation et un modèle de gouvernance que l'équipe peut utiliser sans nous</span>
+        </li>
+      </ul>
     </div>
 
-    <div class="cs-feature-card reveal">
-      <div class="cs-feature-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="7" width="6" height="6" rx="1"/><rect x="16" y="7" width="6" height="6" rx="1"/>
-          <rect x="9" y="2" width="6" height="6" rx="1"/><rect x="9" y="16" width="6" height="6" rx="1"/>
-        </svg>
+    <div class="cs-scope-col reveal">
+      <div class="cs-scope-col-title">
+        <span class="t-ar">ما لم يكن من نطاقنا</span>
+        <span class="t-en">What wasn't ours</span>
+        <span class="t-fr">Ce qui n'était pas de notre ressort</span>
       </div>
-      <h3 class="cs-feature-title">
-        <span class="t-ar">مكونات شاملة</span>
-        <span class="t-en">Full Component Library</span>
-        <span class="t-fr">Système Complet</span>
-      </h3>
-      <p class="cs-feature-body">
-        <span class="t-ar">كل مكون في كل حالاته ومتغيراته الممكنة — من الأزرار والمدخلات إلى الجداول والنماذج المعقدة. لا استثناءات.</span>
-        <span class="t-en">Every component in all its possible states and variants — from buttons and inputs to complex tables and forms. No exceptions.</span>
-        <span class="t-fr">Chaque composant dans tous ses états et variantes possibles — des boutons et champs de saisie aux tableaux et formulaires complexes. Sans exception.</span>
-      </p>
-    </div>
-
-    <div class="cs-feature-card reveal">
-      <div class="cs-feature-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10 9 9 9 8 9"/>
-        </svg>
-      </div>
-      <h3 class="cs-feature-title">
-        <span class="t-ar">توثيق كامل وقواعد واضحة</span>
-        <span class="t-en">Complete Documentation</span>
-        <span class="t-fr">Documentation Complète</span>
-      </h3>
-      <p class="cs-feature-body">
-        <span class="t-ar">وثّقنا كل مكون بقواعد استخدامه وحالاته وقيوده — في موقع توثيق مُصمَّم ليكون مفهوماً لغير المصممين أيضاً.</span>
-        <span class="t-en">We documented every component with its usage rules, states, and constraints — on a documentation site designed to be understandable for non-designers too.</span>
-        <span class="t-fr">Nous avons documenté chaque composant avec ses règles d'utilisation, états et contraintes — sur un site de documentation conçu pour être compris aussi par les non-designers.</span>
-      </p>
-    </div>
-
-    <div class="cs-feature-card reveal">
-      <div class="cs-feature-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="17 1 21 5 17 9"/>
-          <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-          <polyline points="7 23 3 19 7 15"/>
-          <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-        </svg>
-      </div>
-      <h3 class="cs-feature-title">
-        <span class="t-ar">إمكانية الوصول وثنائية الاتجاه</span>
-        <span class="t-en">Accessibility &amp; Bidirectionality</span>
-        <span class="t-fr">Accessibilité &amp; Bidirectionnalité</span>
-      </h3>
-      <p class="cs-feature-body">
-        <span class="t-ar">المكتبة تدعم اتجاهَي الكتابة RTL و LTR بشكل أصيل، وتلتزم بمعايير WCAG في كل مكوناتها.</span>
-        <span class="t-en">The library natively supports both RTL &amp; LTR text directions and complies with WCAG accessibility standards across all components.</span>
-        <span class="t-fr">Le design system prend en charge nativement les deux directions RTL &amp; LTR et est conforme aux normes WCAG pour tous ses composants.</span>
-      </p>
-      <span class="cs-feature-badge">WCAG · RTL &amp; LTR</span>
+      <ul class="cs-scope-list">
+        <li>
+          <span class="t-ar">التنفيذ البرمجي، الرموز صُدِّرت للفريق الهندسي، والبناء كان عليهم</span>
+          <span class="t-en">The code implementation, tokens were exported to the engineering team; the build was theirs</span>
+          <span class="t-fr">L'implémentation en code, les tokens ont été exportés à l'équipe technique ; le build leur revenait</span>
+        </li>
+        <li>
+          <span class="t-ar">إعادة تصميم شاشات المنتجات نفسها، تلك مرحلة تالية، وما زالت قيد التخطيط</span>
+          <span class="t-en">Redesigning the product screens themselves, that's a later phase, still being planned</span>
+          <span class="t-fr">La refonte des écrans produits eux-mêmes, c'est une phase ultérieure, encore en planification</span>
+        </li>
+        <li>
+          <span class="t-ar">هوية إكسير البصرية الأساسية، كانت موجودة قبلنا؛ نحن بَنَينا عليها نظاماً رقمياً</span>
+          <span class="t-en">Iksir's core visual identity, it existed before us; we built a digital system on top of it</span>
+          <span class="t-fr">L'identité visuelle de base d'Iksir, elle existait avant nous ; nous avons bâti un système numérique dessus</span>
+        </li>
+        <li>
+          <span class="t-ar">اختبار المستخدمين على نطاق واسع، النظام تحقّقنا منه مقابل شاشات قائمة ومُستخدَمة فعلاً، لا مقابل دراسة جديدة</span>
+          <span class="t-en">Large-scale user testing, the system was validated against existing, already-in-use screens, not a fresh study</span>
+          <span class="t-fr">Des tests utilisateurs à grande échelle, le système a été validé face à des écrans existants déjà utilisés, pas via une nouvelle étude</span>
+        </li>
+      </ul>
     </div>
 
   </div>
-
-  <!-- Solution image slots -->
-  <div class="cs-solution-images">
-    <div class="cs-img-slot reveal" style="aspect-ratio:16/7;">
-      <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">design system overview — 1600 × 700</span>
-    </div>
-    <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
-      <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">token system — 800 × 600</span>
-    </div>
-    <div class="cs-img-slot reveal" style="aspect-ratio:4/3;">
-      <div class="cs-img-slot-bg"></div>
-      <span class="cs-img-slot-label">component library — 800 × 600</span>
-    </div>
-  </div>
-
 </section>
 
 
@@ -1311,14 +2189,19 @@
   <div class="reveal">
     <p class="cs-section-label">
       <span class="t-ar">كيف عملنا</span>
-      <span class="t-en">How We Worked</span>
-      <span class="t-fr">Comment Nous Avons Travaillé</span>
+      <span class="t-en">The process</span>
+      <span class="t-fr">Le processus</span>
     </p>
     <h2 class="cs-section-title">
-      <span class="t-ar">مسار البناء</span>
-      <span class="t-en">The Build Process</span>
-      <span class="t-fr">Le Processus de Construction</span>
+      <span class="t-ar">من التدقيق إلى إصدار أول جاهز</span>
+      <span class="t-en">From audit to a shipped V1</span>
+      <span class="t-fr">De l'audit à une V1 livrée</span>
     </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">قسّمنا العمل إلى مراحل، لكن على أرض الواقع تداخلت المراحل ورجعنا فيها إلى الوراء كلما تعلّمنا شيئاً جديداً. لم يكن خطاً مستقيماً. ما ظل ثابتاً هو أن كل مرحلة أُغلقت بقرار تستطيع المرحلة التالية أن تبني عليه.</span>
+      <span class="t-en">We split the work into phases, though in practice they overlapped and looped back as we learned. It wasn't a straight line. What held was that each phase closed with a decision the next one could build on.</span>
+      <span class="t-fr">Nous avons découpé le travail en phases, bien qu'en pratique elles se soient chevauchées et soient revenues en arrière au fil des apprentissages. Ce n'était pas une ligne droite. Ce qui a tenu : chaque phase se refermait sur une décision sur laquelle la suivante pouvait s'appuyer.</span>
+    </p>
   </div>
 
   <div class="cs-process-steps">
@@ -1327,15 +2210,20 @@
       <div class="cs-process-num">01</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">اكتشاف وتدقيق</span>
-          <span class="t-en">Discovery &amp; Audit</span>
-          <span class="t-fr">Découverte &amp; Audit</span>
+          <span class="t-ar">تدقيق ومواءمة</span>
+          <span class="t-en">Audit &amp; alignment</span>
+          <span class="t-fr">Audit &amp; alignement</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">درسنا المنتجات القائمة بعمق واستكشفنا المشاكل والفجوات — فهمنا احتياجات الفريق ومتطلبات المنتجات المستقبلية قبل أن نرسم أي خط.</span>
-          <span class="t-en">We studied the existing products in depth, explored problems and gaps, and understood the team's needs and future product requirements — before drawing a single line.</span>
-          <span class="t-fr">Nous avons étudié en profondeur les produits existants, exploré les problèmes et lacunes, et compris les besoins de l'équipe et les exigences des futurs produits — avant de tracer la moindre ligne.</span>
+          <span class="t-ar">بدأنا باكتشاف مع أصحاب القرار لفهم العمل نفسه، ثم كتبنا الرؤية ومعايير النجاح. وعند تدقيق تطبيق المهام على الموبايل وجدنا أنه يعمل على نظام قائم بذاته ومكتوب بقيم ثابتة، منفصل تماماً عن أي أساس مشترك.</span>
+          <span class="t-en">We ran stakeholder discovery to understand the business, then wrote the vision and success criteria. Auditing the mobile task app, we found it ran on a completely standalone, hard-coded system, disconnected from any shared foundation.</span>
+          <span class="t-fr">Nous avons mené une phase de découverte avec les parties prenantes pour comprendre l'activité, puis rédigé la vision et les critères de succès. En auditant l'app mobile de tâches, nous avons découvert qu'elle tournait sur un système totalement autonome et codé en dur, déconnecté de toute fondation partagée.</span>
         </p>
+        <span class="cs-process-callout">
+          <span class="t-ar"><strong>القرار:</strong> أن نعيد تأطير تلك المئات من شاشات الموبايل المُختبَرة فعلاً كمخطَّط أوّلي لطبقة الموبايل في النظام، بدل التعامل معها كفوضى تحتاج تنظيفاً.</span>
+          <span class="t-en"><strong>The call:</strong> reframe those hundreds of already-validated mobile screens as the blueprint for the system's mobile layer, instead of treating them as a mess to clean up.</span>
+          <span class="t-fr"><strong>La décision :</strong> requalifier ces centaines d'écrans mobiles déjà validés comme le plan directeur de la couche mobile du système, au lieu de les traiter comme un désordre à nettoyer.</span>
+        </span>
       </div>
     </div>
 
@@ -1343,15 +2231,20 @@
       <div class="cs-process-num">02</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">بنية الرموز والمتغيرات</span>
-          <span class="t-en">Token Architecture</span>
-          <span class="t-fr">Architecture des Tokens</span>
+          <span class="t-ar">الأساسات</span>
+          <span class="t-en">Foundations</span>
+          <span class="t-fr">Fondations</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">بنينا نظام المتغيرات الكامل — الألوان، الطباعة، المسافات، الأحجام، الحواف، وكل تفصيلة ممكنة. أكثر من ١٠١٤ متغير في فيغما وحده، منظَّم في طبقات دلالية واضحة.</span>
-          <span class="t-en">We built the full variable system — colors, typography, spacing, sizing, borders, and every possible detail. Over 1,014 variables in Figma alone, organized into clear semantic layers.</span>
-          <span class="t-fr">Nous avons construit le système complet de variables — couleurs, typographie, espacements, tailles, bordures et chaque détail possible. Plus de 1 014 variables dans Figma seul, organisées en couches sémantiques claires.</span>
+          <span class="t-ar">حدّدنا معمارية الرموز: تسمية صارمة (فئة · خاصية · مفهوم · حالة) فوق سلسلة من ثلاث طبقات، قيم أوّلية ← رموز دلالية ← مكوّنات. الهدف بسيط: ألّا يكتب مطوّر قيمة ثابتة مرة أخرى. وبالتوازي كتبنا معمارية ثلاثية اللغة وثنائية الاتجاه، وإطار إمكانية وصول مُعبَّراً عنه كرموز مباشرة.</span>
+          <span class="t-en">We defined the token architecture: a strict naming convention (category · property · concept · state) sitting on a three-layer chain, primitives → semantics → components. The goal was simple: no developer ever hard-codes a value again. Alongside it we authored the trilingual/RTL architecture and an accessibility framework expressed directly as tokens.</span>
+          <span class="t-fr">Nous avons défini l'architecture des tokens : une convention de nommage stricte (catégorie · propriété · concept · état) posée sur une chaîne en trois couches, primitives → sémantiques → composants. Objectif simple : plus aucun développeur ne code une valeur en dur. En parallèle, nous avons rédigé l'architecture trilingue/RTL et un cadre d'accessibilité exprimé directement en tokens.</span>
         </p>
+        <span class="cs-process-callout">
+          <span class="t-ar"><strong>القرار الذي غيّر الكثير:</strong> أن يكون الوضع الفاتح/الداكن والاتجاه يمين/يسار خصائصَ للرمز نفسه، فيتكيّف مصدر واحد للحقيقة تلقائياً بدل أن يُصان مرّتين.</span>
+          <span class="t-en"><strong>The decision that mattered:</strong> make light/dark and LTR/RTL properties of the tokens themselves, so a single source of truth adapts automatically instead of being maintained twice.</span>
+          <span class="t-fr"><strong>La décision déterminante :</strong> faire du clair/sombre et du LTR/RTL des propriétés des tokens eux-mêmes, pour qu'une source unique de vérité s'adapte automatiquement au lieu d'être maintenue deux fois.</span>
+        </span>
       </div>
     </div>
 
@@ -1359,15 +2252,20 @@
       <div class="cs-process-num">03</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">تصميم المكونات</span>
-          <span class="t-en">Component Design</span>
-          <span class="t-fr">Design des Composants</span>
+          <span class="t-ar">المكوّنات وطبقة الموبايل والتوثيق</span>
+          <span class="t-en">Components, mobile layer &amp; documentation</span>
+          <span class="t-fr">Composants, couche mobile &amp; documentation</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">صممنا كل مكون في كل حالاته ومتغيراته الممكنة — من الأبسط إلى الأكثر تعقيداً. لم نتجاهل أي حالة ولم نترك أي متغير دون تصميم متعمَّد.</span>
-          <span class="t-en">We designed every component in all its possible states and variants — from the simplest to the most complex. No state was overlooked, no variant was left without deliberate design.</span>
-          <span class="t-fr">Nous avons conçu chaque composant dans tous ses états et variantes possibles — du plus simple au plus complexe. Aucun état négligé, aucune variante sans design délibéré.</span>
+          <span class="t-ar">مع توسّع المكتبة إلى ٢٤ مكوّناً و٥ أنماط، صمّمنا طبقة الموبايل كاملة، قواعد المنصّة والمكوّنات الأصيلة للموبايل: الأوراق السفلية، شرائط التنقّل، لوحة الأرقام، طبقة الماسح الضوئي، وبطاقات المهام، في فيغما وفي موقع التوثيق معاً.</span>
+          <span class="t-en">As the library scaled to 24 components and 5 patterns, we designed the entire mobile layer, platform rules and the mobile-native components: bottom sheets, tab bars, numeric keypad, scanner overlay, task cards, in both Figma and the documentation site.</span>
+          <span class="t-fr">À mesure que la bibliothèque atteignait 24 composants et 5 patterns, nous avons conçu toute la couche mobile, règles de plateforme et composants natifs mobiles : bottom sheets, barres d'onglets, pavé numérique, overlay de scanner, cartes de tâches, dans Figma et sur le site de documentation.</span>
         </p>
+        <span class="cs-process-callout">
+          <span class="t-ar"><strong>المبدأ الذي تمسّكنا به:</strong> أن يكون التوثيق منتَجاً بحد ذاته، المواصفة الواحدة التي يعمل منها المصمّم والمطوّر معاً.</span>
+          <span class="t-en"><strong>The principle we held:</strong> treat the documentation as a product in its own right, the single spec both designers and developers work from.</span>
+          <span class="t-fr"><strong>Le principe tenu :</strong> traiter la documentation comme un produit à part entière, la spécification unique dont partent designers et développeurs.</span>
+        </span>
       </div>
     </div>
 
@@ -1375,14 +2273,834 @@
       <div class="cs-process-num">04</div>
       <div>
         <h3 class="cs-process-title">
-          <span class="t-ar">التوثيق والقواعد</span>
-          <span class="t-en">Documentation &amp; Rules</span>
-          <span class="t-fr">Documentation &amp; Règles</span>
+          <span class="t-ar">الحَوكمة وإصدار الإصدار الأول</span>
+          <span class="t-en">Governance &amp; shipping V1</span>
+          <span class="t-fr">Gouvernance &amp; livraison de la V1</span>
         </h3>
         <p class="cs-process-desc">
-          <span class="t-ar">وثّقنا كل شيء — قواعد الاستخدام، معايير إمكانية الوصول، وإرشادات RTL/LTR. ثم أنشأنا موقع توثيق يمكن لغير المصممين فهمه والتعامل معه باستقلالية.</span>
-          <span class="t-en">We documented everything — usage rules, accessibility standards, and RTL/LTR guidelines. Then we built a documentation website that non-designers can understand and use independently.</span>
-          <span class="t-fr">Nous avons tout documenté — règles d'utilisation, normes d'accessibilité et directives RTL/LTR. Puis nous avons créé un site de documentation que les non-designers peuvent comprendre et utiliser de manière autonome.</span>
+          <span class="t-ar">أنهينا بكتابة القواعد التي تحفظ تماسك النظام وهو يكبر، وبمسار تحديث يستطيع شخص غير مبرمج أن ينشر به تعديلاً بأمان. ثم رتّبنا المشروع وأصدرنا الإصدار الأول رسمياً.</span>
+          <span class="t-en">We closed by writing the rules that keep the system coherent as it grows, and an update workflow a non-coder can publish through safely. Then we structured the project and shipped V1 as the official release.</span>
+          <span class="t-fr">Nous avons terminé en rédigeant les règles qui maintiennent la cohérence du système à mesure qu'il grandit, et un workflow de mise à jour qu'un non-développeur peut utiliser sans risque. Puis nous avons structuré le projet et livré la V1 comme version officielle.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cs-note reveal">
+    <div class="cs-note-label">
+      <span class="t-ar">لم يكن خطاً مستقيماً</span>
+      <span class="t-en">Not a straight line</span>
+      <span class="t-fr">Pas une ligne droite</span>
+    </div>
+    <p class="cs-note-body">
+      <span class="t-ar">أوضح مثال هو طبقة الموبايل. ما رصدته المرحلة الأولى كتطبيق مهام مكتوب بقيم ثابتة ومنفصل عن كل شيء، صار في المرحلة الثالثة مكتبة مكوّنات الموبايل في النظام، عبر عدّة جولات، لا جولة واحدة. صمّمنا الطبقة، ثم مُراجَعة بعد أخرى دفعتها إلى الأمام، وكل دورة شدّت المكوّنات حتى صمدت كنظام.</span>
+      <span class="t-en">The mobile layer is the clearest example. What Phase 1 flagged as a hard-coded, disconnected task app became, by Phase 3, the system's mobile component library, through several passes, not one. We designed the layer, then review after review pushed it further, and every loop tightened the components until they held up as a system.</span>
+      <span class="t-fr">La couche mobile en est l'exemple le plus clair. Ce que la phase 1 avait signalé comme une app de tâches codée en dur et déconnectée est devenue, en phase 3, la bibliothèque de composants mobiles du système, en plusieurs passes, pas une seule. Nous avons conçu la couche, puis revue après revue l'a poussée plus loin, et chaque boucle a resserré les composants jusqu'à ce qu'ils tiennent comme un système.</span>
+    </p>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     THE SYSTEM, three layers
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">النظام</span>
+      <span class="t-en">The system</span>
+      <span class="t-fr">Le système</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">ثلاث طبقات، ومصدر واحد للحقيقة</span>
+      <span class="t-en">Three layers, one source of truth</span>
+      <span class="t-fr">Trois couches, une source unique de vérité</span>
+    </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">كل طبقة تستهلك الطبقة التي تحتها فقط. تجاوُز طبقة واحدة يكسر ضمان المصدر الواحد، لذلك لا يلمس أي مكوّن قيمة خامة أبداً.</span>
+      <span class="t-en">Each layer consumes only the one below it. Skip a layer and you break the single-source-of-truth guarantee, so components never touch a raw value.</span>
+      <span class="t-fr">Chaque couche ne consomme que celle du dessous. Sauter une couche brise la garantie de source unique, donc aucun composant ne touche jamais une valeur brute.</span>
+    </p>
+  </div>
+
+  <div class="cs-layers">
+
+    <div class="cs-layer reveal">
+      <div class="cs-layer-head">
+        <span class="cs-layer-badge">01 · Primitives</span>
+        <h3 class="cs-layer-title">
+          <span class="t-ar">قيم خامة، تُسمّى بقيمتها</span>
+          <span class="t-en">Raw values, named by value</span>
+          <span class="t-fr">Valeurs brutes, nommées par leur valeur</span>
+        </h3>
+      </div>
+      <p class="cs-layer-desc">
+        <span class="t-ar">أكواد الألوان، الأحجام بالبكسل، مدد الحركة، أسماء الخطوط. المكان الوحيد الذي تُكتب فيه قيمة حرفية.</span>
+        <span class="t-en">Hex codes, pixel sizes, durations, font names. The only place a literal value is ever written.</span>
+        <span class="t-fr">Codes hex, tailles en pixels, durées, noms de polices. Le seul endroit où une valeur littérale est écrite.</span>
+      </p>
+      <div class="cs-layer-tokens">
+        <span class="cs-token-chip">#430098</span>
+        <span class="cs-token-chip">4px</span>
+        <span class="cs-token-chip">250ms</span>
+        <span class="cs-token-chip">Inter</span>
+      </div>
+    </div>
+
+    <div class="cs-layer-arrow" aria-hidden="true">
+      <svg width="18" height="26" viewBox="0 0 18 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="9" y1="1" x2="9" y2="21"/><polyline points="3 15 9 21 15 15"/>
+      </svg>
+    </div>
+
+    <div class="cs-layer reveal">
+      <div class="cs-layer-head">
+        <span class="cs-layer-badge">02 · Semantics</span>
+        <h3 class="cs-layer-title">
+          <span class="t-ar">تُسمّى بالمعنى، الطبقة الوحيدة التي تستخدمها المكوّنات</span>
+          <span class="t-en">Named by intent, the only layer components use</span>
+          <span class="t-fr">Nommées par intention, la seule couche utilisée par les composants</span>
+        </h3>
+      </div>
+      <p class="cs-layer-desc">
+        <span class="t-ar">تربط القيم الخامة بالمعنى، وتحمل قيم الفاتح/الداكن واليمين/اليسار تلقائياً في الرمز نفسه.</span>
+        <span class="t-en">Maps primitives to meaning, and carries both light/dark and LTR/RTL values automatically inside the token itself.</span>
+        <span class="t-fr">Relie les primitives au sens, et porte automatiquement les valeurs clair/sombre et LTR/RTL dans le token lui-même.</span>
+      </p>
+      <div class="cs-layer-tokens">
+        <span class="cs-token-chip">brand/primary</span>
+        <span class="cs-token-chip">content/primary</span>
+        <span class="cs-token-chip">radius/md</span>
+        <span class="cs-token-chip">spacing/inline-start</span>
+      </div>
+    </div>
+
+    <div class="cs-layer-arrow" aria-hidden="true">
+      <svg width="18" height="26" viewBox="0 0 18 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="9" y1="1" x2="9" y2="21"/><polyline points="3 15 9 21 15 15"/>
+      </svg>
+    </div>
+
+    <div class="cs-layer reveal">
+      <div class="cs-layer-head">
+        <span class="cs-layer-badge">03 · Components</span>
+        <h3 class="cs-layer-title">
+          <span class="t-ar">تستهلك الرموز الدلالية فقط</span>
+          <span class="t-en">Consume semantics only</span>
+          <span class="t-fr">Ne consomment que le sémantique</span>
+        </h3>
+      </div>
+      <p class="cs-layer-desc">
+        <span class="t-ar">كل مكوّن مبنيّ من رموز دلالية، ولا قيمة ثابتة واحدة. فيتكيّف مع أي وضع أو لغة دون عمل إضافي.</span>
+        <span class="t-en">Every component is built from semantic tokens, never a hard-coded value. So it adapts to any mode or language for free.</span>
+        <span class="t-fr">Chaque composant est construit à partir de tokens sémantiques, jamais d'une valeur codée en dur. Il s'adapte donc à tout mode ou langue sans effort.</span>
+      </p>
+      <div class="cs-layer-tokens">
+        <span class="cs-token-chip">Button</span>
+        <span class="cs-token-chip">Data table</span>
+        <span class="cs-token-chip">Bottom sheet</span>
+        <span class="cs-token-chip">Forms</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cs-payoff reveal">
+    <span class="t-ar"><strong>ما يشتريه هذا:</strong> تغيّر قراراً واحداً مرة واحدة، فترثه كل المنتجات، مصدر واحد للحقيقة يخدم منصّتَين برمجيّتين، الفاتح/الداكن واليمين/اليسار يُحلّان تلقائياً، ومعيار WCAG AA مفروض على مستوى الرمز نفسه.</span>
+    <span class="t-en"><strong>What that buys:</strong> change a decision once and every product inherits it, one source of truth across two engineering stacks, light/dark and RTL resolved automatically, and WCAG AA enforced at the token level.</span>
+    <span class="t-fr"><strong>Ce que cela apporte :</strong> changez une décision une fois et chaque produit en hérite, une source unique de vérité pour deux stacks techniques, clair/sombre et RTL résolus automatiquement, et WCAG AA appliqué au niveau du token.</span>
+  </div>
+
+  <div class="cs-figs">
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-overview.webp"
+              data-lb-cap-ar="منصّة التوثيق، نظرة عامة، إحصاءات حيّة، ومعمارية الطبقات الثلاث"
+              data-lb-cap-en="Documentation platform, overview, live stats, and the three-layer architecture"
+              data-lb-cap-fr="Plateforme de documentation, vue d'ensemble, stats en direct et l'architecture en trois couches">
+        <img src="assets/images/iksir/iksir-overview.webp" alt="Iksir documentation platform overview" width="1800" height="980" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>منصّة التوثيق</b>، نظرة عامة، إحصاءات حيّة، ومعمارية الطبقات الثلاث.</span>
+        <span class="t-en"><b>Documentation platform</b>, overview, live stats, and the three-layer architecture.</span>
+        <span class="t-fr"><b>Plateforme de documentation</b>, vue d'ensemble, stats en direct et l'architecture en trois couches.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-principles.webp"
+              data-lb-cap-ar="ستة مبادئ، القيود التي تقف خلف كل رمز ومكوّن ونمط"
+              data-lb-cap-en="Six principles, the constraints behind every token, component, and pattern"
+              data-lb-cap-fr="Six principes, les contraintes derrière chaque token, composant et pattern">
+        <img src="assets/images/iksir/iksir-principles.webp" alt="Iksir design principles" width="1800" height="980" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>ستة مبادئ</b>، القيود التي تقف خلف كل رمز ومكوّن ونمط.</span>
+        <span class="t-en"><b>Six principles</b>, the constraints behind every token, component, and pattern.</span>
+        <span class="t-fr"><b>Six principes</b>, les contraintes derrière chaque token, composant et pattern.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FOUNDATIONS
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">الأساسات</span>
+      <span class="t-en">Foundations</span>
+      <span class="t-fr">Fondations</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">اللون والخط والمسافة، كلها رموز</span>
+      <span class="t-en">Colour, type, space: all tokenised</span>
+      <span class="t-fr">Couleur, type, espace : tout en tokens</span>
+    </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">١٩١ رمزاً لونياً موزّعة على مجموعات العلامة والمحتوى والخلفية والحدود والحالة، وكل رمز يحمل قيمة للوضع الفاتح وقيمة للداكن. أما الطباعة فتُقرن عائلة لاتينية بأخرى عربية عند وزن بصري متكافئ.</span>
+      <span class="t-en">191 colour tokens across brand, content, background, border, and status groups, each one carrying a light and a dark value. Type pairs a Latin family with an Arabic one at matching optical weight.</span>
+      <span class="t-fr">191 tokens de couleur répartis en groupes marque, contenu, arrière-plan, bordure et statut, chacun portant une valeur claire et une valeur sombre. La typographie associe une famille latine à une famille arabe de poids optique équivalent.</span>
+    </p>
+  </div>
+
+  <!-- Swatches -->
+  <div class="cs-swatches reveal">
+    <button class="cs-swatch" type="button" data-hex="#430098">
+      <span class="cs-swatch-chip" style="background:#430098"></span>
+      <span class="cs-swatch-meta">
+        <span class="cs-swatch-name">brand / primary</span>
+        <span class="cs-swatch-hex">#430098</span>
+      </span>
+    </button>
+    <button class="cs-swatch" type="button" data-hex="#757575">
+      <span class="cs-swatch-chip" style="background:#757575"></span>
+      <span class="cs-swatch-meta">
+        <span class="cs-swatch-name">content / secondary</span>
+        <span class="cs-swatch-hex">#757575</span>
+      </span>
+    </button>
+    <button class="cs-swatch" type="button" data-hex="#148F47">
+      <span class="cs-swatch-chip" style="background:#148F47"></span>
+      <span class="cs-swatch-meta">
+        <span class="cs-swatch-name">success / content</span>
+        <span class="cs-swatch-hex">#148F47</span>
+      </span>
+    </button>
+    <button class="cs-swatch" type="button" data-hex="#AE7004">
+      <span class="cs-swatch-chip" style="background:#AE7004"></span>
+      <span class="cs-swatch-meta">
+        <span class="cs-swatch-name">warning / content</span>
+        <span class="cs-swatch-hex">#AE7004</span>
+      </span>
+    </button>
+    <button class="cs-swatch" type="button" data-hex="#D8192C">
+      <span class="cs-swatch-chip" style="background:#D8192C"></span>
+      <span class="cs-swatch-meta">
+        <span class="cs-swatch-name">danger / content</span>
+        <span class="cs-swatch-hex">#D8192C</span>
+      </span>
+    </button>
+    <button class="cs-swatch" type="button" data-hex="#0550AE">
+      <span class="cs-swatch-chip" style="background:#0550AE"></span>
+      <span class="cs-swatch-meta">
+        <span class="cs-swatch-name">info / content</span>
+        <span class="cs-swatch-hex">#0550AE</span>
+      </span>
+    </button>
+  </div>
+
+  <p class="cs-detail-line reveal">
+    <span class="t-ar"><strong>تلميح:</strong> اضغط أي لون لنسخ كوده، هذه هي الرموز نفسها التي تقرأ منها المنتجات.</span>
+    <span class="t-en"><strong>Tip:</strong> click any swatch to copy its hex, these are the same tokens the products read from.</span>
+    <span class="t-fr"><strong>Astuce :</strong> cliquez sur un échantillon pour copier son hex, ce sont les tokens mêmes que lisent les produits.</span>
+  </p>
+
+  <div class="cs-figs">
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-colors.webp"
+              data-lb-cap-ar="اللون، ١٩١ رمزاً دلالياً في خمس مجموعات، كل واحد بقيمة فاتحة وقيمة داكنة"
+              data-lb-cap-en="Colour, 191 semantic tokens across five groups, every one with a light and a dark value"
+              data-lb-cap-fr="Couleur, 191 tokens sémantiques en cinq groupes, chacun avec une valeur claire et sombre">
+        <img src="assets/images/iksir/iksir-colors.webp" alt="Iksir colour token documentation" width="1320" height="1800" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>اللون</b>، ١٩١ رمزاً دلالياً في خمس مجموعات، كل واحد بقيمة فاتحة وأخرى داكنة.</span>
+        <span class="t-en"><b>Colour</b>, 191 semantic tokens across five groups, every one with a light and a dark value.</span>
+        <span class="t-fr"><b>Couleur</b>, 191 tokens sémantiques en cinq groupes, chacun avec une valeur claire et une sombre.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-typography.webp"
+              data-lb-cap-ar="الطباعة، ٩ أدوار في خطَّين: لاتيني (Montserrat + Inter) وعربي (Alexandria + Inter)، بزيادة ٢px للعربية"
+              data-lb-cap-en="Type, 9 roles in two scripts: Latin (Montserrat + Inter) and Arabic (Alexandria + Inter), with a +2px Arabic size bump"
+              data-lb-cap-fr="Type, 9 rôles en deux écritures : latin (Montserrat + Inter) et arabe (Alexandria + Inter), avec +2px pour l'arabe">
+        <img src="assets/images/iksir/iksir-typography.webp" alt="Iksir typography documentation" width="1800" height="980" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>الطباعة</b>، ٩ أدوار في خطَّين: لاتيني (Montserrat + Inter) وعربي (Alexandria + Inter)، بزيادة ٢px في الحجم للعربية.</span>
+        <span class="t-en"><b>Type</b>, 9 roles in two scripts: Latin (Montserrat + Inter) and Arabic (Alexandria + Inter), with a +2px Arabic size bump.</span>
+        <span class="t-fr"><b>Type</b>, 9 rôles en deux écritures : latin (Montserrat + Inter) et arabe (Alexandria + Inter), avec +2px pour l'arabe.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <p class="cs-detail-line reveal">
+    <span class="t-ar"><strong>وتحت ذلك:</strong> سلّم مسافات من ٢٢ درجة على شبكة ٤ نقاط، ٨ أسماء دلالية لانحناء الحواف، ٤ مستويات ارتفاع، و٨٦ أيقونة Lucide بسماكة ١.٥px في ثلاثة أحجام، لكل واحدة قاعدة انعكاس في الاتجاه من اليمين إلى اليسار.</span>
+    <span class="t-en"><strong>Underneath:</strong> a 22-step spacing scale on a 4-pt grid, 8 semantic radius aliases, 4 elevation levels, and 86 Lucide icons at a 1.5px stroke in three sizes, each with its own RTL mirroring rule.</span>
+    <span class="t-fr"><strong>En dessous :</strong> une échelle d'espacement de 22 pas sur une grille de 4 pt, 8 alias sémantiques de rayon, 4 niveaux d'élévation et 86 icônes Lucide en trait de 1,5px en trois tailles, chacune avec sa règle de miroir RTL.</span>
+  </p>
+</section>
+
+
+<!-- ================================================================
+     THE LIBRARY
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">المكتبة</span>
+      <span class="t-en">The library</span>
+      <span class="t-fr">La bibliothèque</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">٢٤ مكوّناً، كل حالة، موثَّقة</span>
+      <span class="t-en">24 components: every state, documented</span>
+      <span class="t-fr">24 composants : chaque état, documenté</span>
+    </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">الزر وحده فيه ٤٥٠ متغيّراً، ليس تكثيراً لأجل التكثير، بل لأن كل تركيب من (المستوى × الحجم × موضع الأيقونة × الحالة) محسوب. وإلى جانبه المكوّنات الأصيلة للموبايل التي صمّمناها لتطبيق المهام. كل مكوّن مبنيّ وموثَّق وجاهز للاستخدام مباشرة.</span>
+      <span class="t-en">Button alone has 450 variants, not padding for its own sake, but because every hierarchy × size × icon position × state is accounted for. Next to it sit the mobile-native pieces we designed for the task app. Each one is built, documented, and ready to drop in.</span>
+      <span class="t-fr">Le bouton à lui seul compte 450 variantes, non pas pour le volume, mais parce que chaque combinaison hiérarchie × taille × position d'icône × état est prise en compte. À côté, les composants natifs mobiles conçus pour l'app de tâches. Chacun est construit, documenté et prêt à l'emploi.</span>
+    </p>
+  </div>
+
+  <div class="cs-chips reveal">
+    <span class="cs-chip">Button <em>450</em></span>
+    <span class="cs-chip">Input <em>336</em></span>
+    <span class="cs-chip">Select</span>
+    <span class="cs-chip">Checkbox</span>
+    <span class="cs-chip">Toggle</span>
+    <span class="cs-chip">Dropdown</span>
+    <span class="cs-chip">Modal</span>
+    <span class="cs-chip">Toast</span>
+    <span class="cs-chip">Tooltip</span>
+    <span class="cs-chip">Badge</span>
+    <span class="cs-chip">Avatar</span>
+    <span class="cs-chip">Tab</span>
+    <span class="cs-chip">Breadcrumb</span>
+    <span class="cs-chip">Pagination</span>
+    <span class="cs-chip">Table</span>
+    <span class="cs-chip">Card <em>12</em></span>
+    <span class="cs-chip is-mobile">FAB</span>
+    <span class="cs-chip is-mobile">Bottom Sheet</span>
+    <span class="cs-chip is-mobile">Bottom Tab Nav</span>
+    <span class="cs-chip is-mobile">Mobile Header</span>
+    <span class="cs-chip is-mobile">Numeric Keypad</span>
+    <span class="cs-chip is-mobile">Scanner Overlay</span>
+    <span class="cs-chip is-mobile">Priority Tag</span>
+    <span class="cs-chip is-mobile">Task Card <em>17</em></span>
+  </div>
+
+  <p class="cs-gallery-sub reveal">
+    <span class="t-ar">مكوّنات أساسية</span>
+    <span class="t-en">Core components</span>
+    <span class="t-fr">Composants de base</span>
+  </p>
+
+  <div class="cs-figs">
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-buttons.webp"
+              data-lb-cap-ar="الزر، ٤٥٠ متغيّراً"
+              data-lb-cap-en="Button, 450 variants"
+              data-lb-cap-fr="Bouton, 450 variantes">
+        <img src="assets/images/iksir/iksir-buttons.webp" alt="Iksir Button component variants" width="879" height="1800" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>الزر</b>، ٤٥٠ متغيّراً.</span>
+        <span class="t-en"><b>Button</b>, 450 variants.</span>
+        <span class="t-fr"><b>Bouton</b>, 450 variantes.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-inputs.webp"
+              data-lb-cap-ar="حقل الإدخال، ٣٣٦ متغيّراً"
+              data-lb-cap-en="Input, 336 variants"
+              data-lb-cap-fr="Champ de saisie, 336 variantes">
+        <img src="assets/images/iksir/iksir-inputs.webp" alt="Iksir Input component variants" width="1062" height="1800" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>حقل الإدخال</b>، ٣٣٦ متغيّراً.</span>
+        <span class="t-en"><b>Input</b>, 336 variants.</span>
+        <span class="t-fr"><b>Champ de saisie</b>, 336 variantes.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-cards.webp"
+              data-lb-cap-ar="البطاقة، ١٢ متغيّراً"
+              data-lb-cap-en="Card, 12 variants"
+              data-lb-cap-fr="Carte, 12 variantes">
+        <img src="assets/images/iksir/iksir-cards.webp" alt="Iksir Card component variants" width="984" height="655" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>البطاقة</b>، ١٢ متغيّراً.</span>
+        <span class="t-en"><b>Card</b>, 12 variants.</span>
+        <span class="t-fr"><b>Carte</b>, 12 variantes.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-modals.webp"
+              data-lb-cap-ar="النافذة الحوارية، أيقونة × حجم"
+              data-lb-cap-en="Modal, icon × size"
+              data-lb-cap-fr="Modale, icône × taille">
+        <img src="assets/images/iksir/iksir-modals.webp" alt="Iksir Modal component variants" width="1196" height="898" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>النافذة الحوارية</b>، أيقونة × حجم.</span>
+        <span class="t-en"><b>Modal</b>, icon × size.</span>
+        <span class="t-fr"><b>Modale</b>, icône × taille.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <p class="cs-gallery-sub reveal">
+    <span class="t-ar">الموبايل الأصيل، الطبقة التي صمّمناها</span>
+    <span class="t-en">Mobile-native, the layer we designed</span>
+    <span class="t-fr">Mobile natif, la couche que nous avons conçue</span>
+  </p>
+
+  <div class="cs-figs is-three">
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-taskcard.webp"
+              data-lb-cap-ar="بطاقة المهمة، ١٧ متغيّراً بين الأولوية والحالة والمهام الفرعية"
+              data-lb-cap-en="Task Card, 17 variants across priority, status, and subtasks"
+              data-lb-cap-fr="Carte de tâche, 17 variantes selon priorité, statut et sous-tâches">
+        <img src="assets/images/iksir/iksir-taskcard.webp" alt="Iksir Task Card component variants" width="1192" height="757" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>بطاقة المهمة</b>، ١٧ متغيّراً بين الأولوية والحالة والمهام الفرعية.</span>
+        <span class="t-en"><b>Task Card</b>, 17 variants across priority, status, and subtasks.</span>
+        <span class="t-fr"><b>Carte de tâche</b>, 17 variantes selon priorité, statut et sous-tâches.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-tabnav.webp"
+              data-lb-cap-ar="شريط التنقّل السفلي، كبسولة الحالة النشطة والشارات"
+              data-lb-cap-en="Bottom Tab Nav, active pill and badges"
+              data-lb-cap-fr="Barre d'onglets, pilule active et badges">
+        <img src="assets/images/iksir/iksir-tabnav.webp" alt="Iksir Bottom Tab Navigation component" width="467" height="408" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>شريط التنقّل السفلي</b>، كبسولة الحالة النشطة والشارات.</span>
+        <span class="t-en"><b>Bottom Tab Nav</b>, active pill and badges.</span>
+        <span class="t-fr"><b>Barre d'onglets</b>, pilule active et badges.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-bottomsheet.webp"
+              data-lb-cap-ar="الورقة السفلية، مطويّة / نصف مفتوحة / كاملة"
+              data-lb-cap-en="Bottom Sheet, collapsed / half / full"
+              data-lb-cap-fr="Bottom Sheet, replié / mi-hauteur / plein">
+        <img src="assets/images/iksir/iksir-bottomsheet.webp" alt="Iksir Bottom Sheet component states" width="906" height="783" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>الورقة السفلية</b>، مطويّة / نصف مفتوحة / كاملة.</span>
+        <span class="t-en"><b>Bottom Sheet</b>, collapsed / half / full.</span>
+        <span class="t-fr"><b>Bottom Sheet</b>, replié / mi-hauteur / plein.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <p class="cs-gallery-sub reveal">
+    <span class="t-ar">الأنماط</span>
+    <span class="t-en">Patterns</span>
+    <span class="t-fr">Patterns</span>
+  </p>
+
+  <div class="cs-figs">
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-charts.webp"
+              data-lb-cap-ar="الرسوم البيانية، خطّي، أعمدة، دائري، مساحي، ومصغَّر، بمنطق الموبايل أولاً"
+              data-lb-cap-en="Charts, line, bar, donut, area, sparkline, mobile-first"
+              data-lb-cap-fr="Graphiques, ligne, barres, donut, aires, sparkline, mobile-first">
+        <img src="assets/images/iksir/iksir-charts.webp" alt="Iksir chart patterns" width="1800" height="980" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>الرسوم البيانية</b>، خطّي، أعمدة، دائري، مساحي، ومصغَّر، بمنطق الموبايل أولاً.</span>
+        <span class="t-en"><b>Charts</b>, line, bar, donut, area, sparkline, mobile-first.</span>
+        <span class="t-fr"><b>Graphiques</b>, ligne, barres, donut, aires, sparkline, mobile-first.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="cs-fig reveal">
+      <button class="cs-fig-frame" type="button"
+              data-lb-src="assets/images/iksir/iksir-charts-3.webp"
+              data-lb-cap-ar="رموز الرسوم البيانية، لوحة مشتقّة من القيم الأوّلية مع قواعد استخدامها"
+              data-lb-cap-en="Chart tokens, a palette drawn from primitives, with usage rules"
+              data-lb-cap-fr="Tokens de graphiques, une palette dérivée des primitives, avec ses règles d'usage">
+        <img src="assets/images/iksir/iksir-charts-3.webp" alt="Iksir chart token palette and usage rules" width="1800" height="980" loading="lazy" decoding="async">
+        <span class="cs-fig-zoom">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <span class="t-ar">تكبير</span><span class="t-en">Enlarge</span><span class="t-fr">Agrandir</span>
+        </span>
+      </button>
+      <figcaption class="cs-fig-cap">
+        <span class="t-ar"><b>رموز الرسوم البيانية</b>، لوحة مشتقّة من القيم الأوّلية، مع قواعد استخدامها.</span>
+        <span class="t-en"><b>Chart tokens</b>, a palette drawn from primitives, with usage rules.</span>
+        <span class="t-fr"><b>Tokens de graphiques</b>, une palette dérivée des primitives, avec ses règles d'usage.</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="cs-note reveal">
+    <div class="cs-note-label">
+      <span class="t-ar">ملاحظة على ما نعرضه</span>
+      <span class="t-en">A note on what's shown</span>
+      <span class="t-fr">Une note sur ce qui est montré</span>
+    </div>
+    <p class="cs-note-body">
+      <span class="t-ar">إكسير عمل عميل حيّ تحت اتفاقية سرّية. لذلك نعرض هنا مقتطفاً من نظام التصميم فقط، عيّنة من رموزه ومكوّناته وأنماطه، لا المكتبة كاملة، ولا نعرض أي شاشة إنتاج أو بيانات حقيقية للعميل. ما تراه شريحة منتقاة يمكن مشاركتها بأمان؛ النظام الكامل والمنتجات التي يشغّلها تبقى خاصة.</span>
+      <span class="t-en">Iksir is live client work under NDA. So we're showing a slice of the design system only, a sample of its tokens, components, and patterns, not the full library, and none of the client's production screens or real data. What you see is a curated selection that's safe to share; the complete system and the products it powers stay private.</span>
+      <span class="t-fr">Iksir est un travail client en production sous NDA. Nous ne montrons donc qu'une sélection du design system, un échantillon de ses tokens, composants et patterns, pas la bibliothèque complète, et aucun écran de production ni donnée réelle du client. Ce que vous voyez est une sélection sûre à partager ; le système complet et les produits qu'il alimente restent privés.</span>
+    </p>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     ACCESSIBILITY
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">إمكانية الوصول</span>
+      <span class="t-en">Accessibility</span>
+      <span class="t-fr">Accessibilité</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">WCAG 2.1 AA، مبنيّ في الأساس، لا مضاف إليه</span>
+      <span class="t-en">WCAG 2.1 AA, built into the foundation</span>
+      <span class="t-fr">WCAG 2.1 AA, intégré à la fondation</span>
+    </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">لم نكتفِ بتوثيق المعيار. حوّلناه إلى رموز، وإلى فحوصات قابلة لإعادة الاستخدام داخل فيغما (مصفوفة تباين ومكوّن هدف لمس ٤٤×٤٤)، وإلى مسار اختبار يعمل الفريق كله مقابله.</span>
+      <span class="t-en">We didn't just document the standard. We turned it into tokens, into reusable checks inside Figma (a contrast matrix and a 44×44 touch-target component), and into a testing workflow the whole team designs and builds against.</span>
+      <span class="t-fr">Nous n'avons pas seulement documenté la norme. Nous l'avons traduite en tokens, en contrôles réutilisables dans Figma (une matrice de contraste et un composant de cible tactile 44×44) et en un workflow de test que toute l'équipe applique.</span>
+    </p>
+  </div>
+
+  <div class="cs-a11y-grid">
+
+    <div class="cs-a11y-item reveal">
+      <h3 class="cs-a11y-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"/></svg>
+        <span class="t-ar">التباين كالتزام</span>
+        <span class="t-en">Contrast as a contract</span>
+        <span class="t-fr">Le contraste comme contrat</span>
+      </h3>
+      <p class="cs-a11y-desc">
+        <span class="t-ar">٤.٥:١ للنص، و٣:١ للنص الكبير وعناصر الواجهة، مُتحقَّقاً منه في الوضعين الفاتح والداكن، والتركيبات غير الآمنة صُحِّحت على مستوى الرمز نفسه.</span>
+        <span class="t-en">4.5:1 for text, 3:1 for large text and UI, verified across light and dark, with unsafe combinations corrected at the token level.</span>
+        <span class="t-fr">4,5:1 pour le texte, 3:1 pour le grand texte et l'UI, vérifié en clair et en sombre, les combinaisons risquées corrigées au niveau du token.</span>
+      </p>
+    </div>
+
+    <div class="cs-a11y-item reveal">
+      <h3 class="cs-a11y-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span class="t-ar">اللون وحده لا يكفي</span>
+        <span class="t-en">Never colour alone</span>
+        <span class="t-fr">Jamais la couleur seule</span>
+      </h3>
+      <p class="cs-a11y-desc">
+        <span class="t-ar">حالات نظام ERP تقرن اللون دائماً بأيقونة ونص، فيبقى المعنى واضحاً مع عمى الألوان أو الطباعة بالأبيض والأسود.</span>
+        <span class="t-en">ERP statuses always pair colour with an icon and a text label, so meaning survives colour-blindness and greyscale.</span>
+        <span class="t-fr">Les statuts ERP associent toujours la couleur à une icône et un libellé, pour que le sens survive au daltonisme et au niveau de gris.</span>
+      </p>
+    </div>
+
+    <div class="cs-a11y-item reveal">
+      <h3 class="cs-a11y-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><rect x="8" y="8" width="8" height="8" rx="1.5"/></svg>
+        <span class="t-ar">رموز للمس والتركيز</span>
+        <span class="t-en">Touch &amp; focus tokens</span>
+        <span class="t-fr">Tokens tactile &amp; focus</span>
+      </h3>
+      <p class="cs-a11y-desc">
+        <span class="t-ar">حد أدنى لهدف اللمس ٤٤×٤٤ نقطة، وحلقة تركيز بإزاحة ٢px، كلاهما رمز، فيصير مستخدمو لوحة المفاتيح والموبايل مغطَّين تلقائياً.</span>
+        <span class="t-en">A 44×44 pt minimum touch target and a 2px offset focus ring are both tokenised, keyboard and mobile users are covered by default.</span>
+        <span class="t-fr">Une cible tactile minimale de 44×44 pt et un anneau de focus décalé de 2px sont tokenisés, les utilisateurs clavier et mobile sont couverts par défaut.</span>
+      </p>
+    </div>
+
+    <div class="cs-a11y-item reveal">
+      <h3 class="cs-a11y-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+        <span class="t-ar">قارئات شاشة بثلاث لغات</span>
+        <span class="t-en">Trilingual screen readers</span>
+        <span class="t-fr">Lecteurs d'écran trilingues</span>
+      </h3>
+      <p class="cs-a11y-desc">
+        <span class="t-ar">سمتا <code>lang</code> و<code>dir</code> ديناميكيتان، وترتيب قراءة منطقي، وتسميات مُترجَمة، لتقرأ التقنيات المساعدة الفرنسية والإنجليزية والعربية بشكل صحيح.</span>
+        <span class="t-en">Dynamic <code>lang</code> / <code>dir</code>, logical reading order, and localised labels so assistive tech reads French, English, and Arabic correctly.</span>
+        <span class="t-fr"><code>lang</code> / <code>dir</code> dynamiques, ordre de lecture logique et libellés localisés pour que les technologies d'assistance lisent correctement le français, l'anglais et l'arabe.</span>
+      </p>
+    </div>
+
+    <div class="cs-a11y-item reveal">
+      <h3 class="cs-a11y-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <span class="t-ar">قابل للاختبار، لا موثَّق فقط</span>
+        <span class="t-en">Testable, not just documented</span>
+        <span class="t-fr">Testable, pas seulement documenté</span>
+      </h3>
+      <p class="cs-a11y-desc">
+        <span class="t-ar">أنشأنا مسار فحص على كل سطح، إضافات تباين في فيغما، axe و Lighthouse على الويب، VoiceOver و TalkBack على الموبايل، ليُتحقَّق من إمكانية الوصول عند كل استلام، لا أن تُفترَض.</span>
+        <span class="t-en">We set up a checking workflow across every surface, contrast plugins in Figma, axe and Lighthouse on web, VoiceOver and TalkBack on mobile, so accessibility is verified at each handoff, not assumed.</span>
+        <span class="t-fr">Nous avons mis en place un workflow de vérification sur chaque surface, plugins de contraste dans Figma, axe et Lighthouse sur le web, VoiceOver et TalkBack sur mobile, pour que l'accessibilité soit vérifiée à chaque livraison, pas supposée.</span>
+      </p>
+    </div>
+
+    <div class="cs-a11y-item reveal">
+      <h3 class="cs-a11y-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span class="t-ar">أحجام لخطَّين مختلفين</span>
+        <span class="t-en">Dual-script sizing</span>
+        <span class="t-fr">Dimensionnement bi-script</span>
+      </h3>
+      <p class="cs-a11y-desc">
+        <span class="t-ar">النص العربي يُرفع ١–٢px فوق الخط اللاتيني، ورموز ارتفاع السطر مضبوطة حتى لا تُقتطع التراكيب المعقّدة في الجداول الكثيفة.</span>
+        <span class="t-en">Arabic body text is bumped 1–2px above the Latin baseline, with line-height tokens tuned so complex ligatures never clip in dense data tables.</span>
+        <span class="t-fr">Le texte arabe est augmenté de 1–2px par rapport au latin, avec des tokens de hauteur de ligne réglés pour que les ligatures complexes ne soient jamais coupées dans les tableaux denses.</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================================================================
+     WHERE IT STANDS
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">أين وصل</span>
+      <span class="t-en">Where it stands</span>
+      <span class="t-fr">Où en est le projet</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">صدر، وما زال يتطوّر</span>
+      <span class="t-en">Shipped, and still evolving</span>
+      <span class="t-fr">Livré, et toujours en évolution</span>
+    </h2>
+  </div>
+
+  <div class="cs-status-grid">
+    <div class="cs-status is-done reveal">
+      <span class="cs-status-pill">
+        <span class="t-ar">مُنجَز</span><span class="t-en">Done</span><span class="t-fr">Terminé</span>
+      </span>
+      <h3 class="cs-status-title">
+        <span class="t-ar">الإصدار الأول صدر</span>
+        <span class="t-en">V1 released</span>
+        <span class="t-fr">V1 publiée</span>
+      </h3>
+      <p class="cs-status-desc">
+        <span class="t-ar">الأساسات، و٢٤ مكوّناً، و٥ أنماط، ومنصّة التوثيق، كلها حيّة كإصدار أول رسمي.</span>
+        <span class="t-en">Foundations, 24 components, 5 patterns, and the documentation platform, all live as the official V1.</span>
+        <span class="t-fr">Fondations, 24 composants, 5 patterns et la plateforme de documentation, tout est en ligne comme V1 officielle.</span>
+      </p>
+    </div>
+
+    <div class="cs-status is-live reveal">
+      <span class="cs-status-pill">
+        <span class="t-ar">حيّ ويتحسّن</span><span class="t-en">Live &amp; iterating</span><span class="t-fr">En ligne &amp; itératif</span>
+      </span>
+      <h3 class="cs-status-title">
+        <span class="t-ar">التبنّي والتحسين</span>
+        <span class="t-en">Adoption &amp; polish</span>
+        <span class="t-fr">Adoption &amp; finition</span>
+      </h3>
+      <p class="cs-status-desc">
+        <span class="t-ar">المكتبة قيد الاستخدام الفعلي، وتتحسّن مع كل جولة، بما فيها نسخة عامة مصقولة من موقع التوثيق فوق الإصدار الأول نفسه.</span>
+        <span class="t-en">The library is in real use and improving with each round, including a polished public version of the documentation site on top of the same V1.</span>
+        <span class="t-fr">La bibliothèque est utilisée et s'améliore à chaque tour, dont une version publique soignée du site de documentation basée sur la même V1.</span>
+      </p>
+    </div>
+
+    <div class="cs-status reveal">
+      <span class="cs-status-pill">
+        <span class="t-ar">قيد العمل</span><span class="t-en">In progress</span><span class="t-fr">En cours</span>
+      </span>
+      <h3 class="cs-status-title">
+        <span class="t-ar">استراتيجية الدمج</span>
+        <span class="t-en">Integration strategy</span>
+        <span class="t-fr">Stratégie d'intégration</span>
+      </h3>
+      <p class="cs-status-desc">
+        <span class="t-ar">نحدّد الآن كيف ينزل النظام إلى المنتجات الحقيقية، ونُبقي الحَوكمة مفتوحة حتى يستقرّ تماماً.</span>
+        <span class="t-en">We're defining how the system rolls into the real products, and keeping governance open until it's fully stable.</span>
+        <span class="t-fr">Nous définissons comment le système se déploie dans les produits réels, en gardant la gouvernance ouverte jusqu'à stabilisation complète.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     GOVERNANCE
+     ================================================================ -->
+<section class="cs-section container">
+
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">الحَوكمة</span>
+      <span class="t-en">Governance</span>
+      <span class="t-fr">Gouvernance</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">قواعد تحفظ تماسكه وهو يكبر</span>
+      <span class="t-en">Rules that keep it coherent as it grows</span>
+      <span class="t-fr">Des règles qui préservent sa cohérence en grandissant</span>
+    </h2>
+  </div>
+
+  <div class="cs-rules">
+
+    <div class="cs-rule reveal">
+      <div class="cs-rule-num">01</div>
+      <div>
+        <h3 class="cs-rule-title">
+          <span class="t-ar">استخدم الرموز الدلالية دائماً</span>
+          <span class="t-en">Always use semantic tokens</span>
+          <span class="t-fr">Toujours utiliser les tokens sémantiques</span>
+        </h3>
+        <p class="cs-rule-desc">
+          <span class="t-ar">المكوّنات تشير إلى المعنى (<code>brand/primary</code>) لا إلى القيمة الخامة. هذا تحديداً ما يجعل النظام قابلاً للصيانة وقادراً على تبديل الأوضاع.</span>
+          <span class="t-en">Components reference intent (<code>brand/primary</code>), never a raw value. This is exactly what makes the system maintainable and mode-switchable.</span>
+          <span class="t-fr">Les composants référencent l'intention (<code>brand/primary</code>), jamais une valeur brute. C'est précisément ce qui rend le système maintenable et capable de changer de mode.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-rule reveal">
+      <div class="cs-rule-num">02</div>
+      <div>
+        <h3 class="cs-rule-title">
+          <span class="t-ar">احترم سلسلة الطبقات الثلاث</span>
+          <span class="t-en">Respect the three-layer chain</span>
+          <span class="t-fr">Respecter la chaîne en trois couches</span>
+        </h3>
+        <p class="cs-rule-desc">
+          <span class="t-ar">قيم أوّلية ← رموز دلالية ← مكوّنات. لا تتجاوز طبقة، تجاوُزها يكسر المصدر الواحد للحقيقة.</span>
+          <span class="t-en">Primitives → semantics → components. Never skip a layer, skipping breaks the single source of truth.</span>
+          <span class="t-fr">Primitives → sémantiques → composants. Ne jamais sauter une couche, cela brise la source unique de vérité.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-rule reveal">
+      <div class="cs-rule-num">03</div>
+      <div>
+        <h3 class="cs-rule-title">
+          <span class="t-ar">الفاتح والداكن، اليمين واليسار، مبنيّان في الرمز</span>
+          <span class="t-en">Light + dark, RTL + LTR, built in</span>
+          <span class="t-fr">Clair + sombre, RTL + LTR, intégrés</span>
+        </h3>
+        <p class="cs-rule-desc">
+          <span class="t-ar">كل رمز دلالي يحمل الاثنين. لا مجموعات ألوان موازية، ولا انعكاس يدوي.</span>
+          <span class="t-en">Every semantic token carries both. No parallel colour sets, no manual mirroring.</span>
+          <span class="t-fr">Chaque token sémantique porte les deux. Pas de jeux de couleurs parallèles, pas de miroir manuel.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="cs-rule reveal">
+      <div class="cs-rule-num">04</div>
+      <div>
+        <h3 class="cs-rule-title">
+          <span class="t-ar">التوثيق هو المواصفة</span>
+          <span class="t-en">The docs are the spec</span>
+          <span class="t-fr">La doc est la spécification</span>
+        </h3>
+        <p class="cs-rule-desc">
+          <span class="t-ar">مراجع الرموز والحالات وإرشادات «افعل/لا تفعل» ليست اقتراحات، بل متطلّبات، مع مسار يتيح لشخص غير مبرمج أن ينشر التحديثات بأمان.</span>
+          <span class="t-en">Token references, states, and do/don't guidance aren't suggestions, they're requirements, with a workflow that lets a non-coder publish updates safely.</span>
+          <span class="t-fr">Les références de tokens, les états et les recommandations à faire/à éviter ne sont pas des suggestions, ce sont des exigences, avec un workflow permettant à un non-développeur de publier des mises à jour en sécurité.</span>
         </p>
       </div>
     </div>
@@ -1392,22 +3110,50 @@
 
 
 <!-- ================================================================
-     CTA — Close the chapter
+     WHAT WE TOOK FROM IT
      ================================================================ -->
-<section class="cs-cta">
+<section class="cs-section container">
+  <div class="reveal">
+    <p class="cs-section-label">
+      <span class="t-ar">ما خرجنا به</span>
+      <span class="t-en">What we took from it</span>
+      <span class="t-fr">Ce que nous en retenons</span>
+    </p>
+    <h2 class="cs-section-title">
+      <span class="t-ar">بناء نظام يعني تصميم القرارات، لا الشاشات</span>
+      <span class="t-en">Building a system means designing the decisions, not the screens</span>
+      <span class="t-fr">Construire un système, c'est concevoir les décisions, pas les écrans</span>
+    </h2>
+    <p class="cs-section-body">
+      <span class="t-ar">أصعب جزء لم يكن رسم المكوّنات، بل اتخاذ قرارات لا بد أن تصمد عبر منصّتَين برمجيّتين، وثلاث لغات، ووضعين لونيّين، وأيدي أكثر من مصمّم واحد. ضبط المعمارية وإمكانية الوصول مبكراً هو ما سمح للمكتبة أن تكبر دون أن تتحوّل إلى سلسلة استثناءات.<br><br>وغيّر ذلك طريقة عملنا أيضاً: أن نتعامل مع التوثيق كمنتَج، وأن نكتب قواعد يستطيع غيرنا اتّباعها دون وجودنا في الغرفة، وأن نبقى مسؤولين عن نظام بعد إصداره الأول بمدّة طويلة.</span>
+      <span class="t-en">The hardest part wasn't drawing components. It was making choices that had to hold up across two engineering stacks, three languages, two colour modes, and more than one designer's hands. Getting the architecture and the accessibility right early is what let the library scale without collapsing into exceptions.<br><br>It also reshaped how we work: treating documentation as a product, writing rules other people can follow without us in the room, and staying accountable for a system long after its first release.</span>
+      <span class="t-fr">La partie la plus difficile n'était pas de dessiner des composants. C'était de prendre des décisions qui devaient tenir sur deux stacks techniques, trois langues, deux modes de couleur et les mains de plus d'un designer. Avoir bien posé l'architecture et l'accessibilité tôt est ce qui a permis à la bibliothèque de grandir sans sombrer dans les exceptions.<br><br>Cela a aussi transformé notre façon de travailler : traiter la documentation comme un produit, écrire des règles que d'autres peuvent suivre sans nous, et rester responsables d'un système bien après sa première version.</span>
+    </p>
+    <p class="cs-quote">
+      <span class="t-ar">«الأساس الصحيح ليس رفاهية، هو أقصر طريق لتقليل التكلفة التقنية.»</span>
+      <span class="t-en">“Getting the foundation right isn't a luxury, it's the shortest path to reducing technical cost.”</span>
+      <span class="t-fr">« Bien poser la fondation n'est pas un luxe, c'est le chemin le plus court pour réduire le coût technique. »</span>
+    </p>
+  </div>
+</section>
 
-  <!-- Dot grid -->
-  <div class="cs-cta-dots" aria-hidden="true"></div>
+
+<!-- ================================================================
+     CLOSING, headline + contact form as one composition
+     ================================================================ -->
+<section class="cs-close" id="contact">
+
+  <div class="cs-close-dots" aria-hidden="true"></div>
 
   <!-- Large concentric-circle watermark (Nawat seed motif) -->
-  <svg class="cs-cta-watermark" aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="cs-close-watermark" aria-hidden="true" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="100" cy="100" r="98"  stroke="currentColor" stroke-width="0.6"/>
     <circle cx="100" cy="100" r="80"  stroke="currentColor" stroke-width="0.6"/>
     <circle cx="100" cy="100" r="62"  stroke="currentColor" stroke-width="0.8"/>
     <circle cx="100" cy="100" r="44"  stroke="currentColor" stroke-width="0.8"/>
     <circle cx="100" cy="100" r="28"  stroke="currentColor" stroke-width="1"/>
     <circle cx="100" cy="100" r="14"  stroke="currentColor" stroke-width="1"/>
-    <circle cx="100" cy="100" r="5"   fill="#2563EB"/>
+    <circle cx="100" cy="100" r="5"   fill="currentColor"/>
     <line x1="100" y1="2"   x2="100" y2="20"  stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
     <line x1="100" y1="180" x2="100" y2="198" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
     <line x1="2"   y1="100" x2="20"  y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
@@ -1415,187 +3161,228 @@
   </svg>
 
   <div class="container">
-    <div class="cs-cta-inner reveal">
+    <div class="cs-close-inner">
 
-      <!-- Phase pill -->
-      <div class="cs-cta-pill">
-        <span class="cs-cta-pill-dot"></span>
-        <span>Iksir</span>
-        <span style="opacity:0.3;">·</span>
-        <span>
-          <span class="t-ar">المرحلة الأولى · مُنجَزة</span>
-          <span class="t-en">Phase 01 · Complete</span>
-          <span class="t-fr">Phase 01 · Complète</span>
-        </span>
+      <!-- Header -->
+      <div class="cs-close-head reveal">
+        <p class="cs-close-eyebrow">
+          <span class="t-ar">لنتحدث</span>
+          <span class="t-en">Let's talk</span>
+          <span class="t-fr">Parlons-en</span>
+        </p>
+        <h2 class="cs-close-title">
+          <span class="t-ar">عندك منتج يحتاج <em>أساساً</em> مثل هذا؟</span>
+          <span class="t-en">Have a product that needs <em>a foundation</em> like this?</span>
+          <span class="t-fr">Un produit qui a besoin <em>d'une fondation</em> comme celle-ci ?</span>
+        </h2>
+        <p class="cs-close-lead">
+          <span class="t-ar">أخبرنا بما تبنيه في بضعة أسطر. سنردّ عليك بقراءة صريحة لما يحتاجه فعلاً، حتى لو كان الجواب أنه لا يحتاجنا.</span>
+          <span class="t-en">Tell us what you're building in a few lines. We'll come back with an honest read on what it actually needs, even if the answer is that it doesn't need us.</span>
+          <span class="t-fr">Dites-nous ce que vous construisez en quelques lignes. Nous reviendrons avec un avis franc sur ce dont cela a réellement besoin, même si la réponse est que cela n'a pas besoin de nous.</span>
+        </p>
       </div>
 
-      <!-- Headline -->
-      <h2 class="cs-cta-title">
-        <span class="t-ar">
-          جاهز لتزرع<br>
-          <em>منتجك</em> معنا؟
-        </span>
-        <span class="t-en">
-          Ready to plant<br>
-          <em>your product</em> with us?
-        </span>
-        <span class="t-fr">
-          Prêt à planter<br>
-          <em>votre produit</em> avec nous ?
-        </span>
-      </h2>
+      <!-- Aside + Form -->
+      <div class="cs-close-layout">
 
-      <!-- Body -->
-      <p class="cs-cta-body">
-        <span class="t-ar">ما بنيناه لإكسير — كل متغير، كل مكون، كل قاعدة — يمكن أن يكون نقطة انطلاق منتجك القادم. الأساس الصح يغيّر كل شيء.</span>
-        <span class="t-en">What we built for Iksir — every token, every component, every rule — can be the starting point for your next product. The right foundation changes everything.</span>
-        <span class="t-fr">Ce que nous avons construit pour Iksir — chaque token, chaque composant, chaque règle — peut être le point de départ de votre prochain produit. La bonne fondation change tout.</span>
-      </p>
+        <!-- What happens next -->
+        <aside class="cs-close-aside reveal">
 
-      <!-- Actions -->
-      <div class="cs-cta-actions">
-        <a href="index.html#contact" class="cs-cta-btn primary">
-          <span class="t-ar">ابدأ مشروعك</span>
-          <span class="t-en">Start Your Project</span>
-          <span class="t-fr">Démarrer votre projet</span>
-          <svg class="cs-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
-        <a href="index.html#work" class="cs-cta-btn ghost">
-          <span class="t-ar">أعمالنا</span>
-          <span class="t-en">More Work</span>
-          <span class="t-fr">Plus de Travaux</span>
-        </a>
+          <!-- Live status -->
+          <div class="cs-status-bar">
+            <span class="cs-status-live">
+              <span class="t-ar">متاح لمشاريع جديدة</span>
+              <span class="t-en">Open for new projects</span>
+              <span class="t-fr">Ouvert aux nouveaux projets</span>
+            </span>
+            <span class="cs-status-dot-sep" aria-hidden="true"></span>
+            <span class="cs-status-muted">
+              <span class="t-ar">الرد خلال ٢٤ ساعة</span>
+              <span class="t-en">Replying within 24 hours</span>
+              <span class="t-fr">Réponse sous 24 heures</span>
+            </span>
+          </div>
+
+          <div>
+            <p class="cs-aside-label">
+              <span class="t-ar">ما الذي يحدث بعد ذلك</span>
+              <span class="t-en">What happens next</span>
+              <span class="t-fr">Ce qui se passe ensuite</span>
+            </p>
+            <ul class="cs-steps">
+              <li class="cs-step">
+                <span class="cs-step-num">1</span>
+                <span class="cs-step-text">
+                  <span class="t-ar">ترسل لنا سطوراً قليلة عن المنتج وأين يقف اليوم.</span>
+                  <span class="t-en">You send a few lines about the product and where it stands today.</span>
+                  <span class="t-fr">Vous nous envoyez quelques lignes sur le produit et son état actuel.</span>
+                </span>
+              </li>
+              <li class="cs-step">
+                <span class="cs-step-num">2</span>
+                <span class="cs-step-text">
+                  <span class="t-ar">نردّ خلال ٢٤ ساعة برأي صريح، لا بعرض تجاري.</span>
+                  <span class="t-en">We reply within 24 hours with a straight opinion, not a sales pitch.</span>
+                  <span class="t-fr">Nous répondons sous 24 heures avec un avis direct, pas un argumentaire.</span>
+                </span>
+              </li>
+              <li class="cs-step">
+                <span class="cs-step-num">3</span>
+                <span class="cs-step-text">
+                  <span class="t-ar">إن كان هناك تناسب، نحدّد النطاق والمدة والتكلفة بوضوح قبل البدء.</span>
+                  <span class="t-en">If it's a fit, we scope it properly, timeline and cost, before anything starts.</span>
+                  <span class="t-fr">Si cela correspond, nous cadrons le périmètre, le délai et le coût avant de commencer.</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="cs-aside-label">
+              <span class="t-ar">أو تواصل معنا مباشرة</span>
+              <span class="t-en">Or reach us directly</span>
+              <span class="t-fr">Ou contactez-nous directement</span>
+            </p>
+            <div class="cs-reach">
+              <a href="mailto:contact@nawat.studio" class="cs-reach-link">
+                <span class="cs-reach-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                <span class="cs-reach-text">
+                  <span class="cs-reach-label">
+                    <span class="t-ar">بريد إلكتروني</span>
+                    <span class="t-en">Email</span>
+                    <span class="t-fr">Email</span>
+                  </span>
+                  <span class="cs-reach-value">contact@nawat.studio</span>
+                </span>
+                <svg class="cs-reach-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+
+              <a href="https://www.linkedin.com/company/nawat-studio/" target="_blank" rel="noopener" class="cs-reach-link">
+                <span class="cs-reach-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </span>
+                <span class="cs-reach-text">
+                  <span class="cs-reach-label">LinkedIn</span>
+                  <span class="cs-reach-value">Nawat Studio</span>
+                </span>
+                <svg class="cs-reach-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+
+              <a href="https://www.instagram.com/nawat_studio/" target="_blank" rel="noopener" class="cs-reach-link">
+                <span class="cs-reach-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </span>
+                <span class="cs-reach-text">
+                  <span class="cs-reach-label">Instagram</span>
+                  <span class="cs-reach-value">@nawat_studio</span>
+                </span>
+                <svg class="cs-reach-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Form -->
+        <div class="cs-form-card reveal">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/mnjkvqer" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fname">
+                  <span class="t-ar">الاسم</span>
+                  <span class="t-en">Name</span>
+                  <span class="t-fr">Nom</span>
+                </label>
+                <input type="text" id="fname" name="name" class="form-input" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="femail">
+                  <span class="t-ar">البريد الإلكتروني</span>
+                  <span class="t-en">Email</span>
+                  <span class="t-fr">Email</span>
+                </label>
+                <input type="email" id="femail" name="email" class="form-input" required autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="fcompany">
+                <span class="t-ar">الشركة / المشروع</span>
+                <span class="t-en">Company / Project</span>
+                <span class="t-fr">Société / Projet</span>
+              </label>
+              <input type="text" id="fcompany" name="company" class="form-input" autocomplete="organization">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="ftype">
+                <span class="t-ar">نوع المشروع</span>
+                <span class="t-en">Project Type</span>
+                <span class="t-fr">Type de Projet</span>
+              </label>
+              <!-- Pre-set to Design System: the reader arrived from the Iksir case study -->
+              <select id="ftype" name="project_type" class="form-select"
+                data-opts-ar="اختر نوع المشروع,مشروع متكامل,الهوية البصرية,نظام التصميم,تصميم تجربة المستخدم,النمذجة التفاعلية,اختبار المستخدم,استراتيجية المنتج الرقمي,آخر"
+                data-opts-en="Select project type,Full Project,Visual Identity,Design System,UX Design,Interactive Prototyping,User Testing,Digital Product Strategy,Other"
+                data-opts-fr="Sélectionner le type,Projet Complet,Identité Visuelle,Design System,Design UX,Prototypage Interactif,Tests Utilisateurs,Stratégie Produit Numérique,Autre">
+                <option value="" disabled>اختر نوع المشروع</option>
+                <option value="full">مشروع متكامل</option>
+                <option value="identity">الهوية البصرية</option>
+                <option value="library" selected>نظام التصميم</option>
+                <option value="ux">تصميم تجربة المستخدم</option>
+                <option value="prototype">النمذجة التفاعلية</option>
+                <option value="testing">اختبار المستخدم</option>
+                <option value="strategy">استراتيجية المنتج الرقمي</option>
+                <option value="other">آخر</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="fmessage">
+                <span class="t-ar">رسالتك</span>
+                <span class="t-en">Your Message</span>
+                <span class="t-fr">Votre Message</span>
+              </label>
+              <textarea id="fmessage" name="message" class="form-textarea" required rows="5"></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">
+              <span class="t-ar">أرسل الآن</span>
+              <span class="t-en">Send Now</span>
+              <span class="t-fr">Envoyer</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+
+            <p class="form-note">
+              <span class="t-ar">سنرد عليك خلال ٢٤ ساعة</span>
+              <span class="t-en">We'll reply within 24 hours</span>
+              <span class="t-fr">Nous répondrons dans les 24 heures</span>
+            </p>
+
+          </form>
+
+          <!-- Success State -->
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 style="font-size:20px; font-weight:600; color:var(--c-text);">
+              <span class="t-ar">شكراً لك!</span>
+              <span class="t-en">Thank You!</span>
+              <span class="t-fr">Merci!</span>
+            </h3>
+            <p style="font-size:14px; color:var(--c-text-60); max-width:280px;">
+              <span class="t-ar">استلمنا رسالتك وسنتواصل معك قريباً.</span>
+              <span class="t-en">We received your message and will be in touch soon.</span>
+              <span class="t-fr">Nous avons reçu votre message et vous contacterons bientôt.</span>
+            </p>
+          </div>
+        </div>
+
       </div>
-
     </div>
-  </div>
-</section>
-
-
-<!-- ================================================================
-     RELATED CASE STUDIES
-     ================================================================ -->
-<section class="cs-related container">
-
-  <div class="cs-related-header reveal">
-    <p class="cs-related-label">
-      <span class="t-ar">أعمال أخرى</span>
-      <span class="t-en">More Work</span>
-      <span class="t-fr">Plus de Travaux</span>
-    </p>
-    <h2 class="cs-related-heading">
-      <span class="t-ar">مشاريع قد تهمك</span>
-      <span class="t-en">More Projects</span>
-      <span class="t-fr">Autres Projets</span>
-    </h2>
-  </div>
-
-  <div class="cs-related-grid">
-
-    <!-- Task Management App -->
-    <a href="case-study-tasks.html" class="cs-related-card reveal" style="--card-accent: #2563EB;">
-      <div class="cs-related-card-bar"></div>
-      <div class="cs-related-card-body">
-        <span class="cs-related-card-client">DataMaster</span>
-        <h3 class="cs-related-card-title">
-          <span class="t-ar">تطبيق إدارة المهام</span>
-          <span class="t-en">Task Management App</span>
-          <span class="t-fr">Application de Gestion des Tâches</span>
-        </h3>
-        <div>
-          <div class="cs-related-card-metric">50%</div>
-          <div class="cs-related-card-metric-label">
-            <span class="t-ar">تقليل وقت إنجاز المهام</span>
-            <span class="t-en">Reduction in Task Completion Time</span>
-            <span class="t-fr">Réduction du Temps d'Exécution</span>
-          </div>
-        </div>
-        <div class="cs-related-card-tags">
-          <span>ERP</span>
-          <span><span class="t-ar">موبايل أولاً</span><span class="t-en">Mobile First</span><span class="t-fr">Mobile First</span></span>
-          <span><span class="t-ar">نظام تصميم</span><span class="t-en">Design System</span><span class="t-fr">Design System</span></span>
-        </div>
-        <div class="cs-related-card-cta">
-          <span class="t-ar">عرض المشروع</span>
-          <span class="t-en">View Case Study</span>
-          <span class="t-fr">Voir le Projet</span>
-          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </div>
-      </div>
-    </a>
-
-    <!-- B2B Sales ERP Module -->
-    <a href="case-study-b2bsales.html" class="cs-related-card reveal" style="--card-accent: #EA580C;">
-      <div class="cs-related-card-bar"></div>
-      <div class="cs-related-card-body">
-        <span class="cs-related-card-client">DataMaster</span>
-        <h3 class="cs-related-card-title">
-          <span class="t-ar">وحدة المبيعات B2B في ERP</span>
-          <span class="t-en">B2B Sales ERP Module</span>
-          <span class="t-fr">Module ERP Ventes B2B</span>
-        </h3>
-        <div>
-          <div class="cs-related-card-metric">40%</div>
-          <div class="cs-related-card-metric-label">
-            <span class="t-ar">تسريع إنشاء عروض الأسعار</span>
-            <span class="t-en">Faster Quote Creation</span>
-            <span class="t-fr">Création de Devis Plus Rapide</span>
-          </div>
-        </div>
-        <div class="cs-related-card-tags">
-          <span>ERP</span>
-          <span><span class="t-ar">مبيعات B2B</span><span class="t-en">B2B Sales</span><span class="t-fr">Ventes B2B</span></span>
-          <span><span class="t-ar">UX المؤسسي</span><span class="t-en">Enterprise UX</span><span class="t-fr">UX Entreprise</span></span>
-        </div>
-        <div class="cs-related-card-cta">
-          <span class="t-ar">عرض المشروع</span>
-          <span class="t-en">View Case Study</span>
-          <span class="t-fr">Voir le Projet</span>
-          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </div>
-      </div>
-    </a>
-
-    <!-- مهندس القيم -->
-    <a href="case-study-reach.html" class="cs-related-card reveal" style="--card-accent: #0D9488;">
-      <div class="cs-related-card-bar"></div>
-      <div class="cs-related-card-body">
-        <span class="cs-related-card-client">مهندس القيم</span>
-        <h3 class="cs-related-card-title">
-          <span class="t-ar">منصة التعليم الإلكتروني</span>
-          <span class="t-en">Muhandis Al-Qiyam</span>
-          <span class="t-fr">Muhandis Al-Qiyam</span>
-        </h3>
-        <div>
-          <div class="cs-related-card-metric">60%</div>
-          <div class="cs-related-card-metric-label">
-            <span class="t-ar">تقليل وقت إنشاء المحتوى</span>
-            <span class="t-en">Reduction in Course Creation Time</span>
-            <span class="t-fr">Réduction du Temps de Création</span>
-          </div>
-        </div>
-        <div class="cs-related-card-tags">
-          <span>EdTech</span>
-          <span>SaaS</span>
-          <span><span class="t-ar">أدوات التدريس</span><span class="t-en">Teacher Tools</span><span class="t-fr">Outils Enseignant</span></span>
-        </div>
-        <div class="cs-related-card-cta">
-          <span class="t-ar">عرض المشروع</span>
-          <span class="t-en">View Case Study</span>
-          <span class="t-fr">Voir le Projet</span>
-          <svg class="cs-related-card-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </div>
-      </div>
-    </a>
-
   </div>
 </section>
 
@@ -1621,9 +3408,9 @@
           <span class="footer-wordmark">Nawat Studio</span>
         </a>
         <p class="footer-tagline">
-          <span class="t-ar">نواة كلّ منتج رقمي استثنائي — نصمم من الهوية البصرية إلى اختبار المستخدم.</span>
-          <span class="t-en">The seed of every exceptional digital product — designing from visual identity to user testing.</span>
-          <span class="t-fr">La graine de chaque produit numérique exceptionnel — de l'identité visuelle aux tests utilisateurs.</span>
+          <span class="t-ar">نواة كلّ منتج رقمي استثنائي، نصمم من الهوية البصرية إلى اختبار المستخدم.</span>
+          <span class="t-en">The seed of every exceptional digital product, designing from visual identity to user testing.</span>
+          <span class="t-fr">La graine de chaque produit numérique exceptionnel, de l'identité visuelle aux tests utilisateurs.</span>
         </p>
       </div>
 
@@ -1707,6 +3494,131 @@
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
+
+
+<!-- ================================================================
+     LIGHTBOX, figure enlarge
+     ================================================================ -->
+<div class="cs-lightbox" id="csLightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" hidden>
+  <button class="cs-lightbox-close" id="csLightboxClose" type="button" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+  </button>
+  <img class="cs-lightbox-img" id="csLightboxImg" src="" alt="">
+  <p class="cs-lightbox-cap" id="csLightboxCap"></p>
+</div>
+
+<script>
+/* ================================================================
+   Iksir case study, figure lightbox + copy-to-clipboard swatches
+   Vanilla, no dependencies. Safe to run before/after script.js.
+   ================================================================ */
+(function () {
+  'use strict';
+
+  /* ── Lightbox ────────────────────────────────────────────────── */
+  var box     = document.getElementById('csLightbox');
+  var boxImg  = document.getElementById('csLightboxImg');
+  var boxCap  = document.getElementById('csLightboxCap');
+  var boxShut = document.getElementById('csLightboxClose');
+  var lastFocused = null;
+
+  function currentLang() {
+    return document.documentElement.getAttribute('data-lang') || 'ar';
+  }
+
+  function openBox(trigger) {
+    if (!box) return;
+    lastFocused = trigger;
+    var src = trigger.getAttribute('data-lb-src');
+    var cap = trigger.getAttribute('data-lb-cap-' + currentLang())
+           || trigger.getAttribute('data-lb-cap-en') || '';
+    boxImg.setAttribute('src', src);
+    boxImg.setAttribute('alt', cap);
+    boxCap.textContent = cap;
+    box.hidden = false;
+    box.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    boxShut.focus();
+  }
+
+  function closeBox() {
+    if (!box || !box.classList.contains('open')) return;
+    box.classList.remove('open');
+    box.hidden = true;
+    boxImg.setAttribute('src', '');
+    document.body.style.overflow = '';
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    lastFocused = null;
+  }
+
+  var frames = document.querySelectorAll('.cs-fig-frame[data-lb-src]');
+  for (var i = 0; i < frames.length; i++) {
+    frames[i].addEventListener('click', function () { openBox(this); });
+  }
+
+  if (box) {
+    boxShut.addEventListener('click', closeBox);
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target === boxImg || e.target === boxCap) closeBox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!box.classList.contains('open')) return;
+      if (e.key === 'Escape') { closeBox(); return; }
+      /* trap focus on the single interactive element */
+      if (e.key === 'Tab') { e.preventDefault(); boxShut.focus(); }
+    });
+  }
+
+  /* ── Copy-to-clipboard colour swatches ───────────────────────── */
+  var COPIED = { ar: 'تم النسخ', en: 'Copied', fr: 'Copié' };
+
+  function flash(btn, hex) {
+    var hexEl = btn.querySelector('.cs-swatch-hex');
+    if (!hexEl) return;
+    if (btn.dataset.busy === '1') return;
+    btn.dataset.busy = '1';
+    hexEl.textContent = (COPIED[currentLang()] || COPIED.en) + ' ✓';
+    btn.classList.add('copied');
+    setTimeout(function () {
+      hexEl.textContent = hex;
+      btn.classList.remove('copied');
+      btn.dataset.busy = '0';
+    }, 1200);
+  }
+
+  function copyHex(hex, btn) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(hex).then(function () { flash(btn, hex); }).catch(function () {
+        legacyCopy(hex, btn);
+      });
+    } else {
+      legacyCopy(hex, btn);
+    }
+  }
+
+  function legacyCopy(hex, btn) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = hex;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      flash(btn, hex);
+    } catch (err) { /* clipboard unavailable, silently ignore */ }
+  }
+
+  var swatches = document.querySelectorAll('.cs-swatch[data-hex]');
+  for (var j = 0; j < swatches.length; j++) {
+    swatches[j].addEventListener('click', function () {
+      copyHex(this.getAttribute('data-hex'), this);
+    });
+  }
+})();
+</script>
 
 <script src="script.js"></script>
 </body>

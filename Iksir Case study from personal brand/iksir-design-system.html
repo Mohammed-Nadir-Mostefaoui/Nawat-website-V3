@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="i18n-page" content="cs1">
+  <meta name="description" content="Iksir Design System, a token-first design foundation for Datamaster's web and mobile products. Delivered via Nawat Studio. Case study by Nadir Mostefaoui.">
+  <meta name="author" content="Nadir Mostefaoui">
+  <meta property="og:title" content="Iksir Design System (Case Study) Nadir Mostefaoui">
+  <meta property="og:description" content="How I led the strategy, foundations, accessibility, and mobile layer of a token-first, trilingual design system.">
+  <meta property="og:type" content="article">
+  <title>Iksir Design System (Case Study) Nadir Mostefaoui</title>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" id="favicon-link">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Montserrat:wght@500;700;800&family=Inter:wght@400;500;600&family=Alexandria:wght@400;600&display=swap">
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/case-study.css">
+
+  <!-- Theme before paint -->
+  <script>
+    (function(){
+      const t = localStorage.getItem('nadir-theme');
+      document.documentElement.setAttribute('data-theme', t || 'light');
+    })();
+  </script>
+  <!-- Language/direction before paint -->
+  <script>
+    (function(){
+      const lang  = localStorage.getItem('nadir-lang') || 'en';
+      const isRTL = lang === 'ar';
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+      const favicon = document.getElementById('favicon-link');
+      if (favicon && isRTL) favicon.href = '../assets/icons/favicon-ar.svg';
+    })();
+  </script>
+  <!-- Marks that JS is available, so the scroll-reveal initial-hidden state
+       only applies when case-study.js can actually reveal it. -->
+  <script>document.documentElement.classList.add('cs-js');</script>
+</head>
+<body>
+
+  <!-- Custom cursor (desktop only) -->
+  <div id="cursor-dot"  aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ══════════════════════ NAVBAR ══════════════════════ -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <div class="nav-inner">
+        <!-- Identity. Replaces the signature logo (removed 2026-08-05).
+             Deliberately just the name in the site's own typeface, with no
+             mark of any kind — nothing here is an image, so it needs no
+             light/dark asset swap and no per-language file: `nav.name`
+             carries the script. -->
+        <a href="../index.html" class="nav-identity" id="nav-logo" aria-label="Nadir Mostefaoui: Home">
+          <!-- Two spans, not one JS-swapped string: js/i18n.js writes each
+               [data-i18n] node independently, so a single node can only ever
+               hold one key. CSS picks which is visible per breakpoint. -->
+          <span class="nav-identity-name nav-identity-name--full" data-i18n="nav.name">Nadir Mostefaoui</span>
+          <span class="nav-identity-name nav-identity-name--short" data-i18n="nav.name_short">Nadir</span>
+        </a>
+
+        <ul class="nav-links" id="nav-links" role="list">
+          <li class="nav-item has-dropdown">
+            <div class="nav-item-row">
+              <a href="../index.html#work" class="nav-link" data-i18n="nav.projects">Projects</a>
+              <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="nav-dropdown-work"
+                      aria-label="Show projects menu" data-i18n-aria-label="nav.dropdown_aria">
+                <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </button>
+            </div>
+            <div class="nav-dropdown" id="nav-dropdown-work">
+              <div class="nav-dropdown-inner">
+                <ul class="nav-dropdown-list" role="list">
+                  <li><a href="iksir-design-system.html" data-i18n="work.cs5.title">Iksir Design System</a></li>
+                  <li><a href="task-master.html" data-i18n="work.cs2.title">Task Master · Retail Ops App</a></li>
+                  <li><a href="b2b-sales-erp.html" data-i18n="work.cs3.title">B2B Sales ERP Module</a></li>
+                  <li><a href="https://nadirdesign.notion.site/eLearning-Platform-Teacher-Side-2789267c734580818447e1667e1b8630?source=copy_link" target="_blank" rel="noopener noreferrer" data-i18n="work.cs4.title">eLearning Platform</a></li>
+                  <li class="nav-dropdown-all"><a href="../index.html#work" data-i18n="nav.all_projects">All projects</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li><a href="../index.html#experience" class="nav-link" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="../index.html#studio"      class="nav-link" data-i18n="nav.studio">Studio</a></li>
+          <li><a href="../index.html#skills"     class="nav-link" data-i18n="nav.skills">Skills</a></li>
+
+          <li class="nav-mobile-status">
+            <span class="nav-status-dot" aria-hidden="true"></span>
+            <span data-i18n="footer.badge">Available for new projects</span>
+          </li>
+          <li class="nav-mobile-cta">
+            <a href="#contact" class="btn btn-dark">
+              <span data-i18n="nav.contact">Contact Me</span>
+              <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li class="nav-mobile-controls">
+            <div class="lang-switcher" role="group" aria-label="Select language">
+              <button class="lang-btn active" data-lang-btn="ar" aria-label="Arabic"  aria-pressed="true">ع</button>
+              <button class="lang-btn" data-lang-btn="en" aria-label="English" aria-pressed="false">EN</button>
+              <button class="lang-btn" data-lang-btn="fr" aria-label="Français" aria-pressed="false">FR</button>
+            </div>
+            <button class="theme-toggle" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-end">
+          <div class="lang-switcher" role="group" aria-label="Select language">
+            <button class="lang-btn active" data-lang-btn="ar" aria-label="Arabic"  aria-pressed="true">ع</button>
+            <button class="lang-btn" data-lang-btn="en" aria-label="English" aria-pressed="false">EN</button>
+            <button class="lang-btn" data-lang-btn="fr" aria-label="Français" aria-pressed="false">FR</button>
+          </div>
+          <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+          <a href="#contact" class="btn btn-dark">
+            <span data-i18n="nav.contact">Contact Me</span>
+            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+  <main class="cs">
+
+    <!-- ══════════════════════ HERO ══════════════════════ -->
+    <section class="cs-hero">
+      <div class="cs-wrap cs-hero-grid">
+        <div class="cs-hero-copy">
+          <span class="cs-eyebrow" data-i18n="cs.hero.eyebrow">Case Study 01 · Design System</span>
+          <h1 class="cs-hero-title" data-i18n="cs.hero.title">Iksir Design System</h1>
+          <p class="cs-hero-sub" data-i18n="cs.hero.sub">A token-first design foundation (consistent, accessible, and trilingual), that Datamaster's web and mobile products build on.</p>
+
+          <div class="cs-hero-meta">
+            <div class="cs-meta-item"><span class="cs-meta-k" data-i18n="cs.hero.role_k">Role</span><span class="cs-meta-v" data-i18n="cs.hero.role_v">Product Designer, led the project</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-k" data-i18n="cs.hero.client_k">Client</span><span class="cs-meta-v" data-i18n="cs.hero.client_v">Datamaster Analytics · via Nawat Studio</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-k" data-i18n="cs.hero.team_k">Team</span><span class="cs-meta-v" data-i18n="cs.hero.team_v">2 designers</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-k" data-i18n="cs.hero.timeline_k">Timeline</span><span class="cs-meta-v" data-i18n="cs.hero.timeline_v">Feb – Jun 2026 · V1</span></div>
+            <div class="cs-meta-item"><span class="cs-meta-k" data-i18n="cs.hero.platforms_k">Platforms</span><span class="cs-meta-v" data-i18n="cs.hero.platforms_v">Web · iOS · Android</span></div>
+          </div>
+
+          <div class="cs-hero-actions">
+            <a class="btn btn-dark" href="#contact" data-project-type="Design system">
+              <span data-i18n="cs.hero.cta">Let's build something like this</span>
+              <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <span class="cs-hero-status"><span class="cs-status-dot" aria-hidden="true"></span><span data-i18n="cs.hero.status">V1 shipped · web + mobile · in active development</span></span>
+          </div>
+        </div>
+
+        <div class="cs-hero-visual cs-hero-visual--img" aria-hidden="true">
+          <img class="cs-hero-photo" src="../assets/images/iksir/iksir-hero-art.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ STAT BAND ══════════════════════ -->
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-stat-num" data-count="1033" data-comma>1,033</div><span class="cs-stat-label" data-i18n="cs.stats.variables">design variables</span></div>
+      <div class="cs-stat"><div class="cs-stat-num" data-count="24">24</div><span class="cs-stat-label" data-i18n="cs.stats.components">components</span></div>
+      <div class="cs-stat"><div class="cs-stat-num" data-count="5">5</div><span class="cs-stat-label" data-i18n="cs.stats.patterns">UX patterns</span></div>
+      <div class="cs-stat"><div class="cs-stat-num" data-count="191">191</div><span class="cs-stat-label" data-i18n="cs.stats.colours">colour tokens</span></div>
+      <div class="cs-stat"><div class="cs-stat-num" data-count="3">3</div><span class="cs-stat-label" data-i18n="cs.stats.languages">languages (LTR + RTL)</span></div>
+      <div class="cs-stat"><div class="cs-stat-num" data-count="2">2</div><span class="cs-stat-label" data-i18n="cs.stats.modes">modes (light + dark)</span></div>
+    </div>
+
+    <!-- ══════════════════════ CONTEXT / PROBLEM ══════════════════════ -->
+    <section class="cs-section">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.problem.eyebrow">The problem</span>
+        <h2 class="cs-h2" data-i18n="cs.problem.title">A growing product suite with no shared language</h2>
+        <p class="cs-lead" data-i18n="cs.problem.lead">Datamaster builds a modular ERP and a family of mobile apps under its Iksir product brand. As the suite grew, every screen was solving the same UI problems from scratch.</p>
+        <div class="cs-cards cs-cards--3">
+          <div class="cs-card">
+            <span class="cs-card-num">01</span>
+            <h3 class="cs-h3" data-i18n="cs.problem.c1t">Inconsistency slowed everything</h3>
+            <p data-i18n="cs.problem.c1p">Colours, spacing, buttons, and form validation were rebuilt per screen and behaved differently across the products, costing development time and creating avoidable UI bugs.</p>
+          </div>
+          <div class="cs-card">
+            <span class="cs-card-num">02</span>
+            <h3 class="cs-h3" data-i18n="cs.problem.c2t">Two stacks, no lock-in</h3>
+            <p data-i18n="cs.problem.c2p">The web is moving from Ant Design to Shadcn, with Flutter on mobile. The system had to feed them all the same decisions through tokens, while staying library-agnostic, so the team keeps the freedom to build beyond any single framework.</p>
+          </div>
+          <div class="cs-card">
+            <span class="cs-card-num">03</span>
+            <h3 class="cs-h3" data-i18n="cs.problem.c3t">Built for three languages</h3>
+            <p data-i18n="cs.problem.c3p">The products are expanding to French, English, and Arabic (the task app first), so true right-to-left support and dual-script typography had to live in the foundation from the start, not be bolted on later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ MY ROLE VS TEAM ══════════════════════ -->
+    <section class="cs-section cs-section--tint">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.role.eyebrow">My role</span>
+        <h2 class="cs-h2" data-i18n="cs.role.title">A two-person team: I set the direction</h2>
+        <p class="cs-lead" data-i18n="cs.role.lead">We were two product designers. I led the project end to end: the strategy, the client relationship, and every foundational decision the system is built on. This case study is my side of that work.</p>
+        <div class="cs-split">
+          <div class="cs-split-col cs-split-col--mine">
+            <h3 class="cs-h3"><span class="cs-tag-lead" data-i18n="cs.role.mine_tag">Led by me</span></h3>
+            <ul class="cs-list">
+              <li data-i18n="cs.role.mine1">Strategy, discovery, and the stakeholder relationship with the client</li>
+              <li data-i18n="cs.role.mine2">The full design-token strategy and three-layer architecture</li>
+              <li data-i18n="cs.role.mine3">The trilingual &amp; right-to-left (LTR/RTL) foundation</li>
+              <li data-i18n="cs.role.mine4">The accessibility framework, baked into the tokens</li>
+              <li data-i18n="cs.role.mine5">The entire mobile layer, platform rules and mobile components</li>
+              <li data-i18n="cs.role.mine6">All documentation, guides, and the governance model</li>
+              <li data-i18n="cs.role.mine7">Structuring the project and shipping V1, and the rollout strategy now</li>
+            </ul>
+          </div>
+          <div class="cs-split-col cs-split-col--team">
+            <h3 class="cs-h3" data-i18n="cs.role.partner_h">My design partner</h3>
+            <ul class="cs-list">
+              <li data-i18n="cs.role.partner1">Audit of the existing web product</li>
+              <li data-i18n="cs.role.partner2">Figma production of the web/desktop components</li>
+              <li data-i18n="cs.role.partner3">Building the documentation website</li>
+              <li data-i18n="cs.role.partner4">The later polished visual pass on the public library</li>
+            </ul>
+            <p class="cs-p" style="margin-block-start:18px;font-size:.9rem;" data-i18n="cs.role.partner_note">The full team story lives in a separate studio case study, this page focuses on the decisions and craft I owned.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ PROCESS BY PHASE ══════════════════════ -->
+    <section class="cs-section">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.process.eyebrow">The process</span>
+        <h2 class="cs-h2" data-i18n="cs.process.title">From audit to a shipped V1</h2>
+        <p class="cs-lead" data-i18n="cs.process.lead">I structured the work into phases, though in practice they overlapped and looped back as we learned, not a straight line. Each one still closed with a decision the next could build on.</p>
+
+        <div class="cs-phases">
+          <div class="cs-phase">
+            <div class="cs-phase-idx"><span data-i18n="cs.process.p1_label">Phase 1</span><span>01</span></div>
+            <div class="cs-phase-body">
+              <h3 class="cs-h3" data-i18n="cs.process.p1_title">Audit &amp; alignment</h3>
+              <p data-i18n="cs.process.p1_body">I ran stakeholder discovery to understand the business, then wrote the vision and success criteria. I audited the mobile task app and found it ran on a completely standalone, hard-coded system, disconnected from any shared foundation.</p>
+              <p class="cs-phase-mine" data-i18n="cs.process.p1_call" data-i18n-html><b>My call →</b> reframe those hundreds of validated mobile screens as the blueprint for the system's mobile layer, instead of treating them as a problem to clean up.</p>
+            </div>
+          </div>
+          <div class="cs-phase">
+            <div class="cs-phase-idx"><span data-i18n="cs.process.p2_label">Phase 2</span><span>02</span></div>
+            <div class="cs-phase-body">
+              <h3 class="cs-h3" data-i18n="cs.process.p2_title">Foundations</h3>
+              <p data-i18n="cs.process.p2_body">I defined the token architecture (a strict naming convention (category · property · concept · state) sitting on a three-layer chain of primitives → semantics → components), so developers would never hard-code a value again. Alongside it I authored the trilingual/RTL architecture (logical properties, dual-script type, icon-mirroring rules) and an accessibility framework expressed directly as tokens.</p>
+              <p class="cs-phase-mine" data-i18n="cs.process.p2_call" data-i18n-html><b>The decision that mattered →</b> make light/dark and LTR/RTL properties of the tokens themselves, so a single source of truth adapts automatically rather than being maintained twice.</p>
+            </div>
+          </div>
+          <div class="cs-phase">
+            <div class="cs-phase-idx"><span data-i18n="cs.process.p3_label">Phase 3</span><span>03</span></div>
+            <div class="cs-phase-body">
+              <h3 class="cs-h3" data-i18n="cs.process.p3_title">Components, mobile layer &amp; documentation</h3>
+              <p data-i18n="cs.process.p3_body">As the library scaled to 24 components and 5 patterns, I designed the entire mobile layer (platform rules and the mobile-native components (bottom sheets, tab bars, numeric keypad, scanner overlay, task cards)), in both Figma and the documentation site. Then I structured the project and shipped V1.</p>
+              <p class="cs-phase-mine" data-i18n="cs.process.p3_call" data-i18n-html><b>The principle I held →</b> treat the documentation as a product in its own right, the single spec both designers and developers work from.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-note">
+          <span class="cs-note-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg></span>
+          <p data-i18n="cs.process.loop" data-i18n-html><b>Not a straight line: </b> the mobile layer is the clearest example. What Phase&nbsp;1 flagged as a hard-coded, disconnected task app became, by Phase&nbsp;3, the system's mobile component library, through several passes, not one. I designed the layer, my design partner reviewed each round and pushed it further, every loop tightened the components until they held up as a system.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ THE SYSTEM — architecture ══════════════════════ -->
+    <section class="cs-section cs-section--tint" id="cs-system">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.system.eyebrow">The system</span>
+        <h2 class="cs-h2" data-i18n="cs.system.title">Three layers, one source of truth</h2>
+        <p class="cs-lead" data-i18n="cs.system.lead">Each layer consumes only the one below it. Skip a layer and you break the single-source-of-truth guarantee, so components never touch raw values.</p>
+
+        <div class="cs-arch">
+          <div class="cs-layer cs-layer--1">
+            <span class="cs-layer-tag" data-i18n="cs.system.l1_tag">Layer 01 · Primitives</span>
+            <h3 class="cs-h3" data-i18n="cs.system.l1_title">Raw values, named by value</h3>
+            <p data-i18n="cs.system.l1_body">Hex codes, pixel sizes, durations. The only place a literal value is ever written.</p>
+            <div class="cs-layer-chips"><span class="cs-code">#430098</span><span class="cs-code">4px</span><span class="cs-code">250ms</span><span class="cs-code">Inter</span></div>
+          </div>
+          <div class="cs-arch-flow">↓</div>
+          <div class="cs-layer cs-layer--2">
+            <span class="cs-layer-tag" data-i18n="cs.system.l2_tag">Layer 02 · Semantic tokens</span>
+            <h3 class="cs-h3" data-i18n="cs.system.l2_title">Named by intent: the only layer components use</h3>
+            <p data-i18n="cs.system.l2_body">Maps primitives to meaning, and carries both light/dark and LTR/RTL values automatically.</p>
+            <div class="cs-layer-chips"><span class="cs-code">brand/primary</span><span class="cs-code">content/primary</span><span class="cs-code">radius/md</span><span class="cs-code">spacing/inline-start</span></div>
+          </div>
+          <div class="cs-arch-flow">↓</div>
+          <div class="cs-layer cs-layer--3">
+            <span class="cs-layer-tag" data-i18n="cs.system.l3_tag">Layer 03 · Components &amp; patterns</span>
+            <h3 class="cs-h3" data-i18n="cs.system.l3_title">Consume semantics only</h3>
+            <p data-i18n="cs.system.l3_body">Every component is built from semantic tokens (never a hard-coded value), so it adapts to any mode or language for free.</p>
+            <div class="cs-layer-chips"><span class="cs-code">Button</span><span class="cs-code">Data table</span><span class="cs-code">Bottom sheet</span><span class="cs-code">Forms</span></div>
+          </div>
+        </div>
+
+        <div class="cs-note">
+          <span class="cs-note-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+          <p data-i18n="cs.system.delivers" data-i18n-html><b>What that buys: </b> change a decision once and every product inherits it: one source of truth across two engineering stacks, light/dark and RTL resolved automatically, and WCAG&nbsp;AA enforced at the token level.</p>
+        </div>
+
+        <div class="cs-gallery cs-gallery--2">
+          <figure class="cs-thumb-fig">
+            <button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge the documentation overview">
+              <img src="../assets/images/iksir/iksir-overview.png" alt="Iksir documentation: overview and three-layer architecture">
+              <span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+            </button>
+            <figcaption class="cs-thumb-cap" data-i18n="cs.system.cap1" data-i18n-html><b>Documentation platform</b>, overview, live stats, and the three-layer architecture.</figcaption>
+          </figure>
+          <figure class="cs-thumb-fig">
+            <button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge the design principles">
+              <img src="../assets/images/iksir/iksir-principles.png" alt="Iksir design principles">
+              <span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+            </button>
+            <figcaption class="cs-thumb-cap" data-i18n="cs.system.cap2" data-i18n-html><b>Six principles</b>, the constraints behind every token, component, and pattern.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ TOKENS SHOWCASE ══════════════════════ -->
+    <section class="cs-section">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.found.eyebrow">Foundations</span>
+        <h2 class="cs-h2" data-i18n="cs.found.title">Colour, type, space: all tokenised</h2>
+        <p class="cs-lead" data-i18n="cs.found.lead">191 colour tokens across brand, content, background, border, and status groups, each with a light and a dark value. Type pairs a Latin family with an Arabic one at matching optical weight.</p>
+
+        <div class="cs-gallery cs-gallery--2">
+          <figure class="cs-thumb-fig">
+            <button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge the colour tokens">
+              <img src="../assets/images/iksir/iksir-colors.png" alt="Colour tokens, brand, content, background, border, and status groups">
+              <span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+            </button>
+            <figcaption class="cs-thumb-cap" data-i18n="cs.found.cap_colour" data-i18n-html><b>Colour</b>, 191 semantic tokens across five groups, every one with a light and dark value.</figcaption>
+          </figure>
+          <figure class="cs-thumb-fig">
+            <button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge the typography system">
+              <img src="../assets/images/iksir/iksir-typography.png" alt="Typography, Latin (Montserrat + Inter) and Arabic (Alexandria + Inter) font families">
+              <span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
+            </button>
+            <figcaption class="cs-thumb-cap" data-i18n="cs.found.cap_type" data-i18n-html><b>Type</b>, 9 roles in two scripts: Latin (Montserrat + Inter) and Arabic (Alexandria + Inter), with a +2&nbsp;px Arabic size bump.</figcaption>
+          </figure>
+        </div>
+
+        <div class="cs-swatches" style="margin-block-start:28px;">
+          <div class="cs-swatch" data-i18n-aria-label="cs.ui.copy" data-hex="#430098"><div class="cs-swatch-color" style="background:#430098"></div><div class="cs-swatch-meta"><div class="cs-swatch-name">brand / primary</div><div class="cs-swatch-hex">#430098</div></div></div>
+          <div class="cs-swatch" data-i18n-aria-label="cs.ui.copy" data-hex="#757575"><div class="cs-swatch-color" style="background:#757575"></div><div class="cs-swatch-meta"><div class="cs-swatch-name">content / secondary</div><div class="cs-swatch-hex">#757575</div></div></div>
+          <div class="cs-swatch" data-i18n-aria-label="cs.ui.copy" data-hex="#148F47"><div class="cs-swatch-color" style="background:#148F47"></div><div class="cs-swatch-meta"><div class="cs-swatch-name">success / content</div><div class="cs-swatch-hex">#148F47</div></div></div>
+          <div class="cs-swatch" data-i18n-aria-label="cs.ui.copy" data-hex="#AE7004"><div class="cs-swatch-color" style="background:#AE7004"></div><div class="cs-swatch-meta"><div class="cs-swatch-name">warning / content</div><div class="cs-swatch-hex">#AE7004</div></div></div>
+          <div class="cs-swatch" data-i18n-aria-label="cs.ui.copy" data-hex="#D8192C"><div class="cs-swatch-color" style="background:#D8192C"></div><div class="cs-swatch-meta"><div class="cs-swatch-name">danger / content</div><div class="cs-swatch-hex">#D8192C</div></div></div>
+          <div class="cs-swatch" data-i18n-aria-label="cs.ui.copy" data-hex="#0550AE"><div class="cs-swatch-color" style="background:#0550AE"></div><div class="cs-swatch-meta"><div class="cs-swatch-name">info / content</div><div class="cs-swatch-hex">#0550AE</div></div></div>
+        </div>
+        <p class="cs-p" style="margin-block-start:14px; font-size:.9rem;" data-i18n="cs.found.tip">Tip: click any swatch to copy its hex, the same tokens the products read from.</p>
+
+        <p class="cs-p" style="margin-block-start:22px;" data-i18n="cs.found.underneath">Underneath: a 22-step spacing scale on a 4-pt grid, 8 semantic radius aliases, 4 elevation levels, and 86 Lucide icons at a 1.5&nbsp;px stroke in three sizes, each with RTL mirroring rules.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ COMPONENT INVENTORY ══════════════════════ -->
+    <section class="cs-section cs-section--tint">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.lib.eyebrow">The library</span>
+        <h2 class="cs-h2" data-i18n="cs.lib.title">24 components: every state, documented</h2>
+        <p class="cs-lead" data-i18n="cs.lib.lead">From Button (450 variants because every hierarchy × size × icon position × state is accounted for, not padding for its own sake), to the mobile-native pieces I designed for the task app. Each one is built and documented, ready to drop in.</p>
+
+        <div class="cs-inv">
+          <span class="cs-chip">Button <b>450</b></span>
+          <span class="cs-chip">Input <b>336</b></span>
+          <span class="cs-chip">Select</span>
+          <span class="cs-chip">Checkbox</span>
+          <span class="cs-chip">Toggle</span>
+          <span class="cs-chip">Dropdown</span>
+          <span class="cs-chip">Modal</span>
+          <span class="cs-chip">Toast</span>
+          <span class="cs-chip">Tooltip</span>
+          <span class="cs-chip">Badge</span>
+          <span class="cs-chip">Avatar</span>
+          <span class="cs-chip">Tab</span>
+          <span class="cs-chip">Breadcrumb</span>
+          <span class="cs-chip">Pagination</span>
+          <span class="cs-chip">Table</span>
+          <span class="cs-chip">Card</span>
+          <span class="cs-chip">FAB</span>
+          <span class="cs-chip">Bottom Sheet</span>
+          <span class="cs-chip">Bottom Tab Nav</span>
+          <span class="cs-chip">Mobile Header</span>
+          <span class="cs-chip">Numeric Keypad</span>
+          <span class="cs-chip">Scanner Overlay</span>
+          <span class="cs-chip">Priority Tag</span>
+          <span class="cs-chip">Task Card</span>
+        </div>
+
+        <p class="cs-gallery-label" data-i18n="cs.lib.core_label">Core components</p>
+        <div class="cs-gallery cs-gallery--4">
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge Buttons"><img src="../assets/images/iksir/iksir-buttons.png" alt="Button: every hierarchy, size, and state"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_button" data-i18n-html><b>Button</b>, 450 variants</figcaption></figure>
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge Inputs"><img src="../assets/images/iksir/iksir-inputs.png" alt="Input: 9 types across states"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_input" data-i18n-html><b>Input</b>, 336 variants</figcaption></figure>
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge Cards"><img src="../assets/images/iksir/iksir-cards.png" alt="Card: 12 use-case variants"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_card" data-i18n-html><b>Card</b>, 12 variants</figcaption></figure>
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge Modals"><img src="../assets/images/iksir/iksir-modals.png" alt="Modal: icon and size variants"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_modal" data-i18n-html><b>Modal</b>, icon × size</figcaption></figure>
+        </div>
+
+        <p class="cs-gallery-label" data-i18n="cs.lib.mobile_label">Mobile-native: the layer I designed</p>
+        <div class="cs-gallery cs-gallery--3">
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge Task Card"><img src="../assets/images/iksir/iksir-taskcard.png" alt="Task Card: priority and status variants"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_task" data-i18n-html><b>Task Card</b>, 17 variants across priority, status, and subtasks</figcaption></figure>
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge Bottom Tab Navigation"><img src="../assets/images/iksir/iksir-tabnav.png" alt="Bottom Tab Navigation: active pill and badges"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_tabnav" data-i18n-html><b>Bottom Tab Nav</b>, active pill + badges</figcaption></figure>
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge Bottom Sheet"><img src="../assets/images/iksir/iksir-bottomsheet.png" alt="Bottom Sheet: action menu and form"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_sheet" data-i18n-html><b>Bottom Sheet</b>, collapsed / half / full</figcaption></figure>
+        </div>
+
+        <p class="cs-gallery-label" data-i18n="cs.lib.patterns_label">Patterns</p>
+        <div class="cs-gallery cs-gallery--2">
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge Charts"><img src="../assets/images/iksir/iksir-charts.png" alt="Charts pattern: line, bar, donut, area, sparkline"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_charts" data-i18n-html><b>Charts</b>, line, bar, donut, area, sparkline, mobile-first</figcaption></figure>
+          <figure class="cs-thumb-fig"><button class="cs-thumb cs-zoom" type="button" data-i18n-aria-label="cs.ui.enlarge_aria" aria-label="Enlarge chart colour tokens"><img src="../assets/images/iksir/iksir-charts-3.png" alt="Chart colour tokens and usage guidelines"><span class="cs-live-hint"><span data-i18n="cs.ui.enlarge">Enlarge</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></button><figcaption class="cs-thumb-cap" data-i18n="cs.lib.cap_charttokens" data-i18n-html><b>Chart tokens</b>, palette drawn from primitives + usage rules</figcaption></figure>
+        </div>
+
+        <div class="cs-note">
+          <span class="cs-note-ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+          <p data-i18n="cs.lib.note" data-i18n-html><b>A note on what's shown:</b> Iksir is live client work under NDA, so I'm showing only a selection of the design system (a sample of its tokens, components, and patterns, not the full library), and none of the client's production screens or real data. What you see here is a curated slice that's safe to share, the complete system and the products it powers stay private.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ ACCESSIBILITY SPOTLIGHT ══════════════════════ -->
+    <section class="cs-section">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.a11y.eyebrow">Accessibility</span>
+        <h2 class="cs-h2" data-i18n="cs.a11y.title">WCAG 2.1 AA, built into the foundation</h2>
+        <p class="cs-lead" data-i18n="cs.a11y.lead">Accessibility was one of the areas I owned. I didn't just document WCAG 2.1 AA, I turned it into tokens, reusable Figma checks (a contrast matrix and a 44×44 touch-target component), and a testing workflow the whole team designs and builds against.</p>
+
+        <div class="cs-a11y">
+          <div class="cs-a11y-item">
+            <h3 class="cs-h3"><span class="cs-a11y-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20z"/></svg></span><span data-i18n="cs.a11y.i1_t">Contrast as a contract</span></h3>
+            <p data-i18n="cs.a11y.i1_p">4.5:1 for text, 3:1 for large text and UI, verified across light and dark, with unsafe combinations corrected at the token level.</p>
+          </div>
+          <div class="cs-a11y-item">
+            <h3 class="cs-h3"><span class="cs-a11y-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span data-i18n="cs.a11y.i2_t">Never colour alone</span></h3>
+            <p data-i18n="cs.a11y.i2_p">ERP statuses always pair colour with an icon and a text label, so meaning survives colour-blindness and greyscale.</p>
+          </div>
+          <div class="cs-a11y-item">
+            <h3 class="cs-h3"><span class="cs-a11y-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></span><span data-i18n="cs.a11y.i3_t">Touch &amp; focus tokens</span></h3>
+            <p data-i18n="cs.a11y.i3_p">A 44×44&nbsp;pt minimum touch target and a 2&nbsp;px offset focus ring are tokenised, keyboard and mobile users are covered by default.</p>
+          </div>
+          <div class="cs-a11y-item">
+            <h3 class="cs-h3"><span class="cs-a11y-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14M5 8a2 2 0 0 1 0-4h14a2 2 0 0 1 0 4M12 4v16"/></svg></span><span data-i18n="cs.a11y.i4_t">Trilingual screen readers</span></h3>
+            <p data-i18n="cs.a11y.i4_p" data-i18n-html>Dynamic <code>lang</code>/<code>dir</code>, logical reading order, and localised labels so assistive tech reads French, English, and Arabic correctly.</p>
+          </div>
+          <div class="cs-a11y-item">
+            <h3 class="cs-h3"><span class="cs-a11y-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span data-i18n="cs.a11y.i5_t">Testable, not just documented</span></h3>
+            <p data-i18n="cs.a11y.i5_p">I set up a checking workflow across every surface (contrast plugins in Figma, axe and Lighthouse on web, VoiceOver and TalkBack on mobile), so accessibility is verified at each handoff, not assumed.</p>
+          </div>
+          <div class="cs-a11y-item">
+            <h3 class="cs-h3"><span class="cs-a11y-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5h9v2M7 5v14M5 19h4"/><path d="M14.5 19l3.5-9 3.5 9M15.4 16.5h5.2"/></svg></span><span data-i18n="cs.a11y.i6_t">Dual-script sizing</span></h3>
+            <p data-i18n="cs.a11y.i6_p">Arabic body text is bumped 1–2&nbsp;px above the Latin baseline, with line-height tokens tuned so complex ligatures never clip in dense data tables.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ WHERE IT STANDS / NEXT ══════════════════════ -->
+    <section class="cs-section cs-section--tint">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.status.eyebrow">Where it stands</span>
+        <h2 class="cs-h2" data-i18n="cs.status.title">Shipped, and still evolving</h2>
+        <div class="cs-status">
+          <div class="cs-status-item">
+            <span><span class="cs-dot cs-dot--done"></span><span data-i18n="cs.status.s1_label">Done</span></span>
+            <h3 class="cs-h3" data-i18n="cs.status.s1_t">V1 released</h3>
+            <p data-i18n="cs.status.s1_p">Foundations, 24 components, 5 patterns, and the documentation platform, all live as the official V1.</p>
+          </div>
+          <div class="cs-status-item">
+            <span><span class="cs-dot cs-dot--live"></span><span data-i18n="cs.status.s2_label">Live &amp; iterating</span></span>
+            <h3 class="cs-h3" data-i18n="cs.status.s2_t">Adoption &amp; polish</h3>
+            <p data-i18n="cs.status.s2_p">The library is in use and improving. My partner led a polished public version of the site on top of the shared V1.</p>
+          </div>
+          <div class="cs-status-item">
+            <span><span class="cs-dot cs-dot--wip"></span><span data-i18n="cs.status.s3_label">In progress</span></span>
+            <h3 class="cs-h3" data-i18n="cs.status.s3_t">Integration strategy</h3>
+            <p data-i18n="cs.status.s3_p">I'm defining how the system rolls into the real products, and keeping governance open until it's fully stable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ GOVERNANCE ══════════════════════ -->
+    <section class="cs-section">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.gov.eyebrow">Governance</span>
+        <h2 class="cs-h2" data-i18n="cs.gov.title">Rules that keep it coherent as it grows</h2>
+        <div class="cs-rules">
+          <div class="cs-rule"><h3 class="cs-h3" data-i18n="cs.gov.r1_t">Always use semantic tokens</h3><p data-i18n="cs.gov.r1_p">Components reference intent (brand/primary), never raw values, this is what makes the system maintainable and mode-switchable.</p></div>
+          <div class="cs-rule"><h3 class="cs-h3" data-i18n="cs.gov.r2_t">Respect the three-layer chain</h3><p data-i18n="cs.gov.r2_p">Primitives → semantics → components. Never skip a layer, it breaks the single source of truth.</p></div>
+          <div class="cs-rule"><h3 class="cs-h3" data-i18n="cs.gov.r3_t">Light + dark, RTL + LTR, built in</h3><p data-i18n="cs.gov.r3_p">Every semantic token carries both, no parallel colour sets, no manual mirroring.</p></div>
+          <div class="cs-rule"><h3 class="cs-h3" data-i18n="cs.gov.r4_t">The docs are the spec</h3><p data-i18n="cs.gov.r4_p">Token references, states, and do/don't guidance are requirements, with a workflow that lets a non-coder publish updates safely.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ REFLECTION ══════════════════════ -->
+    <section class="cs-section cs-section--tint">
+      <div class="cs-wrap cs-reflection">
+        <span class="cs-eyebrow" data-i18n="cs.reflect.eyebrow">Reflection</span>
+        <p class="cs-quote" data-i18n="cs.reflect.quote" data-i18n-html>Leading a system means designing the <span>decisions</span>, not just the screens.</p>
+        <p class="cs-p" data-i18n="cs.reflect.p1">The hardest (and most rewarding), part wasn't drawing components. It was making choices that had to hold up across two engineering stacks, three languages, two colour modes, and a second designer's hands. Getting the architecture and the accessibility right early is what let the library scale without collapsing into exceptions.</p>
+        <p class="cs-p" data-i18n="cs.reflect.p2">It also reshaped how I work: treating documentation as a product, writing rules that other people can follow without me in the room, and staying accountable for a system long after its first release.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ CLOSING CTA ══════════════════════ -->
+    <section class="cs-section cs-closing">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.closing.eyebrow">Let's talk</span>
+        <h2 class="cs-h2" data-i18n="cs.closing.title">Have a system like this in mind?</h2>
+        <p class="cs-lead" data-i18n="cs.closing.lead">I design systems, products, and the foundations under them. Tell me what you're building, and let's make it consistent, accessible, and fast to ship.</p>
+        <a class="btn btn-dark" href="#contact" data-project-type="Design system">
+          <span data-i18n="cs.hero.cta">Let's build something like this</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- More case studies -->
+    <section class="cs-section cs-more">
+      <div class="cs-wrap">
+        <span class="cs-eyebrow" data-i18n="cs.more.eyebrow">Keep exploring</span>
+        <h2 class="cs-h2" data-i18n="cs.more.title">More case studies</h2>
+        <div class="cs-more-grid">
+          <a class="cs-more-card" href="task-master.html">
+            <span class="cs-more-num" aria-hidden="true">02</span>
+            <span class="cs-more-body">
+              <span class="cs-more-tag" data-i18n="work.cs2.tag">Retail Operations · Mobile-First</span>
+              <span class="cs-more-title" data-i18n="work.cs2.title">Task Master · Retail Ops App</span>
+            </span>
+            <span class="cs-more-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+          </a>
+          <a class="cs-more-card" href="b2b-sales-erp.html">
+            <span class="cs-more-num" aria-hidden="true">03</span>
+            <span class="cs-more-body">
+              <span class="cs-more-tag" data-i18n="work.cs3.tag">ERP · Sales Operations</span>
+              <span class="cs-more-title" data-i18n="work.cs3.title">B2B Sales ERP Module</span>
+            </span>
+            <span class="cs-more-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+          </a>
+          <a class="cs-more-card" href="https://nadirdesign.notion.site/eLearning-Platform-Teacher-Side-2789267c734580818447e1667e1b8630?source=copy_link" target="_blank" rel="noopener noreferrer">
+            <span class="cs-more-num" aria-hidden="true">04</span>
+            <span class="cs-more-body">
+              <span class="cs-more-tag" data-i18n="work.cs4.tag">eLearning · Multi-Role Platform</span>
+              <span class="cs-more-title" data-i18n="work.cs4.title">eLearning Platform</span>
+            </span>
+            <span class="cs-more-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span>
+          </a>
+        </div>
+        <a href="../index.html" class="cs-back cs-more-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          <span data-i18n="cs.pager.all">Back to homepage</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════ FOOTER (reused) ══════════════════════ -->
+  <footer id="contact" class="site-footer">
+    <div class="footer-watermark" aria-hidden="true"><span data-i18n="footer.watermark">NADIR</span></div>
+    <div class="footer-inner">
+      <div class="footer-intro footer-reveal">
+        <div class="footer-badge">
+          <span class="footer-badge-dot" aria-hidden="true"></span>
+          <span data-i18n="footer.badge">Available for new projects</span>
+        </div>
+        <h2 class="footer-heading" data-i18n="footer.heading">Let's build something great</h2>
+        <p class="footer-subtitle" data-i18n="footer.subtitle">Have an idea or a project in mind? I'd love to hear about it, send a message or reach out directly below.</p>
+      </div>
+      <div class="footer-main">
+        <div class="footer-panel footer-form-panel footer-reveal">
+          <h3 class="footer-panel-title" data-i18n="footer.form_title">Send a Message</h3>
+          <form class="footer-form" id="footer-form" novalidate action="https://formspree.io/f/mkolebgp" method="POST">
+            <div class="ff-ptype-field">
+              <span class="ff-ptype-label" data-i18n="cs.form.ptype_label">What can I help with?</span>
+              <div class="cs-ptype" role="radiogroup" aria-label="Project type">
+                <button type="button" class="cs-ptype-chip" data-value="Design system" data-i18n="cs.form.pt_ds">Design system</button>
+                <button type="button" class="cs-ptype-chip" data-value="Web app / SaaS" data-i18n="cs.form.pt_web">Web app / SaaS</button>
+                <button type="button" class="cs-ptype-chip" data-value="Mobile app" data-i18n="cs.form.pt_mobile">Mobile app</button>
+                <button type="button" class="cs-ptype-chip" data-value="ERP / internal tool" data-i18n="cs.form.pt_erp">ERP / internal tool</button>
+                <button type="button" class="cs-ptype-chip" data-value="Partnership" data-i18n="cs.form.pt_partner">Partnership</button>
+                <button type="button" class="cs-ptype-chip" data-value="Something else" data-i18n="cs.form.pt_other">Something else</button>
+              </div>
+              <input type="hidden" name="project_type" id="ff-project-type" value="">
+            </div>
+            <div class="ff-field">
+              <input class="ff-input" type="text" id="ff-name" name="name" required autocomplete="name" placeholder=" ">
+              <label class="ff-label" for="ff-name" data-i18n="footer.form_name">Name</label>
+              <span class="ff-underline" aria-hidden="true"></span>
+            </div>
+            <div class="ff-field">
+              <input class="ff-input" type="email" id="ff-email" name="email" required autocomplete="email" placeholder=" ">
+              <label class="ff-label" for="ff-email" data-i18n="footer.form_email">Email</label>
+              <span class="ff-underline" aria-hidden="true"></span>
+            </div>
+            <div class="ff-field">
+              <textarea class="ff-input ff-textarea" id="ff-message" name="message" rows="4" required placeholder=" "></textarea>
+              <label class="ff-label" for="ff-message" data-i18n="footer.form_message">Message</label>
+              <span class="ff-underline" aria-hidden="true"></span>
+            </div>
+            <button type="submit" class="footer-submit" id="footer-submit">
+              <span class="footer-submit-label" data-i18n="footer.form_send">Send Message</span>
+              <span class="footer-submit-icon" aria-hidden="true">
+                <svg class="icon-send" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+              </span>
+            </button>
+            <p class="ff-status" id="ff-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="footer-panel footer-contacts-panel footer-reveal">
+          <h3 class="footer-panel-title" data-i18n="footer.contacts_title">Direct Contacts</h3>
+          <ul class="footer-contacts" role="list">
+            <li class="footer-contact footer-contact--cv">
+              <button type="button" class="fc-link fc-link--btn" data-cv-open>
+                <span class="fc-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>
+                </span>
+                <span class="fc-text">
+                  <span class="fc-label" data-i18n="footer.cv_label">R&#233;sum&#233; / CV</span>
+                  <span class="fc-value" data-i18n="footer.cv_value">Preview &amp; download (PDF)</span>
+                </span>
+                <svg class="fc-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </li>
+
+            <li class="footer-contact footer-contact--email">
+              <a class="fc-link" href="mailto:contact@nadirdesign.com">
+                <span class="fc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></span>
+                <span class="fc-text"><span class="fc-label" data-i18n="footer.contact_email">Email</span><span class="fc-value">contact@nadirdesign.com</span></span>
+                <svg class="fc-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <button type="button" class="fc-copy" data-copy-value="contact@nadirdesign.com" data-i18n-aria-label="footer.copy_label" aria-label="Copy email address">
+                <svg class="icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="icon-copied" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                <span class="fc-copy-tip" data-i18n="footer.copy_done" aria-hidden="true">Copied!</span>
+              </button>
+            </li>
+            <li class="footer-contact footer-contact--whatsapp">
+              <a class="fc-link" href="https://wa.me/213562296233" target="_blank" rel="noopener noreferrer">
+                <span class="fc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.014 2C6.486 2 2 6.486 2 12.014c0 1.784.469 3.53 1.36 5.062L2 22l4.98-1.33a10.02 10.02 0 0 0 5.034 1.345h.004c5.528 0 10.014-4.486 10.014-10.014C22.028 6.486 17.542 2 12.014 2zm0 18.24h-.003a8.198 8.198 0 0 1-4.181-1.147l-.3-.178-3.108.831.83-3.032-.196-.31a8.19 8.19 0 0 1-1.256-4.39c0-4.53 3.686-8.216 8.218-8.216 2.195 0 4.259.856 5.812 2.41a8.163 8.163 0 0 1 2.405 5.815c0 4.531-3.687 8.217-8.221 8.217z"/></svg></span>
+                <span class="fc-text"><span class="fc-label" data-i18n="footer.contact_whatsapp">WhatsApp</span><span class="fc-value" dir="ltr">+213 562 296 233</span></span>
+                <svg class="fc-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="footer-contact footer-contact--linkedin">
+              <a class="fc-link" href="https://www.linkedin.com/in/nadir-mostefaoui/" target="_blank" rel="noopener noreferrer">
+                <span class="fc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+                <span class="fc-text"><span class="fc-label" data-i18n="footer.contact_linkedin">LinkedIn</span><span class="fc-value">nadir-mostefaoui</span></span>
+                <svg class="fc-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="footer-contact footer-contact--instagram">
+              <a class="fc-link" href="https://www.instagram.com/nadir.mostefaoui/" target="_blank" rel="noopener noreferrer">
+                <span class="fc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 9.837a3.836 3.836 0 1 1 0-7.672 3.836 3.836 0 0 1 0 7.672zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></span>
+                <span class="fc-text"><span class="fc-label" data-i18n="footer.contact_instagram">Instagram</span><span class="fc-value">@nadir.mostefaoui</span></span>
+                <svg class="fc-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          <span aria-hidden="true">© <span id="footer-year">2026</span></span>
+          <span data-i18n="footer.copyright">Nadir Mostefaoui. All rights reserved.</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" aria-label="Back to top" data-i18n-aria-label="nav.back_to_top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
+
+  <!-- CV preview modal -->
+  <div class="cv-modal" id="cvModal" data-cv-pdf="../assets/Nadir%20Mostefaoui%20-%20Product%20Designer%20-%20CV.pdf" data-cv-drive="https://drive.google.com/file/d/17PZuv0eNJtF4kpKACKFVq0LDZ2lMQkL3/view?usp=sharing" hidden>
+    <div class="cv-modal__backdrop" data-cv-close></div>
+    <div class="cv-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+      <div class="cv-modal__head">
+        <div class="cv-modal__titles">
+          <h2 class="cv-modal__title" id="cvModalTitle" data-i18n="footer.cv_title">Curriculum Vitae</h2>
+          <p class="cv-modal__sub" data-i18n="footer.cv_sub">Nadir Mostefaoui &#8212; Product Designer</p>
+        </div>
+        <button type="button" class="cv-modal__close" data-cv-close data-i18n-aria-label="footer.cv_close" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="cv-modal__body">
+        <iframe class="cv-modal__frame" title="CV preview" src="about:blank" data-cv-src="../assets/Nadir%20Mostefaoui%20-%20Product%20Designer%20-%20CV.pdf#view=FitH"></iframe>
+      </div>
+      <div class="cv-modal__foot">
+        <a class="btn btn-dark" href="../assets/Nadir%20Mostefaoui%20-%20Product%20Designer%20-%20CV.pdf" download="Nadir Mostefaoui - Product Designer - CV.pdf">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          <span data-i18n="footer.cv_download">Download PDF</span>
+        </a>
+        <a class="btn btn-ghost-fill" href="https://drive.google.com/file/d/17PZuv0eNJtF4kpKACKFVq0LDZ2lMQkL3/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="footer.cv_open">Open in new tab</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared behaviour: theme, i18n (nav/footer + lang switcher), footer form -->
+  <script src="../js/theme.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/footer.js"></script>
+  <script src="../js/cv.js"></script>
+  <script src="../js/case-study.js"></script>
+
+  <!-- Subpage chrome: cursor, navbar, back-to-top -->
+  <script>
+    /* Custom cursor */
+    (function () {
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+      if (!dot || !ring) return;
+      let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, shown = false;
+      const SPRING = 0.10;
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        if (!shown) { shown = true; dot.classList.add('cur-visible'); ring.classList.add('cur-visible'); }
+        dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
+      }, { passive: true });
+      (function animate() {
+        ringX += (mouseX - ringX) * SPRING; ringY += (mouseY - ringY) * SPRING;
+        ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+        requestAnimationFrame(animate);
+      })();
+      document.querySelectorAll('a, button, [role="button"]').forEach(el => {
+        el.addEventListener('mouseenter', () => { dot.classList.add('cur-hover'); ring.classList.add('cur-hover'); });
+        el.addEventListener('mouseleave', () => { dot.classList.remove('cur-hover'); ring.classList.remove('cur-hover'); });
+      });
+      document.addEventListener('mouseleave', () => { dot.classList.remove('cur-visible'); ring.classList.remove('cur-visible'); });
+      document.addEventListener('mouseenter', () => { if (shown) { dot.classList.add('cur-visible'); ring.classList.add('cur-visible'); } });
+    })();
+
+    /* Navbar: compact on scroll + mobile menu (logo navigates home normally) */
+    (function () {
+      const navbar = document.getElementById('navbar');
+      const toggle = document.getElementById('nav-toggle');
+      const navMenu = document.getElementById('nav-links');
+      const backdrop = document.getElementById('nav-backdrop');
+      const MOBILE_QUERY = '(max-width: 900px)';
+      if (!navbar || !toggle || !navMenu) return;
+      const isOpen = () => navMenu.classList.contains('open');
+      function openMenu() { navMenu.classList.add('open'); if (backdrop) backdrop.classList.add('is-visible'); toggle.setAttribute('aria-expanded','true'); toggle.setAttribute('aria-label','Close menu'); document.body.style.overflow='hidden'; }
+      function closeMenu() { navMenu.classList.remove('open'); if (backdrop) backdrop.classList.remove('is-visible'); toggle.setAttribute('aria-expanded','false'); toggle.setAttribute('aria-label','Open menu'); document.body.style.overflow=''; }
+      const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 12);
+      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+      toggle.addEventListener('click', () => isOpen() ? closeMenu() : openMenu());
+      if (backdrop) backdrop.addEventListener('click', () => { if (isOpen()) closeMenu(); });
+      /* Same-page anchors (e.g. the "Contact Me" CTA) must not use the
+         native jump while the open menu holds body{overflow:hidden} — it
+         lands at the wrong offset. Unlock first, then scroll ourselves.
+         Cross-page links (../index.html#experience) fall through. */
+      navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', e => {
+        if (!isOpen()) return;
+        const href = link.getAttribute('href') || '';
+        const target = href.startsWith('#') && href.length > 1 ? document.getElementById(href.slice(1)) : null;
+        if (target) {
+          e.preventDefault();
+          closeMenu();
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', location.pathname + location.search);
+          }));
+          return;
+        }
+        closeMenu();
+      }));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) { closeMenu(); toggle.focus(); } });
+      const desktopQuery = window.matchMedia(MOBILE_QUERY);
+      const handle = mq => { if (!mq.matches && isOpen()) closeMenu(); };
+      if (desktopQuery.addEventListener) desktopQuery.addEventListener('change', () => handle(desktopQuery));
+      else if (desktopQuery.addListener) desktopQuery.addListener(() => handle(desktopQuery));
+    })();
+
+    /* Projects dropdown: click-to-toggle (desktop hover already works via
+       CSS; this covers touch/keyboard users and drives the mobile accordion) */
+    (function () {
+      document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+        const btn = item.querySelector('.nav-dropdown-toggle');
+        if (!btn) return;
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const open = item.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      });
+
+      /* Close the panel when a link inside it is chosen. Matters for
+         same-page anchors ("All projects" -> #work on the homepage),
+         where without this the click-toggled state and :focus-within
+         would keep the panel pinned open over the section it jumped to. */
+      document.querySelectorAll('.nav-item.has-dropdown .nav-dropdown a').forEach(a => {
+        a.addEventListener('click', () => {
+          const item = a.closest('.nav-item.has-dropdown');
+          if (item) {
+            item.classList.remove('is-open');
+            const btn = item.querySelector('.nav-dropdown-toggle');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          }
+          a.blur();
+        });
+      });
+      document.addEventListener('click', e => {
+        document.querySelectorAll('.nav-item.has-dropdown.is-open').forEach(item => {
+          if (!item.contains(e.target)) {
+            item.classList.remove('is-open');
+            const btn = item.querySelector('.nav-dropdown-toggle');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key !== 'Escape') return;
+        document.querySelectorAll('.nav-item.has-dropdown.is-open').forEach(item => {
+          item.classList.remove('is-open');
+          const btn = item.querySelector('.nav-dropdown-toggle');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    /* Back to top */
+    (function () {
+      const btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      const showThreshold = () => window.innerHeight * 0.8;
+      const onScroll = () => btn.classList.toggle('is-visible', window.scrollY > showThreshold());
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true }); onScroll();
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+  </script>
+</body>
+</html>
