@@ -209,15 +209,25 @@ section { padding: var(--section-py) 0; }
   color: var(--blue);
   margin-bottom: 16px;
 }
+/* Seed mark: a dot with a shoot growing out of it toward the label.
+   Replaces the plain dash and echoes the Nawat seed motif. */
 .section-label::before {
   content: '';
   display: block;
-  width: 24px;
-  height: 1.5px;
-  background: var(--blue);
+  flex-shrink: 0;
+  width: 28px;
+  height: 6px;
+  color: var(--blue);
+  background:
+    radial-gradient(circle at 3px 50%, currentColor 0 2.5px, transparent 3px),
+    linear-gradient(to right, currentColor, transparent);
+  background-size: 100% 100%, 19px 1.5px;
+  background-position: 0 50%, 9px 50%;
+  background-repeat: no-repeat;
 }
 html[dir="rtl"] .section-label::before {
   order: 1;
+  transform: scaleX(-1);
 }
 
 .section-title {
@@ -2488,7 +2498,7 @@ html[dir="rtl"] .form-select {
 
 /* Section labels: neutral */
 .section-label { color: var(--c-text-60); }
-.section-label::before { background: var(--c-text-30); }
+.section-label::before { color: var(--c-text-30); }
 
 /* Service card hover: dark tint */
 .service-card:hover .service-icon-wrap {
@@ -3457,7 +3467,7 @@ html[dir="ltr"] .pull-quote-mark::after {
   color: rgba(255, 255, 255, 0.55);
 }
 [data-theme="dark"] .manifesto .section-label::before {
-  background: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.25);
 }
 
 /* Responsive */
@@ -3481,3 +3491,39 @@ html[dir="ltr"] .pull-quote-mark::after {
   .manifesto-aside { flex-direction: column; align-items: center; }
 }
 
+
+/* ================================================================
+   ARABIC SMALL LABELS
+   Arabic is a connected script: letter-spacing severs the joins
+   between letters, so tracked 10-11px labels render as broken and
+   look cut off. Drop the tracking, give the line room for
+   diacritics, and size up the Arabic run only — Latin and French
+   labels keep the tracking they were designed with.
+   (.hero-latin-track is deliberately excluded: it's a decorative
+   Latin-only track where the wide spacing is the point.)
+   ================================================================ */
+html[lang="ar"] .section-label,
+html[lang="ar"] .footer-col-title,
+html[lang="ar"] .founder-role,
+html[lang="ar"] .manifesto-label-text,
+html[lang="ar"] .nwp-label,
+html[lang="ar"] .team-divider-label,
+html[lang="ar"] .work-coming-badge,
+html[lang="ar"] .caption,
+html[lang="ar"] .scroll-label,
+html[lang="ar"] .work-tag {
+  letter-spacing: 0;
+  line-height: 1.75;
+}
+html[lang="ar"] .section-label .t-ar,
+html[lang="ar"] .footer-col-title .t-ar,
+html[lang="ar"] .founder-role .t-ar,
+html[lang="ar"] .manifesto-label-text .t-ar,
+html[lang="ar"] .nwp-label .t-ar,
+html[lang="ar"] .team-divider-label .t-ar,
+html[lang="ar"] .work-coming-badge .t-ar,
+html[lang="ar"] .caption .t-ar,
+html[lang="ar"] .scroll-label .t-ar,
+html[lang="ar"] .work-tag .t-ar {
+  font-size: 13px;
+}

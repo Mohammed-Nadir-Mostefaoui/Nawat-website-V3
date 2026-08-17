@@ -1618,6 +1618,43 @@
       padding: 24px 0;
     }
 
+    /* ================================================================
+       ARABIC SMALL LABELS
+       Arabic is a connected script: letter-spacing severs the joins
+       between letters, so tracked 10-11px labels read as broken and
+       cut off. Drop the tracking, size up, and give the line room for
+       diacritics. Latin/French labels keep their intentional tracking.
+       ================================================================ */
+    html[lang="ar"] .cs-hero-meta,
+    html[lang="ar"] .cs-section-label,
+    html[lang="ar"] .cs-meta-k,
+    html[lang="ar"] .cs-scope-col-title,
+    html[lang="ar"] .cs-note-label,
+    html[lang="ar"] .cs-layer-badge,
+    html[lang="ar"] .cs-gallery-sub,
+    html[lang="ar"] .cs-status-pill,
+    html[lang="ar"] .cs-close-eyebrow,
+    html[lang="ar"] .cs-aside-label,
+    html[lang="ar"] .cs-reach-label {
+      letter-spacing: 0;
+      line-height: 1.75;
+    }
+    /* Size only the Arabic run, so embedded Latin (LinkedIn, WCAG, 01)
+       keeps its own scale inside the same label */
+    html[lang="ar"] .cs-hero-meta .t-ar,
+    html[lang="ar"] .cs-section-label .t-ar,
+    html[lang="ar"] .cs-meta-k .t-ar,
+    html[lang="ar"] .cs-scope-col-title .t-ar,
+    html[lang="ar"] .cs-note-label .t-ar,
+    html[lang="ar"] .cs-layer-badge .t-ar,
+    html[lang="ar"] .cs-gallery-sub .t-ar,
+    html[lang="ar"] .cs-status-pill .t-ar,
+    html[lang="ar"] .cs-close-eyebrow .t-ar,
+    html[lang="ar"] .cs-aside-label .t-ar,
+    html[lang="ar"] .cs-reach-label .t-ar {
+      font-size: 13px;
+    }
+
     /* Back-to-top picks up the page accent instead of the site blue */
     .back-to-top {
       background: var(--cs-accent);
@@ -2855,9 +2892,9 @@
       <span class="t-fr">WCAG 2.1 AA, intégré à la fondation</span>
     </h2>
     <p class="cs-section-body">
-      <span class="t-ar">لم نكتفِ بتوثيق المعيار. حوّلناه إلى رموز، وإلى فحوصات قابلة لإعادة الاستخدام داخل فيغما (مصفوفة تباين ومكوّن هدف لمس ٤٤×٤٤)، وإلى مسار اختبار يعمل الفريق كله مقابله.</span>
-      <span class="t-en">We didn't just document the standard. We turned it into tokens, into reusable checks inside Figma (a contrast matrix and a 44×44 touch-target component), and into a testing workflow the whole team designs and builds against.</span>
-      <span class="t-fr">Nous n'avons pas seulement documenté la norme. Nous l'avons traduite en tokens, en contrôles réutilisables dans Figma (une matrice de contraste et un composant de cible tactile 44×44) et en un workflow de test que toute l'équipe applique.</span>
+      <span class="t-ar">لم نكتفِ بتوثيق المعيار. حوّلناه إلى رموز، وإلى فحوصات قابلة لإعادة الاستخدام داخل فيغما (مصفوفة تباين ومكوّن هدف لمس ٤٤×٤٤).</span>
+      <span class="t-en">We didn't just document the standard. We turned it into tokens, into reusable checks inside Figma (a contrast matrix and a 44×44 touch-target component).</span>
+      <span class="t-fr">Nous n'avons pas seulement documenté la norme. Nous l'avons traduite en tokens, en contrôles réutilisables dans Figma (une matrice de contraste et un composant de cible tactile 44×44).</span>
     </p>
   </div>
 
@@ -2922,14 +2959,14 @@
     <div class="cs-a11y-item reveal">
       <h3 class="cs-a11y-title">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        <span class="t-ar">قابل للاختبار، لا موثَّق فقط</span>
-        <span class="t-en">Testable, not just documented</span>
-        <span class="t-fr">Testable, pas seulement documenté</span>
+        <span class="t-ar">مبنيّ ليُختبر</span>
+        <span class="t-en">Built to be tested</span>
+        <span class="t-fr">Conçu pour être testé</span>
       </h3>
       <p class="cs-a11y-desc">
-        <span class="t-ar">أنشأنا مسار فحص على كل سطح، إضافات تباين في فيغما، axe و Lighthouse على الويب، VoiceOver و TalkBack على الموبايل، ليُتحقَّق من إمكانية الوصول عند كل استلام، لا أن تُفترَض.</span>
-        <span class="t-en">We set up a checking workflow across every surface, contrast plugins in Figma, axe and Lighthouse on web, VoiceOver and TalkBack on mobile, so accessibility is verified at each handoff, not assumed.</span>
-        <span class="t-fr">Nous avons mis en place un workflow de vérification sur chaque surface, plugins de contraste dans Figma, axe et Lighthouse sur le web, VoiceOver et TalkBack sur mobile, pour que l'accessibilité soit vérifiée à chaque livraison, pas supposée.</span>
+        <span class="t-ar">تعني الرموز وفحوصات فيغما أن مسار تحقق كامل سريع الإعداد بمجرد أن يدخل النظام إلى منتج فعلي قيد الاستخدام. هذا المسار لم يحدث بعد تحديداً على إكسير، والصحيح اليوم هو أن إمكانية الوصول مبنية في الأساس، لا مضافة لاحقاً.</span>
+        <span class="t-en">The tokens and Figma checks mean a full verification pass is fast to set up once the system ships into a live product. That pass hasn't happened yet on Iksir specifically, what's true today is that accessibility is built into the foundation, not bolted on after.</span>
+        <span class="t-fr">Les tokens et les contrôles Figma font qu'une vérification complète est rapide à mettre en place une fois le système intégré à un produit en production. Cette vérification n'a pas encore eu lieu sur Iksir en particulier, ce qui est vrai aujourd'hui, c'est que l'accessibilité est intégrée à la fondation, pas ajoutée après coup.</span>
       </p>
     </div>
 
