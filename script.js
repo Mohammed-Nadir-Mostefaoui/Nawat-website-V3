@@ -445,9 +445,9 @@ function initProcess() {
    ================================================================ */
 /* Same concepts from the original ticker, translated per language */
 const TICKER_ITEMS = {
-  ar: ['الهوية البصرية', 'نظام التصميم', 'تجربة المستخدم', 'النمذجة التفاعلية', 'اختبار المستخدم', 'تصميم المنتج', 'الاستراتيجية الرقمية', 'نظام التصميم', 'nawat.studio', 'MENA · Global'],
-  en: ['Visual Identity', 'Design System', 'UX Design', 'Interactive Prototyping', 'User Testing', 'Product Design', 'Digital Strategy', 'Design System', 'nawat.studio', 'MENA · Global'],
-  fr: ['Identité Visuelle', 'Design System', 'Expérience Utilisateur', 'Prototypage Interactif', 'Tests Utilisateurs', 'Design Produit', 'Stratégie Numérique', 'Design System', 'nawat.studio', 'MENA · Global'],
+  ar: ['الهوية البصرية', 'نظام التصميم', 'تدقيق المنتج', '١٬٠٣٣ متغيّراً', 'اختبار المستخدم', 'تصميم المنتج', 'أنظمة ثنائية الاتجاه', 'نظام التصميم', 'nawat.studio', 'MENA · Global'],
+  en: ['Visual Identity', 'Design System', 'Product Audit', '1,033 Variables', 'User Testing', 'Product Design', 'Bidirectional Systems', 'Design System', 'nawat.studio', 'MENA · Global'],
+  fr: ['Identité Visuelle', 'Design System', 'Audit Produit', '1 033 Variables', 'Tests Utilisateurs', 'Design Produit', 'Systèmes Bidirectionnels', 'Design System', 'nawat.studio', 'MENA · Global'],
 };
 
 function buildTicker(lang) {

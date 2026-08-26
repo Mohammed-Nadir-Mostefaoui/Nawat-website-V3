@@ -2336,8 +2336,15 @@ html[dir="rtl"] .form-submit:hover svg {
   .work-card.secondary,
   .work-card.wide { grid-column: span 12; }
 
-  .founder-layout { grid-template-columns: 1fr; }
-  .founder-photo-block { max-width: 380px; margin: 0 auto; }
+  .founder-layout {
+    grid-template-columns: 100px 1fr;
+    column-gap: 20px;
+    row-gap: 24px;
+    align-items: start;
+  }
+  .founder-photo-block { max-width: 100px; margin: 0; }
+  .founder-photo-wrap { border-radius: var(--radius-md); }
+  .founder-photo-caption { display: none; }
 
   .process-grid {
     grid-template-columns: 1fr;
