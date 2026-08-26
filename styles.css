@@ -1701,13 +1701,6 @@ html[dir="rtl"] .founder-layout { direction: rtl; }
   max-width: 60ch;
 }
 
-.route-escalation {
-  font-size: clamp(13px, 1.1vw, 14.5px);
-  line-height: 1.7;
-  color: var(--c-text-60);
-  max-width: 60ch;
-}
-
 .route-cta {
   margin-top: 12px;
   align-self: flex-start;
