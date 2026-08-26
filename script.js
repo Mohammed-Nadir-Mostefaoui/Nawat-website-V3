@@ -220,6 +220,7 @@ function initLangPill() {
 function initSectionTracker() {
   // Map section IDs → nav link hrefs
   const sectionMap = {
+    'founder'   : '[href="#founder"]',
     'services'  : '[href="#services"]',
     'work'      : '[href="#work"], .nav-work-trigger',
     'process'   : '[href="#process"]',
@@ -516,13 +517,64 @@ function initContactForm() {
   const success = $('#formSuccess');
   if (!form) return;
 
+  const FIELD_ERRORS = {
+    ar: { required: 'هذا الحقل مطلوب',              email: 'يرجى إدخال بريد إلكتروني صالح' },
+    en: { required: 'This field is required',        email: 'Please enter a valid email' },
+    fr: { required: 'Ce champ est requis',            email: 'Veuillez entrer un email valide' },
+  };
+
+  // Clear a field's error state as soon as it becomes valid again
+  form.querySelectorAll('[required]').forEach(field => {
+    field.addEventListener('input', () => {
+      if (field.checkValidity()) {
+        const group = field.closest('.form-group');
+        if (group) group.classList.remove('has-error');
+      }
+    });
+  });
+
+  function validateForm(lang) {
+    let firstInvalid = null;
+
+    form.querySelectorAll('[required]').forEach(field => {
+      const group   = field.closest('.form-group');
+      const errorEl = group ? group.querySelector('.form-error-msg') : null;
+
+      if (field.checkValidity()) {
+        if (group) group.classList.remove('has-error');
+        return;
+      }
+
+      if (!firstInvalid) firstInvalid = field;
+      if (group) group.classList.add('has-error');
+      if (errorEl) {
+        errorEl.textContent = field.validity.typeMismatch
+          ? FIELD_ERRORS[lang].email
+          : FIELD_ERRORS[lang].required;
+      }
+    });
+
+    return firstInvalid;
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('.form-submit');
     const lang = document.documentElement.getAttribute('data-lang') || 'ar';
 
+    const firstInvalid = validateForm(lang);
+    if (firstInvalid) {
+      firstInvalid.focus();
+      return;
+    }
+
     const loadingText = { ar: 'جارٍ الإرسال...', en: 'Sending...', fr: 'Envoi...' };
     const errorText   = { ar: 'حدث خطأ. حاول مجدداً.', en: 'Something went wrong. Please try again.', fr: 'Une erreur est survenue. Réessayez.' };
+
+    // Capture the button's real markup (labels + icon) once, so it can be
+    // restored exactly after a loading/error state — textContent would
+    // otherwise permanently delete the t-ar/t-en/t-fr spans and the icon.
+    const originalHTML = btn.innerHTML;
 
     btn.disabled = true;
     btn.textContent = loadingText[lang];
@@ -551,11 +603,11 @@ function initContactForm() {
       console.error('Form submission error:', err);
       btn.disabled = false;
       btn.textContent = errorText[lang];
-      // Re-enable after 3 s so user can retry
+      // Re-enable after 3 s so user can retry — restore the button's
+      // original markup rather than trying to re-find spans that no
+      // longer exist in the DOM.
       setTimeout(() => {
-        const spans = form.querySelectorAll('.form-submit .t-ar, .form-submit .t-en, .form-submit .t-fr');
-        btn.textContent = '';
-        spans.forEach(s => btn.appendChild(s));
+        btn.innerHTML = originalHTML;
       }, 3000);
     }
   });

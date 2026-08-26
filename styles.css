@@ -27,6 +27,8 @@
   --blue-85:   rgba(37,99,235, 0.85);
   --blue-15:   rgba(37,99,235, 0.15);
   --blue-08:   rgba(37,99,235, 0.08);
+  --error:     #DC2626;
+  --error-08:  rgba(220,38,38, 0.08);
 
   /* Semantic Tokens — Light Mode */
   --c-bg:         var(--white);
@@ -1335,6 +1337,15 @@ html[data-lang="fr"] .pipeline-name.t-fr { display: block !important; }
   aspect-ratio: 4/3;
 }
 
+/* The full-width featured card (the one real, published case study)
+   would otherwise scale its 16:9 image to the entire row width —
+   capped instead so the mockup preview stays proportioned rather
+   than dominating the section. */
+.work-card.full .work-card-image {
+  aspect-ratio: unset;
+  height: clamp(240px, 28vw, 420px);
+}
+
 .work-card-placeholder {
   position: absolute;
   inset: 0;
@@ -1446,20 +1457,15 @@ html[data-lang="fr"] .pipeline-name.t-fr { display: block !important; }
 /* ================================================================
    FOUNDER / TEAM
    ================================================================ */
-/* Temporarily hidden — re-enable when founder/team content is ready */
-#founder   { display: none !important; }
-#sd-founder { display: none !important; }
-
 .founder-section {
   background: var(--c-bg);
 }
 
 .founder-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 7fr;
   gap: clamp(40px, 6vw, 80px);
   align-items: center;
-  margin-bottom: clamp(60px, 10vw, 120px);
 }
 
 html[dir="rtl"] .founder-layout { direction: rtl; }
@@ -1512,27 +1518,17 @@ html[dir="rtl"] .founder-layout { direction: rtl; }
   color: var(--c-text-30);
 }
 
-.founder-caption {
-  position: absolute;
-  bottom: 20px;
-  inset-inline: 20px;
-  background: var(--c-bg);
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-md);
-  padding: 12px 16px;
-  backdrop-filter: blur(16px);
+.founder-photo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.founder-caption-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--c-text);
-}
-
-.founder-caption-subtitle {
+.founder-photo-caption {
   font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--c-text-60);
-  margin-top: 2px;
 }
 
 .founder-bio-wrap {
@@ -1561,63 +1557,54 @@ html[dir="rtl"] .founder-layout { direction: rtl; }
 }
 
 .founder-title {
-  font-size: clamp(15px, 1.5vw, 18px);
-  font-weight: 400;
-  color: var(--c-text-60);
-}
-
-.founder-desc {
-  font-size: clamp(15px, 1.3vw, 17px);
-  line-height: 1.75;
-  color: var(--c-text-85);
-  max-width: 45ch;
-}
-
-.founder-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.founder-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--c-text-60);
-  background: var(--c-surface);
-  border: 1px solid var(--c-border);
-  border-radius: 100px;
-  padding: 8px 16px;
-  transition: all var(--t-fast);
-  text-decoration: none;
-}
-.founder-link:hover {
+  font-size: clamp(19px, 2.2vw, 26px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   color: var(--c-text);
-  border-color: var(--c-text);
-  background: transparent;
+  max-width: 40ch;
 }
 
-/* Team Cards */
-.team-divider {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-bottom: 48px;
-}
-.team-divider::before, .team-divider::after {
-  content: '';
-  flex: 1;
+.founder-divider-rule {
+  width: 40px;
   height: 1px;
   background: var(--c-border);
 }
-.team-divider-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--c-text-30);
+
+.founder-desc {
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  line-height: 1.75;
+  color: var(--c-text-60);
+  max-width: 48ch;
+}
+
+.founder-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.founder-socials {
+  display: flex;
+  gap: 8px;
+}
+
+.founder-social {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-60);
+  transition: all var(--t-fast);
+}
+.founder-social:hover {
+  border-color: var(--c-text);
+  color: var(--c-text);
 }
 
 .team-grid {
@@ -1675,6 +1662,55 @@ html[dir="rtl"] .founder-layout { direction: rtl; }
   font-size: 13px;
   color: var(--c-text-60);
   margin-top: 4px;
+}
+
+/* ================================================================
+   ROUTE TO NADIRDESIGN.COM
+   Reciprocal routing block, placed right after Founder. .route-lead
+   and .route-body are shared copy with nadirdesign.com — keep them
+   verbatim and in sync across both sites if they ever change.
+   ================================================================ */
+.route-section {
+  background: var(--c-bg);
+}
+
+.route-content {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.route-framing {
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--c-text-60);
+}
+
+.route-lead {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--c-text);
+}
+
+.route-body {
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.75;
+  color: var(--c-text-85);
+  max-width: 60ch;
+}
+
+.route-escalation {
+  font-size: clamp(13px, 1.1vw, 14.5px);
+  line-height: 1.7;
+  color: var(--c-text-60);
+  max-width: 60ch;
+}
+
+.route-cta {
+  margin-top: 12px;
+  align-self: flex-start;
 }
 
 /* ================================================================
@@ -1824,6 +1860,39 @@ html[dir="rtl"] .founder-layout { direction: rtl; }
   flex-shrink: 0;
 }
 
+.contact-status {
+  margin-top: 48px;
+  padding: 32px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-lg);
+}
+.contact-status-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.contact-status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--blue);
+  border-radius: 50%;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+.contact-status-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.contact-status-desc {
+  font-size: 14px;
+  color: var(--c-text-60);
+  line-height: 1.6;
+}
+
 /* Form */
 .contact-form {
   display: flex;
@@ -1841,6 +1910,26 @@ html[dir="rtl"] .founder-layout { direction: rtl; }
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.form-error-msg {
+  display: none;
+  font-size: 12px;
+  color: var(--error);
+}
+.form-group.has-error .form-error-msg {
+  display: block;
+}
+.form-group.has-error .form-input,
+.form-group.has-error .form-select,
+.form-group.has-error .form-textarea {
+  border-color: var(--error);
+}
+.form-group.has-error .form-input:focus,
+.form-group.has-error .form-select:focus,
+.form-group.has-error .form-textarea:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px var(--error-08);
 }
 #fname {
   scroll-margin-top: calc(var(--nav-h, 72px) + 16px);
@@ -2109,41 +2198,6 @@ html[dir="rtl"] .form-submit:hover svg {
 /* Blue highlight */
 .text-blue { color: var(--blue); }
 
-/* Number display */
-.stat-num {
-  font-size: clamp(36px, 5vw, 72px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--c-text);
-  font-family: var(--font-latin);
-}
-.stat-num span { color: var(--blue); }
-
-/* Stats Row */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: var(--c-border);
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-top: 80px;
-}
-
-.stat-item {
-  background: var(--c-bg);
-  padding: clamp(24px, 4vw, 48px);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.stat-label {
-  font-size: 13px;
-  color: var(--c-text-60);
-}
-
 /* Back to top */
 .back-to-top {
   position: fixed;
@@ -2290,7 +2344,7 @@ html[dir="rtl"] .form-submit:hover svg {
   .work-card.wide { grid-column: span 12; }
 
   .founder-layout { grid-template-columns: 1fr; }
-  .founder-photo-wrap { max-width: 380px; margin: 0 auto; }
+  .founder-photo-block { max-width: 380px; margin: 0 auto; }
 
   .process-grid {
     grid-template-columns: 1fr;
@@ -2317,8 +2371,6 @@ html[dir="rtl"] .form-submit:hover svg {
   .pull-quote-mark::after { font-size: 60px; }
 
   .form-row { grid-template-columns: 1fr; }
-
-  .stats-row { grid-template-columns: 1fr; }
 
   .footer-top {
     grid-template-columns: 1fr;
@@ -2353,9 +2405,6 @@ html[dir="ltr"] .pipeline-step:not(:first-child)::before {
 
 /* Nav layout for RTL */
 html[dir="rtl"] .nav-controls { margin-inline-start: auto; margin-inline-end: 0; }
-
-/* Stats RTL */
-html[dir="rtl"] .stat-num { direction: ltr; text-align: right; }
 
 /* ================================================================
    ANIMATIONS — Accessibility
@@ -2428,13 +2477,6 @@ html.no-transitions * { transition: none !important; }
 html[lang="en"] .nav-wordmark,
 html[lang="fr"] .nav-wordmark { font-family: var(--font-latin); }
 
-/* Stat number always LTR regardless of layout direction */
-.stat-num {
-  direction: ltr;
-  unicode-bidi: bidi-override;
-  display: inline-block;
-}
-
 /* Blue dot available pulse (reused in contact section) */
 @keyframes dotPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(37,99,235,0.4); }
@@ -2459,8 +2501,16 @@ html[dir="rtl"] .form-select {
 .work-card-body { flex: 1; display: flex; flex-direction: column; }
 .work-card-desc { flex: 1; }
 
-/* Founder section spacing refinement */
-.founder-section { padding-bottom: clamp(60px, 10vw, 140px); }
+/* Services → Founder → Route → Work run with no dividers between them
+   (they read as one continuous storytelling arc), so each boundary in
+   the run gets a tightened gap instead of two full section-paddings
+   stacking on top of each other. The real section break (with its own
+   divider) is at Work's bottom, into Process, which keeps the default
+   spacing on both sides. */
+.services       { padding-bottom: clamp(24px, 4vw, 48px); }
+.founder-section { padding-top: clamp(24px, 4vw, 48px); padding-bottom: clamp(24px, 4vw, 48px); }
+.route-section  { padding-top: clamp(24px, 4vw, 48px); padding-bottom: clamp(24px, 4vw, 48px); }
+.work           { padding-top: clamp(24px, 4vw, 48px); }
 
 /* ================================================================
    BLUE-REDUCTION OVERRIDES
@@ -2963,38 +3013,6 @@ body.intro-active { overflow: hidden; }
 .ui-mockup.brand-mockup .ui-mockup-dot:nth-child(2) { background: #ffbd2e; }
 .ui-mockup.brand-mockup .ui-mockup-dot:nth-child(3) { background: #27c93f; }
 
-/* ─ Founder highlight strip ─ */
-.founder-highlights {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--c-border);
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  margin-top: 32px;
-}
-.founder-highlight-item {
-  background: var(--c-bg);
-  padding: 24px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.founder-highlight-num {
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--c-text);
-  font-family: var(--font-latin);
-  line-height: 1;
-}
-.founder-highlight-label {
-  font-size: 12px;
-  color: var(--c-text-60);
-  line-height: 1.4;
-}
-
 /* ─ Process visual connector ─ */
 .process-visual {
   margin-top: 60px;
@@ -3311,7 +3329,6 @@ html[dir="ltr"] .pull-quote-mark::after {
 @media (max-width: 768px) {
   .nav-logo-mark { width: 40px; height: 40px; }
   .hero-calligraphy-main { width: clamp(220px, 82vw, 420px); }
-  .founder-highlights { grid-template-columns: 1fr 1fr; }
   .spectrum-top { grid-template-columns: repeat(3, 1fr); }
   /* Fill the empty cell in the last row when 5 items don't divide evenly */
   .spectrum-cell:last-child { grid-column: span 2; }
@@ -3323,7 +3340,6 @@ html[dir="ltr"] .pull-quote-mark::after {
 }
 @media (max-width: 480px) {
   .hero-latin-track { letter-spacing: 0.35em; }
-  .founder-highlights { grid-template-columns: 1fr; }
   .spectrum-top { grid-template-columns: 1fr 1fr; }
 }
 
@@ -3507,7 +3523,6 @@ html[lang="ar"] .footer-col-title,
 html[lang="ar"] .founder-role,
 html[lang="ar"] .manifesto-label-text,
 html[lang="ar"] .nwp-label,
-html[lang="ar"] .team-divider-label,
 html[lang="ar"] .work-coming-badge,
 html[lang="ar"] .caption,
 html[lang="ar"] .scroll-label,
@@ -3520,10 +3535,82 @@ html[lang="ar"] .footer-col-title .t-ar,
 html[lang="ar"] .founder-role .t-ar,
 html[lang="ar"] .manifesto-label-text .t-ar,
 html[lang="ar"] .nwp-label .t-ar,
-html[lang="ar"] .team-divider-label .t-ar,
 html[lang="ar"] .work-coming-badge .t-ar,
 html[lang="ar"] .caption .t-ar,
 html[lang="ar"] .scroll-label .t-ar,
 html[lang="ar"] .work-tag .t-ar {
   font-size: 13px;
 }
+
+
+/* ================================================================
+   SERVICES — register line (Product Audit / Design / Design System,
+   three named services, added when the seven-service list and the
+   Full Project package were retired)
+   ================================================================ */
+.service-card-register {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--c-text-60);
+}
+
+
+/* ================================================================
+   SERVICES — card restructure: hook line, deliverable list, per-card
+   note, "start here" tag. Bullet markers stay neutral gray, not blue,
+   so the accent keeps its one job (links, active states, stat numbers).
+   ================================================================ */
+.service-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.service-card-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-60);
+}
+.service-card-hook {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--c-text);
+}
+.service-card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.service-card-list li {
+  position: relative;
+  padding-inline-start: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--c-text-60);
+}
+.service-card-list li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background: var(--c-text-30);
+  border-radius: 1px;
+}
+.service-card-note {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--c-text-60);
+  padding-top: 16px;
+  border-top: 1px solid var(--c-border);
+}
+
+

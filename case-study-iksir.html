@@ -1692,6 +1692,11 @@
         <span class="t-en">Services</span>
         <span class="t-fr">Services</span>
       </a>
+      <a href="index.html#founder" class="nav-link">
+        <span class="t-ar">من نحن</span>
+        <span class="t-en">Who We Are</span>
+        <span class="t-fr">Qui Nous Sommes</span>
+      </a>
       <!-- Work nav with hover dropdown -->
       <div class="nav-work" id="navWork">
         <a href="index.html#work" class="nav-link nav-work-trigger" id="navWorkTrigger">
@@ -1859,6 +1864,11 @@
     <span class="t-ar">خدماتنا</span>
     <span class="t-en">Services</span>
     <span class="t-fr">Services</span>
+  </a>
+  <a href="index.html#founder" class="nav-link">
+    <span class="t-ar">من نحن</span>
+    <span class="t-en">Who We Are</span>
+    <span class="t-fr">Qui Nous Sommes</span>
   </a>
   <a href="index.html#work" class="nav-link">
     <span class="t-ar">أعمالنا</span>
@@ -2207,9 +2217,9 @@
           <span class="t-fr">L'identité visuelle de base d'Iksir, elle existait avant nous ; nous avons bâti un système numérique dessus</span>
         </li>
         <li>
-          <span class="t-ar">اختبار المستخدمين على نطاق واسع، النظام تحقّقنا منه مقابل شاشات قائمة ومُستخدَمة فعلاً، لا مقابل دراسة جديدة</span>
-          <span class="t-en">Large-scale user testing, the system was validated against existing, already-in-use screens, not a fresh study</span>
-          <span class="t-fr">Des tests utilisateurs à grande échelle, le système a été validé face à des écrans existants déjà utilisés, pas via une nouvelle étude</span>
+          <span class="t-ar">اختبار المستخدمين على نطاق واسع، النظام بُني على شاشات قائمة ومُستخدَمة فعلاً، لا مقابل دراسة جديدة</span>
+          <span class="t-en">Large-scale user testing, the system was built against existing, already-in-use screens, not a fresh study</span>
+          <span class="t-fr">Des tests utilisateurs à grande échelle, le système a été bâti à partir d'écrans existants déjà utilisés, pas via une nouvelle étude</span>
         </li>
       </ul>
     </div>
@@ -2908,9 +2918,9 @@
         <span class="t-fr">Le contraste comme contrat</span>
       </h3>
       <p class="cs-a11y-desc">
-        <span class="t-ar">٤.٥:١ للنص، و٣:١ للنص الكبير وعناصر الواجهة، مُتحقَّقاً منه في الوضعين الفاتح والداكن، والتركيبات غير الآمنة صُحِّحت على مستوى الرمز نفسه.</span>
-        <span class="t-en">4.5:1 for text, 3:1 for large text and UI, verified across light and dark, with unsafe combinations corrected at the token level.</span>
-        <span class="t-fr">4,5:1 pour le texte, 3:1 pour le grand texte et l'UI, vérifié en clair et en sombre, les combinaisons risquées corrigées au niveau du token.</span>
+        <span class="t-ar">٤.٥:١ للنص، و٣:١ للنص الكبير وعناصر الواجهة، في الوضعين الفاتح والداكن معاً، والتركيبات غير الآمنة صُحِّحت على مستوى الرمز نفسه.</span>
+        <span class="t-en">4.5:1 for text, 3:1 for large text and UI, in both light and dark, with unsafe combinations corrected at the token level.</span>
+        <span class="t-fr">4,5:1 pour le texte, 3:1 pour le grand texte et l'UI, en clair comme en sombre, les combinaisons risquées corrigées au niveau du token.</span>
       </p>
     </div>
 
@@ -2959,9 +2969,9 @@
     <div class="cs-a11y-item reveal">
       <h3 class="cs-a11y-title">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        <span class="t-ar">مبنيّ ليُختبر</span>
-        <span class="t-en">Built to be tested</span>
-        <span class="t-fr">Conçu pour être testé</span>
+        <span class="t-ar">جاهز للتحقّق</span>
+        <span class="t-en">Ready for verification</span>
+        <span class="t-fr">Prêt pour la vérification</span>
       </h3>
       <p class="cs-a11y-desc">
         <span class="t-ar">تعني الرموز وفحوصات فيغما أن مسار تحقق كامل سريع الإعداد بمجرد أن يدخل النظام إلى منتج فعلي قيد الاستخدام. هذا المسار لم يحدث بعد تحديداً على إكسير، والصحيح اليوم هو أن إمكانية الوصول مبنية في الأساس، لا مضافة لاحقاً.</span>
@@ -3333,6 +3343,7 @@
                   <span class="t-fr">Nom</span>
                 </label>
                 <input type="text" id="fname" name="name" class="form-input" required autocomplete="name">
+                <p class="form-error-msg" aria-live="polite"></p>
               </div>
               <div class="form-group">
                 <label class="form-label" for="femail">
@@ -3341,6 +3352,7 @@
                   <span class="t-fr">Email</span>
                 </label>
                 <input type="email" id="femail" name="email" class="form-input" required autocomplete="email">
+                <p class="form-error-msg" aria-live="polite"></p>
               </div>
             </div>
 
@@ -3361,17 +3373,13 @@
               </label>
               <!-- Pre-set to Design System: the reader arrived from the Iksir case study -->
               <select id="ftype" name="project_type" class="form-select"
-                data-opts-ar="اختر نوع المشروع,مشروع متكامل,الهوية البصرية,نظام التصميم,تصميم تجربة المستخدم,النمذجة التفاعلية,اختبار المستخدم,استراتيجية المنتج الرقمي,آخر"
-                data-opts-en="Select project type,Full Project,Visual Identity,Design System,UX Design,Interactive Prototyping,User Testing,Digital Product Strategy,Other"
-                data-opts-fr="Sélectionner le type,Projet Complet,Identité Visuelle,Design System,Design UX,Prototypage Interactif,Tests Utilisateurs,Stratégie Produit Numérique,Autre">
+                data-opts-ar="اختر نوع المشروع,تدقيق المنتج,تصميم المنتج,نظام التصميم,آخر"
+                data-opts-en="Select project type,Product Audit,Product Design,Design System,Other"
+                data-opts-fr="Sélectionner le type,Audit Produit,Product Design,Design System,Autre">
                 <option value="" disabled>اختر نوع المشروع</option>
-                <option value="full">مشروع متكامل</option>
-                <option value="identity">الهوية البصرية</option>
-                <option value="library" selected>نظام التصميم</option>
-                <option value="ux">تصميم تجربة المستخدم</option>
-                <option value="prototype">النمذجة التفاعلية</option>
-                <option value="testing">اختبار المستخدم</option>
-                <option value="strategy">استراتيجية المنتج الرقمي</option>
+                <option value="audit">تدقيق المنتج</option>
+                <option value="design">تصميم المنتج</option>
+                <option value="system" selected>نظام التصميم</option>
                 <option value="other">آخر</option>
               </select>
             </div>
@@ -3383,6 +3391,7 @@
                 <span class="t-fr">Votre Message</span>
               </label>
               <textarea id="fmessage" name="message" class="form-textarea" required rows="5"></textarea>
+              <p class="form-error-msg" aria-live="polite"></p>
             </div>
 
             <button type="submit" class="form-submit">
@@ -3460,24 +3469,19 @@
         </p>
         <ul class="footer-links">
           <li><a href="index.html#services" class="footer-link">
-            <span class="t-ar">الهوية البصرية</span>
-            <span class="t-en">Visual Identity</span>
-            <span class="t-fr">Identité Visuelle</span>
+            <span class="t-ar">تدقيق المنتج</span>
+            <span class="t-en">Product Audit</span>
+            <span class="t-fr">Audit Produit</span>
+          </a></li>
+          <li><a href="index.html#services" class="footer-link">
+            <span class="t-ar">تصميم المنتج</span>
+            <span class="t-en">Product Design</span>
+            <span class="t-fr">Product Design</span>
           </a></li>
           <li><a href="index.html#services" class="footer-link">
             <span class="t-ar">نظام التصميم</span>
             <span class="t-en">Design System</span>
             <span class="t-fr">Design System</span>
-          </a></li>
-          <li><a href="index.html#services" class="footer-link">
-            <span class="t-ar">تصميم UX</span>
-            <span class="t-en">UX Design</span>
-            <span class="t-fr">Design UX</span>
-          </a></li>
-          <li><a href="index.html#services" class="footer-link">
-            <span class="t-ar">اختبار المستخدم</span>
-            <span class="t-en">User Testing</span>
-            <span class="t-fr">Tests Utilisateurs</span>
           </a></li>
         </ul>
       </div>
@@ -3490,6 +3494,11 @@
           <span class="t-fr">Studio</span>
         </p>
         <ul class="footer-links">
+          <li><a href="index.html#founder" class="footer-link">
+            <span class="t-ar">من نحن</span>
+            <span class="t-en">Who We Are</span>
+            <span class="t-fr">Qui Nous Sommes</span>
+          </a></li>
           <li><a href="index.html#work" class="footer-link">
             <span class="t-ar">أعمالنا</span>
             <span class="t-en">Our Work</span>
