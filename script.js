@@ -1,6 +1,6 @@
 /* ================================================================
    NAWAT STUDIO — script.js
-   Digital Product Design Studio | نواة ستوديو
+   Digital Product Design Studio | استوديو نواة
    ================================================================ */
 
 'use strict';
@@ -224,7 +224,6 @@ function initSectionTracker() {
     'services'  : '[href="#services"]',
     'work'      : '[href="#work"], .nav-work-trigger',
     'process'   : '[href="#process"]',
-    'manifesto' : '[href="#manifesto"]',
   };
 
   const navLinks = $$('.nav-links .nav-link, .nav-links .nav-work-trigger, .mobile-menu .nav-link');

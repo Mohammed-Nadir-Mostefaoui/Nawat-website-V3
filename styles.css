@@ -1,6 +1,6 @@
 /* ================================================================
    NAWAT STUDIO — styles.css
-   Digital Product Design Studio | نواة ستوديو
+   Digital Product Design Studio | استوديو نواة
    ================================================================ */
 
 /* Fonts loaded via <link> in HTML — no duplicate @import needed */
@@ -3553,6 +3553,17 @@ html[lang="ar"] .work-tag .t-ar {
   line-height: 1.5;
   font-weight: 500;
   color: var(--c-text-60);
+}
+
+/* Product Audit is the one service with a published starting price. Same
+   figure and same wording as nadirdesign.com, so a visitor comparing the
+   two sites finds one number, not two stories. Design System and Product
+   Design stay scope-only per B&OS Section 20. */
+.service-card-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text);
+  letter-spacing: -0.01em;
 }
 
 

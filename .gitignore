@@ -1,2 +1,11 @@
 nawat-studio/
 Iksir Case study from personal brand/
+
+# Private working files. Never published.
+_internal/
+*.md
+*.pdf
+
+# OS and mount artifacts
+.DS_Store
+.fuse_hidden*
