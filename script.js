@@ -476,7 +476,7 @@ function initServiceCards() {
   const contact = $('#contact');
   if (!select || !contact) return;
 
-  $$('.service-card[data-service], .spectrum-cta[data-service]').forEach(card => {
+  $$('.service-card[data-service], .spectrum-cta[data-service], .services-bridge[data-service]').forEach(card => {
     // Handle both click and Enter/Space for keyboard users
     const activate = () => {
       const value = card.dataset.service;

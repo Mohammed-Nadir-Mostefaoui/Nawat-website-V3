@@ -3624,4 +3624,39 @@ html[lang="ar"] .work-tag .t-ar {
   border-top: 1px solid var(--c-border);
 }
 
+/* ================================================================
+   SERVICES — bridging note below the three cards. Visual identity is
+   never sold as its own line item (B&OS Section 20), only bundled
+   into a larger engagement, so it never gets a fourth card. This is
+   the site's one path from the hero's "identity to usability
+   testing" claim to an actual next step. Same click-to-contact
+   wiring as the cards above it (data-service="other").
+   ================================================================ */
+.services-bridge {
+  margin-top: 20px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--t-fast), border-color var(--t-fast);
+}
+.services-bridge:hover {
+  background: var(--c-surface);
+  border-color: var(--c-text-30);
+}
+.services-bridge:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+.services-bridge-text {
+  max-width: 640px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--c-text-60);
+}
+
 
