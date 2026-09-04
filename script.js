@@ -33,6 +33,67 @@ function toggleTheme() {
 }
 
 /* ================================================================
+   PER-LANGUAGE <head> METADATA
+   Each page identifies itself with <meta name="i18n-page">. Title and
+   description are the only two authored strings per language; they
+   drive <title>, the plain description tag, and both og:* and
+   twitter:* title/description together, so a shared link and a search
+   result match whatever language the visitor is reading in. Same
+   pattern as nadirdesign.com's js/i18n.js applyMeta().
+   ================================================================ */
+const I18N_META = {
+  home: {
+    ar: {
+      title: 'استوديو نواة | تصميم منتجات رقمية',
+      desc:  'استوديو تصميم منتجات رقمية، من الهوية البصرية إلى اختبار المستخدم. 1,033 متغيّر تصميم، 24 مكوّناً موثّقاً، ومعيار WCAG 2.1 AA.',
+    },
+    en: {
+      title: 'Nawat Studio | Digital Product Design',
+      desc:  'Digital product design studio, from visual identity to user testing. 1,033 design variables, 24 documented components, and WCAG 2.1 AA.',
+    },
+    fr: {
+      title: 'Nawat Studio | Design de Produits Numériques',
+      desc:  "Studio de design de produits numériques, de l'identité visuelle aux tests utilisateurs. 1 033 variables de design, 24 composants documentés, WCAG 2.1 AA.",
+    },
+  },
+  iksir: {
+    ar: {
+      title: 'نظام تصميم إكسير | استوديو نواة',
+      desc:  'نظام تصميم إكسير لداتاماستر، بـ1,033 متغيّراً، 24 مكوّناً موثّقاً، ومعيار WCAG 2.1 AA، بثلاث لغات.',
+    },
+    en: {
+      title: 'Iksir Design System | Nawat Studio',
+      desc:  'The Iksir design system for Datamaster. 1,033 variables, 24 documented components, WCAG 2.1 AA, in three languages.',
+    },
+    fr: {
+      title: 'Système de Design Iksir | Nawat Studio',
+      desc:  'Le design system Iksir pour Datamaster. 1 033 variables, 24 composants documentés, WCAG 2.1 AA, en trois langues.',
+    },
+  },
+};
+
+function applyMeta(lang) {
+  const pageTag = document.querySelector('meta[name="i18n-page"]');
+  if (!pageTag) return;
+
+  const page = I18N_META[pageTag.getAttribute('content')];
+  const m = page && page[lang];
+  if (!m) return;
+
+  const setMeta = (selector, value) => {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute('content', value);
+  };
+
+  document.title = m.title;
+  setMeta('meta[name="description"]', m.desc);
+  setMeta('meta[property="og:title"]', m.title);
+  setMeta('meta[property="og:description"]', m.desc);
+  setMeta('meta[name="twitter:title"]', m.title);
+  setMeta('meta[name="twitter:description"]', m.desc);
+}
+
+/* ================================================================
    LANGUAGE SWITCHER (AR / EN / FR)
    ================================================================ */
 const LANG_KEY = 'nawat-lang';
@@ -49,6 +110,9 @@ function applyLang(lang, save = true) {
   html.setAttribute('lang', lang);
   html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
   html.setAttribute('data-lang', lang);
+
+  // Swap <title>, description and og:*/twitter:* tags to this language
+  applyMeta(lang);
 
   // Update language buttons
   $$('.lang-btn').forEach(btn => {
@@ -444,7 +508,7 @@ function initProcess() {
    ================================================================ */
 /* Same concepts from the original ticker, translated per language */
 const TICKER_ITEMS = {
-  ar: ['الهوية البصرية', 'نظام التصميم', 'تدقيق المنتج', '١٬٠٣٣ متغيّراً', 'اختبار المستخدم', 'تصميم المنتج', 'أنظمة ثنائية الاتجاه', 'نظام التصميم', 'nawat.studio', 'MENA · Global'],
+  ar: ['الهوية البصرية', 'نظام التصميم', 'تدقيق المنتج', '1,033 متغيّراً', 'اختبار المستخدم', 'تصميم المنتج', 'أنظمة ثنائية الاتجاه', 'نظام التصميم', 'nawat.studio', 'MENA · Global'],
   en: ['Visual Identity', 'Design System', 'Product Audit', '1,033 Variables', 'User Testing', 'Product Design', 'Bidirectional Systems', 'Design System', 'nawat.studio', 'MENA · Global'],
   fr: ['Identité Visuelle', 'Design System', 'Audit Produit', '1 033 Variables', 'Tests Utilisateurs', 'Design Produit', 'Systèmes Bidirectionnels', 'Design System', 'nawat.studio', 'MENA · Global'],
 };
@@ -476,7 +540,7 @@ function initServiceCards() {
   const contact = $('#contact');
   if (!select || !contact) return;
 
-  $$('.service-card[data-service], .spectrum-cta[data-service], .services-bridge[data-service]').forEach(card => {
+  $$('.service-card[data-service], .spectrum-cta[data-service], .services-bridge-btn[data-service]').forEach(card => {
     // Handle both click and Enter/Space for keyboard users
     const activate = () => {
       const value = card.dataset.service;
@@ -502,9 +566,14 @@ function initServiceCards() {
     };
 
     card.addEventListener('click', activate);
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
-    });
+    // A real <button> already fires click on Enter and Space. Only the
+    // div-based cards need the key handler, otherwise the button would
+    // activate twice on every keypress.
+    if (card.tagName !== 'BUTTON') {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+      });
+    }
   });
 }
 

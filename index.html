@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="استوديو نواة، استوديو تصميم منتجات رقمية من الهوية البصرية إلى اختبار المستخدم | Nawat Studio, Digital Product Design from Visual Identity to User Testing">
+  <!-- i18n-page tells script.js which metadata block to apply, so the
+       title, description and social-share tags follow the selected
+       language instead of staying Arabic for every visitor. -->
+  <meta name="i18n-page" content="home">
+  <meta name="description" content="استوديو تصميم منتجات رقمية، من الهوية البصرية إلى اختبار المستخدم. 1,033 متغيّر تصميم، 24 مكوّناً موثّقاً، ومعيار WCAG 2.1 AA.">
   <meta name="theme-color" content="#F5F5F5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0E0E11" media="(prefers-color-scheme: dark)">
-  <meta property="og:title" content="استوديو نواة | Nawat Studio">
-  <meta property="og:description" content="أنظمة تصميم مبنية بـ1,033 متغيّراً في الإنتاج، ثنائية الاتجاه، ومُختبرة مع مستخدمين حقيقيين، Design Systems Built With 1,033 Production Variables, Shipped Bidirectional, Tested With Real Users">
+  <meta property="og:title" content="استوديو نواة | تصميم منتجات رقمية">
+  <meta property="og:description" content="استوديو تصميم منتجات رقمية، من الهوية البصرية إلى اختبار المستخدم. 1,033 متغيّر تصميم، 24 مكوّناً موثّقاً، ومعيار WCAG 2.1 AA.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nawat.studio">
   <meta property="og:image" content="https://nawat.studio/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="استوديو نواة | Nawat Studio">
-  <meta name="twitter:description" content="أنظمة تصميم مبنية بـ1,033 متغيّراً في الإنتاج، ثنائية الاتجاه، ومُختبرة مع مستخدمين حقيقيين، Design Systems Built With 1,033 Production Variables, Shipped Bidirectional, Tested With Real Users">
+  <meta name="twitter:title" content="استوديو نواة | تصميم منتجات رقمية">
+  <meta name="twitter:description" content="استوديو تصميم منتجات رقمية، من الهوية البصرية إلى اختبار المستخدم. 1,033 متغيّر تصميم، 24 مكوّناً موثّقاً، ومعيار WCAG 2.1 AA.">
   <meta name="twitter:image" content="https://nawat.studio/assets/og-image.png">
   <link rel="canonical" href="https://nawat.studio">
-  <title>استوديو نواة | Nawat Studio</title>
+  <title>استوديو نواة | تصميم منتجات رقمية</title>
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -333,7 +337,7 @@
     <!-- ③ Tagline + sub-text -->
     <div class="hero-text">
       <h1 class="hero-headline">
-        <span class="t-ar">لتصميم المنتجات الرقمية</span>
+        <span class="t-ar">استوديو تصميم المنتجات الرقمية</span>
         <span class="t-en">Digital Product Design Studio</span>
         <span class="t-fr">Studio de Design de Produits Numériques</span>
       </h1>
@@ -617,12 +621,27 @@
          fixed-scope cards above. Reuses the existing service-card
          click-to-contact wiring below (data-service="other" prefills the
          contact form's project-type field the same way the cards do). -->
-    <div class="services-bridge" data-service="other" role="button" tabindex="0" aria-label="Something bigger or spans more than one service, click to start a project">
-      <p class="services-bridge-text">
-        <span class="t-ar">تحتاج أيضاً إلى الهوية البصرية، أو شيء يتجاوز خدمة واحدة؟ أخبرنا بما تبنيه ونحدد النطاق معاً.</span>
-        <span class="t-en">Need visual identity too, or something that spans more than one service? Tell us what you're building and we'll scope it.</span>
-        <span class="t-fr">Besoin aussi d'identité visuelle, ou d'un projet qui dépasse un seul service ? Dites-nous ce que vous construisez et nous cadrerons le projet.</span>
-      </p>
+    <div class="services-bridge">
+      <div class="services-bridge-body">
+        <p class="services-bridge-label">
+          <span class="t-ar">خارج الثلاثة</span>
+          <span class="t-en">Beyond the Three</span>
+          <span class="t-fr">Au-delà des Trois</span>
+        </p>
+        <p class="services-bridge-text">
+          <span class="t-ar">تحتاج أيضاً إلى الهوية البصرية، أو شيء يتجاوز خدمة واحدة؟ أخبرنا بما تبنيه ونحدد النطاق معاً.</span>
+          <span class="t-en">Need visual identity too, or something that spans more than one service? Tell us what you're building and we'll scope it.</span>
+          <span class="t-fr">Besoin aussi d'identité visuelle, ou d'un projet qui dépasse un seul service ? Dites-nous ce que vous construisez et nous cadrerons le projet.</span>
+        </p>
+      </div>
+      <button type="button" class="btn btn-primary services-bridge-btn" data-service="other">
+        <span class="services-bridge-btn-label">
+          <span class="t-ar">ابدأ محادثة</span>
+          <span class="t-en">Start a Conversation</span>
+          <span class="t-fr">Démarrer la Conversation</span>
+        </span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
     </div>
 
   </div>
@@ -682,7 +701,7 @@
         <div class="founder-divider-rule" aria-hidden="true"></div>
 
         <p class="founder-desc">
-          <span class="t-ar">قاد نذير مشروع إكسير، نظام تصميم قائم على الرموز يضم ١٬٠٣٣ متغيّراً و٢٤ مكوّناً موثّقاً بكل حالاته، يمتد عبر الويب والموبايل. العربية والإنجليزية مدمجتان في الرموز نفسها لا مضافتان فوقها، مع دعم أصيل لاتجاه اليمين لليسار ومعيار WCAG 2.1 AA مدمج إلى جانبها. قاد المشروع وعمل معه مصمم ثانٍ. في عمل سابق على تطبيق عمليات تجزئة، خفّض وقت تنفيذ المهام بمقدار النصف في اختبارات مع مستخدمين حقيقيين. هو مؤسس استوديو نواة، حيث يمتد نطاق العمل أوسع تحت قيادة الشخص نفسه.</span>
+          <span class="t-ar">قاد نذير مشروع إكسير، نظام تصميم قائم على الرموز يضم 1,033 متغيّراً و24 مكوّناً موثّقاً بكل حالاته، يمتد عبر الويب والموبايل. العربية والإنجليزية مدمجتان في الرموز نفسها لا مضافتان فوقها، مع دعم أصيل لاتجاه اليمين لليسار ومعيار WCAG 2.1 AA مدمج إلى جانبها. قاد المشروع وعمل معه مصمم ثانٍ. في عمل سابق على تطبيق عمليات تجزئة، خفّض وقت تنفيذ المهام بمقدار النصف في اختبارات مع مستخدمين حقيقيين. هو مؤسس استوديو نواة، حيث يمتد نطاق العمل أوسع تحت قيادة الشخص نفسه.</span>
           <span class="t-en">He led Iksir, a token-first design system of 1,033 variables and 24 fully-stated components spanning web and mobile. Arabic and English are built into the tokens themselves, not layered on top, with native RTL support and WCAG 2.1 AA baked in alongside them. He led the project and a second designer worked alongside him. Earlier work on a retail operations app cut task execution time in half in testing with real users. He is the founder of Nawat Studio, where a wider range of work runs under the same person leading it.</span>
           <span class="t-fr">Il a dirigé Iksir, un système de design token-first de 1 033 variables et 24 composants entièrement documentés couvrant le web et le mobile. L'arabe et l'anglais sont intégrés aux tokens eux-mêmes, non ajoutés par-dessus, avec un support RTL natif et le standard WCAG 2.1 AA intégré à leurs côtés. Il a dirigé le projet et un second designer a travaillé à ses côtés. Un travail antérieur sur une application d'opérations retail a réduit de moitié le temps d'exécution des tâches lors de tests avec de vrais utilisateurs. Il est le fondateur de Nawat Studio, où une gamme de travail plus large se déploie sous la direction de la même personne.</span>
         </p>
@@ -848,7 +867,7 @@
             <span class="t-fr">Iksir, Design System des Produits Numériques</span>
           </h3>
           <p class="work-card-desc">
-            <span class="t-ar">أساس تصميم قائم على الرموز لمنتجات داتاماستر على الويب والموبايل، ١٠٣٣ متغيّراً، و٢٤ مكوّناً بكل حالاتها، ودعم أصيل للاتجاهين ومعيار WCAG 2.1 AA، مع منصّة توثيق يعمل منها المصمّم والمطوّر معاً.</span>
+            <span class="t-ar">أساس تصميم قائم على الرموز لمنتجات داتاماستر على الويب والموبايل، 1033 متغيّراً، و24 مكوّناً بكل حالاتها، ودعم أصيل للاتجاهين ومعيار WCAG 2.1 AA، مع منصّة توثيق يعمل منها المصمّم والمطوّر معاً.</span>
             <span class="t-en">A token-first design foundation for Datamaster's web and mobile products, 1,033 variables, 24 components with every state, native bidirectional support, WCAG 2.1 AA, and a documentation platform both designers and developers work from.</span>
             <span class="t-fr">Une fondation design token-first pour les produits web et mobile de Datamaster, 1 033 variables, 24 composants avec tous leurs états, support bidirectionnel natif, WCAG 2.1 AA, et une plateforme de documentation partagée par designers et développeurs.</span>
           </p>
@@ -1103,9 +1122,9 @@
             <span class="t-fr">Découverte</span>
           </h3>
           <p class="process-desc">
-            <span class="t-ar">نبدأ بفهم عميق لاحتياجاتك ومستخدميك وسوقك.</span>
-            <span class="t-en">We start with a deep understanding of your needs, users, and market.</span>
-            <span class="t-fr">Nous commençons par comprendre vos besoins, vos utilisateurs et votre marché.</span>
+            <span class="t-ar">نقرأ منتجك قراءة أصولية كاملة، بنيته المعلوماتية وتراتبيته وكل شاشة فيه، قبل اقتراح أي تصميم.</span>
+            <span class="t-en">We read your product in a full heuristic pass, its information architecture, its hierarchy, every screen in it, before proposing any design.</span>
+            <span class="t-fr">Nous lisons votre produit en un passage heuristique complet, son architecture de l'information, sa hiérarchie, chaque écran, avant de proposer un quelconque design.</span>
           </p>
         </div>
       </div>
@@ -1121,9 +1140,9 @@
             <span class="t-fr">Stratégie</span>
           </h3>
           <p class="process-desc">
-            <span class="t-ar">نضع خارطة طريق واضحة وأهدافاً قابلة للقياس.</span>
-            <span class="t-en">We define a clear roadmap and measurable objectives.</span>
-            <span class="t-fr">Nous définissons une feuille de route claire et des objectifs mesurables.</span>
+            <span class="t-ar">من تلك القراءة نبني قائمة أولويات مرتّبة وخارطة طريق، لا قائمة رغبات، بل ترتيب لما يستحق الحل أولاً.</span>
+            <span class="t-en">That read becomes a ranked priority list and a roadmap, not a wish list, an order for what's worth solving first.</span>
+            <span class="t-fr">Cette lecture devient une liste de priorités classée et une feuille de route, pas une liste de souhaits, un ordre pour ce qui mérite d'être résolu en premier.</span>
           </p>
         </div>
       </div>
@@ -1134,14 +1153,14 @@
         </div>
         <div class="process-content">
           <h3 class="process-title">
-            <span class="t-ar">تصميم</span>
-            <span class="t-en">Design</span>
-            <span class="t-fr">Design</span>
+            <span class="t-ar">وضوح</span>
+            <span class="t-en">Legibility</span>
+            <span class="t-fr">Lisibilité</span>
           </h3>
           <p class="process-desc">
-            <span class="t-ar">نصنع حلولاً تصميمية دقيقة تجمع بين الجماليّة والوظيفية.</span>
-            <span class="t-en">We craft precise design solutions combining aesthetics and functionality.</span>
-            <span class="t-fr">Nous créons des solutions design précises alliant esthétique et fonctionnalité.</span>
+            <span class="t-ar">نصمّم للكثافة لا رغماً عنها. كل حالة من حالات المكوّن الـ24 مصمّمة ومحسوبة، فتبقى الشاشات المزدحمة بالبيانات واضحة لا مربكة.</span>
+            <span class="t-en">We design for density, not around it. Every state of all 24 components is designed and accounted for, so data-heavy screens stay clear instead of overwhelming.</span>
+            <span class="t-fr">Nous concevons pour la densité, pas malgré elle. Chaque état des 24 composants est conçu et pris en compte, pour que les écrans denses en données restent clairs plutôt qu'accablants.</span>
           </p>
         </div>
       </div>
@@ -1157,9 +1176,9 @@
             <span class="t-fr">Livraison</span>
           </h3>
           <p class="process-desc">
-            <span class="t-ar">نسلّم كل شيء بجودة عالية وتوثيق متكامل.</span>
-            <span class="t-en">We deliver everything with high quality and comprehensive documentation.</span>
-            <span class="t-fr">Nous livrons tout avec une haute qualité et une documentation complète.</span>
+            <span class="t-ar">نسلّم منصّة توثيق حيّة وقواعد حوكمة، مع فيديوهات شرح بالعربية والإنجليزية وجلسة تدريب حية، لا ملفاً مغلقاً يحتاج شرحاً لاحقاً.</span>
+            <span class="t-en">We hand off a living documentation platform and governance rules, with walkthrough videos in Arabic and English and a live training session, not a closed file that needs explaining later.</span>
+            <span class="t-fr">Nous livrons une plateforme de documentation vivante et des règles de gouvernance, avec des vidéos de démonstration en arabe et en anglais et une session de formation en direct, pas un fichier fermé à expliquer plus tard.</span>
           </p>
         </div>
       </div>
@@ -1175,9 +1194,9 @@
             <span class="t-fr">Amélioration</span>
           </h3>
           <p class="process-desc">
-            <span class="t-ar">نتابع ونحسّن بناءً على بيانات حقيقية من المستخدمين.</span>
-            <span class="t-en">We follow up and improve based on real user data.</span>
-            <span class="t-fr">Nous assurons le suivi et améliorons basé sur les données utilisateurs réelles.</span>
+            <span class="t-ar">لأن كل شيء رمز، تغيير قرار واحد ينتقل تلقائياً إلى كل مكان يُستخدم فيه، فيصبح التحسين بعد الإطلاق تعديلاً في مكان واحد، لا مراجعة كل شاشة يدوياً.</span>
+            <span class="t-en">Because everything is a token, changing one decision propagates automatically everywhere it's used, so refinement after launch is one edit, not a manual pass through every screen.</span>
+            <span class="t-fr">Comme tout est un token, changer une décision se propage automatiquement partout où elle est utilisée, donc l'amélioration après le lancement est une seule modification, pas une revue manuelle de chaque écran.</span>
           </p>
         </div>
       </div>
@@ -1299,15 +1318,15 @@
           <div class="contact-status-head">
             <div class="contact-status-dot"></div>
             <span class="contact-status-label">
-              <span class="t-ar">متاح الآن</span>
-              <span class="t-en">Available Now</span>
-              <span class="t-fr">Disponible Maintenant</span>
+              <span class="t-ar">قبل أن تتواصل</span>
+              <span class="t-en">Before You Reach Out</span>
+              <span class="t-fr">Avant de Nous Contacter</span>
             </span>
           </div>
           <p class="contact-status-desc">
-            <span class="t-ar">نقبل مشاريع جديدة ونرحب بكل فكرة طموحة. تواصل معنا ولنبدأ ببناء منتجك.</span>
-            <span class="t-en">We're accepting new projects and welcome every ambitious idea. Reach out and let's begin building your product.</span>
-            <span class="t-fr">Nous acceptons de nouveaux projets et accueillons chaque idée ambitieuse. Contactez-nous pour commencer.</span>
+            <span class="t-ar">أفضل المشاريع تبدأ بفكرة واضحة عن المستخدم والمشكلة. إن كانت لديك، لنتحدث.</span>
+            <span class="t-en">The strongest projects start with a clear sense of the user and the problem. If that's you, let's talk.</span>
+            <span class="t-fr">Les meilleurs projets partent d'une idée claire de l'utilisateur et du problème. Si c'est votre cas, parlons-en.</span>
           </p>
         </div>
 

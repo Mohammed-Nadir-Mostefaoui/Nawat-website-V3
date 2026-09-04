@@ -1171,14 +1171,12 @@ html[data-lang="ar"] .service-card-title .t-en {
   border-top: 1px solid var(--c-border);
 }
 .service-card-link-text {
-  max-width: 0;
+  /* Always visible on desktop too (not just on hover/mobile) — a B2B
+     buyer reading on desktop needs the CTA to read as an affordance,
+     not just an arrow. See fix-prompts.md #5A. */
+  max-width: 200px;
   overflow: hidden;
   white-space: nowrap;
-  opacity: 0;
-  transition: max-width 0.3s var(--ease-out), opacity var(--t-fast);
-}
-.service-card:hover .service-card-link-text {
-  max-width: 200px;
   opacity: 1;
 }
 html[dir="rtl"] .service-card-link svg { transform: scaleX(-1); }
@@ -2312,11 +2310,9 @@ html[dir="rtl"] .form-submit:hover svg {
     transform: translateY(0) !important;
   }
 
-  /* ── 2. Services — always show CTA on mobile ────────────────── */
-  .service-card-link-text {
-    max-width: 200px;
-    opacity: 1;
-  }
+  /* ── 2. Services — CTA label is always visible at every breakpoint
+     now (see .service-card-link-text above), so only the hover-line
+     mobile override remains here. ────────────────────────────────── */
   .service-card::after {
     transform: scaleX(1);
   }
@@ -3526,6 +3522,7 @@ html[lang="ar"] .nwp-label,
 html[lang="ar"] .work-coming-badge,
 html[lang="ar"] .caption,
 html[lang="ar"] .scroll-label,
+html[lang="ar"] .services-bridge-label,
 html[lang="ar"] .work-tag {
   letter-spacing: 0;
   line-height: 1.75;
@@ -3538,6 +3535,7 @@ html[lang="ar"] .nwp-label .t-ar,
 html[lang="ar"] .work-coming-badge .t-ar,
 html[lang="ar"] .caption .t-ar,
 html[lang="ar"] .scroll-label .t-ar,
+html[lang="ar"] .services-bridge-label .t-ar,
 html[lang="ar"] .work-tag .t-ar {
   font-size: 13px;
 }
@@ -3633,30 +3631,60 @@ html[lang="ar"] .work-tag .t-ar {
    wiring as the cards above it (data-service="other").
    ================================================================ */
 .services-bridge {
-  margin-top: 20px;
-  padding: 20px 28px;
+  margin-top: 24px;
+  padding: clamp(22px, 2.6vw, 30px) clamp(22px, 2.8vw, 34px);
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: background var(--t-fast), border-color var(--t-fast);
+  justify-content: space-between;
+  gap: clamp(18px, 2.5vw, 36px);
+  flex-wrap: wrap;
+  /* Dashed, not solid, and on purpose. The three cards above are fixed
+     scope with a closed outline. This is the scope that gets drawn with
+     the client, so its outline is deliberately still open. Same radius as
+     the services grid so it reads as a sibling of the grid, not a fourth
+     card inside it. */
+  border: 1px dashed var(--c-border-lg);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--t-fast), background var(--t-fast);
 }
 .services-bridge:hover {
   background: var(--c-surface);
   border-color: var(--c-text-30);
 }
-.services-bridge:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
+.services-bridge-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 620px;
+}
+/* Echoes the section title "Three Services" directly. */
+.services-bridge-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
 }
 .services-bridge-text {
-  max-width: 640px;
   font-size: 14px;
   line-height: 1.6;
   color: var(--c-text-60);
+}
+.services-bridge-btn {
+  flex-shrink: 0;
+}
+html[dir="rtl"] .services-bridge-btn svg { transform: scaleX(-1); }
+
+@media (max-width: 768px) {
+  .services-bridge {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: start;
+  }
+  .services-bridge-btn {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 
