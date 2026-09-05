@@ -3033,6 +3033,31 @@ html[lang="ar"] .work-tag .t-ar {
 .services-bridge-btn {
   flex-shrink: 0;
 }
+
+/* ================================================================
+   WORK CARDS — "Coming Soon" pill
+   These three badges carried their styling in inline style attributes,
+   which meant the look could not be changed in one place. Values below
+   are copied verbatim from those attributes, so this is a refactor and
+   not a restyle. (An older .work-coming-badge existed for a different,
+   full-overlay design and was removed with the other dead rules.)
+   ================================================================ */
+.work-coming-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+.work-coming-badge {
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--c-text-60);
+}
 html[dir="rtl"] .services-bridge-btn svg { transform: scaleX(-1); }
 
 @media (max-width: 768px) {
