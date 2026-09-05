@@ -9,9 +9,6 @@
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-/* ── Module-level state ─────────────────────────────────────────── */
-let manifestoProcessed = false;
-
 /* ================================================================
    THEME TOGGLE (Light / Dark)
    ================================================================ */
@@ -131,20 +128,6 @@ function applyLang(lang, save = true) {
       if (opts[i] !== undefined) opt.text = opts[i];
     });
   });
-
-  // Re-build manifesto words in the new language
-  if (manifestoProcessed) {
-    $$('.word').forEach(w => w.classList.remove('revealed'));
-    processManifesto();
-    // If manifesto is currently visible, reveal new words immediately
-    const manifestoEl = $('.manifesto');
-    if (manifestoEl) {
-      const rect = manifestoEl.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        $$('.word', manifestoEl).forEach(w => w.classList.add('revealed'));
-      }
-    }
-  }
 
   if (save) localStorage.setItem(LANG_KEY, lang);
 
@@ -420,63 +403,6 @@ function initScrollReveal() {
     el.classList.add('reveal');
     cardObserver.observe(el);
   });
-}
-
-/* ================================================================
-   MANIFESTO — Word-by-Word Reveal
-   ================================================================ */
-function processManifesto() {
-  const lines = $$('.manifesto-line');
-  if (!lines.length) return;
-
-  const lang = document.documentElement.getAttribute('data-lang') || 'ar';
-
-  lines.forEach((line, lineIdx) => {
-    const isAccent = line.classList.contains('accent');
-    const text = line.dataset[lang] || line.dataset.ar || '';
-    const words = text.split(' ').filter(Boolean);
-
-    line.innerHTML = '';
-
-    const lineDelay = lineIdx * 150;
-
-    words.forEach((word, wordIdx) => {
-      const span = document.createElement('span');
-      span.className = 'word';
-      if (isAccent) span.classList.add('word-accent');
-      span.textContent = word;
-      if (wordIdx > 0) {
-        line.appendChild(document.createTextNode(' '));
-      }
-      span.style.transitionDelay = `${lineDelay + wordIdx * 70}ms`;
-      line.appendChild(span);
-    });
-  });
-
-  manifestoProcessed = true;
-}
-
-function initManifesto() {
-  const manifesto = $('.manifesto');
-  if (!manifesto) return;
-
-  processManifesto();
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        const words = $$('.word', manifesto);
-        if (entry.isIntersecting) {
-          words.forEach(w => w.classList.add('revealed'));
-        } else {
-          words.forEach(w => w.classList.remove('revealed'));
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -80px 0px' }
-  );
-
-  observer.observe(manifesto);
 }
 
 /* ================================================================
@@ -928,7 +854,6 @@ function init() {
   initSectionTracker();
   initParticles();
   initScrollReveal();
-  initManifesto();
   initProcess();
   initTicker();
   initServiceCards();
