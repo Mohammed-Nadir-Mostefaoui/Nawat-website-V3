@@ -2974,14 +2974,6 @@ html[lang="ar"] .work-tag .t-ar {
   background: var(--c-text-30);
   border-radius: 1px;
 }
-.service-card-note {
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--c-text-60);
-  padding-top: 16px;
-  border-top: 1px solid var(--c-border);
-}
-
 /* ================================================================
    SERVICES — bridging note below the three cards. Visual identity is
    never sold as its own line item (B&OS Section 20), only bundled
